@@ -22,6 +22,9 @@ public class Accommodation {
 	@OneToMany(mappedBy = "accommodation")
 	private List<Review> reviews = new ArrayList<>();
 
+	@OneToMany(mappedBy = "accommodation")
+	private List<Reservation> reservations = new ArrayList<>();
+
 	private int price;
 
 	@Embedded
