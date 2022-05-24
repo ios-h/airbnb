@@ -19,6 +19,11 @@ public class Accommodation {
 
 	private String name;
 
+	private String primaryImageUrl;
+
+	@OneToMany(mappedBy = "accommodation")
+	private List<SecondaryImage> secondaryImages = new ArrayList<>();
+
 	@OneToMany(mappedBy = "accommodation")
 	private List<Review> reviews = new ArrayList<>();
 
