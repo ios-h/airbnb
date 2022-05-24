@@ -21,5 +21,5 @@ public class Review {
 
 	@ManyToOne
 	@JoinColumn(name = "accommodation_id")
-	private Accommodation accomodation;
+	private Accommodation accommodation;
 }
