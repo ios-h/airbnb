@@ -30,6 +30,9 @@ public class Accommodation {
 	@Embedded
 	private Address address;
 
+	@Embedded
+	private Geolocation geolocation;
+
 	private String type;
 
 	private String hostName;
