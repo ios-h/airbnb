@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `hibernate_sequence`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `accommodation`
 (
-    `accommodation_id`   BIGINT       NOT NULL AUTO_INCREMENT,
+    `accommodation_id`   BIGINT       NOT NULL,
     `name`               VARCHAR(255) NOT NULL,
     `price`              INT          NOT NULL,
     `latitude`           DOUBLE       NOT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `accommodation`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `customer`
 (
-    `customer_id` BIGINT       NOT NULL AUTO_INCREMENT,
+    `customer_id` BIGINT       NOT NULL,
     `user_id`     VARCHAR(255) NOT NULL,
     PRIMARY KEY (`customer_id`)
 )
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `customer`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `reservation`
 (
-    `reservation_id`   BIGINT      NOT NULL AUTO_INCREMENT,
+    `reservation_id`   BIGINT      NOT NULL,
     `check_in_date`    DATE        NOT NULL,
     `check_out_date`   DATE        NOT NULL,
     `number_of_guest`  INT         NOT NULL,
@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `reservation`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `review`
 (
-    `review_id`        BIGINT       NOT NULL AUTO_INCREMENT,
+    `review_id`        BIGINT       NOT NULL,
     `score`            INT          NULL DEFAULT NULL,
     `comment`          VARCHAR(255) NULL DEFAULT NULL,
     `accommodation_id` BIGINT       NOT NULL,
@@ -125,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `review`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `secondary_image`
 (
-    `secondary_image_id` BIGINT       NOT NULL AUTO_INCREMENT,
+    `secondary_image_id` BIGINT       NOT NULL,
     `url`                VARCHAR(255) NOT NULL,
     `accommodation_id`   BIGINT       NOT NULL,
     PRIMARY KEY (`secondary_image_id`),
@@ -144,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `secondary_image`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `wish`
 (
-    `wish_id`          BIGINT      NOT NULL AUTO_INCREMENT,
+    `wish_id`          BIGINT      NOT NULL,
     `accommodation_id` BIGINT      NOT NULL,
     `customer_id`      BIGINT      NOT NULL,
     `created_date`     DATETIME(6) NULL DEFAULT (CURRENT_TIME),
