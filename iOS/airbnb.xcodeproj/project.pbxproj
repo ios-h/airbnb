@@ -25,6 +25,7 @@
 		D01D662A283CB5DB0067B5E1 /* ReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D6629283CB5DB0067B5E1 /* ReservationViewController.swift */; };
 		D01D662C283CB6310067B5E1 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D662B283CB6310067B5E1 /* MainTabBarViewController.swift */; };
 		D01D6631283D3A200067B5E1 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D6630283D3A200067B5E1 /* UIColor+Extension.swift */; };
+		D087289B283E7D26009983A5 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D087289A283E7D26009983A5 /* CustomLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		D01D6629283CB5DB0067B5E1 /* ReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationViewController.swift; sourceTree = "<group>"; };
 		D01D662B283CB6310067B5E1 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		D01D6630283D3A200067B5E1 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		D087289A283E7D26009983A5 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 		D01D6624283CB50E0067B5E1 /* Present */ = {
 			isa = PBXGroup;
 			children = (
+				D0872899283E7D13009983A5 /* CustomView */,
 				D01D662B283CB6310067B5E1 /* MainTabBarViewController.swift */,
 				D01D65F2283C70710067B5E1 /* MainViewController.swift */,
 				D01D6627283CB5550067B5E1 /* WishListViewController.swift */,
@@ -203,6 +206,14 @@
 				D01D6630283D3A200067B5E1 /* UIColor+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		D0872899283E7D13009983A5 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				D087289A283E7D26009983A5 /* CustomLabel.swift */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -436,6 +447,7 @@
 				D01D662C283CB6310067B5E1 /* MainTabBarViewController.swift in Sources */,
 				D01D65F1283C70710067B5E1 /* SceneDelegate.swift in Sources */,
 				D01D662A283CB5DB0067B5E1 /* ReservationViewController.swift in Sources */,
+				D087289B283E7D26009983A5 /* CustomLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

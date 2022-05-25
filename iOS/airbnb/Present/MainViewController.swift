@@ -27,27 +27,16 @@ class MainViewController: UIViewController {
         return scrollView
     }()
     
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 34, weight: .medium)
-        label.numberOfLines = 0
-        let attributedString = NSMutableAttributedString(string: "슬기로운\n자연생활")
-        label.attributedText = attributedString
-        return label
-    }()
+    private let titleLabel = CustomLabel(numberOfLines: 0,
+                                         color: .customBlack,
+                                         attributedString: NSMutableAttributedString(string: "슬기로운\n자연생활"),
+                                         font: .systemFont(ofSize: 34, weight: .medium))
     
-    private let detailLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .gray1
-        label.font = UIFont.systemFont(ofSize: 17, weight: .medium)
-        label.numberOfLines = 0
-        let attributedString = NSMutableAttributedString(string: "에어비앤비가 엄선한\n위시리스트를 만나보세요.")
-        label.attributedText = attributedString
-        return label
-    }()
+    private let detailLabel = CustomLabel(numberOfLines: 0,
+                                          color: .gray1,
+                                          attributedString:
+                                            NSMutableAttributedString(string: "에어비앤비가 엄선한\n위시리스트를 만나보세요."),
+                                          font: .systemFont(ofSize: 17, weight: .medium))
     
     private let button: UIButton = {
         let button = UIButton()
