@@ -30,6 +30,9 @@ public class Accommodation {
 	@OneToMany(mappedBy = "accommodation")
 	private List<Reservation> reservations = new ArrayList<>();
 
+	@OneToMany(mappedBy = "accommodation")
+	private List<Wish> wishes = new ArrayList<>();
+
 	private int price;
 
 	@Embedded

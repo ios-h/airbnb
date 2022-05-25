@@ -17,4 +17,6 @@ public class Customer {
     @OneToMany(mappedBy = "customer")
     private List<Reservation> reservations = new ArrayList<>();
 
+    @OneToMany(mappedBy = "customer")
+    private List<Wish> wishes = new ArrayList<>();
 }
