@@ -1,7 +1,6 @@
 package org.team4.airbnb.domain;
 
 import javax.persistence.Embeddable;
-import javax.persistence.Entity;
 
 @Embeddable
 public class Address {
