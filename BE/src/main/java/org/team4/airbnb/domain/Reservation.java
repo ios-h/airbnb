@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-public class Reservation {
+public class Reservation extends BaseCreated{
 
     @Id
     @GeneratedValue

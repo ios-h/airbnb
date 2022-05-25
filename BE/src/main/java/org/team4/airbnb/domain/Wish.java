@@ -3,7 +3,7 @@ package org.team4.airbnb.domain;
 import javax.persistence.*;
 
 @Entity
-public class Wish {
+public class Wish extends BaseCreated{
 
     @Id
     @GeneratedValue
