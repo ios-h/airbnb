@@ -11,6 +11,7 @@ import javax.persistence.Embeddable;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Invoice {
 
+    private int pricePerDay;
     private int total;
     private int discount;
     private int cleaningFee;
