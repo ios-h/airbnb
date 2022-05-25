@@ -11,6 +11,6 @@ import javax.persistence.Embeddable;
 @AllArgsConstructor
 public class Geolocation {
 
-    private double longitude;
-    private double latitude;
+	private double longitude;
+	private double latitude;
 }

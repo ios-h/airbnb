@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Accommodation extends BaseCreated{
+public class Accommodation extends BaseCreated {
 
 	@Id
 	@GeneratedValue

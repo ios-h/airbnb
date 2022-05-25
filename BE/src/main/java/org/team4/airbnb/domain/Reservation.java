@@ -4,29 +4,29 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-public class Reservation extends BaseCreated{
+public class Reservation extends BaseCreated {
 
-    @Id
-    @GeneratedValue
-    @Column(name = "reservation_id")
-    private Long id;
+	@Id
+	@GeneratedValue
+	@Column(name = "reservation_id")
+	private Long id;
 
-    private LocalDate checkInDate;
+	private LocalDate checkInDate;
 
-    private LocalDate checkOutDate;
+	private LocalDate checkOutDate;
 
-    private int numberOfGuest;
+	private int numberOfGuest;
 
-    private int numberOfInfant;
+	private int numberOfInfant;
 
-    @Embedded
-    private Invoice invoice;
+	@Embedded
+	private Invoice invoice;
 
-    @ManyToOne
-    @JoinColumn(name = "accommodation_id")
-    private Accommodation accommodation;
+	@ManyToOne
+	@JoinColumn(name = "accommodation_id")
+	private Accommodation accommodation;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
+	@ManyToOne
+	@JoinColumn(name = "customer_id")
+	private Customer customer;
 }
