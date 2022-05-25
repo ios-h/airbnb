@@ -11,14 +11,6 @@ public class Reservation extends BaseCreated{
     @Column(name = "reservation_id")
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
-
-    @ManyToOne
-    @JoinColumn(name = "accommodation_id")
-    private Accommodation accommodation;
-
     private LocalDate checkInDate;
 
     private LocalDate checkOutDate;
@@ -29,4 +21,12 @@ public class Reservation extends BaseCreated{
 
     @Embedded
     private Invoice invoice;
+
+    @ManyToOne
+    @JoinColumn(name = "accommodation_id")
+    private Accommodation accommodation;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 }

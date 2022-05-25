@@ -19,7 +19,25 @@ public class Accommodation extends BaseCreated{
 
 	private String name;
 
+	private int price;
+
+	@Embedded
+	private Geolocation geolocation;
+
+	@Embedded
+	private Address address;
+
+	@Column(name = "accommodation_type")
+	private String type;
+
+	private String hostName;
+
+	private String description;
+
 	private String primaryImageUrl;
+
+	@Embedded
+	private RoomFeature roomFeature;
 
 	@OneToMany(mappedBy = "accommodation")
 	private List<SecondaryImage> secondaryImages = new ArrayList<>();
@@ -32,22 +50,5 @@ public class Accommodation extends BaseCreated{
 
 	@OneToMany(mappedBy = "accommodation")
 	private List<Wish> wishes = new ArrayList<>();
-
-	private int price;
-
-	@Embedded
-	private Address address;
-
-	@Embedded
-	private Geolocation geolocation;
-
-	private String type;
-
-	private String hostName;
-
-	@Embedded
-	private RoomFeature roomFeature;
-
-	private String description;
 
 }
