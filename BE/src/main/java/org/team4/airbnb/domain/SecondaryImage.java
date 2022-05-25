@@ -7,6 +7,7 @@ public class SecondaryImage {
 
     @Id
     @GeneratedValue
+    @Column(name = "secondary_image_id")
     private Long id;
 
     private String url;
