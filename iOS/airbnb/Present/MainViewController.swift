@@ -38,15 +38,11 @@ class MainViewController: UIViewController {
                                             NSMutableAttributedString(string: "에어비앤비가 엄선한\n위시리스트를 만나보세요."),
                                           font: .systemFont(ofSize: 17, weight: .medium))
     
-    private let button: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("여행 아이디어 얻기", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.backgroundColor = .black
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
-        return button
-    }()
+    private let ideaButton = CustomButton(title: "여행 아이디어 얻기",
+                                          state: .normal,
+                                          titleColor: .white,
+                                          backgroundColor: .black,
+                                          font: .systemFont(ofSize: 17, weight: .bold))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +68,7 @@ class MainViewController: UIViewController {
         scrollView.addSubview(heroImageView)
         scrollView.addSubview(titleLabel)
         scrollView.addSubview(detailLabel)
-        scrollView.addSubview(button)
+        scrollView.addSubview(ideaButton)
     }
     
     private func setLayout() {
@@ -99,7 +95,7 @@ class MainViewController: UIViewController {
         detailLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
         detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20).isActive = true
         
-        button.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
-        button.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: 20).isActive = true
+        ideaButton.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
+        ideaButton.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: 20).isActive = true
     }
 }

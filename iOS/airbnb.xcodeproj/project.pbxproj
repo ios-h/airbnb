@@ -26,6 +26,7 @@
 		D01D662C283CB6310067B5E1 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D662B283CB6310067B5E1 /* MainTabBarViewController.swift */; };
 		D01D6631283D3A200067B5E1 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D6630283D3A200067B5E1 /* UIColor+Extension.swift */; };
 		D087289B283E7D26009983A5 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D087289A283E7D26009983A5 /* CustomLabel.swift */; };
+		D087289D283F0DB9009983A5 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D087289C283F0DB9009983A5 /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		D01D662B283CB6310067B5E1 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		D01D6630283D3A200067B5E1 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		D087289A283E7D26009983A5 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		D087289C283F0DB9009983A5 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				D087289A283E7D26009983A5 /* CustomLabel.swift */,
+				D087289C283F0DB9009983A5 /* CustomButton.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 			files = (
 				D01D6631283D3A200067B5E1 /* UIColor+Extension.swift in Sources */,
 				D01D65F3283C70710067B5E1 /* MainViewController.swift in Sources */,
+				D087289D283F0DB9009983A5 /* CustomButton.swift in Sources */,
 				D01D6628283CB5550067B5E1 /* WishListViewController.swift in Sources */,
 				D01D65EF283C70710067B5E1 /* AppDelegate.swift in Sources */,
 				D01D662C283CB6310067B5E1 /* MainTabBarViewController.swift in Sources */,
