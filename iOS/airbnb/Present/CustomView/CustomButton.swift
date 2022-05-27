@@ -28,6 +28,6 @@ class CustomButton: UIButton {
         self.setTitle(title, for: state)
         self.setTitleColor(titleColor, for: state)
         self.backgroundColor = backgroundColor
-        self.titleLabel?.font = font
+        self.layer.cornerRadius = 10
     }
 }

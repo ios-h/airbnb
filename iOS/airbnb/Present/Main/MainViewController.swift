@@ -99,5 +99,7 @@ class MainViewController: UIViewController {
         
         ideaButton.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
         ideaButton.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: 20).isActive = true
+        ideaButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 2.5).isActive = true
+        ideaButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
 }
