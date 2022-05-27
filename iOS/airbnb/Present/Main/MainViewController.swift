@@ -57,6 +57,12 @@ class MainViewController: UIViewController {
         setLayout()
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        setLayout()
+    }
+    
     private func setUpSearchController() {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.placeholder = "어디로 여행가세요?"
