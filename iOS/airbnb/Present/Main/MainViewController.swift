@@ -9,6 +9,8 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    var coordinator: MainFlow?
+    
     private let heroImageView: UIImageView = {
         guard let image = UIImage(named: "img_hero") else {
             return UIImageView(image: UIImage(named: ""))
