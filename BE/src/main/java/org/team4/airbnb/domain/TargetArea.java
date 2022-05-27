@@ -8,12 +8,12 @@ import javax.persistence.Id;
 @Entity
 public class TargetArea {
 
-    @Id
-    @GeneratedValue
-    @Column(name = "target_area_id")
-    private Long id;
+	@Id
+	@GeneratedValue
+	@Column(name = "target_area_id")
+	private Long id;
 
-    private Address address;
+	private Address address;
 
-    private Geolocation geolocation;
+	private Geolocation geolocation;
 }
