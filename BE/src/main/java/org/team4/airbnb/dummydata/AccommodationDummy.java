@@ -11,14 +11,13 @@ import lombok.Setter;
 public class AccommodationDummy {
 
 	@JsonProperty("BIZPLC_NM")
-	public String name;
+	private String name;
 	@JsonProperty("REFINE_LOTNO_ADDR")
-	public String address;
+	private String address;
 	@JsonProperty("SANITTN_BIZCOND_NM")
-	public String type;
+	private String type;
 	@JsonProperty("REFINE_WGS84_LOGT")
-	public String longitude;
+	private double longitude;
 	@JsonProperty("REFINE_WGS84_LAT")
-	public String latitude;
-
+	private double latitude;
 }
