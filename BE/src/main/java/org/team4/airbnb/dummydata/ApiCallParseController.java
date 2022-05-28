@@ -20,7 +20,7 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 @PropertySource(value = "classpath:api.properties", ignoreResourceNotFound = true)
-public class ApiCallParse {
+public class ApiCallParseController {
 
 	@Value("${accommodation.api.serviceKey}")
 	private String serviceKey;
