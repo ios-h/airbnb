@@ -22,7 +22,7 @@ class TabBarCoordinator: Coordinator {
         mainNavigationController.tabBarItem = UITabBarItem(title: "검색",
                                                            image: UIImage(named: "magnifyingglass"),
                                                            tag: 0)
-        let mainCoordinator = MainCoordinator(navigationController: mainNavigationController)
+        let mainCoordinator = MainFlowCoordinator(navigationController: mainNavigationController)
         
         let wishListViewController = WishListViewController()
         wishListViewController.tabBarItem = UITabBarItem(title: "위시리스트", image: UIImage(named: "heart"), tag: 1)

@@ -1,5 +1,5 @@
 //
-//  MainCoordinator.swift
+//  MainFlowCoordinator.swift
 //  airbnb
 //
 //  Created by 안상희 on 2022/05/27.
@@ -11,7 +11,7 @@ protocol MainFlow: AnyObject {
     
 }
 
-class MainCoordinator: Coordinator, MainFlow {
+class MainFlowCoordinator: Coordinator, MainFlow {
     weak var navigationController: UINavigationController?
     
     init(navigationController: UINavigationController) {

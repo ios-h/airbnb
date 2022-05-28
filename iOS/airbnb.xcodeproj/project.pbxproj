@@ -30,7 +30,7 @@
 		D068BD022840701800EF783E /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D068BD012840701800EF783E /* TabBarCoordinator.swift */; };
 		D087289B283E7D26009983A5 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D087289A283E7D26009983A5 /* CustomLabel.swift */; };
 		D087289D283F0DB9009983A5 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D087289C283F0DB9009983A5 /* CustomButton.swift */; };
-		D0CC2B6E2840733200D77A3E /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CC2B6D2840733200D77A3E /* MainCoordinator.swift */; };
+		D0CC2B6E2840733200D77A3E /* MainFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CC2B6D2840733200D77A3E /* MainFlowCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,7 +82,7 @@
 		D068BD012840701800EF783E /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		D087289A283E7D26009983A5 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		D087289C283F0DB9009983A5 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		D0CC2B6D2840733200D77A3E /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		D0CC2B6D2840733200D77A3E /* MainFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,7 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				D01D65F2283C70710067B5E1 /* MainViewController.swift */,
-				D0CC2B6D2840733200D77A3E /* MainCoordinator.swift */,
+				D0CC2B6D2840733200D77A3E /* MainFlowCoordinator.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -504,7 +504,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D068BCFD28406F1900EF783E /* AppCoordinator.swift in Sources */,
-				D0CC2B6E2840733200D77A3E /* MainCoordinator.swift in Sources */,
+				D0CC2B6E2840733200D77A3E /* MainFlowCoordinator.swift in Sources */,
 				D01D6631283D3A200067B5E1 /* UIColor+Extension.swift in Sources */,
 				D01D65F3283C70710067B5E1 /* MainViewController.swift in Sources */,
 				D087289D283F0DB9009983A5 /* CustomButton.swift in Sources */,
