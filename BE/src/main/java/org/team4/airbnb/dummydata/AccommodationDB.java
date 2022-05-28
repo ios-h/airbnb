@@ -1,7 +1,5 @@
 package org.team4.airbnb.dummydata;
 
-import org.team4.airbnb.domain.AccommodationType;
-
 public class AccommodationDB {
 
 	private String name;
