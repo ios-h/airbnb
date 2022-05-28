@@ -30,19 +30,19 @@ class MainViewController: UIViewController {
     }()
     
     private let titleLabel = CustomLabel(numberOfLines: 0,
-                                         color: .customBlack,
+                                         color: .customBlack!,
                                          attributedString: NSMutableAttributedString(string: "슬기로운\n자연생활"),
                                          font: .systemFont(ofSize: 34, weight: .medium))
     
     private let detailLabel = CustomLabel(numberOfLines: 0,
-                                          color: .gray1,
+                                          color: .gray1!,
                                           attributedString:
                                             NSMutableAttributedString(string: "에어비앤비가 엄선한\n위시리스트를 만나보세요."),
                                           font: .systemFont(ofSize: 17, weight: .medium))
     
     private let ideaButton = CustomButton(title: "여행 아이디어 얻기",
                                           state: .normal,
-                                          titleColor: .white,
+                                          titleColor: .white!,
                                           backgroundColor: .black,
                                           font: .systemFont(ofSize: 17, weight: .bold))
     
