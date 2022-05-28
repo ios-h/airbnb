@@ -17,12 +17,28 @@ class TabBarCoordinator: Coordinator {
     func start() {
         let tabBarController = TabBarController()
         tabBarController.coordintor = self
+
+        let controllerList = getControllers()
         
+        var mainCoordinator: MainFlowCoordinator?
+        if let mainNavigationController = controllerList.first as? UINavigationController {
+            mainCoordinator = MainFlowCoordinator(navigationController: mainNavigationController)
+        }
+        
+        tabBarController.viewControllers = controllerList
+        tabBarController.modalPresentationStyle = .fullScreen
+        navigationController.present(tabBarController, animated: false)
+        
+        if let mainCoordinator = mainCoordinator {
+            coordinate(to: mainCoordinator)
+        }
+    }
+    
+    private func getControllers() -> [UIViewController] {
         let mainNavigationController = UINavigationController()
         mainNavigationController.tabBarItem = UITabBarItem(title: "검색",
                                                            image: UIImage(named: "magnifyingglass"),
                                                            tag: 0)
-        let mainCoordinator = MainFlowCoordinator(navigationController: mainNavigationController)
         
         let wishListViewController = WishListViewController()
         wishListViewController.tabBarItem = UITabBarItem(title: "위시리스트", image: UIImage(named: "heart"), tag: 1)
@@ -32,13 +48,7 @@ class TabBarCoordinator: Coordinator {
         reservationViewController.tabBarItem = UITabBarItem(title: "내 예약", image: UIImage(named: "person"), tag: 2)
         reservationViewController.tabBarItem.selectedImage = UIImage(named: "person.fill")
         
-        tabBarController.viewControllers = [mainNavigationController,
-                                            wishListViewController,
-                                            reservationViewController]
-        
-        tabBarController.modalPresentationStyle = .fullScreen
-        navigationController.present(tabBarController, animated: false)
-        
-        coordinate(to: mainCoordinator)
+        let controllerList = [mainNavigationController, wishListViewController, reservationViewController]
+        return controllerList
     }
 }
