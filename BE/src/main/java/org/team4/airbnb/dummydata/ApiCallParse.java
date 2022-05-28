@@ -1,5 +1,7 @@
 package org.team4.airbnb.dummydata;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URLEncoder;
@@ -24,12 +26,15 @@ public class ApiCallParse {
 	private String serviceKey;
 
 	@GetMapping("/dummydata")
-	public String getDummyData() throws ParseException, UnsupportedEncodingException {
+	public String getDummyData()
+		throws ParseException, UnsupportedEncodingException, JsonProcessingException {
 		String url = prepareRequestUrl();
 		ResponseEntity<String> responseEntity = callApi(url);
-		String response = responseEntity.toString();
+		String xmlResponse = responseEntity.getBody();
 
-		return response;
+		StayingGeneralHotel resultOfDeserialize = parseXmlString(xmlResponse);
+
+		return "accommodation data insert success";
 	}
 
 	private String prepareRequestUrl() throws UnsupportedEncodingException {
@@ -37,8 +42,8 @@ public class ApiCallParse {
 
 		StringBuilder urlBuilder = new StringBuilder("https://openapi.gg.go.kr/StayingGeneralHotel"); /*URL*/
 		urlBuilder.append("?" + URLEncoder.encode("KEY", "UTF-8") + "=" + serviceKey); /*Service Key*/
-		urlBuilder.append("&" + URLEncoder.encode("Type", "UTF-8") + "=" + URLEncoder.encode( "json","UTF-8")); /*호출 문서(xml, json)*/
-		urlBuilder.append("&" + URLEncoder.encode("pSize", "UTF-8") + "=" + URLEncoder.encode("20","UTF-8")); /*페이지 크기(기본100)*/
+		urlBuilder.append("&" + URLEncoder.encode("Type", "UTF-8") + "=" + URLEncoder.encode( "xml","UTF-8")); /*호출 문서(xml, json)*/
+		urlBuilder.append("&" + URLEncoder.encode("pSize", "UTF-8") + "=" + URLEncoder.encode("600","UTF-8")); /*페이지 크기(기본100)*/
 		urlBuilder.append("&" + URLEncoder.encode("pIndex", "UTF-8") + "=" + URLEncoder.encode("1","UTF-8")); /*시작 페이지(기본1)*/
 
 		url = urlBuilder.toString();
@@ -48,13 +53,20 @@ public class ApiCallParse {
 	private ResponseEntity<String> callApi(String url) {
 		RestTemplate restTemplate = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(MediaType.APPLICATION_JSON);
-
+//		headers.setContentType(MediaType.APPLICATION_JSON);
+		headers.setContentType(MediaType.TEXT_XML);
 		HttpEntity<HttpHeaders> entity = new HttpEntity<>(headers);
 
 		ResponseEntity<String> response = restTemplate.exchange(URI.create(url), HttpMethod.GET,
 			entity, String.class);
 
 		return response;
+	}
+
+	private StayingGeneralHotel parseXmlString(String xmlResponse) throws JsonProcessingException {
+		XmlMapper xmlMapper = new XmlMapper();
+		StayingGeneralHotel resultOfDeserialize = xmlMapper.readValue(xmlResponse, StayingGeneralHotel.class);
+
+		return resultOfDeserialize;
 	}
 }
