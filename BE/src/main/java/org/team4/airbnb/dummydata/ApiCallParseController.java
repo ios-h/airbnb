@@ -6,6 +6,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URLEncoder;
 
+import lombok.RequiredArgsConstructor;
 import org.apache.tomcat.util.json.ParseException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -20,7 +21,10 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 @PropertySource(value = "classpath:api.properties", ignoreResourceNotFound = true)
+@RequiredArgsConstructor
 public class ApiCallParseController {
+
+	private final AccommodationBulkInsertRepository accommodationBulkInsertRepository;
 
 	@Value("${accommodation.api.serviceKey}")
 	private String serviceKey;
@@ -33,6 +37,7 @@ public class ApiCallParseController {
 		String xmlResponse = responseEntity.getBody();
 
 		StayingGeneralHotel resultOfDeserialize = parseXmlString(xmlResponse);
+		accommodationBulkInsertRepository.bulkInsertAccommodations(resultOfDeserialize.getRow());
 
 		return "accommodation data insert success";
 	}
