@@ -20,7 +20,6 @@ class MainFlowCoordinator: Coordinator, MainFlow {
     
     func start() {
         let mainViewController = MainViewController()
-        mainViewController.coordinator = self
         navigationController?.pushViewController(mainViewController, animated: false)
     }
 }

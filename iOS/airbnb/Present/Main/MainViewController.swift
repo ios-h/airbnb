@@ -7,9 +7,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
-    
-    var coordinator: MainFlow?
+class MainViewController: UIViewController, MainFlow {
     
     private let heroImageView: UIImageView = {
         guard let image = UIImage(named: "img_hero") else {
