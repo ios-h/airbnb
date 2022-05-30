@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, MainFlow {
     
     private let heroImageView: UIImageView = {
         guard let image = UIImage(named: "img_hero") else {
@@ -27,37 +27,22 @@ class MainViewController: UIViewController {
         return scrollView
     }()
     
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 34, weight: .medium)
-        label.numberOfLines = 0
-        let attributedString = NSMutableAttributedString(string: "슬기로운\n자연생활")
-        label.attributedText = attributedString
-        return label
-    }()
+    private let titleLabel = CustomLabel(numberOfLines: 0,
+                                         color: .customBlack!,
+                                         attributedString: NSMutableAttributedString(string: "슬기로운\n자연생활"),
+                                         font: .systemFont(ofSize: 34, weight: .medium))
     
-    private let detailLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .gray1
-        label.font = UIFont.systemFont(ofSize: 17, weight: .medium)
-        label.numberOfLines = 0
-        let attributedString = NSMutableAttributedString(string: "에어비앤비가 엄선한\n위시리스트를 만나보세요.")
-        label.attributedText = attributedString
-        return label
-    }()
+    private let detailLabel = CustomLabel(numberOfLines: 0,
+                                          color: .gray1!,
+                                          attributedString:
+                                            NSMutableAttributedString(string: "에어비앤비가 엄선한\n위시리스트를 만나보세요."),
+                                          font: .systemFont(ofSize: 17, weight: .medium))
     
-    private let button: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("여행 아이디어 얻기", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.backgroundColor = .black
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
-        return button
-    }()
+    private let ideaButton = CustomButton(title: "여행 아이디어 얻기",
+                                          state: .normal,
+                                          titleColor: .white!,
+                                          backgroundColor: .black,
+                                          font: .systemFont(ofSize: 17, weight: .bold))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +52,12 @@ class MainViewController: UIViewController {
         setUpSearchController()
         
         addViews()
+        setLayout()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
         setLayout()
     }
     
@@ -83,7 +74,7 @@ class MainViewController: UIViewController {
         scrollView.addSubview(heroImageView)
         scrollView.addSubview(titleLabel)
         scrollView.addSubview(detailLabel)
-        scrollView.addSubview(button)
+        scrollView.addSubview(ideaButton)
     }
     
     private func setLayout() {
@@ -110,7 +101,9 @@ class MainViewController: UIViewController {
         detailLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
         detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20).isActive = true
         
-        button.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
-        button.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: 20).isActive = true
+        ideaButton.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
+        ideaButton.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: 20).isActive = true
+        ideaButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 2.5).isActive = true
+        ideaButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
 }

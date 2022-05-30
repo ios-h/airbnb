@@ -8,15 +8,15 @@
 import UIKit
 
 extension UIColor {
-    static var black: UIColor? { return UIColor(named: "black") }
-    static var blue: UIColor? { return UIColor(named: "blue") }
-    static var gray1: UIColor? { return UIColor(named: "gray1") }
-    static var gray2: UIColor? { return UIColor(named: "gray2") }
-    static var gray3: UIColor? { return UIColor(named: "gray3") }
-    static var gray4: UIColor? { return UIColor(named: "gray4") }
-    static var gray5: UIColor? { return UIColor(named: "gray5") }
-    static var gray6: UIColor? { return UIColor(named: "gray6") }
-    static var primary: UIColor? { return UIColor(named: "primary") }
-    static var secondary: UIColor? { return UIColor(named: "secondary") }
-    static var white: UIColor? { return UIColor(named: "white") }
+    static let customBlack = UIColor(named: "black")
+    static let blue = UIColor(named: "blue")
+    static let gray1 = UIColor(named: "gray1")
+    static let gray2 = UIColor(named: "gray2")
+    static let gray3 = UIColor(named: "gray3")
+    static let gray4 = UIColor(named: "gray4")
+    static let gray5 = UIColor(named: "gray5")
+    static let gray6 = UIColor(named: "gray6")
+    static let primary = UIColor(named: "primary")
+    static let secondary = UIColor(named: "secondary")
+    static let white = UIColor(named: "white")
 }

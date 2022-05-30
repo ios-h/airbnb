@@ -23,8 +23,14 @@
 		D01D6623283CADE60067B5E1 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D01D6620283CADE60067B5E1 /* .swiftlint.yml */; };
 		D01D6628283CB5550067B5E1 /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D6627283CB5550067B5E1 /* WishListViewController.swift */; };
 		D01D662A283CB5DB0067B5E1 /* ReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D6629283CB5DB0067B5E1 /* ReservationViewController.swift */; };
-		D01D662C283CB6310067B5E1 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D662B283CB6310067B5E1 /* MainTabBarViewController.swift */; };
 		D01D6631283D3A200067B5E1 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D6630283D3A200067B5E1 /* UIColor+Extension.swift */; };
+		D068BCFB28406E1B00EF783E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D068BCFA28406E1B00EF783E /* Coordinator.swift */; };
+		D068BCFD28406F1900EF783E /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D068BCFC28406F1900EF783E /* AppCoordinator.swift */; };
+		D068BD002840700B00EF783E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D068BCFF2840700B00EF783E /* TabBarController.swift */; };
+		D068BD022840701800EF783E /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D068BD012840701800EF783E /* TabBarCoordinator.swift */; };
+		D087289B283E7D26009983A5 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D087289A283E7D26009983A5 /* CustomLabel.swift */; };
+		D087289D283F0DB9009983A5 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D087289C283F0DB9009983A5 /* CustomButton.swift */; };
+		D0CC2B6E2840733200D77A3E /* MainFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CC2B6D2840733200D77A3E /* MainFlowCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,8 +75,14 @@
 		D01D6620283CADE60067B5E1 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		D01D6627283CB5550067B5E1 /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
 		D01D6629283CB5DB0067B5E1 /* ReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationViewController.swift; sourceTree = "<group>"; };
-		D01D662B283CB6310067B5E1 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		D01D6630283D3A200067B5E1 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		D068BCFA28406E1B00EF783E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		D068BCFC28406F1900EF783E /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		D068BCFF2840700B00EF783E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		D068BD012840701800EF783E /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		D087289A283E7D26009983A5 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		D087289C283F0DB9009983A5 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		D0CC2B6D2840733200D77A3E /* MainFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,13 +162,10 @@
 		D01D65ED283C70710067B5E1 /* airbnb */ = {
 			isa = PBXGroup;
 			children = (
+				D068BCF528406D7700EF783E /* App */,
 				D01D662E283D3A050067B5E1 /* Common */,
 				D01D6624283CB50E0067B5E1 /* Present */,
-				D01D65EE283C70710067B5E1 /* AppDelegate.swift */,
-				D01D65F0283C70710067B5E1 /* SceneDelegate.swift */,
-				D01D65F7283C70720067B5E1 /* Assets.xcassets */,
-				D01D65F9283C70720067B5E1 /* LaunchScreen.storyboard */,
-				D01D65FC283C70720067B5E1 /* Info.plist */,
+				D068BCF628406DA500EF783E /* SupportingFiles */,
 			);
 			path = airbnb;
 			sourceTree = "<group>";
@@ -181,10 +190,11 @@
 		D01D6624283CB50E0067B5E1 /* Present */ = {
 			isa = PBXGroup;
 			children = (
-				D01D662B283CB6310067B5E1 /* MainTabBarViewController.swift */,
-				D01D65F2283C70710067B5E1 /* MainViewController.swift */,
-				D01D6627283CB5550067B5E1 /* WishListViewController.swift */,
-				D01D6629283CB5DB0067B5E1 /* ReservationViewController.swift */,
+				D068BCFE28406FFE00EF783E /* TabBar */,
+				D068BD03284072C100EF783E /* Main */,
+				D0CC2B6F2840748900D77A3E /* WishList */,
+				D0CC2B702840749000D77A3E /* Reservation */,
+				D0872899283E7D13009983A5 /* CustomView */,
 			);
 			path = Present;
 			sourceTree = "<group>";
@@ -192,6 +202,7 @@
 		D01D662E283D3A050067B5E1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D068BCFA28406E1B00EF783E /* Coordinator.swift */,
 				D01D662F283D3A0D0067B5E1 /* Extension */,
 			);
 			path = Common;
@@ -203,6 +214,69 @@
 				D01D6630283D3A200067B5E1 /* UIColor+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		D068BCF528406D7700EF783E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D068BCFC28406F1900EF783E /* AppCoordinator.swift */,
+				D01D65EE283C70710067B5E1 /* AppDelegate.swift */,
+				D01D65F0283C70710067B5E1 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D068BCF628406DA500EF783E /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				D01D65F7283C70720067B5E1 /* Assets.xcassets */,
+				D01D65F9283C70720067B5E1 /* LaunchScreen.storyboard */,
+				D01D65FC283C70720067B5E1 /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		D068BCFE28406FFE00EF783E /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				D068BD012840701800EF783E /* TabBarCoordinator.swift */,
+				D068BCFF2840700B00EF783E /* TabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		D068BD03284072C100EF783E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				D01D65F2283C70710067B5E1 /* MainViewController.swift */,
+				D0CC2B6D2840733200D77A3E /* MainFlowCoordinator.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		D0872899283E7D13009983A5 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				D087289A283E7D26009983A5 /* CustomLabel.swift */,
+				D087289C283F0DB9009983A5 /* CustomButton.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		D0CC2B6F2840748900D77A3E /* WishList */ = {
+			isa = PBXGroup;
+			children = (
+				D01D6627283CB5550067B5E1 /* WishListViewController.swift */,
+			);
+			path = WishList;
+			sourceTree = "<group>";
+		};
+		D0CC2B702840749000D77A3E /* Reservation */ = {
+			isa = PBXGroup;
+			children = (
+				D01D6629283CB5DB0067B5E1 /* ReservationViewController.swift */,
+			);
+			path = Reservation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -429,13 +503,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D068BCFD28406F1900EF783E /* AppCoordinator.swift in Sources */,
+				D0CC2B6E2840733200D77A3E /* MainFlowCoordinator.swift in Sources */,
 				D01D6631283D3A200067B5E1 /* UIColor+Extension.swift in Sources */,
 				D01D65F3283C70710067B5E1 /* MainViewController.swift in Sources */,
+				D087289D283F0DB9009983A5 /* CustomButton.swift in Sources */,
 				D01D6628283CB5550067B5E1 /* WishListViewController.swift in Sources */,
 				D01D65EF283C70710067B5E1 /* AppDelegate.swift in Sources */,
-				D01D662C283CB6310067B5E1 /* MainTabBarViewController.swift in Sources */,
+				D068BD022840701800EF783E /* TabBarCoordinator.swift in Sources */,
+				D068BCFB28406E1B00EF783E /* Coordinator.swift in Sources */,
 				D01D65F1283C70710067B5E1 /* SceneDelegate.swift in Sources */,
+				D068BD002840700B00EF783E /* TabBarController.swift in Sources */,
 				D01D662A283CB5DB0067B5E1 /* ReservationViewController.swift in Sources */,
+				D087289B283E7D26009983A5 /* CustomLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,7 +687,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P9G6PC5FMA;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = airbnb/Info.plist;
+				INFOPLIST_FILE = airbnb/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -635,7 +715,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P9G6PC5FMA;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = airbnb/Info.plist;
+				INFOPLIST_FILE = airbnb/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
