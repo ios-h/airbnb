@@ -5,7 +5,11 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -13,7 +17,7 @@ import javax.persistence.OneToMany;
 public class Accommodation extends BaseCreated {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "accommodation_id")
 	private Long id;
 
@@ -27,28 +31,27 @@ public class Accommodation extends BaseCreated {
 	@Embedded
 	private Address address;
 
+	@Enumerated(value = EnumType.STRING)
 	@Column(name = "accommodation_type")
-	private String type;
+	private AccommodationType type;
 
 	private String hostName;
 
 	private String description;
 
-	private String primaryImageUrl;
-
 	@Embedded
 	private RoomFeature roomFeature;
 
-	@OneToMany(mappedBy = "accommodation")
-	private List<SecondaryImage> secondaryImages = new ArrayList<>();
+	@OneToMany(mappedBy = "accommodation", fetch = FetchType.LAZY)
+	private List<AccommodationImage> accommodationImages = new ArrayList<>();
 
-	@OneToMany(mappedBy = "accommodation")
+	@OneToMany(mappedBy = "accommodation", fetch = FetchType.LAZY)
 	private List<Review> reviews = new ArrayList<>();
 
-	@OneToMany(mappedBy = "accommodation")
+	@OneToMany(mappedBy = "accommodation", fetch = FetchType.LAZY)
 	private List<Reservation> reservations = new ArrayList<>();
 
-	@OneToMany(mappedBy = "accommodation")
+	@OneToMany(mappedBy = "accommodation", fetch = FetchType.LAZY)
 	private List<Wish> wishes = new ArrayList<>();
 
 }
