@@ -23,15 +23,7 @@ class MainAccomodationCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    let detailLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.clipsToBounds = true
-        label.font = .systemFont(ofSize: 17, weight: .bold)
-        label.textColor = .gray1
-        return label
-    }()
+    let detailLabel = CustomLabel(color: .gray1!, font: .systemFont(ofSize: 17, weight: .bold))
     
     var isDataSourceConfigured: Bool? {
         didSet {

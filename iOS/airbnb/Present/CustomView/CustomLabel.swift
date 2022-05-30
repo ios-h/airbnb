@@ -17,13 +17,13 @@ class CustomLabel: UILabel {
         super.init(frame: frame)
     }
 
-    convenience init(numberOfLines: Int, color: UIColor, attributedString: NSMutableAttributedString, font: UIFont) {
+    convenience init(color: UIColor, text: String = "", font: UIFont) {
         self.init()
 
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.numberOfLines = numberOfLines
+        self.numberOfLines = 0
         self.textColor = color
-        self.attributedText = attributedString
+        self.attributedText = NSMutableAttributedString(string: text)
         self.font = font
     }
 }
