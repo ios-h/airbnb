@@ -35,13 +35,11 @@ public class Accommodation extends BaseCreated {
 
 	private String description;
 
-	private String primaryImageUrl;
-
 	@Embedded
 	private RoomFeature roomFeature;
 
 	@OneToMany(mappedBy = "accommodation")
-	private List<SecondaryImage> secondaryImages = new ArrayList<>();
+	private List<AccommodationImage> accommodationImages = new ArrayList<>();
 
 	@OneToMany(mappedBy = "accommodation")
 	private List<Review> reviews = new ArrayList<>();

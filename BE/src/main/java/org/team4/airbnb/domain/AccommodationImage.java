@@ -3,7 +3,7 @@ package org.team4.airbnb.domain;
 import javax.persistence.*;
 
 @Entity
-public class SecondaryImage {
+public class AccommodationImage {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
