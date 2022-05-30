@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,8 +31,9 @@ public class Accommodation extends BaseCreated {
 	@Embedded
 	private Address address;
 
+	@Enumerated(value = EnumType.STRING)
 	@Column(name = "accommodation_type")
-	private String type;
+	private AccommodationType type;
 
 	private String hostName;
 
