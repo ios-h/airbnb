@@ -12,7 +12,7 @@ class MainViewController: UIViewController, MainFlow {
     
     enum Section: String, CaseIterable {
         case heroImage = "Hero Image"
-        case nearestDestination = "Nearest Destination"
+        case nearestDestination = "가까운 여행지 둘러보기"
         //        case accomodation = "Accomodation"
     }
     

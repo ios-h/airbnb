@@ -37,7 +37,7 @@ class CommonHeaderView: UICollectionReusableView {
         
         headerLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: inset).isActive = true
         headerLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -inset).isActive = true
-        headerLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: inset).isActive = true
-        headerLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -inset).isActive = true
+        headerLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: inset * 1.5).isActive = true
+        headerLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -inset * 0.5).isActive = true
     }
 }
