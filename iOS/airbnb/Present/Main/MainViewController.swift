@@ -27,6 +27,9 @@ class MainViewController: UIViewController, MainFlow {
         setUpSearchController()
         configureCollectionView()
         configureDataSource()
+        
+//        self.edgesForExtendedLayout = UIRectEdge()
+//        self.extendedLayoutIncludesOpaqueBars = true
     }
     
     override func viewWillLayoutSubviews() {
@@ -221,11 +224,11 @@ class MainViewController: UIViewController, MainFlow {
     
     private func generateAccomodationSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(3/4),
-            heightDimension: .fractionalWidth(1.2))
+            widthDimension: .fractionalWidth(4/7),
+            heightDimension: .fractionalWidth(1.55))
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: -20)
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(3/4),
@@ -235,6 +238,7 @@ class MainViewController: UIViewController, MainFlow {
             layoutSize: groupSize,
             subitem: item,
             count: 1)
+        group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
         
         let headerSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
@@ -246,6 +250,7 @@ class MainViewController: UIViewController, MainFlow {
             alignment: .top)
         
         let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 20)
         section.orthogonalScrollingBehavior = .groupPaging
         section.boundarySupplementaryItems = [sectionHeader]
         return section

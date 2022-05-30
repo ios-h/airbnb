@@ -19,7 +19,7 @@ class MainAccomodationCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 8
+        imageView.layer.cornerRadius = 10
         return imageView
     }()
     
@@ -28,7 +28,7 @@ class MainAccomodationCollectionViewCell: UICollectionViewCell {
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         label.clipsToBounds = true
-        label.font = .systemFont(ofSize: 17, weight: .medium)
+        label.font = .systemFont(ofSize: 17, weight: .bold)
         label.textColor = .gray1
         return label
     }()
@@ -68,13 +68,13 @@ class MainAccomodationCollectionViewCell: UICollectionViewCell {
         containerView.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
         accomodationImageView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
-        accomodationImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10).isActive = true
-        accomodationImageView.heightAnchor.constraint(equalTo: accomodationImageView.widthAnchor).isActive = true
+        accomodationImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+        accomodationImageView.heightAnchor.constraint(equalTo: accomodationImageView.widthAnchor, multiplier: 1.2).isActive = true
         accomodationImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
         
         detailLabel.leadingAnchor.constraint(equalTo: accomodationImageView.leadingAnchor).isActive = true
         detailLabel.trailingAnchor.constraint(equalTo: accomodationImageView.trailingAnchor).isActive = true
         detailLabel.topAnchor.constraint(equalTo: accomodationImageView.bottomAnchor, constant: 10).isActive = true
-        detailLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
+        detailLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 10).isActive = true
     }
 }
