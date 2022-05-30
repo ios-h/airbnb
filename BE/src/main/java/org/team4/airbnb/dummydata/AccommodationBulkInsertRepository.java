@@ -21,12 +21,6 @@ public class AccommodationBulkInsertRepository {
 			+ "price, host_name, description, max_guest) "
 			+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-		int numberOfRoom = getRandomNumber(10, 1);
-		int numberOfBed = getRandomNumber(10, 1);
-		int numberOfBathroom = getRandomNumber(10, 1);
-		int maxGuest = getRandomNumber(10, 1);
-		int price = getRandomNumber(100_000_000, 15_000);
-
 		jdbcTemplate.batchUpdate(sql, new BatchPreparedStatementSetter() {
 			@Override
 			public void setValues(PreparedStatement stmt, int idx) throws SQLException {
@@ -36,13 +30,13 @@ public class AccommodationBulkInsertRepository {
 				stmt.setDouble(3, accommodationDummy.getLongitude());
 				stmt.setString(4, accommodationDummy.getAddress());
 				stmt.setString(5, accommodationDummy.getType());
-				stmt.setInt(6, numberOfRoom);
-				stmt.setInt(7, numberOfBed);
-				stmt.setInt(8, numberOfBathroom);
-				stmt.setInt(9, price);
-				stmt.setString(10, "홍길동");
-				stmt.setString(11, "해수욕장 도보 500m, 10분 거리에 위치한 숙소입니다.");
-				stmt.setInt(12, maxGuest);
+				stmt.setInt(6, accommodationDummy.getNumberOfRoom());
+				stmt.setInt(7, accommodationDummy.getNumberOfBed());
+				stmt.setInt(8, accommodationDummy.getNumberOfBathroom());
+				stmt.setInt(9, accommodationDummy.getPrice());
+				stmt.setString(10, accommodationDummy.getHostName());
+				stmt.setString(11, accommodationDummy.getDescription());
+				stmt.setInt(12, accommodationDummy.getMaxGuest());
 
 				System.out.println(stmt);
 			}
@@ -54,7 +48,5 @@ public class AccommodationBulkInsertRepository {
 		});
 	}
 
-	private int getRandomNumber(int maxNumber, int startNumber) {
-		return (int) (Math.random() * maxNumber + startNumber);
-	}
+
 }
