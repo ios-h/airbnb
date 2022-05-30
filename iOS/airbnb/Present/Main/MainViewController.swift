@@ -59,16 +59,20 @@ class MainViewController: UIViewController, MainFlow {
         dataSource = UICollectionViewDiffableDataSource<Section, HeroImageItem>(
             collectionView: mainCollectionView) { (collectionView: UICollectionView, indexPath: IndexPath, detailItem: HeroImageItem) -> UICollectionViewCell? in
                 print("section \(indexPath.section) item \(indexPath.item)")
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: String(describing: HeroImageCollectionViewCell.self),
-                for: indexPath) as? HeroImageCollectionViewCell else {
-                fatalError("Could not create new cell")
-            }
-                cell.titleLabel.text = detailItem.title
-                cell.heroImageView.image = UIImage(named: "\(detailItem.imageName)")
-                cell.isDataSourceConfigured = true
-                print(#function, cell.titleLabel.text)
-            return cell
+                let sectionType = Section.allCases[indexPath.section]
+                switch sectionType {
+                case .heroImage:
+                    guard let cell = collectionView.dequeueReusableCell(
+                        withReuseIdentifier: String(describing: HeroImageCollectionViewCell.self),
+                        for: indexPath) as? HeroImageCollectionViewCell else {
+                        fatalError("Could not create new cell")
+                    }
+                    cell.titleLabel.text = detailItem.title
+                    cell.heroImageView.image = UIImage(named: "\(detailItem.imageName)")
+                    cell.isDataSourceConfigured = true
+                    print(#function, cell.titleLabel.text)
+                    return cell
+                }
             }
         
         let snapshot = snapshotForCurrentState()
