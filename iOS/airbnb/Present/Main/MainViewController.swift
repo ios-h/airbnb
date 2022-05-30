@@ -12,7 +12,7 @@ class MainViewController: UIViewController, MainFlow {
     
     enum Section: String, CaseIterable {
         case heroImage = "Hero Image"
-        //        case nearestDestination = "Nearest Destination"
+        case nearestDestination = "Nearest Destination"
         //        case accomodation = "Accomodation"
     }
     
@@ -52,6 +52,9 @@ class MainViewController: UIViewController, MainFlow {
         collectionView.register(
             HeroImageCollectionViewCell.self,
             forCellWithReuseIdentifier: String(describing: HeroImageCollectionViewCell.self))
+        collectionView.register(
+            NearestDestinationCollectionViewCell.self,
+            forCellWithReuseIdentifier: String(describing: NearestDestinationCollectionViewCell.self))
         mainCollectionView = collectionView
     }
     
@@ -72,6 +75,18 @@ class MainViewController: UIViewController, MainFlow {
                     cell.isDataSourceConfigured = true
                     print(#function, cell.titleLabel.text)
                     return cell
+                case .nearestDestination:
+                    guard let cell = collectionView.dequeueReusableCell(
+                        withReuseIdentifier: String(describing: NearestDestinationCollectionViewCell.self),
+                        for: indexPath) as? NearestDestinationCollectionViewCell else {
+                        fatalError("Could not create new cell")
+                    }
+                    cell.titleLabel.text = detailItem.title
+                    cell.detailLabel.text = "차로 30분 거리"
+                    cell.cityImageView.image = UIImage(named: "img_hero_jeju")
+                    cell.isDataSourceConfigured = true
+                    print(#function, cell.titleLabel.text)
+                    return cell
                 }
             }
         
@@ -82,13 +97,19 @@ class MainViewController: UIViewController, MainFlow {
     private func snapshotForCurrentState() -> NSDiffableDataSourceSnapshot<Section, HeroImageItem> {
         var snapshot = NSDiffableDataSourceSnapshot<Section, HeroImageItem>()
         snapshot.appendSections([Section.heroImage])
-        let items = itemsForHeroImageSection()
-        snapshot.appendItems(items)
+        snapshot.appendItems(Array(itemsForHeroImageSection().prefix(3)))
+        
+        snapshot.appendSections([Section.nearestDestination])
+        snapshot.appendItems(itemsForNearestDestinationSection().suffix(3))
         return snapshot
     }
     
     private func itemsForHeroImageSection() -> [HeroImageItem] {
         return MockDataModel.mockHeroImages // 섹션에 이 갯수만큼 아이템들이 나온다.
+    }
+    
+    private func itemsForNearestDestinationSection() -> [HeroImageItem] {
+        return MockDataModel.mockHeroImages
     }
     
     private func generateLayout() -> UICollectionViewLayout {
@@ -98,8 +119,8 @@ class MainViewController: UIViewController, MainFlow {
             switch sectionLayoutKind {
             case .heroImage:
                 return self.generateHeroImageSection()
-//            case .nearestDestination:
-//                return self.generateNearestDestinationSection()
+            case .nearestDestination:
+                return self.generateNearestDestinationSection()
 //            case .accomodation:
 //                return self.generateAccomodationSection()
             }
@@ -123,10 +144,32 @@ class MainViewController: UIViewController, MainFlow {
             subitem: item,
             count: 1)
         
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
+        return section
+    }
+    
+    private func generateNearestDestinationSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(8/9),
+            heightDimension: .fractionalWidth(1/4))
+        
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
+        
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(3/4),
+            heightDimension: .fractionalWidth(4/9))
+        
+        let group = NSCollectionLayoutGroup.vertical(
+            layoutSize: groupSize,
+            subitem: item,
+            count: 2)
+        
 //        let headerSize = NSCollectionLayoutSize(
 //            widthDimension: .fractionalWidth(1.0),
 //            heightDimension: .estimated(1))
-        
+//
 //        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
 //            layoutSize: headerSize,
 //            elementKind: MainViewController.sectionHeaderElementKind,

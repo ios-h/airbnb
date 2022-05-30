@@ -33,6 +33,7 @@
 		D089E7D328446C950000AE78 /* HeroImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E7D228446C950000AE78 /* HeroImageCollectionViewCell.swift */; };
 		D089E7D5284477C50000AE78 /* HeroImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E7D4284477C50000AE78 /* HeroImageItem.swift */; };
 		D089E7DA2844B4790000AE78 /* MockDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E7D92844B4790000AE78 /* MockDataModel.swift */; };
+		D089E7DE2844D2450000AE78 /* NearestDestinationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E7DD2844D2450000AE78 /* NearestDestinationCollectionViewCell.swift */; };
 		D0CC2B6E2840733200D77A3E /* MainFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CC2B6D2840733200D77A3E /* MainFlowCoordinator.swift */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +89,7 @@
 		D089E7D228446C950000AE78 /* HeroImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		D089E7D4284477C50000AE78 /* HeroImageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroImageItem.swift; sourceTree = "<group>"; };
 		D089E7D92844B4790000AE78 /* MockDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataModel.swift; sourceTree = "<group>"; };
+		D089E7DD2844D2450000AE78 /* NearestDestinationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestDestinationCollectionViewCell.swift; sourceTree = "<group>"; };
 		D0CC2B6D2840733200D77A3E /* MainFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -276,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				D089E7D228446C950000AE78 /* HeroImageCollectionViewCell.swift */,
+				D089E7DD2844D2450000AE78 /* NearestDestinationCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -531,6 +534,7 @@
 				D068BCFD28406F1900EF783E /* AppCoordinator.swift in Sources */,
 				D0CC2B6E2840733200D77A3E /* MainFlowCoordinator.swift in Sources */,
 				D01D6631283D3A200067B5E1 /* UIColor+Extension.swift in Sources */,
+				D089E7DE2844D2450000AE78 /* NearestDestinationCollectionViewCell.swift in Sources */,
 				D01D65F3283C70710067B5E1 /* MainViewController.swift in Sources */,
 				D087289D283F0DB9009983A5 /* CustomButton.swift in Sources */,
 				D01D6628283CB5550067B5E1 /* WishListViewController.swift in Sources */,
