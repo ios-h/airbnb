@@ -9,40 +9,24 @@ DROP SCHEMA IF EXISTS `airbnb`;
 CREATE SCHEMA IF NOT EXISTS `airbnb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 USE `airbnb`;
 
-
--- -----------------------------------------------------
--- Table `hibernate_sequence`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `hibernate_sequence`
-(
-    `next_val` BIGINT NULL DEFAULT NULL
-)
-    ENGINE = InnoDB
-    DEFAULT CHARACTER SET = utf8mb4
-    COLLATE = utf8mb4_0900_ai_ci;
-
-
 -- -----------------------------------------------------
 -- Table `accommodation`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `accommodation`
 (
     `accommodation_id`   BIGINT       NOT NULL,
-    `name`               VARCHAR(255) NOT NULL,
+    `name`               VARCHAR(50) NOT NULL,
     `price`              INT          NOT NULL,
     `latitude`           DOUBLE       NOT NULL,
     `longitude`          DOUBLE       NOT NULL,
-    `city`               VARCHAR(255) NOT NULL,
-    `country`            VARCHAR(255) NOT NULL,
-    `gu`                 VARCHAR(255) NOT NULL,
-    `accommodation_type` VARCHAR(255) NOT NULL,
-    `host_name`          VARCHAR(255) NOT NULL,
+    `address`            VARCHAR(100) NOT NULL,
+    `accommodation_type` VARCHAR(20) NOT NULL,
+    `host_name`          VARCHAR(20) NOT NULL,
     `description`        VARCHAR(255) NOT NULL,
-    `primary_image_url`  VARCHAR(255) NOT NULL,
     `max_guest`          INT          NOT NULL,
     `number_of_room`     INT          NOT NULL,
-    `number_of_bed`      INT          NOT NULL,
-    `number_of_bathroom` INT          NOT NULL,
+    `number_of_bed`      INT          NULL DEFAUTL 0,
+    `number_of_bathroom` INT          NULL DEFAUTL 0,
     `created_date`       DATETIME(6)  NULL DEFAULT (CURRENT_TIME),
     PRIMARY KEY (`accommodation_id`)
 )
@@ -57,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `accommodation`
 CREATE TABLE IF NOT EXISTS `customer`
 (
     `customer_id` BIGINT       NOT NULL,
-    `user_id`     VARCHAR(255) NOT NULL,
+    `user_id`     VARCHAR(30)  NOT NULL,
     PRIMARY KEY (`customer_id`)
 )
     ENGINE = InnoDB
@@ -123,14 +107,15 @@ CREATE TABLE IF NOT EXISTS `review`
 -- -----------------------------------------------------
 -- Table `secondary_image`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `secondary_image`
+CREATE TABLE IF NOT EXISTS `accommodataion_image`
 (
-    `secondary_image_id` BIGINT       NOT NULL,
+    `accommodataion_image_id` BIGINT       NOT NULL,
     `url`                VARCHAR(255) NOT NULL,
+    `image_seq`          INT NOT NULL,
     `accommodation_id`   BIGINT       NOT NULL,
-    PRIMARY KEY (`secondary_image_id`),
-    INDEX `fk_secondary_image_accommodation_idx` (`accommodation_id` ASC) VISIBLE,
-    CONSTRAINT `fk_secondary_image_accommodation`
+    PRIMARY KEY (`accommodataion_image_id`),
+    INDEX `fk_accommodataion_image_idx` (`accommodation_id` ASC) VISIBLE,
+    CONSTRAINT `fk_accommodataion_image_accommodataion`
         FOREIGN KEY (`accommodation_id`)
             REFERENCES `accommodation` (`accommodation_id`)
 )
