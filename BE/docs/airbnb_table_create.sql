@@ -25,8 +25,8 @@ CREATE TABLE IF NOT EXISTS `accommodation`
     `description`        VARCHAR(255) NOT NULL,
     `max_guest`          INT          NOT NULL,
     `number_of_room`     INT          NOT NULL,
-    `number_of_bed`      INT          NULL DEFAUTL 0,
-    `number_of_bathroom` INT          NULL DEFAUTL 0,
+    `number_of_bed`      INT          NULL DEFAULT 0,
+    `number_of_bathroom` INT          NULL DEFAULT 0,
     `created_date`       DATETIME(6)  NULL DEFAULT (CURRENT_TIME),
     PRIMARY KEY (`accommodation_id`)
 )
