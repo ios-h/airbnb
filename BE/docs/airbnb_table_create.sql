@@ -107,15 +107,15 @@ CREATE TABLE IF NOT EXISTS `review`
 -- -----------------------------------------------------
 -- Table `secondary_image`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `accommodataion_image`
+CREATE TABLE IF NOT EXISTS `accommodation_image`
 (
-    `accommodataion_image_id` BIGINT       NOT NULL AUTO_INCREMENT,
+    `accommodation_image_id` BIGINT       NOT NULL AUTO_INCREMENT,
     `url`                VARCHAR(255) NOT NULL,
     `image_seq`          INT NOT NULL,
     `accommodation_id`   BIGINT       NOT NULL,
-    PRIMARY KEY (`accommodataion_image_id`),
-    INDEX `fk_accommodataion_image_idx` (`accommodation_id` ASC) VISIBLE,
-    CONSTRAINT `fk_accommodataion_image_accommodataion`
+    PRIMARY KEY (`accommodation_image_id`),
+    INDEX `fk_accommodation_image_idx` (`accommodation_id` ASC) VISIBLE,
+    CONSTRAINT `fk_accommodation_image_accommodation`
         FOREIGN KEY (`accommodation_id`)
             REFERENCES `accommodation` (`accommodation_id`)
 )
