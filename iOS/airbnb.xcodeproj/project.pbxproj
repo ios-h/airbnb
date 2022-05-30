@@ -35,6 +35,7 @@
 		D089E7DA2844B4790000AE78 /* MockDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E7D92844B4790000AE78 /* MockDataModel.swift */; };
 		D089E7DE2844D2450000AE78 /* NearestDestinationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E7DD2844D2450000AE78 /* NearestDestinationCollectionViewCell.swift */; };
 		D089E7E2284501810000AE78 /* CommonHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E7E1284501810000AE78 /* CommonHeaderView.swift */; };
+		D089E7E5284505F10000AE78 /* MainAccomodationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E7E4284505F10000AE78 /* MainAccomodationCollectionViewCell.swift */; };
 		D0CC2B6E2840733200D77A3E /* MainFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CC2B6D2840733200D77A3E /* MainFlowCoordinator.swift */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,7 @@
 		D089E7D92844B4790000AE78 /* MockDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataModel.swift; sourceTree = "<group>"; };
 		D089E7DD2844D2450000AE78 /* NearestDestinationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestDestinationCollectionViewCell.swift; sourceTree = "<group>"; };
 		D089E7E1284501810000AE78 /* CommonHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonHeaderView.swift; sourceTree = "<group>"; };
+		D089E7E4284505F10000AE78 /* MainAccomodationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAccomodationCollectionViewCell.swift; sourceTree = "<group>"; };
 		D0CC2B6D2840733200D77A3E /* MainFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -282,6 +284,7 @@
 			children = (
 				D089E7D228446C950000AE78 /* HeroImageCollectionViewCell.swift */,
 				D089E7DD2844D2450000AE78 /* NearestDestinationCollectionViewCell.swift */,
+				D089E7E4284505F10000AE78 /* MainAccomodationCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 				D0CC2B6E2840733200D77A3E /* MainFlowCoordinator.swift in Sources */,
 				D01D6631283D3A200067B5E1 /* UIColor+Extension.swift in Sources */,
 				D089E7DE2844D2450000AE78 /* NearestDestinationCollectionViewCell.swift in Sources */,
+				D089E7E5284505F10000AE78 /* MainAccomodationCollectionViewCell.swift in Sources */,
 				D01D65F3283C70710067B5E1 /* MainViewController.swift in Sources */,
 				D087289D283F0DB9009983A5 /* CustomButton.swift in Sources */,
 				D01D6628283CB5550067B5E1 /* WishListViewController.swift in Sources */,

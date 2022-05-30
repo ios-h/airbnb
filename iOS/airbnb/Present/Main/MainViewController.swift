@@ -13,7 +13,7 @@ class MainViewController: UIViewController, MainFlow {
     enum Section: String, CaseIterable {
         case heroImage = "Hero Image"
         case nearestDestination = "가까운 여행지 둘러보기"
-        //        case accomodation = "Accomodation"
+        case accomodation = "어디에서나, 여행은\n살아보는거야!"
     }
     
     var mainCollectionView: UICollectionView! = nil
@@ -56,6 +56,9 @@ class MainViewController: UIViewController, MainFlow {
             NearestDestinationCollectionViewCell.self,
             forCellWithReuseIdentifier: String(describing: NearestDestinationCollectionViewCell.self))
         collectionView.register(
+            MainAccomodationCollectionViewCell.self,
+            forCellWithReuseIdentifier: String(describing: MainAccomodationCollectionViewCell.self))
+        collectionView.register(
             CommonHeaderView.self,
             forSupplementaryViewOfKind: MainViewController.sectionHeaderElementKind,
             withReuseIdentifier: String(describing: CommonHeaderView.self))
@@ -91,6 +94,17 @@ class MainViewController: UIViewController, MainFlow {
                     cell.isDataSourceConfigured = true
                     print(#function, cell.titleLabel.text)
                     return cell
+                case .accomodation:
+                    guard let cell = collectionView.dequeueReusableCell(
+                        withReuseIdentifier: String(describing: MainAccomodationCollectionViewCell.self),
+                        for: indexPath) as? MainAccomodationCollectionViewCell else {
+                        fatalError("Could not create new cell")
+                    }
+                    cell.detailLabel.text = "자연생활을 만끼할 수\n있는 숙소"
+                    cell.accomodationImageView.image = UIImage(named: "img_hero_beach")
+                    cell.isDataSourceConfigured = true
+                    print(#function, cell.detailLabel.text)
+                    return cell
                 }
             }
         
@@ -117,6 +131,9 @@ class MainViewController: UIViewController, MainFlow {
         
         snapshot.appendSections([Section.nearestDestination])
         snapshot.appendItems(itemsForNearestDestinationSection().suffix(3))
+        
+        snapshot.appendSections([Section.accomodation])
+        snapshot.appendItems(itemsForAccomodationSection())
         return snapshot
     }
     
@@ -128,6 +145,11 @@ class MainViewController: UIViewController, MainFlow {
         return MockDataModel.mockHeroImages
     }
     
+    private func itemsForAccomodationSection() -> [HeroImageItem] {
+        return [HeroImageItem(title: "슬기로운 자연생활", imageName: "img_hero"),
+                HeroImageItem(title: "바다로 떠나요", imageName: "img_hero_beach")]
+    }
+    
     private func generateLayout() -> UICollectionViewLayout {
         let layout =
         UICollectionViewCompositionalLayout { (sectionIndex: Int, _) -> NSCollectionLayoutSection? in
@@ -137,8 +159,8 @@ class MainViewController: UIViewController, MainFlow {
                 return self.generateHeroImageSection()
             case .nearestDestination:
                 return self.generateNearestDestinationSection()
-//            case .accomodation:
-//                return self.generateAccomodationSection()
+            case .accomodation:
+                return self.generateAccomodationSection()
             }
         }
         return layout
@@ -181,6 +203,38 @@ class MainViewController: UIViewController, MainFlow {
             layoutSize: groupSize,
             subitem: item,
             count: 2)
+        
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .estimated(1))
+
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: MainViewController.sectionHeaderElementKind,
+            alignment: .top)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
+        section.boundarySupplementaryItems = [sectionHeader]
+        return section
+    }
+    
+    private func generateAccomodationSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(3/4),
+            heightDimension: .fractionalWidth(1.2))
+        
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
+        
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(3/4),
+            heightDimension: .fractionalWidth(1/2))
+        
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: groupSize,
+            subitem: item,
+            count: 1)
         
         let headerSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
