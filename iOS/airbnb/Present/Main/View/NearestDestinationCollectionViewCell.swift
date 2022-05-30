@@ -71,8 +71,6 @@ class NearestDestinationCollectionViewCell: UICollectionViewCell {
         contentView.backgroundColor = .gray6
         contentView.addSubview(containerView)
         
-        print(#function, titleLabel.text)
-        
         containerView.addSubview(cityImageView)
         containerView.addSubview(stackView)
         stackView.addArrangedSubview(titleLabel)

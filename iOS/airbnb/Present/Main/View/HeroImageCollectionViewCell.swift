@@ -62,8 +62,6 @@ class HeroImageCollectionViewCell: UICollectionViewCell {
         contentView.backgroundColor = .gray6
         contentView.addSubview(containerView)
         
-        print(#function, titleLabel.text)
-        
         containerView.addSubview(heroImageView)
         heroImageView.addSubview(titleLabel)
         heroImageView.addSubview(detailLabel)

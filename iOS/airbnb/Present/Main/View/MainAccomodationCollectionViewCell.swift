@@ -53,8 +53,6 @@ class MainAccomodationCollectionViewCell: UICollectionViewCell {
         contentView.backgroundColor = .gray6
         contentView.addSubview(containerView)
         
-        print(#function, detailLabel.text)
-        
         containerView.addSubview(accomodationImageView)
         containerView.addSubview(detailLabel)
         
@@ -69,7 +67,8 @@ class MainAccomodationCollectionViewCell: UICollectionViewCell {
         
         accomodationImageView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
         accomodationImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
-        accomodationImageView.heightAnchor.constraint(equalTo: accomodationImageView.widthAnchor, multiplier: 1.2).isActive = true
+        accomodationImageView.heightAnchor.constraint(equalTo: accomodationImageView.widthAnchor,
+                                                      multiplier: 1.2).isActive = true
         accomodationImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
         
         detailLabel.leadingAnchor.constraint(equalTo: accomodationImageView.leadingAnchor).isActive = true

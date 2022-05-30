@@ -27,9 +27,6 @@ class MainViewController: UIViewController, MainFlow {
         setUpSearchController()
         configureCollectionView()
         configureDataSource()
-        
-//        self.edgesForExtendedLayout = UIRectEdge()
-//        self.extendedLayoutIncludesOpaqueBars = true
     }
     
     override func viewWillLayoutSubviews() {
@@ -71,58 +68,48 @@ class MainViewController: UIViewController, MainFlow {
     private func configureDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, HeroImageItem>(
             collectionView: mainCollectionView) { (collectionView: UICollectionView, indexPath: IndexPath, detailItem: HeroImageItem) -> UICollectionViewCell? in
-                print("section \(indexPath.section) item \(indexPath.item)")
                 let sectionType = Section.allCases[indexPath.section]
                 switch sectionType {
                 case .heroImage:
                     guard let cell = collectionView.dequeueReusableCell(
                         withReuseIdentifier: String(describing: HeroImageCollectionViewCell.self),
                         for: indexPath) as? HeroImageCollectionViewCell else {
-                        fatalError("Could not create new cell")
-                    }
+                        return UICollectionViewCell() }
                     cell.titleLabel.text = detailItem.title
                     cell.heroImageView.image = UIImage(named: "\(detailItem.imageName)")
                     cell.isDataSourceConfigured = true
-                    print(#function, cell.titleLabel.text)
                     return cell
                 case .nearestDestination:
                     guard let cell = collectionView.dequeueReusableCell(
                         withReuseIdentifier: String(describing: NearestDestinationCollectionViewCell.self),
                         for: indexPath) as? NearestDestinationCollectionViewCell else {
-                        fatalError("Could not create new cell")
-                    }
+                        return UICollectionViewCell() }
                     cell.titleLabel.text = detailItem.title
                     cell.detailLabel.text = "차로 30분 거리"
                     cell.cityImageView.image = UIImage(named: "img_hero_jeju")
                     cell.isDataSourceConfigured = true
-                    print(#function, cell.titleLabel.text)
                     return cell
                 case .accomodation:
                     guard let cell = collectionView.dequeueReusableCell(
                         withReuseIdentifier: String(describing: MainAccomodationCollectionViewCell.self),
                         for: indexPath) as? MainAccomodationCollectionViewCell else {
-                        fatalError("Could not create new cell")
-                    }
+                        return UICollectionViewCell() }
                     cell.detailLabel.text = "자연생활을 만끼할 수\n있는 숙소"
                     cell.accomodationImageView.image = UIImage(named: "img_hero_beach")
                     cell.isDataSourceConfigured = true
-                    print(#function, cell.detailLabel.text)
                     return cell
                 }
             }
-        
         dataSource.supplementaryViewProvider = { (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
             guard let supplementaryView = collectionView
                 .dequeueReusableSupplementaryView(ofKind: kind,
                                                   withReuseIdentifier: String(describing: CommonHeaderView.self),
                                                   for: indexPath) as? CommonHeaderView else {
-                fatalError("Cannot create header view")
+                return UICollectionReusableView()
             }
-            
             supplementaryView.headerLabel.text = Section.allCases[indexPath.section].rawValue
             return supplementaryView
         }
-        
         let snapshot = snapshotForCurrentState()
         dataSource.apply(snapshot, animatingDifferences: false)
     }
