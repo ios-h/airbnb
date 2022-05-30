@@ -14,9 +14,9 @@ public class Customer {
 
 	private String userId;
 
-	@OneToMany(mappedBy = "customer")
+	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
 	private List<Reservation> reservations = new ArrayList<>();
 
-	@OneToMany(mappedBy = "customer")
+	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
 	private List<Wish> wishes = new ArrayList<>();
 }
