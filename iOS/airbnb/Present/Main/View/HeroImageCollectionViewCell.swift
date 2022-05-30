@@ -59,7 +59,7 @@ class HeroImageCollectionViewCell: UICollectionViewCell {
     }
     
     private func configure() {
-        contentView.backgroundColor = .yellow
+        contentView.backgroundColor = .gray6
         contentView.addSubview(containerView)
         
         print(#function, titleLabel.text)

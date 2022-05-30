@@ -68,6 +68,7 @@ class NearestDestinationCollectionViewCell: UICollectionViewCell {
     }
     
     private func configure() {
+        contentView.backgroundColor = .gray6
         contentView.addSubview(containerView)
         
         print(#function, titleLabel.text)
@@ -81,7 +82,6 @@ class NearestDestinationCollectionViewCell: UICollectionViewCell {
     }
     
     private func setConstraints() {
-//        containerView.backgroundColor = .yellow
         containerView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor).isActive = true
         containerView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor).isActive = true
         containerView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor).isActive = true

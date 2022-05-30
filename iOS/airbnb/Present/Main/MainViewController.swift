@@ -47,7 +47,7 @@ class MainViewController: UIViewController, MainFlow {
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: generateLayout())
         view.addSubview(collectionView)
         collectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        collectionView.backgroundColor = UIColor.systemMint
+        collectionView.backgroundColor = .gray6
         collectionView.delegate = self
         collectionView.register(
             HeroImageCollectionViewCell.self,
