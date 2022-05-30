@@ -12,6 +12,7 @@ class CommonHeaderView: UICollectionReusableView {
     let headerLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
         label.adjustsFontForContentSizeCategory = true
         label.font = .systemFont(ofSize: 22, weight: .medium)
         label.textColor = .customBlack
