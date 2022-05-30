@@ -7,7 +7,7 @@ import java.time.LocalDate;
 public class Reservation extends BaseCreated {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "reservation_id")
 	private Long id;
 

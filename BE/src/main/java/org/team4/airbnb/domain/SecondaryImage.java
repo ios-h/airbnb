@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class SecondaryImage {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "secondary_image_id")
 	private Long id;
 
