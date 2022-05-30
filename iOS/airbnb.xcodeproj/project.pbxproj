@@ -34,6 +34,7 @@
 		D089E7D5284477C50000AE78 /* HeroImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E7D4284477C50000AE78 /* HeroImageItem.swift */; };
 		D089E7DA2844B4790000AE78 /* MockDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E7D92844B4790000AE78 /* MockDataModel.swift */; };
 		D089E7DE2844D2450000AE78 /* NearestDestinationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E7DD2844D2450000AE78 /* NearestDestinationCollectionViewCell.swift */; };
+		D089E7E2284501810000AE78 /* CommonHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E7E1284501810000AE78 /* CommonHeaderView.swift */; };
 		D0CC2B6E2840733200D77A3E /* MainFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CC2B6D2840733200D77A3E /* MainFlowCoordinator.swift */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +91,7 @@
 		D089E7D4284477C50000AE78 /* HeroImageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroImageItem.swift; sourceTree = "<group>"; };
 		D089E7D92844B4790000AE78 /* MockDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataModel.swift; sourceTree = "<group>"; };
 		D089E7DD2844D2450000AE78 /* NearestDestinationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestDestinationCollectionViewCell.swift; sourceTree = "<group>"; };
+		D089E7E1284501810000AE78 /* CommonHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonHeaderView.swift; sourceTree = "<group>"; };
 		D0CC2B6D2840733200D77A3E /* MainFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -210,6 +212,7 @@
 		D01D662E283D3A050067B5E1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D089E7E3284501940000AE78 /* View */,
 				D068BCFA28406E1B00EF783E /* Coordinator.swift */,
 				D089E7D92844B4790000AE78 /* MockDataModel.swift */,
 				D01D662F283D3A0D0067B5E1 /* Extension */,
@@ -289,6 +292,14 @@
 				D089E7D4284477C50000AE78 /* HeroImageItem.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D089E7E3284501940000AE78 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D089E7E1284501810000AE78 /* CommonHeaderView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		D0CC2B6F2840748900D77A3E /* WishList */ = {
@@ -545,6 +556,7 @@
 				D089E7D5284477C50000AE78 /* HeroImageItem.swift in Sources */,
 				D01D65F1283C70710067B5E1 /* SceneDelegate.swift in Sources */,
 				D089E7D328446C950000AE78 /* HeroImageCollectionViewCell.swift in Sources */,
+				D089E7E2284501810000AE78 /* CommonHeaderView.swift in Sources */,
 				D068BD002840700B00EF783E /* TabBarController.swift in Sources */,
 				D01D662A283CB5DB0067B5E1 /* ReservationViewController.swift in Sources */,
 				D087289B283E7D26009983A5 /* CustomLabel.swift in Sources */,

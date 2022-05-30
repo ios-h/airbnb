@@ -8,7 +8,7 @@
 import UIKit
 
 class MainViewController: UIViewController, MainFlow {
-//    static let sectionHeaderElementKind = "section-header-element-kind"
+    static let sectionHeaderElementKind = "section-header-element-kind"
     
     enum Section: String, CaseIterable {
         case heroImage = "Hero Image"
@@ -55,6 +55,10 @@ class MainViewController: UIViewController, MainFlow {
         collectionView.register(
             NearestDestinationCollectionViewCell.self,
             forCellWithReuseIdentifier: String(describing: NearestDestinationCollectionViewCell.self))
+        collectionView.register(
+            CommonHeaderView.self,
+            forSupplementaryViewOfKind: MainViewController.sectionHeaderElementKind,
+            withReuseIdentifier: String(describing: CommonHeaderView.self))
         mainCollectionView = collectionView
     }
     
@@ -89,6 +93,18 @@ class MainViewController: UIViewController, MainFlow {
                     return cell
                 }
             }
+        
+        dataSource.supplementaryViewProvider = { (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
+            guard let supplementaryView = collectionView
+                .dequeueReusableSupplementaryView(ofKind: kind,
+                                                  withReuseIdentifier: String(describing: CommonHeaderView.self),
+                                                  for: indexPath) as? CommonHeaderView else {
+                fatalError("Cannot create header view")
+            }
+            
+            supplementaryView.headerLabel.text = Section.allCases[indexPath.section].rawValue
+            return supplementaryView
+        }
         
         let snapshot = snapshotForCurrentState()
         dataSource.apply(snapshot, animatingDifferences: false)
@@ -166,18 +182,18 @@ class MainViewController: UIViewController, MainFlow {
             subitem: item,
             count: 2)
         
-//        let headerSize = NSCollectionLayoutSize(
-//            widthDimension: .fractionalWidth(1.0),
-//            heightDimension: .estimated(1))
-//
-//        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
-//            layoutSize: headerSize,
-//            elementKind: MainViewController.sectionHeaderElementKind,
-//            alignment: .top)
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .estimated(1))
+
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: MainViewController.sectionHeaderElementKind,
+            alignment: .top)
         
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
-//        section.boundarySupplementaryItems = [sectionHeader]
+        section.boundarySupplementaryItems = [sectionHeader]
         return section
     }
 }
