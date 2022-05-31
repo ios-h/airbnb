@@ -15,7 +15,7 @@ public class ReservationService {
 	private ReservationRepository reservationRepository;
 	private AccommodationRepository accommodationRepository;
 
-	public ReservationListResponse findAllByCustomerId(Long customerId) {
+	public void findAllByCustomerId(Long customerId) {
 		List<Reservation> reservations = reservationRepository.findAllByCustomerId(customerId);
 
 		Set<Long> accommodationIds = reservations.stream()
@@ -24,6 +24,5 @@ public class ReservationService {
 
 		List<Accommodation> accommodations = accommodationRepository.findAllWithImagesById(accommodationIds);
 
-		return ReservationListResponse.fromEntity(reservations);
 	}
 }
