@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import org.team4.airbnb.accommodation.Accommodation;
 
 @Entity
-public class Review extends BaseCreated{
+public class Review extends BaseCreated {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

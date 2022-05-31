@@ -1,12 +1,18 @@
 package org.team4.airbnb.wish;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.team4.airbnb.customer.Customer;
-import org.team4.airbnb.accommodation.Accommodation;
 import org.team4.airbnb.domain.BaseCreated;
 
 @Entity
@@ -24,7 +30,5 @@ public class Wish extends BaseCreated {
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "accommodation_id")
-	private Accommodation accommodation;
+	private Long accommodationId;
 }

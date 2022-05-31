@@ -13,10 +13,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.team4.airbnb.domain.BaseCreated;
 import org.team4.airbnb.domain.Geolocation;
 
 @Entity
+@NoArgsConstructor
 @Getter
 public class Accommodation extends BaseCreated {
 
