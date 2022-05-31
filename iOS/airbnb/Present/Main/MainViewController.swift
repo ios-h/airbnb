@@ -10,14 +10,8 @@ import UIKit
 class MainViewController: UIViewController, MainFlow {
     static let sectionHeaderElementKind = "section-header-element-kind"
     
-    enum Section: String, CaseIterable {
-        case heroImage = "Hero Image"
-        case nearestDestination = "가까운 여행지 둘러보기"
-        case accomodation = "어디에서나, 여행은\n살아보는거야!"
-    }
-    
     var mainCollectionView: UICollectionView! = nil
-    var dataSource: UICollectionViewDiffableDataSource<Section, HeroImageItem>! = nil
+    var dataSource: UICollectionViewDiffableDataSource<MainSection, HeroImageItem>! = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,9 +60,9 @@ class MainViewController: UIViewController, MainFlow {
     }
     
     private func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, HeroImageItem>(
+        dataSource = UICollectionViewDiffableDataSource<MainSection, HeroImageItem>(
             collectionView: mainCollectionView) { (collectionView: UICollectionView, indexPath: IndexPath, detailItem: HeroImageItem) -> UICollectionViewCell? in
-                let sectionType = Section.allCases[indexPath.section]
+                let sectionType = MainSection.allCases[indexPath.section]
                 switch sectionType {
                 case .heroImage:
                     guard let cell = collectionView.dequeueReusableCell(
@@ -107,22 +101,22 @@ class MainViewController: UIViewController, MainFlow {
                                                   for: indexPath) as? CommonHeaderView else {
                 return UICollectionReusableView()
             }
-            supplementaryView.headerLabel.text = Section.allCases[indexPath.section].rawValue
+            supplementaryView.headerLabel.text = MainSection.allCases[indexPath.section].rawValue
             return supplementaryView
         }
         let snapshot = snapshotForCurrentState()
         dataSource.apply(snapshot, animatingDifferences: false)
     }
     
-    private func snapshotForCurrentState() -> NSDiffableDataSourceSnapshot<Section, HeroImageItem> {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, HeroImageItem>()
-        snapshot.appendSections([Section.heroImage])
+    private func snapshotForCurrentState() -> NSDiffableDataSourceSnapshot<MainSection, HeroImageItem> {
+        var snapshot = NSDiffableDataSourceSnapshot<MainSection, HeroImageItem>()
+        snapshot.appendSections([MainSection.heroImage])
         snapshot.appendItems(Array(itemsForHeroImageSection().prefix(3)))
         
-        snapshot.appendSections([Section.nearestDestination])
+        snapshot.appendSections([MainSection.nearestDestination])
         snapshot.appendItems(itemsForNearestDestinationSection().suffix(3))
         
-        snapshot.appendSections([Section.accomodation])
+        snapshot.appendSections([MainSection.accomodation])
         snapshot.appendItems(itemsForAccomodationSection())
         return snapshot
     }
@@ -143,7 +137,7 @@ class MainViewController: UIViewController, MainFlow {
     private func generateLayout() -> UICollectionViewLayout {
         let layout =
         UICollectionViewCompositionalLayout { (sectionIndex: Int, _) -> NSCollectionLayoutSection? in
-            let sectionLayoutKind = Section.allCases[sectionIndex]
+            let sectionLayoutKind = MainSection.allCases[sectionIndex]
             switch sectionLayoutKind {
             case .heroImage:
                 return self.generateHeroImageSection()

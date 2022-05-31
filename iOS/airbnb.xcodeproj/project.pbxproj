@@ -37,6 +37,7 @@
 		D089E7E2284501810000AE78 /* CommonHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E7E1284501810000AE78 /* CommonHeaderView.swift */; };
 		D089E7E5284505F10000AE78 /* MainAccomodationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E7E4284505F10000AE78 /* MainAccomodationCollectionViewCell.swift */; };
 		D089E7F82845FABB0000AE78 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E7F72845FABB0000AE78 /* Box.swift */; };
+		D089E80328460A4E0000AE78 /* MainSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E80228460A4E0000AE78 /* MainSection.swift */; };
 		D0CC2B6E2840733200D77A3E /* MainFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CC2B6D2840733200D77A3E /* MainFlowCoordinator.swift */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +97,7 @@
 		D089E7E1284501810000AE78 /* CommonHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonHeaderView.swift; sourceTree = "<group>"; };
 		D089E7E4284505F10000AE78 /* MainAccomodationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAccomodationCollectionViewCell.swift; sourceTree = "<group>"; };
 		D089E7F72845FABB0000AE78 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		D089E80228460A4E0000AE78 /* MainSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSection.swift; sourceTree = "<group>"; };
 		D0CC2B6D2840733200D77A3E /* MainFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -269,7 +271,6 @@
 				D01D65F2283C70710067B5E1 /* MainViewController.swift */,
 				D089E7D62844B36D0000AE78 /* Model */,
 				D089E7D128446C800000AE78 /* View */,
-				D089E7E72845D03D0000AE78 /* ViewModel */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -297,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				D089E7D4284477C50000AE78 /* HeroImageItem.swift */,
+				D089E80228460A4E0000AE78 /* MainSection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -307,13 +309,6 @@
 				D089E7E1284501810000AE78 /* CommonHeaderView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		D089E7E72845D03D0000AE78 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		D089E7F62845FAAF0000AE78 /* Utility */ = {
@@ -575,6 +570,7 @@
 				D01D65EF283C70710067B5E1 /* AppDelegate.swift in Sources */,
 				D089E7F82845FABB0000AE78 /* Box.swift in Sources */,
 				D068BD022840701800EF783E /* TabBarCoordinator.swift in Sources */,
+				D089E80328460A4E0000AE78 /* MainSection.swift in Sources */,
 				D089E7DA2844B4790000AE78 /* MockDataModel.swift in Sources */,
 				D068BCFB28406E1B00EF783E /* Coordinator.swift in Sources */,
 				D089E7D5284477C50000AE78 /* HeroImageItem.swift in Sources */,
