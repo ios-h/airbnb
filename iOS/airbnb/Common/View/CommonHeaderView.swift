@@ -22,7 +22,7 @@ class CommonHeaderView: UICollectionReusableView {
     }
     
     private func configure() {
-        backgroundColor = .gray6
+        backgroundColor = .white
         
         addSubview(headerLabel)
         

@@ -19,7 +19,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .gray6
+        view.backgroundColor = .white
         
         setUpSearchController()
         configureCollectionView()
@@ -45,7 +45,7 @@ class MainViewController: UIViewController {
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: generateLayout())
         view.addSubview(collectionView)
         collectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        collectionView.backgroundColor = .gray6
+        collectionView.backgroundColor = .white
         collectionView.register(
             HeroImageCollectionViewCell.self,
             forCellWithReuseIdentifier: String(describing: HeroImageCollectionViewCell.self))

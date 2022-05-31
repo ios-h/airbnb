@@ -54,7 +54,7 @@ class NearestDestinationCollectionViewCell: UICollectionViewCell {
     }
     
     private func configure() {
-        contentView.backgroundColor = .gray6
+        contentView.backgroundColor = .white
         contentView.addSubview(containerView)
         
         containerView.addSubview(cityImageView)
