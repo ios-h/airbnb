@@ -2,11 +2,13 @@ package org.team4.airbnb.reservation;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import lombok.Getter;
 import org.team4.airbnb.customer.Customer;
 import org.team4.airbnb.accommodation.Accommodation;
 import org.team4.airbnb.domain.BaseCreated;
 
 @Entity
+@Getter
 public class Reservation extends BaseCreated {
 
 	@Id
@@ -32,4 +34,8 @@ public class Reservation extends BaseCreated {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
+
+	public int getInvoiceTotal() {
+		return invoice.getTotal();
+	}
 }

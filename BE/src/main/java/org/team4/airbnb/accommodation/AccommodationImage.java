@@ -1,8 +1,10 @@
 package org.team4.airbnb.accommodation;
 
 import javax.persistence.*;
+import lombok.Getter;
 
 @Entity
+@Getter
 public class AccommodationImage {
 
 	@Id
