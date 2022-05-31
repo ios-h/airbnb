@@ -51,7 +51,4 @@ public class Accommodation extends BaseCreated {
 	@OneToMany(mappedBy = "accommodation", fetch = FetchType.LAZY)
 	private List<Reservation> reservations = new ArrayList<>();
 
-	@OneToMany(mappedBy = "accommodation", fetch = FetchType.LAZY)
-	private List<Wish> wishes = new ArrayList<>();
-
 }
