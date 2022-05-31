@@ -1,10 +1,15 @@
-package org.team4.airbnb.domain;
+package org.team4.airbnb.customer;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.team4.airbnb.wish.Wish;
 
 @Entity
+@NoArgsConstructor
+@Getter
 public class Customer {
 
 	@Id
@@ -15,8 +20,5 @@ public class Customer {
 	private String userId;
 
 	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
-	private List<Reservation> reservations = new ArrayList<>();
-
-	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
-	private List<Wish> wishes = new ArrayList<>();
+	List<Wish> wishes = new ArrayList<>();
 }
