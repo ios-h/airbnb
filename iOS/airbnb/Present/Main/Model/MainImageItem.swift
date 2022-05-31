@@ -1,5 +1,5 @@
 //
-//  HeroImageItem.swift
+//  MainImageItem.swift
 //  airbnb
 //
 //  Created by 안상희 on 2022/05/30.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class HeroImageItem: Hashable {
+class MainImageItem: Hashable {
     let imageName: String
     let title: String
     
@@ -20,7 +20,7 @@ class HeroImageItem: Hashable {
         hasher.combine(identifier)
     }
     
-    static func == (lhs: HeroImageItem, rhs: HeroImageItem) -> Bool {
+    static func == (lhs: MainImageItem, rhs: MainImageItem) -> Bool {
         return lhs.identifier == rhs.identifier
     }
     

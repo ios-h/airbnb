@@ -11,7 +11,7 @@ class MainViewController: UIViewController, MainFlow {
     static let sectionHeaderElementKind = "section-header-element-kind"
     
     var mainCollectionView: UICollectionView! = nil
-    var dataSource: UICollectionViewDiffableDataSource<MainSection, HeroImageItem>! = nil
+    var dataSource: UICollectionViewDiffableDataSource<MainSection, MainImageItem>! = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,8 +60,8 @@ class MainViewController: UIViewController, MainFlow {
     }
     
     private func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<MainSection, HeroImageItem>(
-            collectionView: mainCollectionView) { (collectionView: UICollectionView, indexPath: IndexPath, detailItem: HeroImageItem) -> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource<MainSection, MainImageItem>(
+            collectionView: mainCollectionView) { (collectionView: UICollectionView, indexPath: IndexPath, detailItem: MainImageItem) -> UICollectionViewCell? in
                 let sectionType = MainSection.allCases[indexPath.section]
                 switch sectionType {
                 case .heroImage:
@@ -108,8 +108,8 @@ class MainViewController: UIViewController, MainFlow {
         dataSource.apply(snapshot, animatingDifferences: false)
     }
     
-    private func snapshotForCurrentState() -> NSDiffableDataSourceSnapshot<MainSection, HeroImageItem> {
-        var snapshot = NSDiffableDataSourceSnapshot<MainSection, HeroImageItem>()
+    private func snapshotForCurrentState() -> NSDiffableDataSourceSnapshot<MainSection, MainImageItem> {
+        var snapshot = NSDiffableDataSourceSnapshot<MainSection, MainImageItem>()
         snapshot.appendSections([MainSection.heroImage])
         snapshot.appendItems(Array(itemsForHeroImageSection().prefix(3)))
         
@@ -121,17 +121,17 @@ class MainViewController: UIViewController, MainFlow {
         return snapshot
     }
     
-    private func itemsForHeroImageSection() -> [HeroImageItem] {
+    private func itemsForHeroImageSection() -> [MainImageItem] {
         return MockDataModel.mockHeroImages // 섹션에 이 갯수만큼 아이템들이 나온다.
     }
     
-    private func itemsForNearestDestinationSection() -> [HeroImageItem] {
+    private func itemsForNearestDestinationSection() -> [MainImageItem] {
         return MockDataModel.mockHeroImages
     }
     
-    private func itemsForAccomodationSection() -> [HeroImageItem] {
-        return [HeroImageItem(title: "슬기로운 자연생활", imageName: "img_hero"),
-                HeroImageItem(title: "바다로 떠나요", imageName: "img_hero_beach")]
+    private func itemsForAccomodationSection() -> [MainImageItem] {
+        return [MainImageItem(title: "슬기로운 자연생활", imageName: "img_hero"),
+                MainImageItem(title: "바다로 떠나요", imageName: "img_hero_beach")]
     }
     
     private func generateLayout() -> UICollectionViewLayout {
