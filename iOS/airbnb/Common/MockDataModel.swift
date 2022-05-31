@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MockDataModel {
+struct MockDataModel {
     static let mockHeroImages = [MainImageItem(title: "슬기로운 자연생활", imageName: "img_hero"),
                                  MainImageItem(title: "바다로 떠나요", imageName: "img_hero_beach"),
                                  MainImageItem(title: "우리의 제주", imageName: "img_hero_jeju"),
