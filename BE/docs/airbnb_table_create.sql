@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `reservation`
     `discount`         INT         NULL DEFAULT 0,
     `cleaning_fee`     INT         NULL DEFAULT 0,
     `service_fee`      INT         NULL DEFAULT 0,
-    `vat`              INT         NOT NULL,
+    `vat`              INT         NULL DEFAULT 0,
     `accommodation_id` BIGINT      NOT NULL,
     `customer_id`      BIGINT      NOT NULL,
     `created_date`     DATETIME(6) NULL DEFAULT (CURRENT_TIME),
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `review`
 
 
 -- -----------------------------------------------------
--- Table `secondary_image`
+-- Table `accommodation_image`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `accommodation_image`
 (
