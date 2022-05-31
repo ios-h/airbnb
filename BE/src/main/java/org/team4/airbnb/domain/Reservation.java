@@ -2,6 +2,7 @@ package org.team4.airbnb.domain;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import org.team4.airbnb.customer.Customer;
 
 @Entity
 public class Reservation extends BaseCreated {
