@@ -14,7 +14,7 @@ public class TargetArea {
 	@Column(name = "target_area_id")
 	private Long id;
 
-	private Address address;
+	private String address;
 
 	private Geolocation geolocation;
 }
