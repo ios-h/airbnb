@@ -1,8 +1,13 @@
-package org.team4.airbnb.domain;
+package org.team4.airbnb.customer;
 
 import javax.persistence.*;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+import org.team4.airbnb.domain.Accommodation;
+import org.team4.airbnb.domain.BaseCreated;
 
 @Entity
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 public class Wish extends BaseCreated {
 
 	@Id
@@ -14,7 +19,7 @@ public class Wish extends BaseCreated {
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "accommodation_id")
 	private Accommodation accommodation;
 }
