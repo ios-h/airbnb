@@ -1,4 +1,4 @@
-package org.team4.airbnb.domain;
+package org.team4.airbnb.accommodation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +12,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.team4.airbnb.domain.AccommodationImage;
+import org.team4.airbnb.domain.AccommodationType;
+import org.team4.airbnb.domain.BaseCreated;
+import org.team4.airbnb.domain.Geolocation;
+import org.team4.airbnb.domain.Review;
+import org.team4.airbnb.domain.RoomFeature;
 
 @Entity
+@NoArgsConstructor
+@Getter
 public class Accommodation extends BaseCreated {
 
 	@Id
@@ -41,13 +51,10 @@ public class Accommodation extends BaseCreated {
 	@Embedded
 	private RoomFeature roomFeature;
 
-//	@OneToMany(mappedBy = "accommodation", fetch = FetchType.LAZY)
-//	private List<AccommodationImage> accommodationImages = new ArrayList<>();
-//
-//	@OneToMany(mappedBy = "accommodation", fetch = FetchType.LAZY)
-//	private List<Review> reviews = new ArrayList<>();
-//
-//	@OneToMany(mappedBy = "accommodation", fetch = FetchType.LAZY)
-//	private List<Reservation> reservations = new ArrayList<>();
+	@OneToMany(mappedBy = "accommodation", fetch = FetchType.LAZY)
+	private List<AccommodationImage> accommodationImages = new ArrayList<>();
 
+	@OneToMany(mappedBy = "accommodation", fetch = FetchType.LAZY)
+	private List<Review> reviews = new ArrayList<>();
+	
 }

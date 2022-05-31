@@ -1,8 +1,9 @@
 package org.team4.airbnb.accommodation;
 
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.team4.airbnb.domain.Accommodation;
 
 public interface AccommodationRepository extends JpaRepository<Accommodation, Long> {
 
+	List<Accommodation> findByIdIn(List<Long> accommodationIds);
 }
