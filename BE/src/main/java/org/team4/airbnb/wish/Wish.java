@@ -24,7 +24,5 @@ public class Wish extends BaseCreated {
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "accommodation_id")
-	private Accommodation accommodation;
+	private Long accommodationId;
 }
