@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import org.team4.airbnb.accommodation.AccommodationRepository;
 import org.team4.airbnb.customer.CustomerRepository;
-import org.team4.airbnb.domain.Accommodation;
 
 @SpringBootTest
 @Transactional
@@ -31,15 +29,15 @@ class WishRepositoryTest {
 	void addWish() {
 		//given
 		Wish wish =  new Wish();
-//		wish.setId(1L);
 		wish.setCustomer(customerRepository.findById(1L).get());
-		wish.setAccommodation(accommodationRepository.findById(100L).get());
+		wish.setAccommodationId(100L);
 
 		//when
 		Wish savedWish = wishRepository.save(wish);
 
 		//then
 		assertThat(savedWish).isNotNull();
+		assertThat(savedWish.getAccommodationId()).isEqualTo(100);
 	}
 	
 	@Test
