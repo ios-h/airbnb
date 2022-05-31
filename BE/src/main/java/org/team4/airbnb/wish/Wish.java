@@ -1,15 +1,18 @@
-package org.team4.airbnb.customer;
+package org.team4.airbnb.wish;
 
 import javax.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.team4.airbnb.customer.Customer;
 import org.team4.airbnb.domain.Accommodation;
 import org.team4.airbnb.domain.BaseCreated;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Getter
+@Setter
 public class Wish extends BaseCreated {
 
 	@Id
