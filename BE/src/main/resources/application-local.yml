@@ -20,4 +20,4 @@ spring:
 logging.level:
   org.hibernate.SQL: debug
 #  org.hibernate.type: trace
-   org.hibernate.type.BasicTypeRegistry: WARN
+  org.hibernate.type.BasicTypeRegistry: WARN
