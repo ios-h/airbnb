@@ -36,6 +36,7 @@
 		D089E7DE2844D2450000AE78 /* NearestDestinationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E7DD2844D2450000AE78 /* NearestDestinationCollectionViewCell.swift */; };
 		D089E7E2284501810000AE78 /* CommonHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E7E1284501810000AE78 /* CommonHeaderView.swift */; };
 		D089E7E5284505F10000AE78 /* MainAccomodationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E7E4284505F10000AE78 /* MainAccomodationCollectionViewCell.swift */; };
+		D089E7F82845FABB0000AE78 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E7F72845FABB0000AE78 /* Box.swift */; };
 		D0CC2B6E2840733200D77A3E /* MainFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CC2B6D2840733200D77A3E /* MainFlowCoordinator.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +95,7 @@
 		D089E7DD2844D2450000AE78 /* NearestDestinationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestDestinationCollectionViewCell.swift; sourceTree = "<group>"; };
 		D089E7E1284501810000AE78 /* CommonHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonHeaderView.swift; sourceTree = "<group>"; };
 		D089E7E4284505F10000AE78 /* MainAccomodationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAccomodationCollectionViewCell.swift; sourceTree = "<group>"; };
+		D089E7F72845FABB0000AE78 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		D0CC2B6D2840733200D77A3E /* MainFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -155,9 +157,9 @@
 				D01D65ED283C70710067B5E1 /* airbnb */,
 				D01D6604283C70720067B5E1 /* airbnbTests */,
 				D01D660E283C70720067B5E1 /* airbnbUITests */,
-				D01D65EC283C70710067B5E1 /* Products */,
-				8873260860ACC08F7D0C90D1 /* Pods */,
 				857DBAC39E1B69BE499A5802 /* Frameworks */,
+				8873260860ACC08F7D0C90D1 /* Pods */,
+				D01D65EC283C70710067B5E1 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -174,6 +176,7 @@
 		D01D65ED283C70710067B5E1 /* airbnb */ = {
 			isa = PBXGroup;
 			children = (
+				D089E7F62845FAAF0000AE78 /* Utility */,
 				D068BCF528406D7700EF783E /* App */,
 				D01D662E283D3A050067B5E1 /* Common */,
 				D01D6624283CB50E0067B5E1 /* Present */,
@@ -214,10 +217,10 @@
 		D01D662E283D3A050067B5E1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				D089E7E3284501940000AE78 /* View */,
 				D068BCFA28406E1B00EF783E /* Coordinator.swift */,
-				D089E7D92844B4790000AE78 /* MockDataModel.swift */,
 				D01D662F283D3A0D0067B5E1 /* Extension */,
+				D089E7D92844B4790000AE78 /* MockDataModel.swift */,
+				D089E7E3284501940000AE78 /* View */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -253,8 +256,8 @@
 		D068BCFE28406FFE00EF783E /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				D068BD012840701800EF783E /* TabBarCoordinator.swift */,
 				D068BCFF2840700B00EF783E /* TabBarController.swift */,
+				D068BD012840701800EF783E /* TabBarCoordinator.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -262,10 +265,11 @@
 		D068BD03284072C100EF783E /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				D0CC2B6D2840733200D77A3E /* MainFlowCoordinator.swift */,
+				D01D65F2283C70710067B5E1 /* MainViewController.swift */,
 				D089E7D62844B36D0000AE78 /* Model */,
 				D089E7D128446C800000AE78 /* View */,
-				D01D65F2283C70710067B5E1 /* MainViewController.swift */,
-				D0CC2B6D2840733200D77A3E /* MainFlowCoordinator.swift */,
+				D089E7E72845D03D0000AE78 /* ViewModel */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -273,8 +277,8 @@
 		D0872899283E7D13009983A5 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
-				D087289A283E7D26009983A5 /* CustomLabel.swift */,
 				D087289C283F0DB9009983A5 /* CustomButton.swift */,
+				D087289A283E7D26009983A5 /* CustomLabel.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -303,6 +307,21 @@
 				D089E7E1284501810000AE78 /* CommonHeaderView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		D089E7E72845D03D0000AE78 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D089E7F62845FAAF0000AE78 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				D089E7F72845FABB0000AE78 /* Box.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		D0CC2B6F2840748900D77A3E /* WishList */ = {
@@ -554,6 +573,7 @@
 				D087289D283F0DB9009983A5 /* CustomButton.swift in Sources */,
 				D01D6628283CB5550067B5E1 /* WishListViewController.swift in Sources */,
 				D01D65EF283C70710067B5E1 /* AppDelegate.swift in Sources */,
+				D089E7F82845FABB0000AE78 /* Box.swift in Sources */,
 				D068BD022840701800EF783E /* TabBarCoordinator.swift in Sources */,
 				D089E7DA2844B4790000AE78 /* MockDataModel.swift in Sources */,
 				D068BCFB28406E1B00EF783E /* Coordinator.swift in Sources */,
