@@ -7,10 +7,12 @@ public class AccommodationImage {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "secondary_image_id")
+	@Column(name = "accommodation_image_id")
 	private Long id;
 
 	private String url;
+
+	private int imageSeq;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "accommodation_id")
