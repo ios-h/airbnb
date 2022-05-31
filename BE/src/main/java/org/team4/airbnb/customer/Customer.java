@@ -3,10 +3,13 @@ package org.team4.airbnb.customer;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @NoArgsConstructor
+@Getter
 public class Customer {
 
 	@Id
@@ -16,6 +19,6 @@ public class Customer {
 
 	private String userId;
 
-	@OneToMany(mappedBy = "customer")
+	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
 	List<Wish> wishes = new ArrayList<>();
 }
