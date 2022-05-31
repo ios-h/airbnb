@@ -10,7 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Review extends BaseCreated{
+public class Review extends BaseCreated {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
