@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.team4.airbnb.customer.Customer;
-import org.team4.airbnb.domain.Accommodation;
+import org.team4.airbnb.accommodation.Accommodation;
 import org.team4.airbnb.domain.BaseCreated;
 
 @Entity

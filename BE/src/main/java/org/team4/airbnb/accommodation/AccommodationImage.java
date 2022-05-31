@@ -1,4 +1,4 @@
-package org.team4.airbnb.domain;
+package org.team4.airbnb.accommodation;
 
 import javax.persistence.*;
 

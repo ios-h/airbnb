@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import org.team4.airbnb.accommodation.Accommodation;
 
 @Entity
 public class Review extends BaseCreated{

@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import org.team4.airbnb.accommodation.AccommodationRepository;
 import org.team4.airbnb.customer.CustomerRepository;
-import org.team4.airbnb.domain.Accommodation;
 
 @SpringBootTest
 @Transactional

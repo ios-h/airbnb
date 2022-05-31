@@ -1,17 +1,15 @@
-package org.team4.airbnb.domain;
+package org.team4.airbnb.accommodation;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import org.team4.airbnb.domain.BaseCreated;
+import org.team4.airbnb.domain.Geolocation;
 
 @Entity
 public class Accommodation extends BaseCreated {
