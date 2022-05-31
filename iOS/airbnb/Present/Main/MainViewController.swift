@@ -7,8 +7,11 @@
 
 import UIKit
 
-class MainViewController: UIViewController, MainFlow {
+class MainViewController: UIViewController {
+    
     static let sectionHeaderElementKind = "section-header-element-kind"
+    
+    var coordinate: MainFlow?
     
     private var mainCollectionView: UICollectionView! = nil
     private var dataSource: MainSectionDiffableDataSource!
@@ -31,7 +34,8 @@ class MainViewController: UIViewController, MainFlow {
     private func setUpSearchController() {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.placeholder = "어디로 여행가세요?"
-        searchController.obscuresBackgroundDuringPresentation = false // true이면 검색 중 뒷 배경 모두 흐릿하게 해줌
+        searchController.obscuresBackgroundDuringPresentation = true // true이면 검색 중 뒷 배경 모두 흐릿하게 해줌
+        searchController.searchResultsUpdater = self
         
         self.navigationItem.title = "Airbnb"
         self.navigationItem.searchController = searchController
@@ -226,5 +230,11 @@ class MainViewController: UIViewController, MainFlow {
         section.orthogonalScrollingBehavior = .groupPaging
         section.boundarySupplementaryItems = [sectionHeader]
         return section
+    }
+}
+
+extension MainViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        dump(searchController.searchBar.text)
     }
 }
