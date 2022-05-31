@@ -10,9 +10,9 @@ import UIKit
 class MainViewController: UIViewController, MainFlow {
     static let sectionHeaderElementKind = "section-header-element-kind"
     
-    var mainCollectionView: UICollectionView! = nil
-    var dataSource: UICollectionViewDiffableDataSource<MainSection, MainImageItem>! = nil
-    
+    private var mainCollectionView: UICollectionView! = nil
+    private var dataSource: MainSectionDiffableDataSource!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,7 +42,6 @@ class MainViewController: UIViewController, MainFlow {
         view.addSubview(collectionView)
         collectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         collectionView.backgroundColor = .gray6
-        collectionView.delegate = self
         collectionView.register(
             HeroImageCollectionViewCell.self,
             forCellWithReuseIdentifier: String(describing: HeroImageCollectionViewCell.self))
@@ -60,50 +59,42 @@ class MainViewController: UIViewController, MainFlow {
     }
     
     private func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<MainSection, MainImageItem>(
-            collectionView: mainCollectionView) { (collectionView: UICollectionView, indexPath: IndexPath, detailItem: MainImageItem) -> UICollectionViewCell? in
-                let sectionType = MainSection.allCases[indexPath.section]
-                switch sectionType {
-                case .heroImage:
-                    guard let cell = collectionView.dequeueReusableCell(
-                        withReuseIdentifier: String(describing: HeroImageCollectionViewCell.self),
-                        for: indexPath) as? HeroImageCollectionViewCell else {
-                        return UICollectionViewCell() }
-                    cell.titleLabel.text = detailItem.title
-                    cell.heroImageView.image = UIImage(named: "\(detailItem.imageName)")
-                    cell.isDataSourceConfigured = true
-                    return cell
-                case .nearestDestination:
-                    guard let cell = collectionView.dequeueReusableCell(
-                        withReuseIdentifier: String(describing: NearestDestinationCollectionViewCell.self),
-                        for: indexPath) as? NearestDestinationCollectionViewCell else {
-                        return UICollectionViewCell() }
-                    cell.titleLabel.text = detailItem.title
-                    cell.detailLabel.text = "차로 30분 거리"
-                    cell.cityImageView.image = UIImage(named: "img_hero_jeju")
-                    cell.isDataSourceConfigured = true
-                    return cell
-                case .accomodation:
-                    guard let cell = collectionView.dequeueReusableCell(
-                        withReuseIdentifier: String(describing: MainAccomodationCollectionViewCell.self),
-                        for: indexPath) as? MainAccomodationCollectionViewCell else {
-                        return UICollectionViewCell() }
-                    cell.detailLabel.text = "자연생활을 만끼할 수\n있는 숙소"
-                    cell.accomodationImageView.image = UIImage(named: "img_hero_beach")
-                    cell.isDataSourceConfigured = true
-                    return cell
-                }
+        dataSource = MainSectionDiffableDataSource(collectionView: mainCollectionView,
+                                                   cellProvider: { collectionView, indexPath, itemIdentifier in
+            let sectionType = MainSection.allCases[indexPath.section]
+            
+            switch sectionType {
+            case .heroImage:
+                guard let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: String(describing: HeroImageCollectionViewCell.self),
+                    for: indexPath) as? HeroImageCollectionViewCell else {
+                    return UICollectionViewCell() }
+                cell.titleLabel.text = itemIdentifier.title
+                cell.heroImageView.image = UIImage(named: "\(itemIdentifier.imageName)")
+                cell.isDataSourceConfigured = true
+                return cell
+            case .nearestDestination:
+                guard let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: String(describing: NearestDestinationCollectionViewCell.self),
+                    for: indexPath) as? NearestDestinationCollectionViewCell else {
+                    return UICollectionViewCell() }
+                cell.titleLabel.text = itemIdentifier.title
+                cell.detailLabel.text = "차로 30분 거리"
+                cell.cityImageView.image = UIImage(named: "img_hero_jeju")
+                cell.isDataSourceConfigured = true
+                return cell
+            case .accomodation:
+                guard let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: String(describing: MainAccomodationCollectionViewCell.self),
+                    for: indexPath) as? MainAccomodationCollectionViewCell else {
+                    return UICollectionViewCell() }
+                cell.detailLabel.text = "자연생활을 만끼할 수\n있는 숙소"
+                cell.accomodationImageView.image = UIImage(named: "img_hero_beach")
+                cell.isDataSourceConfigured = true
+                return cell
             }
-        dataSource.supplementaryViewProvider = { (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
-            guard let supplementaryView = collectionView
-                .dequeueReusableSupplementaryView(ofKind: kind,
-                                                  withReuseIdentifier: String(describing: CommonHeaderView.self),
-                                                  for: indexPath) as? CommonHeaderView else {
-                return UICollectionReusableView()
-            }
-            supplementaryView.headerLabel.text = MainSection.allCases[indexPath.section].rawValue
-            return supplementaryView
-        }
+        })
+        
         let snapshot = snapshotForCurrentState()
         dataSource.apply(snapshot, animatingDifferences: false)
     }
@@ -236,8 +227,4 @@ class MainViewController: UIViewController, MainFlow {
         section.boundarySupplementaryItems = [sectionHeader]
         return section
     }
-}
-
-extension MainViewController: UICollectionViewDelegate {
-    
 }

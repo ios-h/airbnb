@@ -38,6 +38,7 @@
 		D089E7E5284505F10000AE78 /* MainAccomodationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E7E4284505F10000AE78 /* MainAccomodationCollectionViewCell.swift */; };
 		D089E7F82845FABB0000AE78 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E7F72845FABB0000AE78 /* Box.swift */; };
 		D089E80328460A4E0000AE78 /* MainSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E80228460A4E0000AE78 /* MainSection.swift */; };
+		D089E80528460B4C0000AE78 /* MainSectionDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E80428460B4C0000AE78 /* MainSectionDiffableDataSource.swift */; };
 		D0CC2B6E2840733200D77A3E /* MainFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CC2B6D2840733200D77A3E /* MainFlowCoordinator.swift */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +99,7 @@
 		D089E7E4284505F10000AE78 /* MainAccomodationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAccomodationCollectionViewCell.swift; sourceTree = "<group>"; };
 		D089E7F72845FABB0000AE78 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		D089E80228460A4E0000AE78 /* MainSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSection.swift; sourceTree = "<group>"; };
+		D089E80428460B4C0000AE78 /* MainSectionDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSectionDiffableDataSource.swift; sourceTree = "<group>"; };
 		D0CC2B6D2840733200D77A3E /* MainFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -271,6 +273,7 @@
 				D01D65F2283C70710067B5E1 /* MainViewController.swift */,
 				D089E7D62844B36D0000AE78 /* Model */,
 				D089E7D128446C800000AE78 /* View */,
+				D089E80428460B4C0000AE78 /* MainSectionDiffableDataSource.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 				D089E7DE2844D2450000AE78 /* NearestDestinationCollectionViewCell.swift in Sources */,
 				D089E7E5284505F10000AE78 /* MainAccomodationCollectionViewCell.swift in Sources */,
 				D01D65F3283C70710067B5E1 /* MainViewController.swift in Sources */,
+				D089E80528460B4C0000AE78 /* MainSectionDiffableDataSource.swift in Sources */,
 				D087289D283F0DB9009983A5 /* CustomButton.swift in Sources */,
 				D01D6628283CB5550067B5E1 /* WishListViewController.swift in Sources */,
 				D01D65EF283C70710067B5E1 /* AppDelegate.swift in Sources */,
