@@ -3,6 +3,8 @@ package org.team4.airbnb.wish;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.NoSuchElementException;
+import java.util.Optional;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -38,5 +40,19 @@ class WishRepositoryTest {
 
 		//then
 		assertThat(savedWish).isNotNull();
+	}
+	
+	@Test
+	@DisplayName("위시리스트에 특정 숙소 삭제하기")
+	void deleteWish() {
+		//given
+		Optional<Wish> wish = wishRepository.findById(1L);
+
+		//when
+		wishRepository.delete(wish.get());
+
+		//then
+		assertThatExceptionOfType(NoSuchElementException.class)
+			.isThrownBy(() -> wishRepository.findById(1L).get());
 	}
 }
