@@ -13,17 +13,18 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import org.team4.airbnb.accommodation.AccommodationRepository;
 import org.team4.airbnb.customer.CustomerRepository;
+import org.team4.airbnb.util.EntityCreator;
 
 @SpringBootTest
 @Transactional
 class WishRepositoryTest {
 
 	@Autowired
-	WishRepository wishRepository;
+	private WishRepository wishRepository;
 	@Autowired
-	CustomerRepository customerRepository;
+	private AccommodationRepository accommodationRepository;
 	@Autowired
-	AccommodationRepository accommodationRepository;
+	private CustomerRepository customerRepository;
 
 	private static final Long customerId = 1L;
 	private static final Long accommodationId = 100L;
@@ -33,9 +34,7 @@ class WishRepositoryTest {
 	@DisplayName("위시리스트에 특정 숙소 등록하기")
 	void addWish() {
 		//given
-		Wish wish = new Wish();
-		wish.setCustomer(customerRepository.findById(customerId).get());
-		wish.setAccommodationId(accommodationId);
+		Wish wish = EntityCreator.createWish(customerRepository, customerId, accommodationId);
 
 		//when
 		Wish savedWish = wishRepository.save(wish);
