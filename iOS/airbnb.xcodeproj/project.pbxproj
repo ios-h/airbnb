@@ -24,6 +24,7 @@
 		D01D6628283CB5550067B5E1 /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D6627283CB5550067B5E1 /* WishListViewController.swift */; };
 		D01D662A283CB5DB0067B5E1 /* ReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D6629283CB5DB0067B5E1 /* ReservationViewController.swift */; };
 		D01D6631283D3A200067B5E1 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D6630283D3A200067B5E1 /* UIColor+Extension.swift */; };
+		D04C6C41284925CD00A419A5 /* MainSectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04C6C40284925CD00A419A5 /* MainSectionLayout.swift */; };
 		D068BCFB28406E1B00EF783E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D068BCFA28406E1B00EF783E /* Coordinator.swift */; };
 		D068BCFD28406F1900EF783E /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D068BCFC28406F1900EF783E /* AppCoordinator.swift */; };
 		D068BD002840700B00EF783E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D068BCFF2840700B00EF783E /* TabBarController.swift */; };
@@ -89,6 +90,7 @@
 		D01D6627283CB5550067B5E1 /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
 		D01D6629283CB5DB0067B5E1 /* ReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationViewController.swift; sourceTree = "<group>"; };
 		D01D6630283D3A200067B5E1 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		D04C6C40284925CD00A419A5 /* MainSectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSectionLayout.swift; sourceTree = "<group>"; };
 		D068BCFA28406E1B00EF783E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		D068BCFC28406F1900EF783E /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		D068BCFF2840700B00EF783E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				D01D65F2283C70710067B5E1 /* MainViewController.swift */,
 				D089E7D62844B36D0000AE78 /* Model */,
 				D089E7D128446C800000AE78 /* View */,
+				D04C6C40284925CD00A419A5 /* MainSectionLayout.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -609,6 +612,7 @@
 				D087289D283F0DB9009983A5 /* CustomButton.swift in Sources */,
 				D089E80E284621960000AE78 /* SearchItem.swift in Sources */,
 				D01D6628283CB5550067B5E1 /* WishListViewController.swift in Sources */,
+				D04C6C41284925CD00A419A5 /* MainSectionLayout.swift in Sources */,
 				D01D65EF283C70710067B5E1 /* AppDelegate.swift in Sources */,
 				D089E7F82845FABB0000AE78 /* Box.swift in Sources */,
 				D068BD022840701800EF783E /* TabBarCoordinator.swift in Sources */,

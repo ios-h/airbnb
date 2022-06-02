@@ -118,12 +118,13 @@ class MainViewController: UIViewController {
     private func generateHeroImageSection() -> NSCollectionLayoutSection {
         let item = configureItem()
         
-        let group = configureGroup(MainSize(width: 1.0, heightComputedByWidth: 1.2),
-                                   isDirectionVertical: false,
-                                   item: item,
-                                   itemCount: 1)
-        
-        let section = configureSection(group: group)
+        let groupType = MainGroupType(groupSize: MainSize(width: 1.0, heightComputedByWidth: 1.2),
+                                      isDirectionVertical: false,
+                                      item: item,
+                                      itemCount: 1)
+        let group = configureGroup(groupType: groupType)
+        let sectionType = MainSectionType(group: group)
+        let section = configureSection(sectionType: sectionType)
         return section
     }
     
@@ -133,16 +134,17 @@ class MainViewController: UIViewController {
                                                                        bottom: 0,
                                                                        trailing: 10))
         
-        let group = configureGroup(MainSize(width: 3/4, heightComputedByWidth: 4/9),
-                                   isDirectionVertical: true,
-                                   item: item,
-                                   itemCount: 2)
+        let groupType = MainGroupType(groupSize: MainSize(width: 3/4, heightComputedByWidth: 4/9),
+                                      isDirectionVertical: true,
+                                      item: item,
+                                      itemCount: 2)
+        let group = configureGroup(groupType: groupType)
         
         let sectionHeader = configureHeader(MainSize(width: 1.0,
                                                      heightComputedByWidth: 0.2))
         
-        let section = configureSection(group: group,
-                                       header: sectionHeader)
+        let sectionType = MainSectionType(group: group, header: sectionHeader)
+        let section = configureSection(sectionType: sectionType)
         return section
     }
     
@@ -152,101 +154,43 @@ class MainViewController: UIViewController {
                                                                        bottom: 0,
                                                                        trailing: -20))
         
-        let group = configureGroup(MainSize(width: 3/4, heightComputedByWidth: 1.15),
-                                   groupInset: NSDirectionalEdgeInsets(top: 0,
-                                                                       leading: 20,
-                                                                       bottom: 0,
-                                                                       trailing: 20),
-                                   isDirectionVertical: false,
-                                   item: item,
-                                   itemCount: 1)
+        let groupType = MainGroupType(groupSize: MainSize(width: 3/4, heightComputedByWidth: 1.15),
+                                      groupInset: NSDirectionalEdgeInsets(top: 0,
+                                                                          leading: 20,
+                                                                          bottom: 0,
+                                                                          trailing: 20),
+                                      isDirectionVertical: false,
+                                      item: item,
+                                      itemCount: 1)
+        let group = configureGroup(groupType: groupType)
         
         let sectionHeader = configureHeader(MainSize(width: 1.0,
                                                      heightComputedByWidth: 0.3))
-        
-        let section = configureSection(group: group,
-                                       sectionInset: NSDirectionalEdgeInsets(top: 0,
-                                                                             leading: 0,
-                                                                             bottom: 0,
-                                                                             trailing: 20),
-                                       header: sectionHeader)
+        let sectionType = MainSectionType(group: group,
+                                          sectionInset: NSDirectionalEdgeInsets(top: 0,
+                                                                                leading: 0,
+                                                                                bottom: 0,
+                                                                                trailing: 20),
+                                          header: sectionHeader)
+        let section = configureSection(sectionType: sectionType)
         return section
-    }
-    
-    struct ItemSize {
-        var width: CGFloat = 1.0
-        var height: CGFloat = 1.0
     }
     
     private func configureItem(_ itemSize: ItemSize = ItemSize(),
                                contentInset: NSDirectionalEdgeInsets = .zero) -> NSCollectionLayoutItem {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(itemSize.width),
-            heightDimension: .fractionalHeight(itemSize.height))
-        
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = contentInset
-        return item
+        return MainSectionLayout.configureItem(itemSize, contentInset: contentInset)
     }
     
-    struct MainSize {
-        var width: CGFloat = 1.0
-        var heightComputedByWidth: CGFloat = 1.0
+    private func configureGroup(groupType: MainGroupType) -> NSCollectionLayoutGroup {
+        return MainSectionLayout.configureGroup(groupType: groupType)
     }
     
-    private func configureGroup(_ groupSize: MainSize,
-                                groupInset: NSDirectionalEdgeInsets = .zero,
-                                isDirectionVertical: Bool,
-                                item: NSCollectionLayoutItem,
-                                itemCount: Int) -> NSCollectionLayoutGroup {
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(groupSize.width),
-            heightDimension: .fractionalWidth(groupSize.heightComputedByWidth))
-        
-        let group: NSCollectionLayoutGroup
-        
-        if isDirectionVertical {
-            group = NSCollectionLayoutGroup.vertical(
-                layoutSize: groupSize,
-                subitem: item,
-                count: itemCount)
-        } else {
-            group = NSCollectionLayoutGroup.horizontal(
-                layoutSize: groupSize,
-                subitem: item,
-                count: itemCount)
-        }
-        group.contentInsets = groupInset
-        return group
-    }
-
     private func configureHeader(_ size: MainSize) -> NSCollectionLayoutBoundarySupplementaryItem {
-        let headerSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(size.width),
-            heightDimension: .fractionalWidth(size.heightComputedByWidth))
-
-        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: headerSize,
-            elementKind: MainViewController.sectionHeaderElementKind,
-            alignment: .top)
-        
-        return sectionHeader
+        return MainSectionLayout.configureHeader(size)
     }
     
-    private func configureSection(group: NSCollectionLayoutGroup,
-                                  sectionInset: NSDirectionalEdgeInsets = .zero,
-                                  scrollingBehavior: UICollectionLayoutSectionOrthogonalScrollingBehavior
-                                  = .groupPaging,
-                                  header: NSCollectionLayoutBoundarySupplementaryItem?
-                                  = nil) -> NSCollectionLayoutSection {
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = sectionInset
-        section.orthogonalScrollingBehavior = .groupPaging
-        
-        if let header = header {
-            section.boundarySupplementaryItems = [header]
-        }
-        return section
+    private func configureSection(sectionType: MainSectionType) -> NSCollectionLayoutSection {
+        return MainSectionLayout.configureSection(sectionType: sectionType)
     }
 }
 
