@@ -123,8 +123,7 @@ class MainViewController: UIViewController {
                                    item: item,
                                    itemCount: 1)
         
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .groupPaging
+        let section = configureSection(group: group)
         return section
     }
     
@@ -142,9 +141,8 @@ class MainViewController: UIViewController {
         let sectionHeader = configureHeader(MainSize(width: 1.0,
                                                      heightComputedByWidth: 0.2))
         
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .groupPaging
-        section.boundarySupplementaryItems = [sectionHeader]
+        let section = configureSection(group: group,
+                                       header: sectionHeader)
         return section
     }
     
@@ -166,10 +164,12 @@ class MainViewController: UIViewController {
         let sectionHeader = configureHeader(MainSize(width: 1.0,
                                                      heightComputedByWidth: 0.3))
         
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 20)
-        section.orthogonalScrollingBehavior = .groupPaging
-        section.boundarySupplementaryItems = [sectionHeader]
+        let section = configureSection(group: group,
+                                       sectionInset: NSDirectionalEdgeInsets(top: 0,
+                                                                             leading: 0,
+                                                                             bottom: 0,
+                                                                             trailing: 20),
+                                       header: sectionHeader)
         return section
     }
     
@@ -231,6 +231,22 @@ class MainViewController: UIViewController {
             alignment: .top)
         
         return sectionHeader
+    }
+    
+    private func configureSection(group: NSCollectionLayoutGroup,
+                                  sectionInset: NSDirectionalEdgeInsets = .zero,
+                                  scrollingBehavior: UICollectionLayoutSectionOrthogonalScrollingBehavior
+                                  = .groupPaging,
+                                  header: NSCollectionLayoutBoundarySupplementaryItem?
+                                  = nil) -> NSCollectionLayoutSection {
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = sectionInset
+        section.orthogonalScrollingBehavior = .groupPaging
+        
+        if let header = header {
+            section.boundarySupplementaryItems = [header]
+        }
+        return section
     }
 }
 
