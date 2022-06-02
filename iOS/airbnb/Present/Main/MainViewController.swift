@@ -139,14 +139,8 @@ class MainViewController: UIViewController {
                                    item: item,
                                    itemCount: 2)
         
-        let headerSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalWidth(0.2))
-
-        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: headerSize,
-            elementKind: MainViewController.sectionHeaderElementKind,
-            alignment: .top)
+        let sectionHeader = configureHeader(MainSize(width: 1.0,
+                                                     heightComputedByWidth: 0.2))
         
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
@@ -169,14 +163,8 @@ class MainViewController: UIViewController {
                                    item: item,
                                    itemCount: 1)
         
-        let headerSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalWidth(0.3))
-
-        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: headerSize,
-            elementKind: MainViewController.sectionHeaderElementKind,
-            alignment: .top)
+        let sectionHeader = configureHeader(MainSize(width: 1.0,
+                                                     heightComputedByWidth: 0.3))
         
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 20)
@@ -232,6 +220,18 @@ class MainViewController: UIViewController {
         return group
     }
 
+    private func configureHeader(_ size: MainSize) -> NSCollectionLayoutBoundarySupplementaryItem {
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(size.width),
+            heightDimension: .fractionalWidth(size.heightComputedByWidth))
+
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: MainViewController.sectionHeaderElementKind,
+            alignment: .top)
+        
+        return sectionHeader
+    }
 }
 
 extension MainViewController: UISearchResultsUpdating {
