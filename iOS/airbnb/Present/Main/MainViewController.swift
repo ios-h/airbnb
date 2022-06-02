@@ -29,6 +29,7 @@ class MainViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
+        configureDataSource()
     }
     
     private func setUpSearchController() {
@@ -115,15 +116,11 @@ class MainViewController: UIViewController {
     }
     
     private func generateHeroImageSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalWidth(2/3))
-        
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let item = configureItem()
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalWidth(2/3))
+            heightDimension: .fractionalWidth(1.2))
         
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,
@@ -136,12 +133,10 @@ class MainViewController: UIViewController {
     }
     
     private func generateNearestDestinationSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(8/9),
-            heightDimension: .fractionalWidth(1/4))
-        
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
+        let item = configureItem(contentInset: NSDirectionalEdgeInsets(top: 0,
+                                                                       leading: 10,
+                                                                       bottom: 0,
+                                                                       trailing: 10))
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(3/4),
@@ -154,7 +149,7 @@ class MainViewController: UIViewController {
         
         let headerSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .estimated(1))
+            heightDimension: .fractionalWidth(0.2))
 
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize,
@@ -168,16 +163,14 @@ class MainViewController: UIViewController {
     }
     
     private func generateAccomodationSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(4/7),
-            heightDimension: .fractionalWidth(1.55))
-        
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: -20)
+        let item = configureItem(contentInset: NSDirectionalEdgeInsets(top: 0,
+                                                                       leading: 0,
+                                                                       bottom: 0,
+                                                                       trailing: -20))
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(3/4),
-            heightDimension: .fractionalWidth(1/2))
+            heightDimension: .fractionalWidth(1.15))
         
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,
@@ -187,7 +180,7 @@ class MainViewController: UIViewController {
         
         let headerSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .estimated(1))
+            heightDimension: .fractionalWidth(0.3))
 
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize,
@@ -199,6 +192,22 @@ class MainViewController: UIViewController {
         section.orthogonalScrollingBehavior = .groupPaging
         section.boundarySupplementaryItems = [sectionHeader]
         return section
+    }
+    
+    struct ItemSize {
+        let width: CGFloat
+        let height: CGFloat
+    }
+    
+    private func configureItem(_ itemSize: ItemSize = ItemSize(width: 1.0, height: 1.0),
+                               contentInset: NSDirectionalEdgeInsets = .zero) -> NSCollectionLayoutItem {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(itemSize.width),
+            heightDimension: .fractionalHeight(itemSize.height))
+        
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = contentInset
+        return item
     }
 }
 
