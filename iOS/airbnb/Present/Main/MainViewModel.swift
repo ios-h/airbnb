@@ -32,23 +32,23 @@ struct MainSectionType {
     var header: NSCollectionLayoutBoundarySupplementaryItem?
 }
 
-class MainSectionLayout {
+class MainViewModel {
     
     static func generateHeroImageSection() -> NSCollectionLayoutSection {
-        let item = MainSectionLayout().configureItem()
+        let item = MainViewModel().configureItem()
         
         let groupType = MainGroupType(groupSize: MainSize(width: 1.0, heightComputedByWidth: 1.2),
                                       isDirectionVertical: false,
                                       item: item,
                                       itemCount: 1)
-        let group = MainSectionLayout().configureGroup(groupType: groupType)
+        let group = MainViewModel().configureGroup(groupType: groupType)
         let sectionType = MainSectionType(group: group)
-        let section = MainSectionLayout().configureSection(sectionType: sectionType)
+        let section = MainViewModel().configureSection(sectionType: sectionType)
         return section
     }
     
     static func generateNearestDestinationSection() -> NSCollectionLayoutSection {
-        let item = MainSectionLayout().configureItem(contentInset: NSDirectionalEdgeInsets(top: 0,
+        let item = MainViewModel().configureItem(contentInset: NSDirectionalEdgeInsets(top: 0,
                                                                        leading: 10,
                                                                        bottom: 0,
                                                                        trailing: 10))
@@ -57,18 +57,18 @@ class MainSectionLayout {
                                       isDirectionVertical: true,
                                       item: item,
                                       itemCount: 2)
-        let group = MainSectionLayout().configureGroup(groupType: groupType)
+        let group = MainViewModel().configureGroup(groupType: groupType)
         
-        let sectionHeader = MainSectionLayout().configureHeader(MainSize(width: 1.0,
+        let sectionHeader = MainViewModel().configureHeader(MainSize(width: 1.0,
                                                      heightComputedByWidth: 0.2))
         
         let sectionType = MainSectionType(group: group, header: sectionHeader)
-        let section = MainSectionLayout().configureSection(sectionType: sectionType)
+        let section = MainViewModel().configureSection(sectionType: sectionType)
         return section
     }
     
     static func generateAccomodationSection() -> NSCollectionLayoutSection {
-        let item = MainSectionLayout().configureItem(contentInset: NSDirectionalEdgeInsets(top: 0,
+        let item = MainViewModel().configureItem(contentInset: NSDirectionalEdgeInsets(top: 0,
                                                                        leading: 0,
                                                                        bottom: 0,
                                                                        trailing: -20))
@@ -81,9 +81,9 @@ class MainSectionLayout {
                                       isDirectionVertical: false,
                                       item: item,
                                       itemCount: 1)
-        let group = MainSectionLayout().configureGroup(groupType: groupType)
+        let group = MainViewModel().configureGroup(groupType: groupType)
         
-        let sectionHeader = MainSectionLayout().configureHeader(MainSize(width: 1.0,
+        let sectionHeader = MainViewModel().configureHeader(MainSize(width: 1.0,
                                                      heightComputedByWidth: 0.3))
         let sectionType = MainSectionType(group: group,
                                           sectionInset: NSDirectionalEdgeInsets(top: 0,
@@ -91,7 +91,7 @@ class MainSectionLayout {
                                                                                 bottom: 0,
                                                                                 trailing: 20),
                                           header: sectionHeader)
-        let section = MainSectionLayout().configureSection(sectionType: sectionType)
+        let section = MainViewModel().configureSection(sectionType: sectionType)
         return section
     }
     

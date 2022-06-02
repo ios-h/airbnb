@@ -112,11 +112,11 @@ class MainViewController: UIViewController {
     private func generateSection(sectionLayoutKind: MainSection) -> NSCollectionLayoutSection {
         switch sectionLayoutKind {
         case .heroImage:
-            return MainSectionLayout.generateHeroImageSection()
+            return MainViewModel.generateHeroImageSection()
         case .nearestDestination:
-            return MainSectionLayout.generateNearestDestinationSection()
+            return MainViewModel.generateNearestDestinationSection()
         case .accomodation:
-            return MainSectionLayout.generateAccomodationSection()
+            return MainViewModel.generateAccomodationSection()
         }
     }
 }
