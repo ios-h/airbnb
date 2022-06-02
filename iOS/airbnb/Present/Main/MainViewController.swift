@@ -174,11 +174,11 @@ class MainViewController: UIViewController {
     }
     
     struct ItemSize {
-        let width: CGFloat
-        let height: CGFloat
+        var width: CGFloat = 1.0
+        var height: CGFloat = 1.0
     }
     
-    private func configureItem(_ itemSize: ItemSize = ItemSize(width: 1.0, height: 1.0),
+    private func configureItem(_ itemSize: ItemSize = ItemSize(),
                                contentInset: NSDirectionalEdgeInsets = .zero) -> NSCollectionLayoutItem {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(itemSize.width),
@@ -190,8 +190,8 @@ class MainViewController: UIViewController {
     }
     
     struct MainSize {
-        let width: CGFloat
-        let heightComputedByWidth: CGFloat
+        var width: CGFloat = 1.0
+        var heightComputedByWidth: CGFloat = 1.0
     }
     
     private func configureGroup(_ groupSize: MainSize,
