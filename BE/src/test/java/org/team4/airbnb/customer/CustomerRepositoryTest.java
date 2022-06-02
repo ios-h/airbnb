@@ -27,23 +27,25 @@ class CustomerRepositoryTest {
 	@Autowired
 	AccommodationRepository accommodationRepository;
 
+	private static final Long customerId = 1L;
+
 	@Test
 	@DisplayName("위시리스트만 조회")
 	void findById() {
 		//when
-		Optional<Customer> findCustomer = customerRepository.findById(1L);
+		Optional<Customer> findCustomer = customerRepository.findById(customerId);
 		List<Wish> wishes = findCustomer.get().getWishes();
 
 		//then
 		assertThat(findCustomer).isNotEmpty();
-		assertThat(wishes).hasSize(3).anyMatch(wish -> wish.getCustomer().getId() == 1);
+		assertThat(wishes).hasSize(3).anyMatch(wish -> wish.getCustomer().getId() == customerId);
 	}
 
 	@Test
 	@DisplayName("위시리스트와 해당 숙소 조회")
 	void findWishAndAccommodationById() {
 		//when
-		Optional<Customer> findCustomer = customerRepository.findById(1L);
+		Optional<Customer> findCustomer = customerRepository.findById(customerId);
 		List<Wish> wishes = findCustomer.get().getWishes();
 
 		List<Long> accommodationIds = new ArrayList<>();
@@ -56,7 +58,7 @@ class CustomerRepositoryTest {
 
 		//then
 		assertThat(findCustomer).isNotEmpty();
-		assertThat(wishes).hasSize(3).anyMatch(wish -> wish.getCustomer().getId() == 1);
+		assertThat(wishes).hasSize(3).anyMatch(wish -> wish.getCustomer().getId() == customerId);
 		assertThat(findAccommodations).hasSize(3).anyMatch(Objects::nonNull);
 	}
 }
