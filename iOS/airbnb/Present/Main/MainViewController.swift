@@ -9,6 +9,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    let mainViewModel = MainViewModel()
     static let sectionHeaderElementKind = "section-header-element-kind"
     
     var coordinate: MainFlow?
@@ -112,11 +113,11 @@ class MainViewController: UIViewController {
     private func generateSection(sectionLayoutKind: MainSection) -> NSCollectionLayoutSection {
         switch sectionLayoutKind {
         case .heroImage:
-            return MainViewModel.generateHeroImageSection()
+            return mainViewModel.generateHeroImageSection()
         case .nearestDestination:
-            return MainViewModel.generateNearestDestinationSection()
+            return mainViewModel.generateNearestDestinationSection()
         case .accomodation:
-            return MainViewModel.generateAccomodationSection()
+            return mainViewModel.generateAccomodationSection()
         }
     }
 }

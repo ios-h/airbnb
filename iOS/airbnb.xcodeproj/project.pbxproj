@@ -279,13 +279,13 @@
 		D068BD03284072C100EF783E /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				D089E80728461ECC0000AE78 /* Search */,
 				D0CC2B6D2840733200D77A3E /* MainFlowCoordinator.swift */,
 				D089E80428460B4C0000AE78 /* MainSectionDiffableDataSource.swift */,
 				D01D65F2283C70710067B5E1 /* MainViewController.swift */,
-				D089E7D62844B36D0000AE78 /* Model */,
-				D089E7D128446C800000AE78 /* View */,
 				D04C6C40284925CD00A419A5 /* MainViewModel.swift */,
+				D089E7D62844B36D0000AE78 /* Model */,
+				D089E80728461ECC0000AE78 /* Search */,
+				D089E7D128446C800000AE78 /* View */,
 			);
 			path = Main;
 			sourceTree = "<group>";

@@ -34,7 +34,7 @@ struct MainSectionType {
 
 class MainViewModel {
     
-    static func generateHeroImageSection() -> NSCollectionLayoutSection {
+    func generateHeroImageSection() -> NSCollectionLayoutSection {
         let item = MainViewModel().configureItem()
         
         let groupType = MainGroupType(groupSize: MainSize(width: 1.0, heightComputedByWidth: 1.2),
@@ -47,7 +47,7 @@ class MainViewModel {
         return section
     }
     
-    static func generateNearestDestinationSection() -> NSCollectionLayoutSection {
+    func generateNearestDestinationSection() -> NSCollectionLayoutSection {
         let item = MainViewModel().configureItem(contentInset: NSDirectionalEdgeInsets(top: 0,
                                                                        leading: 10,
                                                                        bottom: 0,
@@ -67,7 +67,7 @@ class MainViewModel {
         return section
     }
     
-    static func generateAccomodationSection() -> NSCollectionLayoutSection {
+    func generateAccomodationSection() -> NSCollectionLayoutSection {
         let item = MainViewModel().configureItem(contentInset: NSDirectionalEdgeInsets(top: 0,
                                                                        leading: 0,
                                                                        bottom: 0,
