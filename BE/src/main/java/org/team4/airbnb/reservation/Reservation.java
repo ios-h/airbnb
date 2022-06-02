@@ -18,6 +18,7 @@ import org.team4.airbnb.domain.BaseCreated;
 
 @Entity
 @Getter
+@ToString
 public class Reservation extends BaseCreated {
 
 	@Id
@@ -38,10 +39,12 @@ public class Reservation extends BaseCreated {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "accommodation_id")
+	@ToString.Exclude
 	private Accommodation accommodation;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "customer_id")
+	@ToString.Exclude
 	private Customer customer;
 
 	public int getInvoiceTotal() {
