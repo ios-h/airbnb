@@ -7,103 +7,234 @@
 
 import UIKit
 
-class MainViewController: UIViewController, MainFlow {
+class MainViewController: UIViewController {
     
-    private let heroImageView: UIImageView = {
-        guard let image = UIImage(named: "img_hero") else {
-            return UIImageView(image: UIImage(named: ""))
-        }
-        let imageView = UIImageView(image: image)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFill
-        return imageView
-    }()
+    static let sectionHeaderElementKind = "section-header-element-kind"
     
-    private let scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.backgroundColor = .systemMint
-        scrollView.showsVerticalScrollIndicator = false
-        return scrollView
-    }()
+    var coordinate: MainFlow?
     
-    private let titleLabel = CustomLabel(numberOfLines: 0,
-                                         color: .customBlack!,
-                                         attributedString: NSMutableAttributedString(string: "슬기로운\n자연생활"),
-                                         font: .systemFont(ofSize: 34, weight: .medium))
-    
-    private let detailLabel = CustomLabel(numberOfLines: 0,
-                                          color: .gray1!,
-                                          attributedString:
-                                            NSMutableAttributedString(string: "에어비앤비가 엄선한\n위시리스트를 만나보세요."),
-                                          font: .systemFont(ofSize: 17, weight: .medium))
-    
-    private let ideaButton = CustomButton(title: "여행 아이디어 얻기",
-                                          state: .normal,
-                                          titleColor: .white!,
-                                          backgroundColor: .black,
-                                          font: .systemFont(ofSize: 17, weight: .bold))
-    
+    private var mainCollectionView: UICollectionView! = nil
+    private var dataSource: MainSectionDiffableDataSource!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .gray6
+        view.backgroundColor = .white
         
         setUpSearchController()
-        
-        addViews()
-        setLayout()
+        configureCollectionView()
+        configureDataSource()
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        setLayout()
     }
     
     private func setUpSearchController() {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.placeholder = "어디로 여행가세요?"
-        searchController.obscuresBackgroundDuringPresentation = false // true이면 검색 중 뒷 배경 모두 흐릿하게 해줌
+        searchController.obscuresBackgroundDuringPresentation = true // true이면 검색 중 뒷 배경 모두 흐릿하게 해줌
+        searchController.searchResultsUpdater = self
         
+        self.navigationItem.title = "Airbnb"
         self.navigationItem.searchController = searchController
     }
     
-    private func addViews() {
-        view.addSubview(scrollView)
-        scrollView.addSubview(heroImageView)
-        scrollView.addSubview(titleLabel)
-        scrollView.addSubview(detailLabel)
-        scrollView.addSubview(ideaButton)
+    private func configureCollectionView() {
+        let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: generateLayout())
+        view.addSubview(collectionView)
+        collectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        collectionView.backgroundColor = .white
+        collectionView.register(
+            HeroImageCollectionViewCell.self,
+            forCellWithReuseIdentifier: String(describing: HeroImageCollectionViewCell.self))
+        collectionView.register(
+            NearestDestinationCollectionViewCell.self,
+            forCellWithReuseIdentifier: String(describing: NearestDestinationCollectionViewCell.self))
+        collectionView.register(
+            MainAccomodationCollectionViewCell.self,
+            forCellWithReuseIdentifier: String(describing: MainAccomodationCollectionViewCell.self))
+        collectionView.register(
+            CommonHeaderView.self,
+            forSupplementaryViewOfKind: MainViewController.sectionHeaderElementKind,
+            withReuseIdentifier: String(describing: CommonHeaderView.self))
+        mainCollectionView = collectionView
     }
     
-    private func setLayout() {
-        scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+    private func configureDataSource() {
+        dataSource = MainSectionDiffableDataSource(collectionView: mainCollectionView,
+                                                   cellProvider: { collectionView, indexPath, itemIdentifier in
+            let sectionType = MainSection.allCases[indexPath.section]
+            
+            switch sectionType {
+            case .heroImage:
+                guard let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: String(describing: HeroImageCollectionViewCell.self),
+                    for: indexPath) as? HeroImageCollectionViewCell else {
+                    return UICollectionViewCell() }
+                cell.titleLabel.text = itemIdentifier.title
+                cell.heroImageView.image = UIImage(named: "\(itemIdentifier.imageName)")
+                cell.isDataSourceConfigured = true
+                return cell
+            case .nearestDestination:
+                guard let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: String(describing: NearestDestinationCollectionViewCell.self),
+                    for: indexPath) as? NearestDestinationCollectionViewCell else {
+                    return UICollectionViewCell() }
+                cell.titleLabel.text = itemIdentifier.title
+                cell.detailLabel.text = "차로 30분 거리"
+                cell.cityImageView.image = UIImage(named: "img_hero_jeju")
+                cell.isDataSourceConfigured = true
+                return cell
+            case .accomodation:
+                guard let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: String(describing: MainAccomodationCollectionViewCell.self),
+                    for: indexPath) as? MainAccomodationCollectionViewCell else {
+                    return UICollectionViewCell() }
+                cell.detailLabel.text = "자연생활을 만끼할 수\n있는 숙소"
+                cell.accomodationImageView.image = UIImage(named: "img_hero_beach")
+                cell.isDataSourceConfigured = true
+                return cell
+            }
+        })
         
-        heroImageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
-        heroImageView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
-        heroImageView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        heroImageView.heightAnchor.constraint(equalToConstant: 250).isActive = true
-        
-        scrollView.contentLayoutGuide.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor)
-            .isActive = true
-        scrollView.contentLayoutGuide.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
-            .isActive = true
-        scrollView.contentLayoutGuide.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        scrollView.contentLayoutGuide.bottomAnchor.constraint(equalTo: heroImageView.bottomAnchor).isActive = true
+        let snapshot = snapshotForCurrentState()
+        dataSource.apply(snapshot, animatingDifferences: false)
+    }
     
-        titleLabel.leadingAnchor.constraint(equalTo: heroImageView.leadingAnchor, constant: 20).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: heroImageView.topAnchor, constant: 20).isActive = true
+    private func snapshotForCurrentState() -> NSDiffableDataSourceSnapshot<MainSection, MainImageItem> {
+        var snapshot = NSDiffableDataSourceSnapshot<MainSection, MainImageItem>()
+        snapshot.appendSections([MainSection.heroImage])
+        snapshot.appendItems(Array(itemsForHeroImageSection().prefix(3)))
         
-        detailLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
-        detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20).isActive = true
+        snapshot.appendSections([MainSection.nearestDestination])
+        snapshot.appendItems(itemsForNearestDestinationSection().suffix(3))
         
-        ideaButton.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
-        ideaButton.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: 20).isActive = true
-        ideaButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 2.5).isActive = true
-        ideaButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        snapshot.appendSections([MainSection.accomodation])
+        snapshot.appendItems(itemsForAccomodationSection())
+        return snapshot
+    }
+    
+    private func itemsForHeroImageSection() -> [MainImageItem] {
+        return MockDataModel.mockHeroImages // 섹션에 이 갯수만큼 아이템들이 나온다.
+    }
+    
+    private func itemsForNearestDestinationSection() -> [MainImageItem] {
+        return MockDataModel.mockHeroImages
+    }
+    
+    private func itemsForAccomodationSection() -> [MainImageItem] {
+        return [MainImageItem(title: "슬기로운 자연생활", imageName: "img_hero"),
+                MainImageItem(title: "바다로 떠나요", imageName: "img_hero_beach")]
+    }
+    
+    private func generateLayout() -> UICollectionViewLayout {
+        let layout =
+        UICollectionViewCompositionalLayout { (sectionIndex: Int, _) -> NSCollectionLayoutSection? in
+            let sectionLayoutKind = MainSection.allCases[sectionIndex]
+            switch sectionLayoutKind {
+            case .heroImage:
+                return self.generateHeroImageSection()
+            case .nearestDestination:
+                return self.generateNearestDestinationSection()
+            case .accomodation:
+                return self.generateAccomodationSection()
+            }
+        }
+        return layout
+    }
+    
+    private func generateHeroImageSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalWidth(2/3))
+        
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalWidth(2/3))
+        
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: groupSize,
+            subitem: item,
+            count: 1)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
+        return section
+    }
+    
+    private func generateNearestDestinationSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(8/9),
+            heightDimension: .fractionalWidth(1/4))
+        
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
+        
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(3/4),
+            heightDimension: .fractionalWidth(4/9))
+        
+        let group = NSCollectionLayoutGroup.vertical(
+            layoutSize: groupSize,
+            subitem: item,
+            count: 2)
+        
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .estimated(1))
+
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: MainViewController.sectionHeaderElementKind,
+            alignment: .top)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
+        section.boundarySupplementaryItems = [sectionHeader]
+        return section
+    }
+    
+    private func generateAccomodationSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(4/7),
+            heightDimension: .fractionalWidth(1.55))
+        
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: -20)
+        
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(3/4),
+            heightDimension: .fractionalWidth(1/2))
+        
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: groupSize,
+            subitem: item,
+            count: 1)
+        group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
+        
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .estimated(1))
+
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: MainViewController.sectionHeaderElementKind,
+            alignment: .top)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 20)
+        section.orthogonalScrollingBehavior = .groupPaging
+        section.boundarySupplementaryItems = [sectionHeader]
+        return section
+    }
+}
+
+extension MainViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        dump(searchController.searchBar.text)
     }
 }
