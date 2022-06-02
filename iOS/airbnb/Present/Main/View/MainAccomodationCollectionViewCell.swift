@@ -65,7 +65,7 @@ class MainAccomodationCollectionViewCell: UICollectionViewCell {
         
         detailLabel.leadingAnchor.constraint(equalTo: accomodationImageView.leadingAnchor).isActive = true
         detailLabel.trailingAnchor.constraint(equalTo: accomodationImageView.trailingAnchor).isActive = true
-        detailLabel.topAnchor.constraint(equalTo: accomodationImageView.bottomAnchor).isActive = true
-        detailLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -50).isActive = true
+        detailLabel.topAnchor.constraint(equalTo: accomodationImageView.bottomAnchor, constant: 20).isActive = true
+        detailLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -40).isActive = true
     }
 }
