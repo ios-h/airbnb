@@ -23,12 +23,4 @@ public enum AccommodationType {
 	public String getDbData() {
 		return dbData;
 	}
-
-	public static void main(String[] args) {
-		AccommodationType type = AccommodationType.ofDbData("일반 호텔");
-		AccommodationType hotel = AccommodationType.HOTEL;
-		System.out.println("**type=" + type);
-		System.out.println("**hotel=" + hotel);
-		System.out.println("type.eq.hotel=" + type.equals(hotel));
-	}
 }
