@@ -33,8 +33,70 @@ struct MainSectionType {
 }
 
 class MainSectionLayout {
-    static func configureItem(_ itemSize: ItemSize = ItemSize(),
-                              contentInset: NSDirectionalEdgeInsets = .zero) -> NSCollectionLayoutItem {
+    
+    static func generateHeroImageSection() -> NSCollectionLayoutSection {
+        let item = MainSectionLayout().configureItem()
+        
+        let groupType = MainGroupType(groupSize: MainSize(width: 1.0, heightComputedByWidth: 1.2),
+                                      isDirectionVertical: false,
+                                      item: item,
+                                      itemCount: 1)
+        let group = MainSectionLayout().configureGroup(groupType: groupType)
+        let sectionType = MainSectionType(group: group)
+        let section = MainSectionLayout().configureSection(sectionType: sectionType)
+        return section
+    }
+    
+    static func generateNearestDestinationSection() -> NSCollectionLayoutSection {
+        let item = MainSectionLayout().configureItem(contentInset: NSDirectionalEdgeInsets(top: 0,
+                                                                       leading: 10,
+                                                                       bottom: 0,
+                                                                       trailing: 10))
+        
+        let groupType = MainGroupType(groupSize: MainSize(width: 3/4, heightComputedByWidth: 4/9),
+                                      isDirectionVertical: true,
+                                      item: item,
+                                      itemCount: 2)
+        let group = MainSectionLayout().configureGroup(groupType: groupType)
+        
+        let sectionHeader = MainSectionLayout().configureHeader(MainSize(width: 1.0,
+                                                     heightComputedByWidth: 0.2))
+        
+        let sectionType = MainSectionType(group: group, header: sectionHeader)
+        let section = MainSectionLayout().configureSection(sectionType: sectionType)
+        return section
+    }
+    
+    static func generateAccomodationSection() -> NSCollectionLayoutSection {
+        let item = MainSectionLayout().configureItem(contentInset: NSDirectionalEdgeInsets(top: 0,
+                                                                       leading: 0,
+                                                                       bottom: 0,
+                                                                       trailing: -20))
+        
+        let groupType = MainGroupType(groupSize: MainSize(width: 3/4, heightComputedByWidth: 1.15),
+                                      groupInset: NSDirectionalEdgeInsets(top: 0,
+                                                                          leading: 20,
+                                                                          bottom: 0,
+                                                                          trailing: 20),
+                                      isDirectionVertical: false,
+                                      item: item,
+                                      itemCount: 1)
+        let group = MainSectionLayout().configureGroup(groupType: groupType)
+        
+        let sectionHeader = MainSectionLayout().configureHeader(MainSize(width: 1.0,
+                                                     heightComputedByWidth: 0.3))
+        let sectionType = MainSectionType(group: group,
+                                          sectionInset: NSDirectionalEdgeInsets(top: 0,
+                                                                                leading: 0,
+                                                                                bottom: 0,
+                                                                                trailing: 20),
+                                          header: sectionHeader)
+        let section = MainSectionLayout().configureSection(sectionType: sectionType)
+        return section
+    }
+    
+    private func configureItem(_ itemSize: ItemSize = ItemSize(),
+                               contentInset: NSDirectionalEdgeInsets = .zero) -> NSCollectionLayoutItem {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(itemSize.width),
             heightDimension: .fractionalHeight(itemSize.height))
@@ -44,7 +106,7 @@ class MainSectionLayout {
         return item
     }
     
-    static func configureGroup(groupType: MainGroupType) -> NSCollectionLayoutGroup {
+    private func configureGroup(groupType: MainGroupType) -> NSCollectionLayoutGroup {
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(groupType.groupSize.width),
             heightDimension: .fractionalWidth(groupType.groupSize.heightComputedByWidth))
@@ -65,8 +127,8 @@ class MainSectionLayout {
         group.contentInsets = groupType.groupInset
         return group
     }
-
-    static func configureHeader(_ size: MainSize) -> NSCollectionLayoutBoundarySupplementaryItem {
+    
+    private func configureHeader(_ size: MainSize) -> NSCollectionLayoutBoundarySupplementaryItem {
         let headerSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(size.width),
             heightDimension: .fractionalWidth(size.heightComputedByWidth))
@@ -79,7 +141,7 @@ class MainSectionLayout {
         return sectionHeader
     }
     
-    static func configureSection(sectionType: MainSectionType) -> NSCollectionLayoutSection {
+    private func configureSection(sectionType: MainSectionType) -> NSCollectionLayoutSection {
         let section = NSCollectionLayoutSection(group: sectionType.group)
         section.contentInsets = sectionType.sectionInset
         section.orthogonalScrollingBehavior = sectionType.scrollingBehavior
