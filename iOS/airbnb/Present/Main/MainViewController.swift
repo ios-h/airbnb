@@ -64,39 +64,8 @@ class MainViewController: UIViewController {
     
     private func configureDataSource() {
         dataSource = MainSectionDiffableDataSource(collectionView: mainCollectionView,
-                                                   cellProvider: { collectionView, indexPath, itemIdentifier in
-            let sectionType = MainSection.allCases[indexPath.section]
-            
-            switch sectionType {
-            case .heroImage:
-                guard let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: String(describing: HeroImageCollectionViewCell.self),
-                    for: indexPath) as? HeroImageCollectionViewCell else {
-                    return UICollectionViewCell() }
-                cell.titleLabel.text = itemIdentifier.title
-                cell.heroImageView.image = UIImage(named: "\(itemIdentifier.imageName)")
-                cell.isDataSourceConfigured = true
-                return cell
-            case .nearestDestination:
-                guard let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: String(describing: NearestDestinationCollectionViewCell.self),
-                    for: indexPath) as? NearestDestinationCollectionViewCell else {
-                    return UICollectionViewCell() }
-                cell.titleLabel.text = itemIdentifier.title
-                cell.detailLabel.text = "차로 30분 거리"
-                cell.cityImageView.image = UIImage(named: "img_hero_jeju")
-                cell.isDataSourceConfigured = true
-                return cell
-            case .accomodation:
-                guard let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: String(describing: MainAccomodationCollectionViewCell.self),
-                    for: indexPath) as? MainAccomodationCollectionViewCell else {
-                    return UICollectionViewCell() }
-                cell.detailLabel.text = "자연생활을 만끼할 수\n있는 숙소"
-                cell.accomodationImageView.image = UIImage(named: "img_hero_beach")
-                cell.isDataSourceConfigured = true
-                return cell
-            }
+                                                   cellProvider: { _, _, _ in
+            return UICollectionViewCell()
         })
         
         let snapshot = snapshotForCurrentState()
