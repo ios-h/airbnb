@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import lombok.Getter;
+import lombok.ToString;
 import org.team4.airbnb.accommodation.Accommodation;
 import org.team4.airbnb.customer.Customer;
 import org.team4.airbnb.domain.BaseCreated;
@@ -28,9 +29,9 @@ public class Reservation extends BaseCreated {
 
 	private LocalDate checkOutDate;
 
-	private int numberOfGuest;
+	private Integer numberOfGuest;
 
-	private int numberOfInfant;
+	private Integer numberOfInfant;
 
 	@Embedded
 	private Invoice invoice;
