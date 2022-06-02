@@ -22,7 +22,7 @@ public class ReservationService {
 			.map(r -> r.getAccommodation().getId())
 			.collect(Collectors.toSet());
 
-		List<Accommodation> accommodations = accommodationRepository.findAllWithImagesById(accommodationIds);
+		List<Accommodation> accommodations = accommodationRepository.findAllWithImagesByIdIn(accommodationIds);
 
 	}
 }

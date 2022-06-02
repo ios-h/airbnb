@@ -7,8 +7,10 @@ import org.springframework.data.repository.query.Param;
 
 public interface AccommodationRepository extends JpaRepository<Accommodation, Long> {
 
-	@Query("select a from Accommodation a join fetch a.accommodationImages where a.id in :accommodationIds")
-	List<Accommodation> findAllWithImagesById(
+	@Query("select distinct a from Accommodation a "
+		+ "left join fetch a.accommodationImages "
+		+ "where a.id in :accommodationIds")
+	List<Accommodation> findAllWithImagesByIdIn(
 		@Param("accommodationIds") Iterable<Long> accommodationIds);
 
 	List<Accommodation> findByIdIn(List<Long> accommodationIds);
