@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -49,6 +50,6 @@ public class Accommodation extends BaseCreated {
 	private RoomFeature roomFeature;
 
 	@OneToMany(mappedBy = "accommodation", fetch = FetchType.LAZY)
+	@OrderBy("imageSeq asc")
 	private List<AccommodationImage> accommodationImages = new ArrayList<>();
-
 }
