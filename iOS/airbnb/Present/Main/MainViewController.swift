@@ -103,16 +103,21 @@ class MainViewController: UIViewController {
         let layout =
         UICollectionViewCompositionalLayout { (sectionIndex: Int, _) -> NSCollectionLayoutSection? in
             let sectionLayoutKind = MainSection.allCases[sectionIndex]
-            switch sectionLayoutKind {
-            case .heroImage:
-                return self.generateHeroImageSection()
-            case .nearestDestination:
-                return self.generateNearestDestinationSection()
-            case .accomodation:
-                return self.generateAccomodationSection()
-            }
+            let section = self.generateSection(sectionLayoutKind: sectionLayoutKind)
+            return section
         }
         return layout
+    }
+    
+    private func generateSection(sectionLayoutKind: MainSection) -> NSCollectionLayoutSection {
+        switch sectionLayoutKind {
+        case .heroImage:
+            return generateHeroImageSection()
+        case .nearestDestination:
+            return generateNearestDestinationSection()
+        case .accomodation:
+            return generateAccomodationSection()
+        }
     }
     
     private func generateHeroImageSection() -> NSCollectionLayoutSection {
