@@ -5,7 +5,8 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 public enum ErrorCode {
-	NO_DATA_FOUND_CUSTOMER(HttpStatus.NOT_FOUND, "존재하지 않은 회원입니다.");
+	NO_DATA_FOUND_CUSTOMER(HttpStatus.NOT_FOUND, "존재하지 않은 회원입니다."),
+	ㅊ(HttpStatus.NOT_FOUND, "존재하지 숙소 타입입니다.");
 
 	final HttpStatus status;
 	final String message;
