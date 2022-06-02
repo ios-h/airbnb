@@ -3,10 +3,9 @@ package org.team4.airbnb.accommodation;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -36,7 +35,7 @@ public class Accommodation extends BaseCreated {
 
 	private String address;
 
-	@Enumerated(value = EnumType.STRING)
+	@Convert(converter = AccommodationTypeConverter.class)
 	@Column(name = "accommodation_type")
 	private AccommodationType type;
 
