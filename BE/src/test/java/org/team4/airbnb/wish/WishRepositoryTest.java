@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -37,14 +38,16 @@ class WishRepositoryTest {
 	@DisplayName("위시리스트 등록하기")
 	void addWish() {
 		//given
-		Wish wish = EntityCreator.createWish(customerRepository, customerId, accommodationId);
+		Wish wish = EntityCreator.createWish(customerRepository, accommodationRepository);
 
 		//when
 		Wish savedWish = wishRepository.save(wish);
 
 		//then
-		assertThat(savedWish).isNotNull();
-		assertThat(savedWish.getAccommodationId()).isEqualTo(accommodationId);
+		Assertions.assertAll(
+			() -> assertThat(savedWish.getAccommodationId()).isEqualTo(wish.getAccommodationId()),
+			() -> assertThat(savedWish.getCustomer()).isEqualTo(wish.getCustomer())
+		);
 	}
 
 	@Test
