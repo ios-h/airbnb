@@ -14,4 +14,6 @@ public interface AccommodationRepository extends JpaRepository<Accommodation, Lo
 		@Param("accommodationIds") Iterable<Long> accommodationIds);
 
 	List<Accommodation> findByIdIn(List<Long> accommodationIds);
+
+	Accommodation findFirstBy();
 }
