@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import java.util.NoSuchElementException;
-import java.util.Optional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -30,9 +29,6 @@ class WishRepositoryTest {
 	@Autowired
 	private CustomerRepository customerRepository;
 
-	private static final Long customerId = 1L;
-	private static final Long accommodationId = 100L;
-	private static final Long wishId = 1L;
 
 	@Test
 	@DisplayName("위시리스트 등록하기")
@@ -54,13 +50,13 @@ class WishRepositoryTest {
 	@DisplayName("위시리스트 삭제하기")
 	void deleteWish() {
 		//given
-		Optional<Wish> wish = wishRepository.findById(wishId);
+		Wish wish = wishRepository.findFirstBy();
 
 		//when
-		wishRepository.delete(wish.get());
+		wishRepository.delete(wish);
 
 		//then
 		assertThatExceptionOfType(NoSuchElementException.class)
-			.isThrownBy(() -> wishRepository.findById(wishId).get());
+			.isThrownBy(() -> wishRepository.findById(wish.getId()).get());
 	}
 }
