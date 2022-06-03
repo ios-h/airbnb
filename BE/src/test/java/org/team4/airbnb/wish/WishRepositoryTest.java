@@ -7,6 +7,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,6 +18,8 @@ import org.team4.airbnb.util.EntityCreator;
 
 @SpringBootTest
 @Transactional
+@Nested
+@DisplayName("위시 Repository에서")
 class WishRepositoryTest {
 
 	@Autowired
@@ -31,7 +34,7 @@ class WishRepositoryTest {
 	private static final Long wishId = 1L;
 
 	@Test
-	@DisplayName("위시리스트에 특정 숙소 등록하기")
+	@DisplayName("위시리스트 등록하기")
 	void addWish() {
 		//given
 		Wish wish = EntityCreator.createWish(customerRepository, customerId, accommodationId);
@@ -45,7 +48,7 @@ class WishRepositoryTest {
 	}
 
 	@Test
-	@DisplayName("위시리스트에 특정 숙소 삭제하기")
+	@DisplayName("위시리스트 삭제하기")
 	void deleteWish() {
 		//given
 		Optional<Wish> wish = wishRepository.findById(wishId);
