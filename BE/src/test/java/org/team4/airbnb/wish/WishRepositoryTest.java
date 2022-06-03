@@ -3,9 +3,9 @@ package org.team4.airbnb.wish;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import java.util.NoSuchElementException;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -40,7 +40,7 @@ class WishRepositoryTest {
 		Wish savedWish = wishRepository.save(wish);
 
 		//then
-		Assertions.assertAll(
+		assertAll(
 			() -> assertThat(savedWish.getAccommodationId()).isEqualTo(wish.getAccommodationId()),
 			() -> assertThat(savedWish.getCustomer()).isEqualTo(wish.getCustomer())
 		);
