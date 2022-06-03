@@ -33,9 +33,9 @@ class SearchCollectionViewCell: UICollectionViewCell {
         return stackView
     }()
     
-    let cityNameLabel = CustomLabel(color: .customBlack!, font: .systemFont(ofSize: 17, weight: .medium))
+    let cityNameLabel = CustomLabel(color: .customBlack, font: .systemFont(ofSize: 17, weight: .medium))
     
-    let descriptionLabel = CustomLabel(color: .gray3!, font: .systemFont(ofSize: 17, weight: .medium))
+    let descriptionLabel = CustomLabel(color: .gray3, font: .systemFont(ofSize: 17, weight: .medium))
     
     var isDataSourceConfigured: Bool? {
         didSet {

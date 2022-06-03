@@ -33,9 +33,9 @@ class NearestDestinationCollectionViewCell: UICollectionViewCell {
         return stackView
     }()
     
-    let titleLabel = CustomLabel(color: .customBlack!, font: .systemFont(ofSize: 17, weight: .medium))
+    let titleLabel = CustomLabel(color: .customBlack, font: .systemFont(ofSize: 17, weight: .medium))
     
-    let detailLabel = CustomLabel(color: .gray3!, font: .systemFont(ofSize: 17, weight: .medium))
+    let detailLabel = CustomLabel(color: .gray3, font: .systemFont(ofSize: 17, weight: .medium))
     
     var isDataSourceConfigured: Bool? {
         didSet {

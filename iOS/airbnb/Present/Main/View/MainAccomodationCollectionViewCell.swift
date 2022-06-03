@@ -23,7 +23,7 @@ class MainAccomodationCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    let detailLabel = CustomLabel(color: .gray1!, font: .systemFont(ofSize: 17, weight: .bold))
+    let detailLabel = CustomLabel(color: .gray1, font: .systemFont(ofSize: 17, weight: .bold))
     
     var isDataSourceConfigured: Bool? {
         didSet {

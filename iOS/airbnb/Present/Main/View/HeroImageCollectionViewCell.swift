@@ -22,7 +22,7 @@ class HeroImageCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    let titleLabel = CustomLabel(color: .customBlack!, font: .systemFont(ofSize: 34, weight: .medium))
+    let titleLabel = CustomLabel(color: .customBlack, font: .systemFont(ofSize: 34, weight: .medium))
     
     var isDataSourceConfigured: Bool? {
         didSet {
@@ -30,13 +30,13 @@ class HeroImageCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    private let detailLabel = CustomLabel(color: .gray1!,
+    private let detailLabel = CustomLabel(color: .gray1,
                                           text: "에어비앤비가 엄선한\n위시리스트를 만나보세요.",
                                           font: .systemFont(ofSize: 17, weight: .medium))
     
     private let ideaButton = CustomButton(title: "여행 아이디어 얻기",
                                           state: .normal,
-                                          titleColor: .white!,
+                                          titleColor: .white,
                                           backgroundColor: .black,
                                           font: .systemFont(ofSize: 17, weight: .bold))
     

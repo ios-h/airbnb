@@ -19,8 +19,8 @@ class CustomButton: UIButton {
 
     convenience init(title: String,
                      state: UIControl.State,
-                     titleColor: UIColor,
-                     backgroundColor: UIColor,
+                     titleColor: UIColor?,
+                     backgroundColor: UIColor?,
                      font: UIFont) {
         self.init()
 
