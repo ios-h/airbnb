@@ -20,6 +20,7 @@ public class ReservationService {
 	private final ReservationRepository reservationRepository;
 	private final AccommodationRepository accommodationRepository;
 
+	@Transactional(readOnly = true)
 	public ReservationResponse findAllByCustomerId(Long customerId, Pageable pageable) {
 
 		List<Reservation> reservations = reservationRepository
