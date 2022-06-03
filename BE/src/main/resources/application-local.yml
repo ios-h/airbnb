@@ -1,9 +1,4 @@
 spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/airbnb
-    username: team4
-    password: 1234
 
   jpa:
     hibernate:
@@ -19,6 +14,10 @@ spring:
     init:
       mode: always
 
+  config:
+    import: application-testdb.yml
+
 logging.level:
   org.hibernate.SQL: debug
-  org.hibernate.type: trace
+#  org.hibernate.type: trace
+  org.hibernate.type.BasicTypeRegistry: WARN

@@ -1,4 +1,4 @@
-package org.team4.airbnb.domain;
+package org.team4.airbnb.accommodation;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,19 +8,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import org.team4.airbnb.accommodation.Accommodation;
+import lombok.Getter;
 
 @Entity
-public class Review extends BaseCreated {
+@Getter
+public class AccommodationImage {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "review_id")
+	@Column(name = "accommodation_image_id")
 	private Long id;
 
-	private Integer score;
+	private String url;
 
-	private String comment;
+	private int imageSeq;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "accommodation_id")

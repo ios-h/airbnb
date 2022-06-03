@@ -1,14 +1,10 @@
-package org.team4.airbnb.domain;
-
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+package org.team4.airbnb.reservation;
 
 import javax.persistence.Embeddable;
+import lombok.Getter;
 
 @Embeddable
-@AllArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
 public class Invoice {
 
 	private int pricePerDay;
