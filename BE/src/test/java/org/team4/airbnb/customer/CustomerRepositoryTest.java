@@ -1,11 +1,10 @@
 package org.team4.airbnb.customer;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -14,7 +13,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import org.team4.airbnb.accommodation.Accommodation;
 import org.team4.airbnb.accommodation.AccommodationRepository;
+import org.team4.airbnb.util.EntityCreator;
 import org.team4.airbnb.wish.Wish;
+import org.team4.airbnb.wish.WishRepository;
 
 @SpringBootTest
 @Transactional
@@ -26,30 +27,49 @@ class CustomerRepositoryTest {
 	CustomerRepository customerRepository;
 	@Autowired
 	AccommodationRepository accommodationRepository;
+	@Autowired
+	WishRepository wishRepository;
 
 	private static final Long customerId = 1L;
 
 	@Test
 	@DisplayName("위시리스트만 조회")
 	void findById() {
+		//given
+		List<Wish> wishes = EntityCreator.create3Wishes(customerRepository,
+			accommodationRepository);
+
 		//when
-		Optional<Customer> findCustomer = customerRepository.findById(customerId);
-		List<Wish> wishes = findCustomer.get().getWishes();
+		List<Wish> savedWishes = new ArrayList<>();
+		for (Wish wish : wishes) {
+			Wish savedWish = wishRepository.save(wish);
+			savedWishes.add(savedWish);
+		}
 
 		//then
-		assertThat(findCustomer).isNotEmpty();
-		assertThat(wishes).hasSize(3).anyMatch(wish -> wish.getCustomer().getId() == customerId);
+		assertAll(
+			() -> assertThat(savedWishes).hasSize(3),
+			() -> assertThat(savedWishes).allMatch(
+				savedWish -> savedWish.getCustomer().getId() == wishes.get(0).getCustomer().getId())
+		);
 	}
 
 	@Test
 	@DisplayName("위시리스트와 해당 숙소 조회")
 	void findWishAndAccommodationById() {
+		//given
+		List<Wish> wishes = EntityCreator.create3Wishes(customerRepository,
+			accommodationRepository);
+
 		//when
-		Optional<Customer> findCustomer = customerRepository.findById(customerId);
-		List<Wish> wishes = findCustomer.get().getWishes();
+		List<Wish> savedWishes = new ArrayList<>();
+		for (Wish wish : wishes) {
+			Wish savedWish = wishRepository.save(wish);
+			savedWishes.add(savedWish);
+		}
 
 		List<Long> accommodationIds = new ArrayList<>();
-		for (Wish wish : wishes) {
+		for (Wish wish : savedWishes) {
 			accommodationIds.add(wish.getId());
 		}
 
@@ -57,8 +77,14 @@ class CustomerRepositoryTest {
 			accommodationIds);
 
 		//then
-		assertThat(findCustomer).isNotEmpty();
-		assertThat(wishes).hasSize(3).anyMatch(wish -> wish.getCustomer().getId() == customerId);
-		assertThat(findAccommodations).hasSize(3).anyMatch(Objects::nonNull);
+		assertAll(
+			() -> assertThat(savedWishes).hasSize(3),
+			() -> assertThat(savedWishes).allMatch(
+				savedWish -> savedWish.getCustomer().getId() == wishes.get(0).getCustomer()
+					.getId()),
+			() -> assertThat(findAccommodations).hasSize(3),
+			() -> assertThat(findAccommodations).allMatch(
+				accommodation -> accommodation.getName() != null)
+		);
 	}
 }
