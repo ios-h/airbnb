@@ -34,13 +34,12 @@ class MainViewController: UIViewController {
     }
     
     private func setUpSearchController() {
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchBar.placeholder = "어디로 여행가세요?"
-        searchController.obscuresBackgroundDuringPresentation = true // true이면 검색 중 뒷 배경 모두 흐릿하게 해줌
-        searchController.searchResultsUpdater = self
-        
+        let searchController = SearchViewController(searchResultsController: nil)
         self.navigationItem.title = "Airbnb"
         self.navigationItem.searchController = searchController
+        
+        print("SearchController를 MainFlowCoordinator로 전달.", searchController)
+        coordinate?.coordinateToSearchViewController(searchViewController: searchController)
     }
     
     private func configureCollectionView() {
@@ -119,11 +118,5 @@ class MainViewController: UIViewController {
         case .accomodation:
             return mainViewModel.generateAccomodationSection()
         }
-    }
-}
-
-extension MainViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        dump(searchController.searchBar.text)
     }
 }

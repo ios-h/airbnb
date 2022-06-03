@@ -8,12 +8,11 @@
 import UIKit
 
 protocol MainFlow: AnyObject {
-    func coordinateToSearchViewController()
+    func coordinateToSearchViewController(searchViewController: UISearchController)
 }
 
 class MainFlowCoordinator: Coordinator, MainFlow {
     weak var navigationController: UINavigationController?
-    weak var searchViewController: SearchViewController?
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -21,12 +20,22 @@ class MainFlowCoordinator: Coordinator, MainFlow {
     
     func start() {
         let mainViewController = MainViewController()
+        mainViewController.coordinate = self
         navigationController?.pushViewController(mainViewController, animated: false)
     }
     
-    func coordinateToSearchViewController() {
-        let searchViewController = SearchViewController()
-        self.searchViewController = searchViewController
-        navigationController?.pushViewController(searchViewController, animated: false)
+    func coordinateToSearchViewController(searchViewController: UISearchController) {
+        guard let navigationController = navigationController else {
+            return
+        }
+
+        guard let searchViewController = searchViewController as? SearchViewController else {
+            return
+        }
+        
+        let searchFlowCoordinator = SearchFlowCoordinator(navigationController: navigationController,
+                                                          searchViewController: searchViewController)
+//        print("MainFlowCoordinator에서 SearchController를 SearchFlowCoordinator로 전달", searchViewController)
+        coordinate(to: searchFlowCoordinator)
     }
 }
