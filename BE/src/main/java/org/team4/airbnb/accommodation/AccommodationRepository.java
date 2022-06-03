@@ -16,4 +16,6 @@ public interface AccommodationRepository extends JpaRepository<Accommodation, Lo
 	List<Accommodation> findByIdIn(List<Long> accommodationIds);
 
 	Accommodation findFirstBy();
+
+	List<Accommodation> findTop3ByOrderById();
 }
