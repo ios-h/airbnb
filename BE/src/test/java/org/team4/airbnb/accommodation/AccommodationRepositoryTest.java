@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +16,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
 @Transactional
+@Nested
+@DisplayName("숙소 Repository에서")
 class AccommodationRepositoryTest {
 
 	@Autowired
@@ -23,7 +26,7 @@ class AccommodationRepositoryTest {
 	Logger logger = LoggerFactory.getLogger(AccommodationRepositoryTest.class);
 
 	@Test
-	@DisplayName("accommodationId 목록으로 accommodation 검색")
+	@DisplayName("숙소 Id 목록으로 사진이 포함된 숙소 목록 검색")
 	void findAllWithImagesById() {
 		Set<Long> ids = new HashSet<>();
 		ids.add(3L);
