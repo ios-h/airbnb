@@ -8,6 +8,7 @@ spring:
         #        show_sql: true
         format_sql: true
     defer-datasource-initialization: true
+    open-in-view: false
 
   #  추가해야 data.sql실행
   sql:
