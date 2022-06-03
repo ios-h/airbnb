@@ -23,24 +23,15 @@ class SearchFlowCoordinator: Coordinator, SearchFlow {
     
     func start() {
         searchViewController?.coordinate = self
-        print("searchController를 SearchFlowCoordinator에서 전달 받음.", searchViewController)
-        print("coordinate setting 완료", searchViewController?.coordinate)
         
         searchPreviewViewController = SearchPreviewViewController()
         searchPreviewViewController?.coordinate = self
-        print("searchPreviewViewController set", searchPreviewViewController?.coordinate)
     }
     
     func coordinateToSearchPreview() {
-//        let searchPreviewViewController = SearchPreviewViewController()
-//        searchPreviewViewController.coordinate = self
-        print("aaaa", searchPreviewViewController?.coordinate)
-        
         guard let searchPreviewViewController = searchPreviewViewController else {
             return
         }
-
-
         navigationController?.pushViewController(searchPreviewViewController, animated: true)
     }
 }

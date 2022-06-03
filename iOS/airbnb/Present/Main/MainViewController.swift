@@ -38,7 +38,6 @@ class MainViewController: UIViewController {
         self.navigationItem.title = "Airbnb"
         self.navigationItem.searchController = searchController
         
-        print("SearchController를 MainFlowCoordinator로 전달.", searchController)
         coordinate?.coordinateToSearchViewController(searchViewController: searchController)
     }
     

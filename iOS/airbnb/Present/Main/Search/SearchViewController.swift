@@ -23,9 +23,6 @@ class SearchViewController: UISearchController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        print("coordinateeee")
     }
     
     private func setUp() {

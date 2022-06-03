@@ -35,7 +35,6 @@ class MainFlowCoordinator: Coordinator, MainFlow {
         
         let searchFlowCoordinator = SearchFlowCoordinator(navigationController: navigationController,
                                                           searchViewController: searchViewController)
-//        print("MainFlowCoordinator에서 SearchController를 SearchFlowCoordinator로 전달", searchViewController)
         coordinate(to: searchFlowCoordinator)
     }
 }
