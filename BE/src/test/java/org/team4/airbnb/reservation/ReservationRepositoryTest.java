@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
@@ -19,8 +20,8 @@ class ReservationRepositoryTest {
 	@Test
 	@DisplayName("customerId로 reservation 목록 검색")
 	void findAllByCustomerId() {
-		List<Reservation> reservations = reservationRepository.findAllByCustomerId(2L);
-
-		assertThat(reservations).hasSize(2);
+		List<Reservation> reservations = reservationRepository
+			.findAllByCustomerId(1L, PageRequest.of(0, 1));
+		assertThat(reservations).hasSize(1);
 	}
 }

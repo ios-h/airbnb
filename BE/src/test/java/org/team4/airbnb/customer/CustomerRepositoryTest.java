@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,6 +18,8 @@ import org.team4.airbnb.wish.Wish;
 
 @SpringBootTest
 @Transactional
+@Nested
+@DisplayName("고객 정보 Repository 에서")
 class CustomerRepositoryTest {
 
 	@Autowired
@@ -25,7 +28,7 @@ class CustomerRepositoryTest {
 	AccommodationRepository accommodationRepository;
 
 	@Test
-	@DisplayName("customerId로 위시리스트만 조회하기")
+	@DisplayName("위시리스트만 조회")
 	void findById() {
 		//when
 		Optional<Customer> findCustomer = customerRepository.findById(1L);
@@ -37,7 +40,7 @@ class CustomerRepositoryTest {
 	}
 
 	@Test
-	@DisplayName("customerId로 위시리스트와 해당하는 숙소 조회하기")
+	@DisplayName("위시리스트와 해당 숙소 조회")
 	void findWishAndAccommodationById() {
 		//when
 		Optional<Customer> findCustomer = customerRepository.findById(1L);
