@@ -6,10 +6,14 @@ import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.team4.airbnb.accommodation.AccommodationRepository;
+import org.team4.airbnb.exception.CustomException;
+import org.team4.airbnb.exception.ErrorCode;
 import org.team4.airbnb.reservation.dto.ReservationResponse;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class ReservationService {
 
@@ -28,5 +32,12 @@ public class ReservationService {
 		accommodationRepository.findAllWithImagesByIdIn(accommodationIds);
 
 		return ReservationResponse.from(reservations);
+	}
+
+	public void cancel(Long reservationId) {
+		Reservation reservation = reservationRepository.findById(reservationId)
+			.orElseThrow(() -> new CustomException(ErrorCode.NO_DATA_FOUND_RESERVATION));
+
+		reservationRepository.delete(reservation);
 	}
 }
