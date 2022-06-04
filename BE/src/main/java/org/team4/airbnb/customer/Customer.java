@@ -9,13 +9,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.team4.airbnb.wish.Wish;
 
 @Entity
 @NoArgsConstructor
-@Getter
+@Setter
 public class Customer {
 
 	@Id
@@ -27,6 +27,14 @@ public class Customer {
 
 	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
 	List<Wish> wishes = new ArrayList<>();
+
+	public List<Long> askAccommodationIdsOfwishes(){
+		List<Long> accommodationIds = new ArrayList<>();
+		for (Wish wish : wishes) {
+			accommodationIds.add(wish.getAccommodationId());
+		}
+		return accommodationIds;
+	}
 
 	@Override
 	public String toString() {
