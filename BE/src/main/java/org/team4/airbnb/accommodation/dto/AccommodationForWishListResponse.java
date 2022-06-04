@@ -14,6 +14,7 @@ public class AccommodationForWishListResponse {
 
 	private final List<Element> data;
 
+	@Getter
 	private static class Element {
 		private final Long accommodationId;
 		private final String name;
@@ -38,12 +39,12 @@ public class AccommodationForWishListResponse {
 
 	public static AccommodationForWishListResponse from(List<Accommodation> accommodations,
 		List<Long> wishIds) {
-		List<Element> listForWish = new ArrayList<>();
+		List<Element> elements = new ArrayList<>();
 		for (int i = 0; i < wishIds.size(); i++) {
 			Element element = new Element(accommodations.get(i), wishIds.get(i));
-			listForWish.add(element);
+			elements.add(element);
 		}
-		return new AccommodationForWishListResponse(listForWish);
+		return new AccommodationForWishListResponse(elements);
 	}
 
 }
