@@ -16,7 +16,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.ToString;
-import org.hibernate.annotations.DynamicUpdate;
 import org.team4.airbnb.accommodation.Accommodation;
 import org.team4.airbnb.customer.Customer;
 import org.team4.airbnb.domain.BaseCreated;
