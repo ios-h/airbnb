@@ -42,7 +42,7 @@ class WishRepositoryTest {
 		//then
 		assertAll(
 			() -> assertThat(savedWish.getAccommodationId()).isEqualTo(wish.getAccommodationId()),
-			() -> assertThat(savedWish.getCustomer()).isEqualTo(wish.getCustomer())
+			() -> assertThat(savedWish).isEqualTo(wish)
 		);
 	}
 

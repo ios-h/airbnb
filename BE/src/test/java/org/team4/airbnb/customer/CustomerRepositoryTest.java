@@ -30,8 +30,6 @@ class CustomerRepositoryTest {
 	@Autowired
 	WishRepository wishRepository;
 
-	private static final Long customerId = 1L;
-
 	@Test
 	@DisplayName("위시리스트만 조회")
 	void findById() {
@@ -40,17 +38,13 @@ class CustomerRepositoryTest {
 			accommodationRepository);
 
 		//when
-		List<Wish> savedWishes = new ArrayList<>();
-		for (Wish wish : wishes) {
-			Wish savedWish = wishRepository.save(wish);
-			savedWishes.add(savedWish);
-		}
+		List<Wish> savedWishes = wishRepository.saveAll(wishes);
 
 		//then
 		assertAll(
 			() -> assertThat(savedWishes).hasSize(3),
-			() -> assertThat(savedWishes).allMatch(
-				savedWish -> savedWish.getCustomer().getId() == wishes.get(0).getCustomer().getId())
+			() -> assertThat(savedWishes).anyMatch(
+				savedWish -> savedWish.equals(wishes.get(0)))
 		);
 	}
 
@@ -62,11 +56,7 @@ class CustomerRepositoryTest {
 			accommodationRepository);
 
 		//when
-		List<Wish> savedWishes = new ArrayList<>();
-		for (Wish wish : wishes) {
-			Wish savedWish = wishRepository.save(wish);
-			savedWishes.add(savedWish);
-		}
+		List<Wish> savedWishes = wishRepository.saveAll(wishes);
 
 		List<Long> accommodationIds = new ArrayList<>();
 		for (Wish wish : savedWishes) {
@@ -79,12 +69,10 @@ class CustomerRepositoryTest {
 		//then
 		assertAll(
 			() -> assertThat(savedWishes).hasSize(3),
-			() -> assertThat(savedWishes).allMatch(
-				savedWish -> savedWish.getCustomer().getId() == wishes.get(0).getCustomer()
-					.getId()),
+			() -> assertThat(savedWishes).anyMatch(
+				savedWish -> savedWish.equals(wishes.get(0))),
 			() -> assertThat(findAccommodations).hasSize(3),
-			() -> assertThat(findAccommodations).allMatch(
-				accommodation -> accommodation.getName() != null)
+			() -> assertThat(findAccommodations).anyMatch(accommodation -> accommodation.isNotNullName(accommodation))
 		);
 	}
 }
