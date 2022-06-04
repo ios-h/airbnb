@@ -1,6 +1,7 @@
 package org.team4.airbnb.accommodation;
 
 import java.util.Arrays;
+import org.team4.airbnb.exception.AccommodationTypeNotFoundException;
 import org.team4.airbnb.exception.CustomException;
 import org.team4.airbnb.exception.ErrorCode;
 
@@ -17,7 +18,7 @@ public enum AccommodationType {
 		return Arrays.stream(AccommodationType.values())
 			.filter(accommodationType -> accommodationType.getDbData().equals(dbData))
 			.findAny()
-			.orElseThrow(() -> new CustomException(ErrorCode.NO_DATA_FOUND_ACCOMMODATION_TYPE));
+			.orElseThrow(AccommodationTypeNotFoundException::new);
 	}
 
 	public String getDbData() {
