@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.team4.airbnb.accommodation.Accommodation;
 import org.team4.airbnb.accommodation.AccommodationRepository;
-import org.team4.airbnb.accommodation.dto.AccommodationForWishListResponse;
+import org.team4.airbnb.customer.dto.AccommodationForWishListResponse;
 import org.team4.airbnb.exception.CustomerNotFoundException;
 
 @Service

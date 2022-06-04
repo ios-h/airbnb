@@ -1,4 +1,4 @@
-package org.team4.airbnb.accommodation.dto;
+package org.team4.airbnb.customer.dto;
 
 import java.util.ArrayList;
 import java.util.List;
