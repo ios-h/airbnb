@@ -1,8 +1,7 @@
 package org.team4.airbnb.accommodation;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import org.junit.jupiter.api.DisplayName;
@@ -20,6 +19,8 @@ import org.springframework.transaction.annotation.Transactional;
 @DisplayName("숙소 Repository에서")
 class AccommodationRepositoryTest {
 
+	private static final Set<Long> SAMPLE_IDS = Set.of(3L, 4L, 5L);
+
 	@Autowired
 	AccommodationRepository accommodationRepository;
 
@@ -28,14 +29,11 @@ class AccommodationRepositoryTest {
 	@Test
 	@DisplayName("숙소 Id 목록으로 사진이 포함된 숙소 목록 검색")
 	void findAllWithImagesById() {
-		Set<Long> ids = new HashSet<>();
-		ids.add(3L);
-		ids.add(4L);
-		ids.add(5L);
-		List<Accommodation> accommodations = accommodationRepository.findAllWithImagesByIdIn(ids);
+		List<Accommodation> accommodations = accommodationRepository
+			.findAllWithImagesByIdIn(SAMPLE_IDS);
 
 		accommodations.forEach(a -> logger.info(a.toString()));
 
-		assertThat(accommodations).hasSize(3);
+		assertThat(accommodations).hasSize(SAMPLE_IDS.size());
 	}
 }
