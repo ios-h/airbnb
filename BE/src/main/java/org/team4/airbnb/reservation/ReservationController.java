@@ -28,8 +28,8 @@ public class ReservationController {
 	}
 
 	@GetMapping
-	public ReservationResponse allByCustomerId(@RequestParam("customerId") Long customerId, Pageable pageable) {
-		return reservationService.findAllByCustomerId(customerId, pageable);
+	public ResponseEntity<ReservationResponse> allByCustomerId(@RequestParam("customerId") Long customerId, Pageable pageable) {
+		return ResponseEntity.ok(reservationService.findAllByCustomerId(customerId, pageable));
 	}
 
 	@DeleteMapping("/{id}")
