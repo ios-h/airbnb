@@ -12,4 +12,10 @@ public class CustomExceptionHandler {
 		return ResponseEntity.status(exception.getErrorCode().getStatus())
 			.body(exception.getErrorCode());
 	}
+
+	@ExceptionHandler(BusinessException.class)
+	public ResponseEntity<Object> handleBusinessException(BusinessException exception) {
+		return ResponseEntity.status(exception.getHttpStatus())
+			.body(exception.getBodyMessage());
+	}
 }

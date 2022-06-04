@@ -6,8 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.team4.airbnb.accommodation.Accommodation;
 import org.team4.airbnb.accommodation.AccommodationRepository;
-import org.team4.airbnb.exception.CustomException;
-import org.team4.airbnb.exception.ErrorCode;
+import org.team4.airbnb.exception.NoDataFoundCustomerException;
 
 @Service
 @RequiredArgsConstructor
@@ -19,7 +18,7 @@ public class CustomerService {
 	@Transactional(readOnly = true)
 	public void getWishListByCustomerId(Long customerId) {
 		Customer customer = customerRepository.findById(customerId)
-			.orElseThrow(() -> new CustomException(ErrorCode.NO_DATA_FOUND_CUSTOMER));
+			.orElseThrow(() -> new NoDataFoundCustomerException());
 
 		List<Long> accommodationIds = customer.askAccommodationIdsOfwishes();
 
