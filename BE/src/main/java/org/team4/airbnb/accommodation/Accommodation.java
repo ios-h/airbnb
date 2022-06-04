@@ -31,7 +31,7 @@ public class Accommodation extends BaseCreated {
 
 	private String name;
 
-	private int price;
+	private Integer price;
 
 	@Embedded
 	private Geolocation geolocation;
