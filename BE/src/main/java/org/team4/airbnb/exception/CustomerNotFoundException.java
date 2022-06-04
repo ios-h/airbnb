@@ -2,7 +2,7 @@ package org.team4.airbnb.exception;
 
 import org.springframework.http.HttpStatus;
 
-public class NoDataFoundCustomerException extends BusinessException{
+public class CustomerNotFoundException extends BusinessException {
 
 	@Override
 	protected HttpStatus getHttpStatus() {
