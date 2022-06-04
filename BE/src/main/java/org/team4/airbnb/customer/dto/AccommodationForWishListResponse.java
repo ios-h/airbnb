@@ -1,8 +1,8 @@
 package org.team4.airbnb.customer.dto;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.team4.airbnb.accommodation.Accommodation;
@@ -39,12 +39,11 @@ public class AccommodationForWishListResponse {
 
 	public static AccommodationForWishListResponse from(List<Accommodation> accommodations,
 		List<Long> wishIds) {
-		List<Element> elements = new ArrayList<>();
-		for (int i = 0; i < wishIds.size(); i++) {
-			Element element = new Element(accommodations.get(i), wishIds.get(i));
-			elements.add(element);
-		}
+
+		List<Element> elements = IntStream.range(0, wishIds.size())
+			.mapToObj(i -> new Element(accommodations.get(i), wishIds.get(i)))
+			.collect(Collectors.toList());
+
 		return new AccommodationForWishListResponse(elements);
 	}
-
 }
