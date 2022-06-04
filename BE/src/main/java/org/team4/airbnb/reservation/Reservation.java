@@ -25,7 +25,6 @@ import org.team4.airbnb.domain.BaseCreated;
 @Getter
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@DynamicUpdate
 public class Reservation extends BaseCreated {
 
 	@Id
