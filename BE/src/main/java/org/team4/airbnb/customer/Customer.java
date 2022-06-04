@@ -2,6 +2,7 @@ package org.team4.airbnb.customer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -28,12 +29,18 @@ public class Customer {
 	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
 	List<Wish> wishes = new ArrayList<>();
 
-	public List<Long> askAccommodationIdsOfwishes(){
+	public List<Long> askAccommodationIdsOfWishes(){
 		List<Long> accommodationIds = new ArrayList<>();
 		for (Wish wish : wishes) {
 			accommodationIds.add(wish.getAccommodationId());
 		}
 		return accommodationIds;
+	}
+
+	public List<Long> askWishIdsOfWishes(){
+		return wishes.stream()
+			.map(Wish::getId)
+			.collect(Collectors.toList());
 	}
 
 	@Override
