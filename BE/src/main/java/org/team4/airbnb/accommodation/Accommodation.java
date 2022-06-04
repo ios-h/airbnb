@@ -52,4 +52,8 @@ public class Accommodation extends BaseCreated {
 	@OneToMany(mappedBy = "accommodation", fetch = FetchType.LAZY)
 	@OrderBy("imageSeq asc")
 	private List<AccommodationImage> accommodationImages = new ArrayList<>();
+
+	public boolean isNotNullName(Accommodation accommodation) {
+		return !accommodation.name.isEmpty();
+	}
 }
