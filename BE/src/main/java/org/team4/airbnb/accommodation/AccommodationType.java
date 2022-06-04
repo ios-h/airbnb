@@ -2,8 +2,6 @@ package org.team4.airbnb.accommodation;
 
 import java.util.Arrays;
 import org.team4.airbnb.exception.AccommodationTypeNotFoundException;
-import org.team4.airbnb.exception.CustomException;
-import org.team4.airbnb.exception.ErrorCode;
 
 public enum AccommodationType {
 	HOTEL("일반호텔");

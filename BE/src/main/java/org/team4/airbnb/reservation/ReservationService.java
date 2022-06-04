@@ -12,8 +12,9 @@ import org.team4.airbnb.accommodation.Accommodation;
 import org.team4.airbnb.accommodation.AccommodationRepository;
 import org.team4.airbnb.customer.Customer;
 import org.team4.airbnb.customer.CustomerRepository;
-import org.team4.airbnb.exception.CustomException;
-import org.team4.airbnb.exception.ErrorCode;
+import org.team4.airbnb.exception.AccommodationNotFoundException;
+import org.team4.airbnb.exception.CustomerNotFoundException;
+import org.team4.airbnb.exception.ReservationNotFoundException;
 import org.team4.airbnb.reservation.dto.ReservationRequest;
 import org.team4.airbnb.reservation.dto.ReservationResponse;
 
@@ -28,11 +29,11 @@ public class ReservationService {
 
 	public void make(ReservationRequest reservationRequest) {
 		Customer customer = customerRepository.findById(reservationRequest.getCustomerId())
-			.orElseThrow(() -> new CustomException(ErrorCode.NO_DATA_FOUND_CUSTOMER));
+			.orElseThrow(CustomerNotFoundException::new);
 
 		Accommodation accommodation = accommodationRepository
 			.findById((reservationRequest.getAccommodationId()))
-			.orElseThrow(() -> new CustomException(ErrorCode.NO_DATA_FOUND_CUSTOMER));
+			.orElseThrow(AccommodationNotFoundException::new);
 
 		Integer lengthOfStay = Math.toIntExact(
 			ChronoUnit.DAYS.between(reservationRequest.getCheckInDate(),
@@ -70,7 +71,7 @@ public class ReservationService {
 
 	public void cancel(Long reservationId) {
 		Reservation reservation = reservationRepository.findById(reservationId)
-			.orElseThrow(() -> new CustomException(ErrorCode.NO_DATA_FOUND_RESERVATION));
+			.orElseThrow(ReservationNotFoundException::new);
 
 		reservationRepository.delete(reservation);
 	}
