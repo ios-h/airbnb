@@ -22,7 +22,7 @@ public class CustomerService {
 			.orElseThrow(() -> new CustomerNotFoundException());
 
 		List<Long> accommodationIds = customer.askAccommodationIdsOfWishes();
-		List<Accommodation> accommodations = accommodationRepository.findByIdIn(accommodationIds);
+		List<Accommodation> accommodations = accommodationRepository.findAllWithImagesByIdIn(accommodationIds);
 		List<Long> wishIds = customer.askWishIdsOfWishes();
 
 		return AccommodationForWishListResponse.from(
