@@ -1,13 +1,6 @@
 package org.team4.airbnb.exception;
 
-import org.springframework.http.HttpStatus;
-
-public class ReservationNotFoundException extends BusinessException {
-
-	@Override
-	protected HttpStatus getHttpStatus() {
-		return HttpStatus.NOT_FOUND;
-	}
+public class ReservationNotFoundException extends NotFoundException {
 
 	@Override
 	protected String getBodyMessage() {
