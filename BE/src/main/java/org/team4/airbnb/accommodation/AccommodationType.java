@@ -5,7 +5,7 @@ import org.team4.airbnb.exception.CustomException;
 import org.team4.airbnb.exception.ErrorCode;
 
 public enum AccommodationType {
-	HOTEL("일반 호텔");
+	HOTEL("일반호텔");
 
 	private String dbData;
 
