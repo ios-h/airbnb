@@ -20,6 +20,11 @@ public class WishController {
 
 	private final WishService wishService;
 
+	/**
+	 * 위시 등록 - 숙소 검색 목록에서
+	 * @param wishRequest
+	 * @return
+	 */
 	@PostMapping("/wishlist")
 	public ResponseEntity<WishResponse> addWishList(@RequestBody WishRequest wishRequest) {
 		WishResponse response = wishService.addWishList(wishRequest);
