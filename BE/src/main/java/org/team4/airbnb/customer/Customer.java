@@ -43,6 +43,10 @@ public class Customer {
 			.collect(Collectors.toList());
 	}
 
+	public Long getId() {
+		return id;
+	}
+
 	@Override
 	public String toString() {
 		return "Customer{" +
