@@ -1,6 +1,7 @@
 package org.team4.airbnb.wish;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.team4.airbnb.customer.Customer;
@@ -49,11 +50,11 @@ public class WishService {
 		Customer customer = customerRepository.findById(customerId)
 			.orElseThrow(() -> new CustomerNotFoundException());
 
-		//먼저 해당 wishId가 있는지 확인하고 삭제.
-		Wish wish = wishRepository.findById(wishId)
-			.orElseThrow(() -> new WishNotFoundException());
-
-		wishRepository.deleteById(wishId);
+		try {
+			wishRepository.deleteById(wishId);
+		}catch(EmptyResultDataAccessException e) {
+			throw new WishNotFoundException();
+		}
 
 		return new WishResponse(true);
 	}
