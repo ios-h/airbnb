@@ -49,6 +49,10 @@ public class WishService {
 		Customer customer = customerRepository.findById(customerId)
 			.orElseThrow(() -> new CustomerNotFoundException());
 
+		//먼저 해당 wishId가 있는지 확인하고 삭제.
+		Wish wish = wishRepository.findById(wishId)
+			.orElseThrow(() -> new WishNotFoundException());
+
 		wishRepository.deleteById(wishId);
 
 		return new WishResponse(true);
