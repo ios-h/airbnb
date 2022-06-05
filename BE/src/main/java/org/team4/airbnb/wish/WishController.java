@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,5 +37,13 @@ public class WishController {
 		return ResponseEntity.noContent().build();
 	}
 
+	@DeleteMapping("/wishlist/{wishId}")
+	public ResponseEntity<WishResponse> deleteWishInWishList(@PathVariable Long wishId, @RequestParam Map<String, String> params) {
+		ObjectMapper mapper = new ObjectMapper();
+		WishRequest wishRequest = mapper.convertValue(params, WishRequest.class);
 
+		WishResponse response = wishService.deleteWishInWishList(wishId, wishRequest.getCustomerId());
+
+		return ResponseEntity.noContent().build();
+	}
 }
