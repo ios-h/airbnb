@@ -85,34 +85,27 @@ class SearchPreviewViewController: UIViewController {
     }
     
     private func generateSearchPreviewSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .fractionalWidth(5))
         
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
+        let item = LayoutManager().configureItem(ItemSize(width: 1, height: 5),
+                                                 contentInset: NSDirectionalEdgeInsets(top: 0,
+                                                                                       leading: 10,
+                                                                                       bottom: 0,
+                                                                                       trailing: 10))
         
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .fractionalHeight(1))
+        let groupType = MainGroupType(groupSize: GroupSize(width: 1, height: 1.6),
+                                      isDirectionVertical: true,
+                                      item: item,
+                                      itemCount: 8)
         
-        let group = NSCollectionLayoutGroup.vertical(
-            layoutSize: groupSize,
-            subitem: item,
-            count: 8)
+        let group = LayoutManager().configureGroup(groupType: groupType)
         
-        let headerSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .estimated(1))
-
-        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: headerSize,
-            elementKind: MainViewController.sectionHeaderElementKind,
-            alignment: .top)
+        let sectionHeader = LayoutManager().configureHeader(GroupSize(width: 1.0, height: 0.18),
+                                                            elementKind: MainViewController.sectionHeaderElementKind)
         
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .groupPaging
-        section.boundarySupplementaryItems = [sectionHeader]
+        let sectionType = MainSectionType(group: group,
+                                          header: sectionHeader)
+        
+        let section = LayoutManager().configureSection(sectionType: sectionType)
         return section
     }
 }

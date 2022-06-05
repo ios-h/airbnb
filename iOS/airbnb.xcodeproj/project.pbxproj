@@ -49,6 +49,8 @@
 		D0CC2B6E2840733200D77A3E /* MainFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CC2B6D2840733200D77A3E /* MainFlowCoordinator.swift */; };
 		D0D299DC284CB88A009D1608 /* MainCommonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299DB284CB88A009D1608 /* MainCommonCollectionViewCell.swift */; };
 		D0D299E0284CC156009D1608 /* MainCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299DF284CC156009D1608 /* MainCellFactory.swift */; };
+		D0D299E4284D000E009D1608 /* LayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299E3284D000E009D1608 /* LayoutManager.swift */; };
+		D0D299E8284D0C0C009D1608 /* ViewSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299E7284D0C0C009D1608 /* ViewSize.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +121,8 @@
 		D0CC2B6D2840733200D77A3E /* MainFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowCoordinator.swift; sourceTree = "<group>"; };
 		D0D299DB284CB88A009D1608 /* MainCommonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCommonCollectionViewCell.swift; sourceTree = "<group>"; };
 		D0D299DF284CC156009D1608 /* MainCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCellFactory.swift; sourceTree = "<group>"; };
+		D0D299E3284D000E009D1608 /* LayoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutManager.swift; sourceTree = "<group>"; };
+		D0D299E7284D0C0C009D1608 /* ViewSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSize.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -332,6 +336,8 @@
 			isa = PBXGroup;
 			children = (
 				D089E7E1284501810000AE78 /* CommonHeaderView.swift */,
+				D0D299E3284D000E009D1608 /* LayoutManager.swift */,
+				D0D299E7284D0C0C009D1608 /* ViewSize.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -620,6 +626,7 @@
 				D089E7E5284505F10000AE78 /* MainAccomodationCollectionViewCell.swift in Sources */,
 				D01D65F3283C70710067B5E1 /* MainViewController.swift in Sources */,
 				D0D299E0284CC156009D1608 /* MainCellFactory.swift in Sources */,
+				D0D299E4284D000E009D1608 /* LayoutManager.swift in Sources */,
 				D04C6C4B2849C58800A419A5 /* SearchViewController.swift in Sources */,
 				D0D299DC284CB88A009D1608 /* MainCommonCollectionViewCell.swift in Sources */,
 				D089E80528460B4C0000AE78 /* MainSectionDiffableDataSource.swift in Sources */,
@@ -631,6 +638,7 @@
 				D01D65EF283C70710067B5E1 /* AppDelegate.swift in Sources */,
 				D089E7F82845FABB0000AE78 /* Box.swift in Sources */,
 				D068BD022840701800EF783E /* TabBarCoordinator.swift in Sources */,
+				D0D299E8284D0C0C009D1608 /* ViewSize.swift in Sources */,
 				D089E80328460A4E0000AE78 /* MainSection.swift in Sources */,
 				D04C6C4928494B2600A419A5 /* SearchFlowCoordinator.swift in Sources */,
 				D089E80928461EE50000AE78 /* SearchPreviewViewController.swift in Sources */,
