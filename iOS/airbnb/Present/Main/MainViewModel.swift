@@ -118,15 +118,19 @@ class MainViewModel {
                 layoutSize: groupSize,
                 subitem: groupType.item,
                 count: groupType.itemCount)
-        } else {
-            group = NSCollectionLayoutGroup.horizontal(
-                layoutSize: groupSize,
-                subitem: groupType.item,
-                count: groupType.itemCount)
+            group.contentInsets = groupType.groupInset
+            return group
         }
+        
+        group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: groupSize,
+            subitem: groupType.item,
+            count: groupType.itemCount)
         group.contentInsets = groupType.groupInset
         return group
     }
+    
+    
     
     private func configureHeader(_ size: MainSize) -> NSCollectionLayoutBoundarySupplementaryItem {
         let headerSize = NSCollectionLayoutSize(
