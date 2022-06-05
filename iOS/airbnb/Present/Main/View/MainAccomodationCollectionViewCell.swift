@@ -7,13 +7,7 @@
 
 import UIKit
 
-class MainAccomodationCollectionViewCell: UICollectionViewCell {
-    
-    private let containerView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+class MainAccomodationCollectionViewCell: MainCollectionViewCell {
     
     let accomodationImageView: UIImageView = {
         let imageView = UIImageView()

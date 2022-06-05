@@ -7,13 +7,7 @@
 
 import UIKit
 
-class NearestDestinationCollectionViewCell: UICollectionViewCell {
-    
-    private let containerView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+class NearestDestinationCollectionViewCell: MainCollectionViewCell {
     
     let cityImageView: UIImageView = {
         let imageView = UIImageView()

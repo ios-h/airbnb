@@ -8,7 +8,7 @@
 import UIKit
 
 class MainSectionDiffableDataSource: UICollectionViewDiffableDataSource<MainSection, MainImageItem> {
-    
+        
     override func collectionView(_ collectionView: UICollectionView,
                                  viewForSupplementaryElementOfKind kind: String,
                                  at indexPath: IndexPath) -> UICollectionReusableView {
@@ -28,25 +28,25 @@ class MainSectionDiffableDataSource: UICollectionViewDiffableDataSource<MainSect
         
         guard let itemIdentifier = itemIdentifier(for: indexPath) else { return UICollectionViewCell() }
         
+        let mainViewCell = MainViewCell(collectionView: collectionView,
+                                        indexPath: indexPath,
+                                        detailItem: itemIdentifier)
+        
         switch sectionType {
         case .heroImage:
-            return heroSectionType(collectionView: collectionView,
-                                   indexPath: indexPath,
-                                   detailItem: itemIdentifier)
+            return heroSectionType(mainViewCell: mainViewCell)
         case .nearestDestination:
-            return nearestSectionType(collectionView: collectionView,
-                                      indexPath: indexPath,
-                                      detailItem: itemIdentifier)
+            return nearestSectionType(mainViewCell: mainViewCell)
         case .accomodation:
-            return accomodationSectionType(collectionView: collectionView,
-                                           indexPath: indexPath,
-                                           detailItem: itemIdentifier)
+            return accomodationSectionType(mainViewCell: mainViewCell)
         }
     }
     
-    private func heroSectionType(collectionView: UICollectionView,
-                                 indexPath: IndexPath,
-                                 detailItem: MainImageItem) -> UICollectionViewCell {
+    private func heroSectionType(mainViewCell: MainViewCell) -> UICollectionViewCell {
+        let collectionView = mainViewCell.collectionView
+        let indexPath = mainViewCell.indexPath
+        let detailItem = mainViewCell.detailItem
+        
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: HeroImageCollectionViewCell.self),
             for: indexPath) as? HeroImageCollectionViewCell else {
@@ -54,14 +54,16 @@ class MainSectionDiffableDataSource: UICollectionViewDiffableDataSource<MainSect
         }
         
         cell.titleLabel.text = detailItem.title
-        cell.heroImageView.image = UIImage(named: "\(detailItem.imageName)")
+        cell.imageView.image = UIImage(named: "\(detailItem.imageName)")
         cell.isDataSourceConfigured = true
         return cell
     }
     
-    private func nearestSectionType(collectionView: UICollectionView,
-                                    indexPath: IndexPath,
-                                    detailItem: MainImageItem) -> UICollectionViewCell {
+    private func nearestSectionType(mainViewCell: MainViewCell) -> UICollectionViewCell {
+        let collectionView = mainViewCell.collectionView
+        let indexPath = mainViewCell.indexPath
+        let detailItem = mainViewCell.detailItem
+        
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: NearestDestinationCollectionViewCell.self),
             for: indexPath) as? NearestDestinationCollectionViewCell else {
@@ -75,9 +77,11 @@ class MainSectionDiffableDataSource: UICollectionViewDiffableDataSource<MainSect
         return cell
     }
     
-    private func accomodationSectionType(collectionView: UICollectionView,
-                                         indexPath: IndexPath,
-                                         detailItem: MainImageItem) -> UICollectionViewCell {
+    private func accomodationSectionType(mainViewCell: MainViewCell) -> UICollectionViewCell {
+        let collectionView = mainViewCell.collectionView
+        let indexPath = mainViewCell.indexPath
+        let detailItem = mainViewCell.detailItem
+        
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: MainAccomodationCollectionViewCell.self),
             for: indexPath) as? MainAccomodationCollectionViewCell else {
@@ -88,5 +92,31 @@ class MainSectionDiffableDataSource: UICollectionViewDiffableDataSource<MainSect
         cell.accomodationImageView.image = UIImage(named: "img_hero_beach")
         cell.isDataSourceConfigured = true
         return cell
+    }
+    
+    class MainViewCell {
+        let collectionView: UICollectionView
+        let indexPath: IndexPath
+        let detailItem: MainImageItem
+        
+        init(collectionView: UICollectionView, indexPath: IndexPath, detailItem: MainImageItem) {
+            self.collectionView = collectionView
+            self.indexPath = indexPath
+            self.detailItem = detailItem
+        }
+    }
+    
+    class MainCellContent {
+        let title: String
+        let content: String
+        let imageName: String
+        let isDataSourceConfigured: Bool
+        
+        init(title: String, content: String, imageName: String, isDataSourceConfigured: Bool) {
+            self.title = title
+            self.content = content
+            self.imageName = imageName
+            self.isDataSourceConfigured = isDataSourceConfigured
+        }
     }
 }

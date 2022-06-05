@@ -7,20 +7,7 @@
 
 import UIKit
 
-class HeroImageCollectionViewCell: UICollectionViewCell {
-    
-    private let containerView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    let heroImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.clipsToBounds = true
-        return imageView
-    }()
+class HeroImageCollectionViewCell: MainCollectionViewCell {
     
     let titleLabel = CustomLabel(color: .customBlack, font: .systemFont(ofSize: 34, weight: .medium))
     
@@ -54,10 +41,10 @@ class HeroImageCollectionViewCell: UICollectionViewCell {
         contentView.backgroundColor = .white
         contentView.addSubview(containerView)
         
-        containerView.addSubview(heroImageView)
-        heroImageView.addSubview(titleLabel)
-        heroImageView.addSubview(detailLabel)
-        heroImageView.addSubview(ideaButton)
+        containerView.addSubview(imageView)
+        imageView.addSubview(titleLabel)
+        imageView.addSubview(detailLabel)
+        imageView.addSubview(ideaButton)
         
         setConstraints()
     }
@@ -68,13 +55,13 @@ class HeroImageCollectionViewCell: UICollectionViewCell {
         containerView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         
-        heroImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
-        heroImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
-        heroImageView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-        heroImageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        imageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+        imageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
+        imageView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
         
-        titleLabel.leadingAnchor.constraint(equalTo: heroImageView.leadingAnchor, constant: 20).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: heroImageView.topAnchor, constant: 20).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 20).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 20).isActive = true
         
         detailLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
         detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20).isActive = true
