@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 import java.util.NoSuchElementException;
+import javax.persistence.EntityManager;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -29,6 +30,8 @@ class WishRepositoryTest {
 	@Autowired
 	private CustomerRepository customerRepository;
 
+	@Autowired
+	EntityManager entityManager;
 
 	@Test
 	@DisplayName("위시리스트 등록하기")
@@ -47,13 +50,29 @@ class WishRepositoryTest {
 	}
 
 	@Test
-	@DisplayName("위시리스트 삭제하기")
-	void deleteWish() {
+	@DisplayName("위시리스트 삭제하기 - wishId로 위시리스트 목록화면에서 삭제")
+	void deleteWishInWishList() {
 		//given
 		Wish wish = wishRepository.findFirstBy();
 
 		//when
 		wishRepository.delete(wish);
+
+		//then
+		assertThatExceptionOfType(NoSuchElementException.class)
+			.isThrownBy(() -> wishRepository.findById(wish.getId()).get());
+	}
+
+	@Test
+	@DisplayName("위시리스트 삭제하기 - 숙소 검색화면에서 삭제")
+	void deleteWishInSearchList() {
+		//given
+		Wish wish = wishRepository.findFirstBy();
+
+		//when
+		wishRepository.deleteByCustomerIdAndAccommodationId(wish.getCustomer().getId(),
+			wish.getAccommodationId());
+		entityManager.flush();
 
 		//then
 		assertThatExceptionOfType(NoSuchElementException.class)
