@@ -21,19 +21,30 @@ public class WishService {
 		Customer customer = customerRepository.findById(wishRequest.getCustomerId())
 			.orElseThrow(() -> new CustomerNotFoundException());
 
-		Wish wish = Wish.from(wishRequest, customer);
+		Wish wish = Wish.from(customer, wishRequest);
 		Wish savedWish = wishRepository.save(wish);
 
 		return new WishResponse(true);
 	}
 
 	@Transactional
-	public WishResponse deleteWishList(WishRequest wishRequest) {
-		Customer customer = customerRepository.findById(wishRequest.getCustomerId())
+	public WishResponse deleteWishInSearchList(Long customerId, Long AccommodationId) {
+		Customer customer = customerRepository.findById(customerId)
 			.orElseThrow(() -> new CustomerNotFoundException());
 
-		Wish wish = Wish.from(wishRequest, customer);
-		wishRepository.deleteByCustomerIdAndAccommodationId(customer.getId(), wish.getAccommodationId());
+		Wish wish = Wish.from(customer, AccommodationId);
+		wishRepository.deleteByCustomerIdAndAccommodationId(customer.getId(),
+			wish.getAccommodationId());
+
+		return new WishResponse(true);
+	}
+
+	@Transactional
+	public WishResponse deleteWishInWishList(Long wishId, Long customerId) {
+		Customer customer = customerRepository.findById(customerId)
+			.orElseThrow(() -> new CustomerNotFoundException());
+
+		wishRepository.deleteById(wishId);
 
 		return new WishResponse(true);
 	}
