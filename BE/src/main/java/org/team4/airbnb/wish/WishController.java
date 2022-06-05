@@ -27,6 +27,11 @@ public class WishController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(response);
 	}
 
+	/**
+	 * 위시 삭제 - 숙소 검색 목록에서
+	 * @param params
+	 * @return
+	 */
 	@DeleteMapping("/wishlist")
 	public ResponseEntity<WishResponse> deleteWishInSearchList(@RequestParam Map<String, String> params) {
 		ObjectMapper mapper = new ObjectMapper();
@@ -37,6 +42,12 @@ public class WishController {
 		return ResponseEntity.noContent().build();
 	}
 
+	/**
+	 * 위시 삭제 - 위시리스트 메뉴에서
+	 * @param wishId
+	 * @param params
+	 * @return
+	 */
 	@DeleteMapping("/wishlist/{wishId}")
 	public ResponseEntity<WishResponse> deleteWishInWishList(@PathVariable Long wishId, @RequestParam Map<String, String> params) {
 		ObjectMapper mapper = new ObjectMapper();
