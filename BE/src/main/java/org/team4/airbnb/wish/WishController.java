@@ -1,11 +1,14 @@
 package org.team4.airbnb.wish;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.team4.airbnb.wish.dto.WishRequest;
 import org.team4.airbnb.wish.dto.WishResponse;
@@ -24,9 +27,14 @@ public class WishController {
 	}
 
 	@DeleteMapping("/wishlist")
-	public ResponseEntity<WishResponse> deleteWishList(@RequestBody WishRequest wishRequest) {
-		WishResponse response = wishService.deleteWishList(wishRequest);
+	public ResponseEntity<WishResponse> deleteWishInSearchList(@RequestParam Map<String, String> params) {
+		ObjectMapper mapper = new ObjectMapper();
+		WishRequest wishRequest = mapper.convertValue(params, WishRequest.class);
+
+		WishResponse response = wishService.deleteWishInSearchList(wishRequest.getCustomerId(), wishRequest.getAccommodationId());
 
 		return ResponseEntity.noContent().build();
 	}
+
+
 }
