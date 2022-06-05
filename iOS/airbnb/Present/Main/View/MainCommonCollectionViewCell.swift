@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainCollectionViewCell: UICollectionViewCell {
+class MainCommonCollectionViewCell: UICollectionViewCell {
    
     let containerView: UIView = {
         let view = UIView()

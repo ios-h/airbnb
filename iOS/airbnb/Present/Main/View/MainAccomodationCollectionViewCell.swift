@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainAccomodationCollectionViewCell: MainCollectionViewCell {
+class MainAccomodationCollectionViewCell: MainCommonCollectionViewCell {
     
     let accomodationImageView: UIImageView = {
         let imageView = UIImageView()
