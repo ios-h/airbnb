@@ -1,5 +1,6 @@
 package org.team4.airbnb.wish.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,7 +11,10 @@ import lombok.Setter;
 @Setter
 public class WishRequest {
 
+	@JsonProperty("customer_id")
 	private Long customerId;
+
+	@JsonProperty("accommodation_id")
 	private Long accommodationId;
 
 }
