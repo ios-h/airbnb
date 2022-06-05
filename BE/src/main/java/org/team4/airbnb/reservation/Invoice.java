@@ -25,7 +25,7 @@ public class Invoice {
 	private Integer total;
 
 	@Builder(access = AccessLevel.PRIVATE)
-	public Invoice(@NonNull Integer pricePerDay, @NonNull Integer discount,
+	private Invoice(@NonNull Integer pricePerDay, @NonNull Integer discount,
 		@NonNull Integer cleaningFee, @NonNull Integer serviceFee,
 		@NonNull Integer vat, @NonNull Integer total) {
 		this.pricePerDay = pricePerDay;
