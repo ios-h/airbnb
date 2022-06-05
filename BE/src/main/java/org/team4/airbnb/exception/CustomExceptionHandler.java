@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class CustomExceptionHandler {
 
 	@ExceptionHandler(BusinessException.class)
-	public ResponseEntity<Object> handleBusinessException(BusinessException exception) {
+	public ResponseEntity<ErrorResponse<String>> handleBusinessException(BusinessException exception) {
 		return ResponseEntity.status(exception.getHttpStatus())
-			.body(exception.getBodyMessage());
+			.body(new ErrorResponse<>(exception.getBodyMessage()));
 	}
 }

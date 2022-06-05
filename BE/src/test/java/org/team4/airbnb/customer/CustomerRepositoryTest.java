@@ -9,7 +9,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.transaction.annotation.Transactional;
 import org.team4.airbnb.accommodation.Accommodation;
 import org.team4.airbnb.accommodation.AccommodationRepository;
@@ -17,10 +18,11 @@ import org.team4.airbnb.util.EntityCreator;
 import org.team4.airbnb.wish.Wish;
 import org.team4.airbnb.wish.WishRepository;
 
-@SpringBootTest
+@DataJpaTest
 @Transactional
 @Nested
 @DisplayName("고객 정보 Repository 에서")
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class CustomerRepositoryTest {
 
 	@Autowired

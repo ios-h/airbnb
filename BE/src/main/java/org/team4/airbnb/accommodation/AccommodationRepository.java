@@ -9,7 +9,8 @@ public interface AccommodationRepository extends JpaRepository<Accommodation, Lo
 
 	@Query("select distinct a from Accommodation a "
 		+ "left join fetch a.accommodationImages "
-		+ "where a.id in :accommodationIds")
+		+ "where a.id in :accommodationIds "
+		+ "order by a.id asc")
 	List<Accommodation> findAllWithImagesByIdIn(
 		@Param("accommodationIds") Iterable<Long> accommodationIds);
 
