@@ -6,5 +6,5 @@ public interface WishRepository extends JpaRepository<Wish, Long> {
 
 	Wish findFirstBy();
 
-	void deleteByCustomerIdAndAccommodationId(Long customerId, Long accommodationId);
+	Long deleteByCustomerIdAndAccommodationId(Long customerId, Long accommodationId);
 }

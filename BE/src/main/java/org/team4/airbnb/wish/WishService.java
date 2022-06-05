@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.team4.airbnb.customer.Customer;
 import org.team4.airbnb.customer.CustomerRepository;
 import org.team4.airbnb.exception.CustomerNotFoundException;
+import org.team4.airbnb.exception.WishNotFoundException;
 import org.team4.airbnb.wish.dto.WishRequest;
 import org.team4.airbnb.wish.dto.WishResponse;
 
@@ -33,8 +34,12 @@ public class WishService {
 			.orElseThrow(() -> new CustomerNotFoundException());
 
 		Wish wish = Wish.from(customer, AccommodationId);
-		wishRepository.deleteByCustomerIdAndAccommodationId(customer.getId(),
+		Long resultCount = wishRepository.deleteByCustomerIdAndAccommodationId(customer.getId(),
 			wish.getAccommodationId());
+
+		if (resultCount == 0) {
+			throw new WishNotFoundException();
+		}
 
 		return new WishResponse(true);
 	}
