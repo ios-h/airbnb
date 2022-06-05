@@ -38,10 +38,17 @@ public class Wish extends BaseCreated {
 
 	private Long accommodationId;
 
-	public static Wish from(WishRequest wishRequest, Customer customer) {
+	public static Wish from(Customer customer, WishRequest wishRequest) {
 		return Wish.builder()
 			.customer(customer)
 			.accommodationId(wishRequest.getAccommodationId())
+			.build();
+	}
+
+	public static Wish from(Customer customer, Long accommodationId) {
+		return Wish.builder()
+			.customer(customer)
+			.accommodationId(accommodationId)
 			.build();
 	}
 
