@@ -22,7 +22,6 @@ final class SearchResultTableViewDataSource: NSObject, UITableViewDataSource, Se
         }
         
         configureCell(cell: cell, indexPath: indexPath)
-        print("셀!!", cell.cityNameLabel)
         return cell
     }
     
@@ -30,15 +29,11 @@ final class SearchResultTableViewDataSource: NSObject, UITableViewDataSource, Se
         if let suggestion = completerResults?[indexPath.row] {
             cell.cityNameLabel.text = suggestion.title
             cell.isDataSourceConfigured = true
-            print("title", suggestion.title)
-            print("subtitle", suggestion.subtitle)
         }
     }
     
     func getCompleterResult(completerResults: [MKLocalSearchCompletion]?) {
         self.completerResults = completerResults
-        print("aaaa", completerResults)
-        print("aaaaaa", completerResults?.count)
     }
     
     init(delegate: SearchResultDelegate?) {

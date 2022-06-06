@@ -74,8 +74,6 @@ class SearchResultViewController: UIViewController, SearchRecommendationDelegate
     
     func searchBarTextDidChange(string: String) {
         searchText = string
-        print("haha", searchText)
-        
         searchCompleter?.queryFragment = searchText
     }
 }
@@ -88,14 +86,14 @@ extension SearchResultViewController: MKLocalSearchCompleterDelegate {
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
         completerResults = completer.results
         
-        print("compelterResults ", completerResults?.count)
         delegate?.getCompleterResult(completerResults: completerResults)
         searchResultTableView.reloadData()
     }
     
     func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
         if let error = error as NSError? {
-            print("MKLocalSearchCompleter encountered an error: \(error.localizedDescription). The query fragment is: \"\(completer.queryFragment)\"")
+            print("MKLocalSearchCompleter encountered an error: \(error.localizedDescription).")
+            print("The query fragment is: \"\(completer.queryFragment)\"")
         }
     }
 }
