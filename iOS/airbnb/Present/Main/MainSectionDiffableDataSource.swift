@@ -53,10 +53,16 @@ class MainSectionDiffableDataSource: UICollectionViewDiffableDataSource<MainSect
             return UICollectionViewCell()
         }
         
+        configureCell(with: cell, indexPath: indexPath, detailItem: detailItem)
+        return cell
+    }
+    
+    private func configureCell(with cell: HeroImageCollectionViewCell,
+                               indexPath: IndexPath,
+                               detailItem: MainImageItem) {
         cell.titleLabel.text = detailItem.title
         cell.imageView.image = UIImage(named: "\(detailItem.imageName)")
         cell.isDataSourceConfigured = true
-        return cell
     }
     
     private func nearestSectionType(mainViewCell: MainViewCell) -> UICollectionViewCell {
@@ -70,11 +76,17 @@ class MainSectionDiffableDataSource: UICollectionViewDiffableDataSource<MainSect
             return UICollectionViewCell()
         }
         
+        configureCell(with: cell, indexPath: indexPath, detailItem: detailItem)
+        return cell
+    }
+    
+    private func configureCell(with cell: NearestDestinationCollectionViewCell,
+                               indexPath: IndexPath,
+                               detailItem: MainImageItem) {
         cell.titleLabel.text = detailItem.title
         cell.detailLabel.text = "차로 30분 거리"
         cell.cityImageView.image = UIImage(named: "img_hero_jeju")
         cell.isDataSourceConfigured = true
-        return cell
     }
     
     private func accomodationSectionType(mainViewCell: MainViewCell) -> UICollectionViewCell {
@@ -88,10 +100,16 @@ class MainSectionDiffableDataSource: UICollectionViewDiffableDataSource<MainSect
             return UICollectionViewCell()
         }
         
-        cell.detailLabel.text = "자연생활을 만끼할 수\n있는 숙소"
+        configureCell(with: cell, indexPath: indexPath, detailItem: detailItem)
+        return cell
+    }
+    
+    private func configureCell(with cell: MainAccomodationCollectionViewCell,
+                               indexPath: IndexPath,
+                               detailItem: MainImageItem) {
+        cell.detailLabel.text = "자연생활을 만끽할 수\n있는 숙소"
         cell.accomodationImageView.image = UIImage(named: "img_hero_beach")
         cell.isDataSourceConfigured = true
-        return cell
     }
     
     class MainViewCell {
