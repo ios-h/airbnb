@@ -361,9 +361,9 @@
 				D089E80A284621770000AE78 /* SearchDiffableDataSource.swift */,
 				D04C6C4828494B2600A419A5 /* SearchFlowCoordinator.swift */,
 				D089E80828461EE50000AE78 /* SearchRecommendationViewController.swift */,
-				D089E80F284622B50000AE78 /* View */,
-				D0D299EA284E45EA009D1608 /* SearchResultViewController.swift */,
 				D0D299EE284E61C2009D1608 /* SearchResultTableViewDataSource.swift */,
+				D0D299EA284E45EA009D1608 /* SearchResultViewController.swift */,
+				D089E80F284622B50000AE78 /* View */,
 			);
 			path = Search;
 			sourceTree = "<group>";

@@ -7,10 +7,16 @@
 
 import UIKit
 
+protocol SearchRecommendationDelegate: AnyObject {
+    func searchBarTextDidChange(string: String)
+}
+
 class SearchRecommendationViewController: UIViewController {
 
     var coordinator: SearchFlow?
-    
+    var delegate: SearchRecommendationDelegate?
+
+    private var searchResultViewController = SearchResultViewController()
     private var searchCollectionView: UICollectionView! = nil
     private var dataSource: SearchDiffableDataSource!
     
@@ -26,10 +32,12 @@ class SearchRecommendationViewController: UIViewController {
         DispatchQueue.main.async {
             self.navigationItem.searchController?.searchBar.searchTextField.becomeFirstResponder()
         }
+        
+        delegate = searchResultViewController
     }
     
     private func setUpSearchController() {
-        let searchController = UISearchController(searchResultsController: SearchResultViewController())
+        let searchController = UISearchController(searchResultsController: searchResultViewController)
         searchController.searchBar.placeholder = "어디로 여행가세요?"
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
@@ -136,6 +144,8 @@ extension SearchRecommendationViewController: UISearchResultsUpdating {
         guard let text = searchController.searchBar.text else {
             return
         }
+
+        delegate?.searchBarTextDidChange(string: text)
     }
 }
 
