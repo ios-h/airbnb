@@ -34,11 +34,13 @@ class MainViewController: UIViewController {
     }
     
     private func setUpSearchController() {
-        let searchController = SearchViewController(searchResultsController: nil)
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.placeholder = "어디로 여행가세요?"
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        
         self.navigationItem.title = "Airbnb"
         self.navigationItem.searchController = searchController
-        
-        coordinate?.coordinateToSearchViewController(searchViewController: searchController)
     }
     
     private func configureCollectionView() {
@@ -117,5 +119,19 @@ class MainViewController: UIViewController {
         case .accomodation:
             return mainViewModel.generateAccomodationSection()
         }
+    }
+}
+
+extension MainViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        dump(searchController.searchBar.text)
+    }
+}
+
+extension MainViewController: UISearchBarDelegate {
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        // TODO: 검색 추천 화면 보여주기
+        coordinate?.coordinateToSearchViewController()
+        return true
     }
 }

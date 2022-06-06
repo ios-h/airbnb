@@ -8,30 +8,23 @@
 import UIKit
     
 protocol SearchFlow: AnyObject {
-    func coordinateToSearchPreview()
+    func coordinateToSearchDetail()
 }
 
 class SearchFlowCoordinator: Coordinator, SearchFlow {
     weak var navigationController: UINavigationController?
-    var searchViewController: SearchViewController?
-    var searchPreviewViewController: SearchPreviewViewController?
     
-    init(navigationController: UINavigationController, searchViewController: SearchViewController) {
+    init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.searchViewController = searchViewController
     }
     
     func start() {
-        searchViewController?.coordinate = self
+        let searchPreviewViewController = SearchDetailViewController()
+        searchPreviewViewController.coordinator = self
         
-        searchPreviewViewController = SearchPreviewViewController()
-        searchPreviewViewController?.coordinate = self
+        navigationController?.pushViewController(searchPreviewViewController, animated: false)
     }
     
-    func coordinateToSearchPreview() {
-        guard let searchPreviewViewController = searchPreviewViewController else {
-            return
-        }
-        navigationController?.pushViewController(searchPreviewViewController, animated: true)
+    func coordinateToSearchDetail() {
     }
 }

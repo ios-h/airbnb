@@ -37,13 +37,16 @@ extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         dump(searchController.searchBar.text)
         // TODO: input에 맞게 검색어 자동완성 추천 구현
+        
+        guard let text = searchController.searchBar.text else {
+            return
+        }
     }
 }
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        // TODO: 검색 프리뷰 화면 보여주기
-        coordinate?.coordinateToSearchPreview()
+        coordinate?.coordinateToSearchDetail()
         return true
     }
 }

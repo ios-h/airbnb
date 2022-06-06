@@ -7,9 +7,9 @@
 
 import UIKit
 
-class SearchPreviewViewController: UIViewController {
+class SearchDetailViewController: UIViewController {
 
-    var coordinate: SearchFlow?
+    var coordinator: SearchFlow?
     
     private var searchCollectionView: UICollectionView! = nil
     private var dataSource: SearchDiffableDataSource!
@@ -19,8 +19,24 @@ class SearchPreviewViewController: UIViewController {
 
         view.backgroundColor = .white
         
+        setUpSearchController()
         configureCollectionView()
         configureDataSource()
+        
+        DispatchQueue.main.async {
+            self.navigationItem.searchController?.searchBar.searchTextField.becomeFirstResponder()
+        }
+    }
+    
+    private func setUpSearchController() {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.placeholder = "어디로 여행가세요?"
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.definesPresentationContext = true
+        
+        self.navigationItem.title = "숙소 찾기"
+        self.navigationItem.searchController = searchController
     }
     
     private func configureCollectionView() {
@@ -107,5 +123,23 @@ class SearchPreviewViewController: UIViewController {
         
         let section = LayoutManager().configureSection(sectionType: sectionType)
         return section
+    }
+}
+
+extension SearchDetailViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        dump(searchController.searchBar.text)
+        // TODO: input에 맞게 검색어 자동완성 추천 구현
+        guard let text = searchController.searchBar.text else {
+            return
+        }
+    }
+}
+
+extension SearchDetailViewController: UISearchBarDelegate {
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        // TODO: 자동검색 화면 보여주기
+        coordinator?.coordinateToSearchDetail()
+        return true
     }
 }
