@@ -6,7 +6,6 @@ import java.util.stream.IntStream;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.team4.airbnb.accommodation.Accommodation;
-import org.team4.airbnb.accommodation.AccommodationImage;
 
 @RequiredArgsConstructor
 @Getter
@@ -19,8 +18,7 @@ public class AccommodationForWishListResponse {
 		private final Long accommodationId;
 		private final String name;
 		private final Integer price;
-		private final List<String> accommodationImages;
-		//		private final Review review;
+		private final List<String> imagesUrls;
 		private final Long wishId;
 		private final Boolean isWish;
 
@@ -28,10 +26,7 @@ public class AccommodationForWishListResponse {
 			this.accommodationId = accommodation.getId();
 			this.name = accommodation.getName();
 			this.price = accommodation.getPrice();
-			this.accommodationImages = accommodation.getAccommodationImages()
-				.stream()
-				.map(AccommodationImage::getUrl)
-				.collect(Collectors.toList());
+			this.imagesUrls = accommodation.askImagesUrls();
 			this.wishId = wishId;
 			this.isWish = true;
 		}
@@ -40,7 +35,9 @@ public class AccommodationForWishListResponse {
 	public static AccommodationForWishListResponse from(List<Accommodation> accommodations,
 		List<Long> wishIds) {
 
-		List<Element> elements = IntStream.range(0, wishIds.size())
+		int wishCount = wishIds.size();
+
+		List<Element> elements = IntStream.range(0, wishCount)
 			.mapToObj(i -> new Element(accommodations.get(i), wishIds.get(i)))
 			.collect(Collectors.toList());
 
