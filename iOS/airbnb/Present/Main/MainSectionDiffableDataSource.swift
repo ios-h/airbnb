@@ -123,18 +123,4 @@ class MainSectionDiffableDataSource: UICollectionViewDiffableDataSource<MainSect
             self.detailItem = detailItem
         }
     }
-    
-    class MainCellContent {
-        let title: String
-        let content: String
-        let imageName: String
-        let isDataSourceConfigured: Bool
-        
-        init(title: String, content: String, imageName: String, isDataSourceConfigured: Bool) {
-            self.title = title
-            self.content = content
-            self.imageName = imageName
-            self.isDataSourceConfigured = isDataSourceConfigured
-        }
-    }
 }
