@@ -13,20 +13,18 @@ public class EntityCreator {
 	private static String userIdForTest = "test";
 	private static int listSize = 3;
 
-	public static Wish 세개의_Wish_생성_요청(CustomerRepository customerRepository,
+	public static Wish 한개의_Wish_생성_요청(CustomerRepository customerRepository,
 		AccommodationRepository accommodationRepository) {
 
 		Customer savedCustomer = createCustomer(customerRepository);
 		Accommodation accommodation = accommodationRepository.findFirstBy();
 
-		Wish wish = new Wish();
-		wish.setCustomer(savedCustomer);
-		wish.setAccommodationId(accommodation.getId());
+		Wish wish = Wish.from(savedCustomer, accommodation.getId());
 
 		return wish;
 	}
 
-	public static List<Wish> create3Wishes(CustomerRepository customerRepository,
+	public static List<Wish> 세개의_Wish_생성_요청(CustomerRepository customerRepository,
 		AccommodationRepository accommodationRepository) {
 
 		Customer customer = createCustomer(customerRepository);
@@ -34,9 +32,7 @@ public class EntityCreator {
 
 		List<Wish> wishes = new ArrayList<>();
 		for (int i = 0; i < listSize; i++) {
-			Wish wish = new Wish();
-			wish.setCustomer(customer);
-			wish.setAccommodationId(accommodations.get(i).getId());
+			Wish wish = Wish.from(customer, accommodations.get(i).getId());
 
 			wishes.add(wish);
 		}
@@ -45,9 +41,9 @@ public class EntityCreator {
 	}
 
 	private static Customer createCustomer(CustomerRepository customerRepository) {
-		Customer customer = new Customer();
-		customer.setUserId(userIdForTest);
+		Customer customer = Customer.of(userIdForTest);
 		Customer savedCustomer = customerRepository.save(customer);
+
 		return savedCustomer;
 	}
 }

@@ -1,5 +1,7 @@
 package org.team4.airbnb.accommodation;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -26,4 +28,12 @@ public class AccommodationImage {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "accommodation_id")
 	private Accommodation accommodation;
+
+	public List<String> offerImagesUrls(List<AccommodationImage> accommodationImages) {
+		List<String> imagesUrls = new ArrayList<>();
+		for (AccommodationImage accommodationImage : accommodationImages) {
+			imagesUrls.add(accommodationImage.url);
+		}
+		return imagesUrls;
+	}
 }

@@ -14,7 +14,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.team4.airbnb.customer.Customer;
 import org.team4.airbnb.domain.BaseCreated;
 import org.team4.airbnb.wish.dto.WishRequest;
@@ -22,8 +21,7 @@ import org.team4.airbnb.wish.dto.WishRequest;
 @Entity
 @Builder
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
-@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class Wish extends BaseCreated {
 

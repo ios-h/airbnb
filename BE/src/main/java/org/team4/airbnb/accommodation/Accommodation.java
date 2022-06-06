@@ -53,6 +53,10 @@ public class Accommodation extends BaseCreated {
 	@OrderBy("imageSeq asc")
 	private List<AccommodationImage> accommodationImages = new ArrayList<>();
 
+	public List<String> askImagesUrls() {
+		return accommodationImages.get(0).offerImagesUrls(accommodationImages);
+	}
+
 	public boolean isNotNullName(Accommodation accommodation) {
 		return !accommodation.name.isEmpty();
 	}
