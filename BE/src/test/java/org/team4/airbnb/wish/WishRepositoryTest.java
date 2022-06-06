@@ -39,7 +39,7 @@ class WishRepositoryTest {
 	@DisplayName("위시리스트 등록하기")
 	void addWish() {
 		//given
-		Wish wish = EntityCreator.createWish(customerRepository, accommodationRepository);
+		Wish wish = EntityCreator.한개의_Wish_생성_요청(customerRepository, accommodationRepository);
 
 		//when
 		Wish savedWish = wishRepository.save(wish);

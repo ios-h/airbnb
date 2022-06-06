@@ -36,7 +36,7 @@ class CustomerRepositoryTest {
 	@DisplayName("위시리스트만 조회")
 	void findById() {
 		//given
-		List<Wish> wishes = EntityCreator.create3Wishes(customerRepository,
+		List<Wish> wishes = EntityCreator.세개의_Wish_생성_요청(customerRepository,
 			accommodationRepository);
 
 		//when
@@ -54,7 +54,7 @@ class CustomerRepositoryTest {
 	@DisplayName("위시리스트와 해당 숙소 조회")
 	void findWishAndAccommodationById() {
 		//given
-		List<Wish> wishes = EntityCreator.create3Wishes(customerRepository,
+		List<Wish> wishes = EntityCreator.세개의_Wish_생성_요청(customerRepository,
 			accommodationRepository);
 
 		//when
