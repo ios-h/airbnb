@@ -34,6 +34,7 @@ class SearchDetailViewController: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         searchController.definesPresentationContext = true
+        searchController.hidesNavigationBarDuringPresentation = false
         
         self.navigationItem.title = "숙소 찾기"
         self.navigationItem.searchController = searchController
@@ -115,7 +116,7 @@ class SearchDetailViewController: UIViewController {
         
         let group = LayoutManager().configureGroup(groupType: groupType)
         
-        let sectionHeader = LayoutManager().configureHeader(GroupSize(width: 1.0, height: 0.18),
+        let sectionHeader = LayoutManager().configureHeader(GroupSize(width: 1.0, height: 0.17),
                                                             elementKind: MainViewController.sectionHeaderElementKind)
         
         let sectionType = MainSectionType(group: group,
