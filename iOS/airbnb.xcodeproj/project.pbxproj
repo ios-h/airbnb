@@ -26,7 +26,6 @@
 		D01D6631283D3A200067B5E1 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D6630283D3A200067B5E1 /* UIColor+Extension.swift */; };
 		D04C6C41284925CD00A419A5 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04C6C40284925CD00A419A5 /* MainViewModel.swift */; };
 		D04C6C4928494B2600A419A5 /* SearchFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04C6C4828494B2600A419A5 /* SearchFlowCoordinator.swift */; };
-		D04C6C4B2849C58800A419A5 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04C6C4A2849C58800A419A5 /* SearchViewController.swift */; };
 		D068BCFB28406E1B00EF783E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D068BCFA28406E1B00EF783E /* Coordinator.swift */; };
 		D068BCFD28406F1900EF783E /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D068BCFC28406F1900EF783E /* AppCoordinator.swift */; };
 		D068BD002840700B00EF783E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D068BCFF2840700B00EF783E /* TabBarController.swift */; };
@@ -51,6 +50,7 @@
 		D0D299E0284CC156009D1608 /* MainCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299DF284CC156009D1608 /* MainCellFactory.swift */; };
 		D0D299E4284D000E009D1608 /* LayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299E3284D000E009D1608 /* LayoutManager.swift */; };
 		D0D299E8284D0C0C009D1608 /* ViewSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299E7284D0C0C009D1608 /* ViewSize.swift */; };
+		D0D299EB284E45EA009D1608 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299EA284E45EA009D1608 /* SearchResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,7 +98,6 @@
 		D01D6630283D3A200067B5E1 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		D04C6C40284925CD00A419A5 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		D04C6C4828494B2600A419A5 /* SearchFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFlowCoordinator.swift; sourceTree = "<group>"; };
-		D04C6C4A2849C58800A419A5 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		D068BCFA28406E1B00EF783E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		D068BCFC28406F1900EF783E /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		D068BCFF2840700B00EF783E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -123,6 +122,7 @@
 		D0D299DF284CC156009D1608 /* MainCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCellFactory.swift; sourceTree = "<group>"; };
 		D0D299E3284D000E009D1608 /* LayoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutManager.swift; sourceTree = "<group>"; };
 		D0D299E7284D0C0C009D1608 /* ViewSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSize.swift; sourceTree = "<group>"; };
+		D0D299EA284E45EA009D1608 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -358,7 +358,7 @@
 				D04C6C4828494B2600A419A5 /* SearchFlowCoordinator.swift */,
 				D089E80828461EE50000AE78 /* SearchRecommendationViewController.swift */,
 				D089E80F284622B50000AE78 /* View */,
-				D04C6C4A2849C58800A419A5 /* SearchViewController.swift */,
+				D0D299EA284E45EA009D1608 /* SearchResultViewController.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -627,7 +627,6 @@
 				D01D65F3283C70710067B5E1 /* MainViewController.swift in Sources */,
 				D0D299E0284CC156009D1608 /* MainCellFactory.swift in Sources */,
 				D0D299E4284D000E009D1608 /* LayoutManager.swift in Sources */,
-				D04C6C4B2849C58800A419A5 /* SearchViewController.swift in Sources */,
 				D0D299DC284CB88A009D1608 /* MainCommonCollectionViewCell.swift in Sources */,
 				D089E80528460B4C0000AE78 /* MainSectionDiffableDataSource.swift in Sources */,
 				D089E80B284621770000AE78 /* SearchDiffableDataSource.swift in Sources */,
@@ -639,6 +638,7 @@
 				D089E7F82845FABB0000AE78 /* Box.swift in Sources */,
 				D068BD022840701800EF783E /* TabBarCoordinator.swift in Sources */,
 				D0D299E8284D0C0C009D1608 /* ViewSize.swift in Sources */,
+				D0D299EB284E45EA009D1608 /* SearchResultViewController.swift in Sources */,
 				D089E80328460A4E0000AE78 /* MainSection.swift in Sources */,
 				D04C6C4928494B2600A419A5 /* SearchFlowCoordinator.swift in Sources */,
 				D089E80928461EE50000AE78 /* SearchRecommendationViewController.swift in Sources */,

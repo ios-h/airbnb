@@ -29,7 +29,7 @@ class SearchRecommendationViewController: UIViewController {
     }
     
     private func setUpSearchController() {
-        let searchController = UISearchController(searchResultsController: nil)
+        let searchController = UISearchController(searchResultsController: SearchResultViewController())
         searchController.searchBar.placeholder = "어디로 여행가세요?"
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
@@ -109,14 +109,16 @@ class SearchRecommendationViewController: UIViewController {
                                                                                        bottom: 0,
                                                                                        trailing: 10))
         
-        let groupType = MainGroupType(groupSize: GroupSize(width: 1, height: 1.6),
+        let groupType = MainGroupType(groupSize: GroupSize(width: .fractionalWidth(1.0),
+                                                           height: .fractionalHeight(1.0)),
                                       isDirectionVertical: true,
                                       item: item,
-                                      itemCount: 8)
+                                      itemCount: 10)
         
         let group = LayoutManager().configureGroup(groupType: groupType)
         
-        let sectionHeader = LayoutManager().configureHeader(GroupSize(width: 1.0, height: 0.17),
+        let sectionHeader = LayoutManager().configureHeader(GroupSize(width: .fractionalWidth(1.0),
+                                                                      height: .fractionalWidth(0.17)),
                                                             elementKind: MainViewController.sectionHeaderElementKind)
         
         let sectionType = MainSectionType(group: group,

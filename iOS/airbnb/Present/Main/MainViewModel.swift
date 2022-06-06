@@ -27,7 +27,8 @@ class MainViewModel {
     func generateHeroImageSection() -> NSCollectionLayoutSection {
         let item = LayoutManager().configureItem()
         
-        let groupType = MainGroupType(groupSize: GroupSize(width: 1.0, height: 1.2),
+        let groupType = MainGroupType(groupSize: GroupSize(width: .fractionalWidth(1.0),
+                                                           height: .fractionalWidth(1.2)),
                                       isDirectionVertical: false,
                                       item: item,
                                       itemCount: 1)
@@ -43,14 +44,15 @@ class MainViewModel {
                                                                        bottom: 0,
                                                                        trailing: 10))
         
-        let groupType = MainGroupType(groupSize: GroupSize(width: 3/4, height: 4/9),
+        let groupType = MainGroupType(groupSize: GroupSize(width: .fractionalWidth(3/4),
+                                                           height: .fractionalWidth(4/9)),
                                       isDirectionVertical: true,
                                       item: item,
                                       itemCount: 2)
         let group = LayoutManager().configureGroup(groupType: groupType)
         
-        let sectionHeader = LayoutManager().configureHeader(GroupSize(width: 1.0,
-                                                                     height: 0.2),
+        let sectionHeader = LayoutManager().configureHeader(GroupSize(width: .fractionalWidth(1.0),
+                                                                      height: .fractionalWidth(0.2)),
                                                             elementKind: MainViewController.sectionHeaderElementKind)
         
         let sectionType = MainSectionType(group: group, header: sectionHeader)
@@ -64,7 +66,8 @@ class MainViewModel {
                                                                        bottom: 0,
                                                                        trailing: -20))
         
-        let groupType = MainGroupType(groupSize: GroupSize(width: 3/4, height: 1.15),
+        let groupType = MainGroupType(groupSize: GroupSize(width: .fractionalWidth(3/4),
+                                                           height: .fractionalWidth(1.15)),
                                       groupInset: NSDirectionalEdgeInsets(top: 0,
                                                                           leading: 20,
                                                                           bottom: 0,
@@ -74,8 +77,8 @@ class MainViewModel {
                                       itemCount: 1)
         let group = LayoutManager().configureGroup(groupType: groupType)
         
-        let sectionHeader = LayoutManager().configureHeader(GroupSize(width: 1.0,
-                                                                     height: 0.3),
+        let sectionHeader = LayoutManager().configureHeader(GroupSize(width: .fractionalWidth(1.0),
+                                                                      height: .fractionalWidth(0.3)),
                                                             elementKind: MainViewController.sectionHeaderElementKind)
         let sectionType = MainSectionType(group: group,
                                           sectionInset: NSDirectionalEdgeInsets(top: 0,

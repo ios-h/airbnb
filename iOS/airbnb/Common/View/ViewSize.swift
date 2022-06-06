@@ -17,9 +17,9 @@ struct ItemSize: ViewSize {
     var height: CGFloat = 1.0
 }
 
-struct GroupSize: ViewSize {
-    var width: CGFloat = 1.0
-    var height: CGFloat = 1.0
+struct GroupSize {
+    var width: NSCollectionLayoutDimension
+    var height: NSCollectionLayoutDimension
 }
 
 protocol GroupApplicable {

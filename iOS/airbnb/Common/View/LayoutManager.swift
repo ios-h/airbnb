@@ -9,9 +9,11 @@ import UIKit
 
 class LayoutManager {
     func configureGroup(groupType: GroupApplicable) -> NSCollectionLayoutGroup {
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(groupType.groupSize.width),
-            heightDimension: .fractionalWidth(groupType.groupSize.height))
+//        let groupSize = NSCollectionLayoutSize(
+//            widthDimension: .fractionalWidth(groupType.groupSize.width),
+//            heightDimension: .fractionalWidth(groupType.groupSize.height))
+        let groupSize = NSCollectionLayoutSize(widthDimension: groupType.groupSize.width,
+                                               heightDimension: groupType.groupSize.height)
         
         let group: NSCollectionLayoutGroup
         
@@ -34,8 +36,8 @@ class LayoutManager {
     
     func configureHeader(_ size: GroupSize, elementKind: String) -> NSCollectionLayoutBoundarySupplementaryItem {
         let headerSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(size.width),
-            heightDimension: .fractionalWidth(size.height))
+            widthDimension: size.width,
+            heightDimension: size.height)
         
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize,
