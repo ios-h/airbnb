@@ -41,9 +41,9 @@ public class EntityCreator {
 	}
 
 	private static Customer createCustomer(CustomerRepository customerRepository) {
-		Customer customer = new Customer();
-		customer.setUserId(userIdForTest);
+		Customer customer = Customer.of(userIdForTest);
 		Customer savedCustomer = customerRepository.save(customer);
+
 		return savedCustomer;
 	}
 }
