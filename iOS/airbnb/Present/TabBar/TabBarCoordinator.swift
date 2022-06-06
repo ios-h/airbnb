@@ -7,7 +7,8 @@
 
 import UIKit
 
-class TabBarCoordinator: Coordinator {
+final class TabBarCoordinator: Coordinator {
+    
     let navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {

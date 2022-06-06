@@ -11,7 +11,7 @@ protocol SearchRecommendationDelegate: AnyObject {
     func searchBarTextDidChange(string: String)
 }
 
-class SearchRecommendationViewController: UIViewController {
+final class SearchRecommendationViewController: UIViewController {
 
     var coordinator: SearchFlow?
     var delegate: SearchRecommendationDelegate?
@@ -139,12 +139,9 @@ class SearchRecommendationViewController: UIViewController {
 
 extension SearchRecommendationViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        dump(searchController.searchBar.text)
-        // TODO: input에 맞게 검색어 자동완성 추천 구현
         guard let text = searchController.searchBar.text else {
             return
         }
-
         delegate?.searchBarTextDidChange(string: text)
     }
 }

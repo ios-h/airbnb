@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchCollectionViewCell: UICollectionViewCell {
+final class SearchCollectionViewCell: UICollectionViewCell {
     
     private let containerView: UIView = {
         let view = UIView()

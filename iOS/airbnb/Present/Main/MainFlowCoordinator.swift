@@ -11,7 +11,8 @@ protocol MainFlow: AnyObject {
     func coordinateToSearchViewController()
 }
 
-class MainFlowCoordinator: Coordinator, MainFlow {
+final class MainFlowCoordinator: Coordinator, MainFlow {
+    
     weak var navigationController: UINavigationController?
     
     init(navigationController: UINavigationController) {

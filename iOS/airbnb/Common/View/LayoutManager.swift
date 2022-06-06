@@ -7,11 +7,8 @@
 
 import UIKit
 
-class LayoutManager {
+final class LayoutManager {
     func configureGroup(groupType: GroupApplicable) -> NSCollectionLayoutGroup {
-//        let groupSize = NSCollectionLayoutSize(
-//            widthDimension: .fractionalWidth(groupType.groupSize.width),
-//            heightDimension: .fractionalWidth(groupType.groupSize.height))
         let groupSize = NSCollectionLayoutSize(widthDimension: groupType.groupSize.width,
                                                heightDimension: groupType.groupSize.height)
         

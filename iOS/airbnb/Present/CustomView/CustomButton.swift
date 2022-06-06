@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomButton: UIButton {
+final class CustomButton: UIButton {
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)

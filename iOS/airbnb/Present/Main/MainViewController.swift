@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
     
     let mainViewModel = MainViewModel()
     static let sectionHeaderElementKind = "section-header-element-kind"

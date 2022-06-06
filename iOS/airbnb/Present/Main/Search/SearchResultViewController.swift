@@ -12,7 +12,7 @@ protocol SearchResultDelegate: AnyObject {
     func getCompleterResult(completerResults: [MKLocalSearchCompletion]?)
 }
 
-class SearchResultViewController: UIViewController, SearchRecommendationDelegate {
+final class SearchResultViewController: UIViewController, SearchRecommendationDelegate {
 
     var delegate: SearchResultDelegate?
     

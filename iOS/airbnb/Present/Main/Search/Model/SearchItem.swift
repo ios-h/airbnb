@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SearchItem: Hashable {
+final class SearchItem: Hashable {
     let imageName: String
     let title: String
     let description: String

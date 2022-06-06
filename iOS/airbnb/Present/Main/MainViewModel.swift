@@ -22,7 +22,7 @@ struct MainSectionType: SectionApplicable {
     var header: NSCollectionLayoutBoundarySupplementaryItem?
 }
 
-class MainViewModel {
+final class MainViewModel {
     
     func generateHeroImageSection() -> NSCollectionLayoutSection {
         let item = LayoutManager().configureItem()

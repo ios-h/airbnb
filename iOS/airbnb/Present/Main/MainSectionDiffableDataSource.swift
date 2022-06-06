@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainSectionDiffableDataSource: UICollectionViewDiffableDataSource<MainSection, MainImageItem> {
+final class MainSectionDiffableDataSource: UICollectionViewDiffableDataSource<MainSection, MainImageItem> {
         
     override func collectionView(_ collectionView: UICollectionView,
                                  viewForSupplementaryElementOfKind kind: String,

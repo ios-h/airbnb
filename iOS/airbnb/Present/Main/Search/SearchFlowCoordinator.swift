@@ -11,7 +11,7 @@ protocol SearchFlow: AnyObject {
     func coordinateToSearchDetail()
 }
 
-class SearchFlowCoordinator: Coordinator, SearchFlow {
+final class SearchFlowCoordinator: Coordinator, SearchFlow {
     weak var navigationController: UINavigationController?
     
     init(navigationController: UINavigationController) {

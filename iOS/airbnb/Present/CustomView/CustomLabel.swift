@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomLabel: UILabel {
+final class CustomLabel: UILabel {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
