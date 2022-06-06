@@ -51,6 +51,8 @@
 		D0D299E4284D000E009D1608 /* LayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299E3284D000E009D1608 /* LayoutManager.swift */; };
 		D0D299E8284D0C0C009D1608 /* ViewSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299E7284D0C0C009D1608 /* ViewSize.swift */; };
 		D0D299EB284E45EA009D1608 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299EA284E45EA009D1608 /* SearchResultViewController.swift */; };
+		D0D299ED284E59BA009D1608 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299EC284E59BA009D1608 /* SearchResultTableViewCell.swift */; };
+		D0D299EF284E61C2009D1608 /* SearchResultTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299EE284E61C2009D1608 /* SearchResultTableViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +125,8 @@
 		D0D299E3284D000E009D1608 /* LayoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutManager.swift; sourceTree = "<group>"; };
 		D0D299E7284D0C0C009D1608 /* ViewSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSize.swift; sourceTree = "<group>"; };
 		D0D299EA284E45EA009D1608 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		D0D299EC284E59BA009D1608 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
+		D0D299EE284E61C2009D1608 /* SearchResultTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,6 +363,7 @@
 				D089E80828461EE50000AE78 /* SearchRecommendationViewController.swift */,
 				D089E80F284622B50000AE78 /* View */,
 				D0D299EA284E45EA009D1608 /* SearchResultViewController.swift */,
+				D0D299EE284E61C2009D1608 /* SearchResultTableViewDataSource.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -375,6 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				D089E810284622C00000AE78 /* SearchCollectionViewCell.swift */,
+				D0D299EC284E59BA009D1608 /* SearchResultTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -633,12 +639,14 @@
 				D087289D283F0DB9009983A5 /* CustomButton.swift in Sources */,
 				D089E80E284621960000AE78 /* SearchItem.swift in Sources */,
 				D01D6628283CB5550067B5E1 /* WishListViewController.swift in Sources */,
+				D0D299EF284E61C2009D1608 /* SearchResultTableViewDataSource.swift in Sources */,
 				D04C6C41284925CD00A419A5 /* MainViewModel.swift in Sources */,
 				D01D65EF283C70710067B5E1 /* AppDelegate.swift in Sources */,
 				D089E7F82845FABB0000AE78 /* Box.swift in Sources */,
 				D068BD022840701800EF783E /* TabBarCoordinator.swift in Sources */,
 				D0D299E8284D0C0C009D1608 /* ViewSize.swift in Sources */,
 				D0D299EB284E45EA009D1608 /* SearchResultViewController.swift in Sources */,
+				D0D299ED284E59BA009D1608 /* SearchResultTableViewCell.swift in Sources */,
 				D089E80328460A4E0000AE78 /* MainSection.swift in Sources */,
 				D04C6C4928494B2600A419A5 /* SearchFlowCoordinator.swift in Sources */,
 				D089E80928461EE50000AE78 /* SearchRecommendationViewController.swift in Sources */,

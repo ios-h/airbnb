@@ -141,7 +141,6 @@ extension SearchRecommendationViewController: UISearchResultsUpdating {
 
 extension SearchRecommendationViewController: UISearchBarDelegate {
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        // TODO: 자동검색 화면 보여주기
         coordinator?.coordinateToSearchDetail()
         return true
     }
