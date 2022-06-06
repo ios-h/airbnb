@@ -42,7 +42,7 @@
 		D089E7F82845FABB0000AE78 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E7F72845FABB0000AE78 /* Box.swift */; };
 		D089E80328460A4E0000AE78 /* MainSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E80228460A4E0000AE78 /* MainSection.swift */; };
 		D089E80528460B4C0000AE78 /* MainSectionDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E80428460B4C0000AE78 /* MainSectionDiffableDataSource.swift */; };
-		D089E80928461EE50000AE78 /* SearchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E80828461EE50000AE78 /* SearchDetailViewController.swift */; };
+		D089E80928461EE50000AE78 /* SearchRecommendationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E80828461EE50000AE78 /* SearchRecommendationViewController.swift */; };
 		D089E80B284621770000AE78 /* SearchDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E80A284621770000AE78 /* SearchDiffableDataSource.swift */; };
 		D089E80E284621960000AE78 /* SearchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E80D284621960000AE78 /* SearchItem.swift */; };
 		D089E811284622C00000AE78 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E810284622C00000AE78 /* SearchCollectionViewCell.swift */; };
@@ -114,7 +114,7 @@
 		D089E7F72845FABB0000AE78 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		D089E80228460A4E0000AE78 /* MainSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSection.swift; sourceTree = "<group>"; };
 		D089E80428460B4C0000AE78 /* MainSectionDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSectionDiffableDataSource.swift; sourceTree = "<group>"; };
-		D089E80828461EE50000AE78 /* SearchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailViewController.swift; sourceTree = "<group>"; };
+		D089E80828461EE50000AE78 /* SearchRecommendationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRecommendationViewController.swift; sourceTree = "<group>"; };
 		D089E80A284621770000AE78 /* SearchDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDiffableDataSource.swift; sourceTree = "<group>"; };
 		D089E80D284621960000AE78 /* SearchItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItem.swift; sourceTree = "<group>"; };
 		D089E810284622C00000AE78 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -356,7 +356,7 @@
 				D089E80C284621800000AE78 /* Model */,
 				D089E80A284621770000AE78 /* SearchDiffableDataSource.swift */,
 				D04C6C4828494B2600A419A5 /* SearchFlowCoordinator.swift */,
-				D089E80828461EE50000AE78 /* SearchDetailViewController.swift */,
+				D089E80828461EE50000AE78 /* SearchRecommendationViewController.swift */,
 				D089E80F284622B50000AE78 /* View */,
 				D04C6C4A2849C58800A419A5 /* SearchViewController.swift */,
 			);
@@ -641,7 +641,7 @@
 				D0D299E8284D0C0C009D1608 /* ViewSize.swift in Sources */,
 				D089E80328460A4E0000AE78 /* MainSection.swift in Sources */,
 				D04C6C4928494B2600A419A5 /* SearchFlowCoordinator.swift in Sources */,
-				D089E80928461EE50000AE78 /* SearchDetailViewController.swift in Sources */,
+				D089E80928461EE50000AE78 /* SearchRecommendationViewController.swift in Sources */,
 				D089E7DA2844B4790000AE78 /* MockDataModel.swift in Sources */,
 				D068BCFB28406E1B00EF783E /* Coordinator.swift in Sources */,
 				D089E7D5284477C50000AE78 /* MainImageItem.swift in Sources */,

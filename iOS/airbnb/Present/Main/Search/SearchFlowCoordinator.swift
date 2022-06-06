@@ -19,7 +19,7 @@ class SearchFlowCoordinator: Coordinator, SearchFlow {
     }
     
     func start() {
-        let searchPreviewViewController = SearchDetailViewController()
+        let searchPreviewViewController = SearchRecommendationViewController()
         searchPreviewViewController.coordinator = self
         
         navigationController?.pushViewController(searchPreviewViewController, animated: false)

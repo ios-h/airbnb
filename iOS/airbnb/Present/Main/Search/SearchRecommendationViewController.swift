@@ -1,5 +1,5 @@
 //
-//  SearchPreviewViewController.swift
+//  SearchRecommendationViewController.swift
 //  airbnb
 //
 //  Created by 안상희 on 2022/05/31.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchDetailViewController: UIViewController {
+class SearchRecommendationViewController: UIViewController {
 
     var coordinator: SearchFlow?
     
@@ -95,13 +95,13 @@ class SearchDetailViewController: UIViewController {
             let sectionLayoutKind = SearchSection.allCases[sectionIndex]
             switch sectionLayoutKind {
             case .nearestPopularDestination:
-                return self.generateSearchPreviewSection()
+                return self.generateSearchRecommendationSection()
             }
         }
         return layout
     }
     
-    private func generateSearchPreviewSection() -> NSCollectionLayoutSection {
+    private func generateSearchRecommendationSection() -> NSCollectionLayoutSection {
         
         let item = LayoutManager().configureItem(ItemSize(width: 1, height: 5),
                                                  contentInset: NSDirectionalEdgeInsets(top: 0,
@@ -127,7 +127,7 @@ class SearchDetailViewController: UIViewController {
     }
 }
 
-extension SearchDetailViewController: UISearchResultsUpdating {
+extension SearchRecommendationViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         dump(searchController.searchBar.text)
         // TODO: input에 맞게 검색어 자동완성 추천 구현
@@ -137,7 +137,7 @@ extension SearchDetailViewController: UISearchResultsUpdating {
     }
 }
 
-extension SearchDetailViewController: UISearchBarDelegate {
+extension SearchRecommendationViewController: UISearchBarDelegate {
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         // TODO: 자동검색 화면 보여주기
         coordinator?.coordinateToSearchDetail()
