@@ -13,7 +13,7 @@ public class EntityCreator {
 	private static String userIdForTest = "test";
 	private static int listSize = 3;
 
-	public static Wish createWish(CustomerRepository customerRepository,
+	public static Wish 세개의_Wish_생성_요청(CustomerRepository customerRepository,
 		AccommodationRepository accommodationRepository) {
 
 		Customer savedCustomer = createCustomer(customerRepository);
