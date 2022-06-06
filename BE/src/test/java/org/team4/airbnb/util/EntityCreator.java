@@ -19,9 +19,7 @@ public class EntityCreator {
 		Customer savedCustomer = createCustomer(customerRepository);
 		Accommodation accommodation = accommodationRepository.findFirstBy();
 
-		Wish wish = new Wish();
-		wish.setCustomer(savedCustomer);
-		wish.setAccommodationId(accommodation.getId());
+		Wish wish = Wish.from(savedCustomer, accommodation.getId());
 
 		return wish;
 	}
@@ -34,9 +32,7 @@ public class EntityCreator {
 
 		List<Wish> wishes = new ArrayList<>();
 		for (int i = 0; i < listSize; i++) {
-			Wish wish = new Wish();
-			wish.setCustomer(customer);
-			wish.setAccommodationId(accommodations.get(i).getId());
+			Wish wish = Wish.from(customer, accommodations.get(i).getId());
 
 			wishes.add(wish);
 		}
