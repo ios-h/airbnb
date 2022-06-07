@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class NearestDestinationCollectionViewCell: MainCommonCollectionViewCell {
+final class NearestDestinationCollectionViewCell: CommonCollectionViewCell {
     
     let cityImageView: UIImageView = {
         let imageView = UIImageView()

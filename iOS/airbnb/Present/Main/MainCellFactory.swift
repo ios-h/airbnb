@@ -8,5 +8,5 @@
 import UIKit
 
 protocol MainCellFactory {
-    func configureCell(mainViewCell: MainCommonCollectionViewCell) -> MainCommonCollectionViewCell
+    func configureCell(mainViewCell: CommonCollectionViewCell) -> CommonCollectionViewCell
 }

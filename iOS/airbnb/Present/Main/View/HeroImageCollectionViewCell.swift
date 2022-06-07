@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class HeroImageCollectionViewCell: MainCommonCollectionViewCell {
+final class HeroImageCollectionViewCell: CommonCollectionViewCell {
     
     let titleLabel = CustomLabel(color: .customBlack, font: .systemFont(ofSize: 34, weight: .medium))
     
