@@ -2,6 +2,7 @@ package org.team4.airbnb.accommodation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Embedded;
@@ -55,6 +56,12 @@ public class Accommodation extends BaseCreated {
 
 	public List<String> askImagesUrls() {
 		return accommodationImages.get(0).offerImagesUrls(accommodationImages);
+	}
+
+	public List<String> getImageUrls() {
+		return accommodationImages.stream()
+			.map(AccommodationImage::getUrl)
+			.collect(Collectors.toList());
 	}
 
 	public boolean isNotNullName(Accommodation accommodation) {
