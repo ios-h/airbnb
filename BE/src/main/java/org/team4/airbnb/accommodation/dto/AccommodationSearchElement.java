@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.team4.airbnb.accommodation.Accommodation;
-import org.team4.airbnb.accommodation.RoomFeature;
 
 @Builder(access = AccessLevel.PRIVATE)
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
@@ -22,7 +21,10 @@ public class AccommodationSearchElement {
 	private final String type;
 	private final String hostName;
 	private final String description;
-	private final RoomFeature roomFeature;
+	private final Integer maxGuest;
+	private final Integer numberOfRoom;
+	private final Integer numberOfBed;
+	private final Integer numberOfBathroom;
 	private final List<String> imageUrls;
 
 	public static AccommodationSearchElement from(Accommodation accommodation) {
@@ -36,7 +38,10 @@ public class AccommodationSearchElement {
 			.type(accommodation.getType().getDbData())
 			.hostName(accommodation.getHostName())
 			.description(accommodation.getDescription())
-			.roomFeature(accommodation.getRoomFeature())
+			.maxGuest(accommodation.getRoomFeature().getMaxGuest())
+			.numberOfRoom(accommodation.getRoomFeature().getNumberOfRoom())
+			.numberOfBed(accommodation.getRoomFeature().getNumberOfBed())
+			.numberOfBathroom(accommodation.getRoomFeature().getNumberOfBathroom())
 			.imageUrls(accommodation.getImageUrls())
 			.build();
 	}
