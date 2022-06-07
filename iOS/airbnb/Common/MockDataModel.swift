@@ -48,4 +48,18 @@ struct MockDataModel {
                      reviewCount: 157,
                      accomodationName: "HOTEL강릉세인트존스호텔 풀오션뷰 ...",
                      price: 131_429)]
+    
+    static let mockReservationItems = [
+        ReservationModel(image: UIImage(named: "img_reservation"),
+                         duration: "2021년 5월 17일 - 2021년 6월 4일",
+                         location: "서초구, 서울, 한국",
+                         roomType: "Spacious and Comfortable cozy house #4"),
+        ReservationModel(image: UIImage(named: "img_reservation"),
+                         duration: "2021년 5월 7일 - 2021년 5월 16일",
+                         location: "서초구, 서울, 한국",
+                         roomType: "Spacious and Comfortable cozy house #3"),
+        ReservationModel(image: UIImage(named: "img_reservation"),
+                         duration: "2021년 5월 1일 - 2021년 5월 6일",
+                         location: "서초구, 서울, 한국",
+                         roomType: "Spacious and Comfortable cozy house #2")]
 }
