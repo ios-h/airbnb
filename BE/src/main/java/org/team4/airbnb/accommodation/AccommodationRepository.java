@@ -20,7 +20,7 @@ public interface AccommodationRepository extends JpaRepository<Accommodation, Lo
 		+ "where st_distance_sphere(a.location, :#{#searchParams.point}) "
 		+ "<= :#{#searchParams.radius}",
 		nativeQuery = true)
-	List<Long> findIdsBySearchParams(AccommodationSearchParams searchParams);
+	List<Long> findIdsBySearchParams(AccommodationSearchParams searchParams, Pageable pageable);
 
 	List<Accommodation> findByIdIn(List<Long> accommodationIds);
 
