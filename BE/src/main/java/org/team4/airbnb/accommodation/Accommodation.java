@@ -15,8 +15,9 @@ import javax.persistence.OrderBy;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.geolatte.geom.G2D;
+import org.geolatte.geom.Point;
 import org.team4.airbnb.domain.BaseCreated;
-import org.team4.airbnb.domain.Geolocation;
 
 @Entity
 @NoArgsConstructor
@@ -33,8 +34,7 @@ public class Accommodation extends BaseCreated {
 
 	private Integer price;
 
-	@Embedded
-	private Geolocation geolocation;
+	private Point<G2D> location;
 
 	private String address;
 
