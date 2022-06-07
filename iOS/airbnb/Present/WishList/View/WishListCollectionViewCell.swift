@@ -7,14 +7,6 @@
 
 import UIKit
 
-struct WishListItem {
-    let image: UIImage?
-    let rating: Double?
-    let reviewCount: Int?
-    let accomodationName: String
-    let price: Int
-}
-
 class WishListCollectionViewCell: CommonCollectionViewCell {
     
     func configure(with cell: WishListItem) {

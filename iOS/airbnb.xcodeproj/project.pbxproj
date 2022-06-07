@@ -57,6 +57,7 @@
 		D0D299F3284F1DF5009D1608 /* ReservationFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299F2284F1DF5009D1608 /* ReservationFlowCoordinator.swift */; };
 		D0D299FD284F2498009D1608 /* WishListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299FC284F2498009D1608 /* WishListCollectionViewCell.swift */; };
 		D0D29A1F284F4300009D1608 /* WishListCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D29A1E284F4300009D1608 /* WishListCollectionViewDataSource.swift */; };
+		D0D29A25284FBDC5009D1608 /* WishListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D29A24284FBDC5009D1608 /* WishListItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +136,7 @@
 		D0D299F2284F1DF5009D1608 /* ReservationFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationFlowCoordinator.swift; sourceTree = "<group>"; };
 		D0D299FC284F2498009D1608 /* WishListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListCollectionViewCell.swift; sourceTree = "<group>"; };
 		D0D29A1E284F4300009D1608 /* WishListCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		D0D29A24284FBDC5009D1608 /* WishListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -396,6 +398,7 @@
 		D0CC2B6F2840748900D77A3E /* WishList */ = {
 			isa = PBXGroup;
 			children = (
+				D0D29A23284FBDBE009D1608 /* Model */,
 				D0D299FB284F2490009D1608 /* View */,
 				D0D29A1E284F4300009D1608 /* WishListCollectionViewDataSource.swift */,
 				D0D299F0284F1D4D009D1608 /* WishListFlowCoordinator.swift */,
@@ -419,6 +422,14 @@
 				D0D299FC284F2498009D1608 /* WishListCollectionViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		D0D29A23284FBDBE009D1608 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D0D29A24284FBDC5009D1608 /* WishListItem.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -648,6 +659,7 @@
 				D068BCFD28406F1900EF783E /* AppCoordinator.swift in Sources */,
 				D0CC2B6E2840733200D77A3E /* MainFlowCoordinator.swift in Sources */,
 				D01D6631283D3A200067B5E1 /* UIColor+Extension.swift in Sources */,
+				D0D29A25284FBDC5009D1608 /* WishListItem.swift in Sources */,
 				D089E7DE2844D2450000AE78 /* NearestDestinationCollectionViewCell.swift in Sources */,
 				D089E7E5284505F10000AE78 /* MainAccomodationCollectionViewCell.swift in Sources */,
 				D01D65F3283C70710067B5E1 /* MainViewController.swift in Sources */,
