@@ -38,6 +38,9 @@ dependencies {
 	//xml parser - Jackson
 	implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.13.3'
 
+	//configurtiaon-processor
+	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
