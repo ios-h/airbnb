@@ -9,9 +9,17 @@ import UIKit
 
 final class WishListViewController: UIViewController {
 
+    var coordinate: WishListFlow?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemPink
+        view.backgroundColor = .white
+        
+        configure()
+    }
+    
+    private func configure() {
+        self.navigationItem.title = "위시리스트"
     }
 }

@@ -9,6 +9,10 @@ import UIKit
 
 final class TabBarCoordinator: Coordinator {
     
+    private var mainCoordinator: MainFlowCoordinator?
+    private var wishListCoordinator: WishListFlowCoordinator?
+    private var reservationCoordinator: ReservationFlowCoordinator?
+    
     let navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
@@ -17,21 +21,40 @@ final class TabBarCoordinator: Coordinator {
     
     func start() {
         let tabBarController = TabBarController()
-        tabBarController.coordintor = self
+        tabBarController.coordinator = self
 
         let controllerList = getControllers()
         
-        var mainCoordinator: MainFlowCoordinator?
         if let mainNavigationController = controllerList.first as? UINavigationController {
             mainCoordinator = MainFlowCoordinator(navigationController: mainNavigationController)
+        }
+        
+        if let wishListNavigationController = controllerList[1] as? UINavigationController {
+            wishListCoordinator = WishListFlowCoordinator(navigationController: wishListNavigationController)
+        }
+        
+        if let reservationNavigationController = controllerList.last as? UINavigationController {
+            reservationCoordinator = ReservationFlowCoordinator(navigationController: reservationNavigationController)
         }
         
         tabBarController.viewControllers = controllerList
         tabBarController.modalPresentationStyle = .fullScreen
         navigationController.present(tabBarController, animated: false)
         
+        coordinate()
+    }
+    
+    private func coordinate() {
         if let mainCoordinator = mainCoordinator {
             coordinate(to: mainCoordinator)
+        }
+        
+        if let wishListCoordinator = wishListCoordinator {
+            coordinate(to: wishListCoordinator)
+        }
+        
+        if let reservationCoordinator = reservationCoordinator {
+            coordinate(to: reservationCoordinator)
         }
     }
     
@@ -41,15 +64,19 @@ final class TabBarCoordinator: Coordinator {
                                                            image: UIImage(named: "magnifyingglass"),
                                                            tag: 0)
         
-        let wishListViewController = WishListViewController()
-        wishListViewController.tabBarItem = UITabBarItem(title: "위시리스트", image: UIImage(named: "heart"), tag: 1)
-        wishListViewController.tabBarItem.selectedImage = UIImage(named: "heart.fill")
+        let wishListNavigationController = UINavigationController()
+        wishListNavigationController.tabBarItem = UITabBarItem(title: "위시리스트",
+                                                               image: UIImage(named: "heart"),
+                                                               tag: 1)
+        wishListNavigationController.tabBarItem.selectedImage = UIImage(named: "heart.fill")
         
-        let reservationViewController = ReservationViewController()
-        reservationViewController.tabBarItem = UITabBarItem(title: "내 예약", image: UIImage(named: "person"), tag: 2)
-        reservationViewController.tabBarItem.selectedImage = UIImage(named: "person.fill")
+        let reservationNavigationController = UINavigationController()
+        reservationNavigationController.tabBarItem = UITabBarItem(title: "내 예약",
+                                                                  image: UIImage(named: "person"),
+                                                                  tag: 2)
+        reservationNavigationController.tabBarItem.selectedImage = UIImage(named: "person.fill")
         
-        let controllerList = [mainNavigationController, wishListViewController, reservationViewController]
+        let controllerList = [mainNavigationController, wishListNavigationController, reservationNavigationController]
         return controllerList
     }
 }

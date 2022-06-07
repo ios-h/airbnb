@@ -53,6 +53,8 @@
 		D0D299EB284E45EA009D1608 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299EA284E45EA009D1608 /* SearchResultViewController.swift */; };
 		D0D299ED284E59BA009D1608 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299EC284E59BA009D1608 /* SearchResultTableViewCell.swift */; };
 		D0D299EF284E61C2009D1608 /* SearchResultTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299EE284E61C2009D1608 /* SearchResultTableViewDataSource.swift */; };
+		D0D299F1284F1D4D009D1608 /* WishListFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299F0284F1D4D009D1608 /* WishListFlowCoordinator.swift */; };
+		D0D299F3284F1DF5009D1608 /* ReservationFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299F2284F1DF5009D1608 /* ReservationFlowCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +129,8 @@
 		D0D299EA284E45EA009D1608 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		D0D299EC284E59BA009D1608 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		D0D299EE284E61C2009D1608 /* SearchResultTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewDataSource.swift; sourceTree = "<group>"; };
+		D0D299F0284F1D4D009D1608 /* WishListFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListFlowCoordinator.swift; sourceTree = "<group>"; };
+		D0D299F2284F1DF5009D1608 /* ReservationFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationFlowCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -389,6 +393,7 @@
 			isa = PBXGroup;
 			children = (
 				D01D6627283CB5550067B5E1 /* WishListViewController.swift */,
+				D0D299F0284F1D4D009D1608 /* WishListFlowCoordinator.swift */,
 			);
 			path = WishList;
 			sourceTree = "<group>";
@@ -397,6 +402,7 @@
 			isa = PBXGroup;
 			children = (
 				D01D6629283CB5DB0067B5E1 /* ReservationViewController.swift */,
+				D0D299F2284F1DF5009D1608 /* ReservationFlowCoordinator.swift */,
 			);
 			path = Reservation;
 			sourceTree = "<group>";
@@ -638,6 +644,7 @@
 				D089E80B284621770000AE78 /* SearchDiffableDataSource.swift in Sources */,
 				D087289D283F0DB9009983A5 /* CustomButton.swift in Sources */,
 				D089E80E284621960000AE78 /* SearchItem.swift in Sources */,
+				D0D299F3284F1DF5009D1608 /* ReservationFlowCoordinator.swift in Sources */,
 				D01D6628283CB5550067B5E1 /* WishListViewController.swift in Sources */,
 				D0D299EF284E61C2009D1608 /* SearchResultTableViewDataSource.swift in Sources */,
 				D04C6C41284925CD00A419A5 /* MainViewModel.swift in Sources */,
@@ -656,6 +663,7 @@
 				D01D65F1283C70710067B5E1 /* SceneDelegate.swift in Sources */,
 				D089E7D328446C950000AE78 /* HeroImageCollectionViewCell.swift in Sources */,
 				D089E7E2284501810000AE78 /* CommonHeaderView.swift in Sources */,
+				D0D299F1284F1D4D009D1608 /* WishListFlowCoordinator.swift in Sources */,
 				D089E811284622C00000AE78 /* SearchCollectionViewCell.swift in Sources */,
 				D068BD002840700B00EF783E /* TabBarController.swift in Sources */,
 				D01D662A283CB5DB0067B5E1 /* ReservationViewController.swift in Sources */,

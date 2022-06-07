@@ -9,9 +9,17 @@ import UIKit
 
 final class ReservationViewController: UIViewController {
 
+    var coordinate: ReservationFlow?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .blue
+        view.backgroundColor = .white
+        
+        configure()
+    }
+    
+    private func configure() {
+        self.navigationItem.title = "내 예약"
     }
 }
