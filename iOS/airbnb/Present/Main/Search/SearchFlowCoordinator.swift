@@ -8,7 +8,7 @@
 import UIKit
     
 protocol SearchFlow: AnyObject {
-    func coordinateToSearchDetail()
+    func coordinateToSearchResult()
 }
 
 final class SearchFlowCoordinator: Coordinator, SearchFlow {
@@ -19,12 +19,12 @@ final class SearchFlowCoordinator: Coordinator, SearchFlow {
     }
     
     func start() {
-        let searchPreviewViewController = SearchRecommendationViewController()
-        searchPreviewViewController.coordinator = self
+        let searchRecommendationViewController = SearchRecommendationViewController()
+        searchRecommendationViewController.coordinator = self
         
-        navigationController?.pushViewController(searchPreviewViewController, animated: false)
+        navigationController?.pushViewController(searchRecommendationViewController, animated: false)
     }
     
-    func coordinateToSearchDetail() {
+    func coordinateToSearchResult() {
     }
 }
