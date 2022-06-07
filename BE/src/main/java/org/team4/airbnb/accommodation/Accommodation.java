@@ -2,6 +2,7 @@ package org.team4.airbnb.accommodation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Embedded;
@@ -15,8 +16,9 @@ import javax.persistence.OrderBy;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.geolatte.geom.G2D;
+import org.geolatte.geom.Point;
 import org.team4.airbnb.domain.BaseCreated;
-import org.team4.airbnb.domain.Geolocation;
 
 @Entity
 @NoArgsConstructor
@@ -33,8 +35,7 @@ public class Accommodation extends BaseCreated {
 
 	private Integer price;
 
-	@Embedded
-	private Geolocation geolocation;
+	private Point<G2D> location;
 
 	private String address;
 
@@ -55,6 +56,12 @@ public class Accommodation extends BaseCreated {
 
 	public List<String> askImagesUrls() {
 		return accommodationImages.get(0).offerImagesUrls(accommodationImages);
+	}
+
+	public List<String> getImageUrls() {
+		return accommodationImages.stream()
+			.map(AccommodationImage::getUrl)
+			.collect(Collectors.toList());
 	}
 
 	public boolean isNotNullName(Accommodation accommodation) {
