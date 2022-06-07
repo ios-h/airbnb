@@ -32,13 +32,17 @@ final class MainSectionDiffableDataSource: UICollectionViewDiffableDataSource<Ma
                                         indexPath: indexPath,
                                         detailItem: itemIdentifier)
         
+        return getCellContent(with: mainViewCell, sectionType: sectionType)
+    }
+    
+    private func getCellContent(with cell: MainViewCell, sectionType: MainSection) -> UICollectionViewCell {
         switch sectionType {
         case .heroImage:
-            return heroSectionType(mainViewCell: mainViewCell)
+            return heroSectionType(mainViewCell: cell)
         case .nearestDestination:
-            return nearestSectionType(mainViewCell: mainViewCell)
+            return nearestSectionType(mainViewCell: cell)
         case .accomodation:
-            return accomodationSectionType(mainViewCell: mainViewCell)
+            return accomodationSectionType(mainViewCell: cell)
         }
     }
     
@@ -53,7 +57,9 @@ final class MainSectionDiffableDataSource: UICollectionViewDiffableDataSource<Ma
             return UICollectionViewCell()
         }
         
-        configureCell(with: cell, indexPath: indexPath, detailItem: detailItem)
+        configureCell(with: cell,
+                      indexPath: indexPath,
+                      detailItem: detailItem)
         return cell
     }
     
@@ -76,7 +82,9 @@ final class MainSectionDiffableDataSource: UICollectionViewDiffableDataSource<Ma
             return UICollectionViewCell()
         }
         
-        configureCell(with: cell, indexPath: indexPath, detailItem: detailItem)
+        configureCell(with: cell,
+                      indexPath: indexPath,
+                      detailItem: detailItem)
         return cell
     }
     
