@@ -130,7 +130,6 @@ extension MainViewController: UISearchResultsUpdating {
 
 extension MainViewController: UISearchBarDelegate {
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        // TODO: 검색 추천 화면 보여주기
         coordinate?.coordinateToSearchViewController()
         return true
     }
