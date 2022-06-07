@@ -55,6 +55,8 @@
 		D0D299EF284E61C2009D1608 /* SearchResultTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299EE284E61C2009D1608 /* SearchResultTableViewDataSource.swift */; };
 		D0D299F1284F1D4D009D1608 /* WishListFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299F0284F1D4D009D1608 /* WishListFlowCoordinator.swift */; };
 		D0D299F3284F1DF5009D1608 /* ReservationFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299F2284F1DF5009D1608 /* ReservationFlowCoordinator.swift */; };
+		D0D299FD284F2498009D1608 /* WishListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299FC284F2498009D1608 /* WishListCollectionViewCell.swift */; };
+		D0D29A1F284F4300009D1608 /* WishListCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D29A1E284F4300009D1608 /* WishListCollectionViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +133,8 @@
 		D0D299EE284E61C2009D1608 /* SearchResultTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewDataSource.swift; sourceTree = "<group>"; };
 		D0D299F0284F1D4D009D1608 /* WishListFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListFlowCoordinator.swift; sourceTree = "<group>"; };
 		D0D299F2284F1DF5009D1608 /* ReservationFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationFlowCoordinator.swift; sourceTree = "<group>"; };
+		D0D299FC284F2498009D1608 /* WishListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListCollectionViewCell.swift; sourceTree = "<group>"; };
+		D0D29A1E284F4300009D1608 /* WishListCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListCollectionViewDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,11 +214,11 @@
 		D01D65ED283C70710067B5E1 /* airbnb */ = {
 			isa = PBXGroup;
 			children = (
-				D089E7F62845FAAF0000AE78 /* Utility */,
 				D068BCF528406D7700EF783E /* App */,
 				D01D662E283D3A050067B5E1 /* Common */,
 				D01D6624283CB50E0067B5E1 /* Present */,
 				D068BCF628406DA500EF783E /* SupportingFiles */,
+				D089E7F62845FAAF0000AE78 /* Utility */,
 			);
 			path = airbnb;
 			sourceTree = "<group>";
@@ -239,11 +243,11 @@
 		D01D6624283CB50E0067B5E1 /* Present */ = {
 			isa = PBXGroup;
 			children = (
-				D068BCFE28406FFE00EF783E /* TabBar */,
-				D068BD03284072C100EF783E /* Main */,
-				D0CC2B6F2840748900D77A3E /* WishList */,
-				D0CC2B702840749000D77A3E /* Reservation */,
 				D0872899283E7D13009983A5 /* CustomView */,
+				D068BD03284072C100EF783E /* Main */,
+				D0CC2B702840749000D77A3E /* Reservation */,
+				D068BCFE28406FFE00EF783E /* TabBar */,
+				D0CC2B6F2840748900D77A3E /* WishList */,
 			);
 			path = Present;
 			sourceTree = "<group>";
@@ -342,9 +346,9 @@
 		D089E7E3284501940000AE78 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D0D299DB284CB88A009D1608 /* CommonCollectionViewCell.swift */,
 				D089E7E1284501810000AE78 /* CommonHeaderView.swift */,
 				D0D299E3284D000E009D1608 /* LayoutManager.swift */,
-				D0D299DB284CB88A009D1608 /* CommonCollectionViewCell.swift */,
 				D0D299E7284D0C0C009D1608 /* ViewSize.swift */,
 			);
 			path = View;
@@ -392,6 +396,8 @@
 		D0CC2B6F2840748900D77A3E /* WishList */ = {
 			isa = PBXGroup;
 			children = (
+				D0D299FB284F2490009D1608 /* View */,
+				D0D29A1E284F4300009D1608 /* WishListCollectionViewDataSource.swift */,
 				D0D299F0284F1D4D009D1608 /* WishListFlowCoordinator.swift */,
 				D01D6627283CB5550067B5E1 /* WishListViewController.swift */,
 			);
@@ -405,6 +411,14 @@
 				D01D6629283CB5DB0067B5E1 /* ReservationViewController.swift */,
 			);
 			path = Reservation;
+			sourceTree = "<group>";
+		};
+		D0D299FB284F2490009D1608 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D0D299FC284F2498009D1608 /* WishListCollectionViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -639,8 +653,10 @@
 				D01D65F3283C70710067B5E1 /* MainViewController.swift in Sources */,
 				D0D299E0284CC156009D1608 /* MainCellFactory.swift in Sources */,
 				D0D299E4284D000E009D1608 /* LayoutManager.swift in Sources */,
+				D0D29A1F284F4300009D1608 /* WishListCollectionViewDataSource.swift in Sources */,
 				D0D299DC284CB88A009D1608 /* CommonCollectionViewCell.swift in Sources */,
 				D089E80528460B4C0000AE78 /* MainSectionDiffableDataSource.swift in Sources */,
+				D0D299FD284F2498009D1608 /* WishListCollectionViewCell.swift in Sources */,
 				D089E80B284621770000AE78 /* SearchDiffableDataSource.swift in Sources */,
 				D087289D283F0DB9009983A5 /* CustomButton.swift in Sources */,
 				D089E80E284621960000AE78 /* SearchItem.swift in Sources */,

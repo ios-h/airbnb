@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct MockDataModel {
     static let mockHeroImages = [MainImageItem(title: "슬기로운 자연생활", imageName: "img_hero"),
@@ -24,5 +25,27 @@ struct MockDataModel {
                                  SearchItem(imageName: "img_hero", title: "대구", description: "차로 3시간 거리"),
                                  SearchItem(imageName: "img_hero_beach", title: "부산", description: "차로 5시간 거리"),
                                  SearchItem(imageName: "img_hero_jeju", title: "대전", description: "차로 2시간 거리"),
-                                 SearchItem(imageName: "img_hero", title: "부천시", description: "차로 30분 거리"),]
+                                 SearchItem(imageName: "img_hero", title: "부천시", description: "차로 30분 거리")]
+    
+    static let mockWishListItems = [
+        WishListItem(image: UIImage(named: "img_thumbnail1"),
+                     rating: 4.98,
+                     reviewCount: 50,
+                     accomodationName: "비담집, 비우고 담은집(집전체, 최대4인)",
+                     price: 308_571),
+        WishListItem(image: UIImage(named: "img_thumbnail2"),
+                     rating: 4.96,
+                     reviewCount: 157,
+                     accomodationName: "HOTEL강릉세인트존스호텔 풀오션뷰 ...",
+                     price: 131_429),
+        WishListItem(image: UIImage(named: "img_thumbnail1"),
+                     rating: 4.98,
+                     reviewCount: 50,
+                     accomodationName: "비담집, 비우고 담은집(집전체, 최대4인)",
+                     price: 308_571),
+        WishListItem(image: UIImage(named: "img_thumbnail2"),
+                     rating: 4.96,
+                     reviewCount: 157,
+                     accomodationName: "HOTEL강릉세인트존스호텔 풀오션뷰 ...",
+                     price: 131_429)]
 }
