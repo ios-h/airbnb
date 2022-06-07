@@ -9,7 +9,7 @@ import UIKit
 
 class WishListCollectionViewCell: CommonCollectionViewCell {
     
-    func configure(with cell: WishListItem) {
+    func configure(with cell: WishListModel) {
         self.accomodationImageView.image = cell.image
         self.ratingLabel.text = "\(cell.rating ?? 0)"
         self.reviewCountingLabel.text = "(후기 \(cell.reviewCount ?? 0)개)"
