@@ -31,12 +31,11 @@ class WishListCollectionViewCell: CommonCollectionViewCell {
                                                backgroundColor: .white,
                                                font: .systemFont(ofSize: 12, weight: .regular))
     
-    private let heartImageView: UIImageView = {
-        let image = UIImage(named: "icon_heart")?.withTintColor(.primary ?? UIColor.red)
-        let imageView = UIImageView(image: image)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.clipsToBounds = true
-        return imageView
+    private let heartButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "icon_heart"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     private let horizontalView: UIView = {
@@ -89,7 +88,7 @@ class WishListCollectionViewCell: CommonCollectionViewCell {
         
         containerView.addSubview(accomodationImageView)
         accomodationImageView.addSubview(superHostButton)
-        accomodationImageView.addSubview(heartImageView)
+        accomodationImageView.addSubview(heartButton)
         
         containerView.addSubview(horizontalView)
         horizontalView.addSubview(starImageView)
@@ -118,11 +117,11 @@ class WishListCollectionViewCell: CommonCollectionViewCell {
         superHostButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         superHostButton.widthAnchor.constraint(equalTo: superHostButton.heightAnchor, multiplier: 3.5).isActive = true
         
-        heartImageView.trailingAnchor.constraint(equalTo: accomodationImageView.trailingAnchor,
+        heartButton.trailingAnchor.constraint(equalTo: accomodationImageView.trailingAnchor,
                                                  constant: -20).isActive = true
-        heartImageView.topAnchor.constraint(equalTo: accomodationImageView.topAnchor, constant: 20).isActive = true
-        heartImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        heartImageView.widthAnchor.constraint(equalTo: heartImageView.heightAnchor).isActive = true
+        heartButton.topAnchor.constraint(equalTo: accomodationImageView.topAnchor, constant: 20).isActive = true
+        heartButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        heartButton.widthAnchor.constraint(equalTo: heartButton.heightAnchor).isActive = true
         
         horizontalView.leadingAnchor.constraint(equalTo: accomodationImageView.leadingAnchor).isActive = true
         horizontalView.trailingAnchor.constraint(equalTo: accomodationImageView.trailingAnchor).isActive = true
