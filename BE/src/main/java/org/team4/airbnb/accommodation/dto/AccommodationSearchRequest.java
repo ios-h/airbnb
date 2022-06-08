@@ -26,6 +26,8 @@ public class AccommodationSearchRequest {
 	private LocalDate checkInDate = LocalDate.now();
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate checkOutDate = LocalDate.now().plusDays(DEFAULT_LENGTH_OF_STAY);
+	private Integer minPrice;
+	private Integer maxPrice;
 
 	public AccommodationSearchParams toSearchParams() {
 		Point<G2D> point = Geometries.mkPoint(new G2D(longitude, latitude),
@@ -36,6 +38,8 @@ public class AccommodationSearchRequest {
 			.radius(radius)
 			.checkInDate(checkInDate)
 			.checkOutDate(checkOutDate)
+			.minPrice(minPrice)
+			.maxPrice(maxPrice)
 			.build();
 	}
 }

@@ -14,13 +14,17 @@ public class AccommodationSearchParams {
 	private final Double radius;
 	private final LocalDate checkInDate;
 	private final LocalDate checkOutDate;
+	private final Integer minPrice;
+	private final Integer maxPrice;
 
 	@Builder(access = AccessLevel.PACKAGE)
 	private AccommodationSearchParams(Point<G2D> point, Double radius, LocalDate checkInDate,
-		LocalDate checkOutDate) {
+		LocalDate checkOutDate, Integer minPrice, Integer maxPrice) {
 		this.point = point;
 		this.radius = radius;
 		this.checkInDate = checkInDate;
 		this.checkOutDate = checkOutDate;
+		this.minPrice = minPrice;
+		this.maxPrice = maxPrice;
 	}
 }

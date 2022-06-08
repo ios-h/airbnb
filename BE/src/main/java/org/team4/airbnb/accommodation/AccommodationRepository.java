@@ -20,6 +20,8 @@ public interface AccommodationRepository extends JpaRepository<Accommodation, Lo
 		+ "left outer join reservation as r on a.accommodation_id = r.accommodation_id "
 		+ "where st_distance_sphere(a.location, :#{#searchParams.point}) "
 		+ "<= :#{#searchParams.radius} "
+		+ "and ifnull(a.price >= :#{#searchParams.minPrice}, true) "
+		+ "and ifnull(a.price <= :#{#searchParams.maxPrice}, true) "
 		+ "and ifnull(r.check_out_date <= :#{#searchParams.checkInDate} "
 		+ "or r.check_in_date > :#{#searchParams.checkOutDate}, true)",
 		nativeQuery = true)
