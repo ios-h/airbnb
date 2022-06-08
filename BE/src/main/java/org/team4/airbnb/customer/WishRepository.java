@@ -1,4 +1,4 @@
-package org.team4.airbnb.wish;
+package org.team4.airbnb.customer;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

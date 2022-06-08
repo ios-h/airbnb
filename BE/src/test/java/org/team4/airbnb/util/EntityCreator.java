@@ -6,7 +6,7 @@ import org.team4.airbnb.accommodation.Accommodation;
 import org.team4.airbnb.accommodation.AccommodationRepository;
 import org.team4.airbnb.customer.Customer;
 import org.team4.airbnb.customer.CustomerRepository;
-import org.team4.airbnb.wish.Wish;
+import org.team4.airbnb.customer.Wish;
 
 public class EntityCreator {
 

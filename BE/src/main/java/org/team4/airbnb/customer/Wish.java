@@ -1,4 +1,4 @@
-package org.team4.airbnb.wish;
+package org.team4.airbnb.customer;
 
 import java.util.Objects;
 import javax.persistence.Column;
@@ -14,9 +14,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.team4.airbnb.customer.Customer;
+import org.team4.airbnb.customer.dto.WishRequest;
 import org.team4.airbnb.domain.BaseCreated;
-import org.team4.airbnb.wish.dto.WishRequest;
 
 @Entity
 @Builder
