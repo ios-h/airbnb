@@ -29,6 +29,7 @@ public class Customer {
 
 	private String userId;
 
+	@Builder.Default
 	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
 	List<Wish> wishes = new ArrayList<>();
 
