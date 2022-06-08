@@ -17,8 +17,11 @@ public interface AccommodationRepository extends JpaRepository<Accommodation, Lo
 		@Param("accommodationIds") Iterable<Long> accommodationIds);
 
 	@Query(value = "select a.* from accommodation as a "
+		+ "left outer join reservation as r on a.accommodation_id = r.accommodation_id "
 		+ "where st_distance_sphere(a.location, :#{#searchParams.point}) "
-		+ "<= :#{#searchParams.radius}",
+		+ "<= :#{#searchParams.radius} "
+		+ "and ifnull(r.check_out_date <= :#{#searchParams.checkInDate} "
+		+ "or r.check_in_date > :#{#searchParams.checkOutDate}, true)",
 		nativeQuery = true)
 	List<Long> findIdsBySearchParams(AccommodationSearchParams searchParams, Pageable pageable);
 

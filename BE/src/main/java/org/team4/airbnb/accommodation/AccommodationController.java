@@ -1,5 +1,6 @@
 package org.team4.airbnb.accommodation;
 
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ public class AccommodationController {
 
 	@GetMapping
 	public ResponseEntity<AccommodationSearchResponse> searchFrom
-		(AccommodationSearchRequest searchRequest, Pageable pageable) {
+		(@Valid AccommodationSearchRequest searchRequest, Pageable pageable) {
 
 		return ResponseEntity.ok(accommodationService.search(searchRequest, pageable));
 	}
