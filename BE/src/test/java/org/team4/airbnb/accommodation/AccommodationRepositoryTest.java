@@ -1,31 +1,41 @@
 package org.team4.airbnb.accommodation;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.transaction.annotation.Transactional;
 
-@SpringBootTest
+@DataJpaTest
 @Transactional
+@Nested
+@DisplayName("숙소 Repository에서")
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class AccommodationRepositoryTest {
+
+	private static final Set<Long> SAMPLE_IDS = Set.of(3L, 4L, 5L);
 
 	@Autowired
 	AccommodationRepository accommodationRepository;
 
-	@Test
-	@DisplayName("accommodationId 목록으로 accommodation 검색")
-	void findAllWithImagesById() {
-		Set<Long> ids = new HashSet<>();
-		ids.add(4L);
-		ids.add(5L);
-		List<Accommodation> accommodations = accommodationRepository.findAllWithImagesById(ids);
+	Logger logger = LoggerFactory.getLogger(AccommodationRepositoryTest.class);
 
-		assertThat(accommodations).hasSize(2);
+	@Test
+	@DisplayName("숙소 Id 목록으로 사진이 포함된 숙소 목록 검색")
+	void findAllWithImagesById() {
+		List<Accommodation> accommodations = accommodationRepository
+			.findAllWithImagesByIdIn(SAMPLE_IDS);
+
+		accommodations.forEach(a -> logger.info(a.toString()));
+
+		assertThat(accommodations).hasSize(SAMPLE_IDS.size());
 	}
 }

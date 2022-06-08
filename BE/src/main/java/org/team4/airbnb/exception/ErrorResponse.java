@@ -5,8 +5,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Getter
-public class CustomException extends RuntimeException {
+public class ErrorResponse<T> {
 
-	private final ErrorCode errorCode;
-
+	private final T message;
 }

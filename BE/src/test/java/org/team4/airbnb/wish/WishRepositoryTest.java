@@ -1,56 +1,64 @@
 package org.team4.airbnb.wish;
 
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import java.util.NoSuchElementException;
-import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.transaction.annotation.Transactional;
 import org.team4.airbnb.accommodation.AccommodationRepository;
 import org.team4.airbnb.customer.CustomerRepository;
+import org.team4.airbnb.util.EntityCreator;
 
-@SpringBootTest
+@DataJpaTest
 @Transactional
+@Nested
+@DisplayName("위시 Repository에서")
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class WishRepositoryTest {
 
 	@Autowired
-	WishRepository wishRepository;
+	private WishRepository wishRepository;
 	@Autowired
-	CustomerRepository customerRepository;
-    @Autowired
-	AccommodationRepository accommodationRepository;
+	private AccommodationRepository accommodationRepository;
+	@Autowired
+	private CustomerRepository customerRepository;
+
 
 	@Test
-	@DisplayName("위시리스트에 특정 숙소 등록하기")
+	@DisplayName("위시리스트 등록하기")
 	void addWish() {
 		//given
-		Wish wish =  new Wish();
-		wish.setCustomer(customerRepository.findById(1L).get());
-		wish.setAccommodationId(100L);
+		Wish wish = EntityCreator.createWish(customerRepository, accommodationRepository);
 
 		//when
 		Wish savedWish = wishRepository.save(wish);
 
 		//then
-		assertThat(savedWish).isNotNull();
-		assertThat(savedWish.getAccommodationId()).isEqualTo(100);
+		assertAll(
+			() -> assertThat(savedWish.getAccommodationId()).isEqualTo(wish.getAccommodationId()),
+			() -> assertThat(savedWish).isEqualTo(wish)
+		);
 	}
-	
+
 	@Test
-	@DisplayName("위시리스트에 특정 숙소 삭제하기")
+	@DisplayName("위시리스트 삭제하기")
 	void deleteWish() {
 		//given
-		Optional<Wish> wish = wishRepository.findById(1L);
+		Wish wish = wishRepository.findFirstBy();
 
 		//when
-		wishRepository.delete(wish.get());
+		wishRepository.delete(wish);
 
 		//then
 		assertThatExceptionOfType(NoSuchElementException.class)
-			.isThrownBy(() -> wishRepository.findById(1L).get());
+			.isThrownBy(() -> wishRepository.findById(wish.getId()).get());
 	}
 }
