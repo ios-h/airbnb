@@ -11,6 +11,7 @@
 		747B3C4AB2D65AC07C371B01 /* Pods_airbnb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89D983E7C4E499A69032693 /* Pods_airbnb.framework */; };
 		7711AA55455911FFC4D98C39 /* Pods_airbnbTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9502C9F7B30B430AB84730F0 /* Pods_airbnbTests.framework */; };
 		D00B7413284FECBF00B31424 /* HorizonCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = D00B7412284FECBF00B31424 /* HorizonCalendar */; };
+		D00B741C285043FE00B31424 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D00B741B285043FE00B31424 /* SnapKit */; };
 		D01D65EF283C70710067B5E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D65EE283C70710067B5E1 /* AppDelegate.swift */; };
 		D01D65F1283C70710067B5E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D65F0283C70710067B5E1 /* SceneDelegate.swift */; };
 		D01D65F3283C70710067B5E1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D65F2283C70710067B5E1 /* MainViewController.swift */; };
@@ -151,6 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D00B741C285043FE00B31424 /* SnapKit in Frameworks */,
 				D00B7413284FECBF00B31424 /* HorizonCalendar in Frameworks */,
 				747B3C4AB2D65AC07C371B01 /* Pods_airbnb.framework in Frameworks */,
 			);
@@ -479,6 +481,7 @@
 			name = airbnb;
 			packageProductDependencies = (
 				D00B7412284FECBF00B31424 /* HorizonCalendar */,
+				D00B741B285043FE00B31424 /* SnapKit */,
 			);
 			productName = airbnb;
 			productReference = D01D65EB283C70710067B5E1 /* airbnb.app */;
@@ -556,6 +559,7 @@
 			mainGroup = D01D65E2283C70710067B5E1;
 			packageReferences = (
 				D00B7411284FECBF00B31424 /* XCRemoteSwiftPackageReference "HorizonCalendar" */,
+				D00B741A285043FE00B31424 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = D01D65EC283C70710067B5E1 /* Products */;
 			projectDirPath = "";
@@ -1079,6 +1083,14 @@
 				kind = branch;
 			};
 		};
+		D00B741A285043FE00B31424 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1086,6 +1098,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D00B7411284FECBF00B31424 /* XCRemoteSwiftPackageReference "HorizonCalendar" */;
 			productName = HorizonCalendar;
+		};
+		D00B741B285043FE00B31424 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D00B741A285043FE00B31424 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
