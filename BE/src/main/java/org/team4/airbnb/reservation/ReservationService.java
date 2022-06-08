@@ -57,6 +57,7 @@ public class ReservationService {
 		return ReservationResponse.from(reservations);
 	}
 
+	@Transactional
 	public void cancel(Long reservationId) {
 		Reservation reservation = reservationRepository.findById(reservationId)
 			.orElseThrow(ReservationNotFoundException::new);
