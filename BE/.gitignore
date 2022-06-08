@@ -201,5 +201,5 @@ gradle-app.setting
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,java,gradle,intellij+all
 
 api.properties
-src/main/resources/application-testdb.yml
+src/main/resources/application-localproperty.yml
 .idea/codeStyles/codeStyleConfig.xml

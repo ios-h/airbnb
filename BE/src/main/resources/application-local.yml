@@ -17,7 +17,7 @@ spring:
       mode: always
 
   config:
-    import: application-testdb.yml
+    import: application-localproperty.yml
 
 logging.level:
   org.hibernate.SQL: debug
