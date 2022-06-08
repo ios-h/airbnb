@@ -19,7 +19,6 @@ import org.team4.airbnb.reservation.dto.ReservationRequest;
 import org.team4.airbnb.reservation.dto.ReservationResponse;
 
 @Service
-@Transactional
 @RequiredArgsConstructor
 public class ReservationService {
 
@@ -27,6 +26,7 @@ public class ReservationService {
 	private final AccommodationRepository accommodationRepository;
 	private final CustomerRepository customerRepository;
 
+	@Transactional
 	public void make(ReservationRequest reservationRequest) {
 		Customer customer = customerRepository.findById(reservationRequest.getCustomerId())
 			.orElseThrow(CustomerNotFoundException::new);
