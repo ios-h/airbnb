@@ -1,10 +1,14 @@
 package org.team4.airbnb.auth.config;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import org.team4.airbnb.auth.config.OauthProperties.Provider;
 import org.team4.airbnb.auth.config.OauthProperties.User;
 
-
+@Getter
+@Builder
+@AllArgsConstructor
 public class OauthProvider {
 
 	private final String clientId;
@@ -21,15 +25,5 @@ public class OauthProvider {
 			.tokenUrl(provider.getTokenUri())
 			.userInfoUrl(provider.getUserInfoUri())
 			.build();
-	}
-
-	@Builder
-	private OauthProvider(String clientId, String clientSecret, String redirectUrl, String tokenUrl,
-		String userInfoUrl) {
-		this.clientId = clientId;
-		this.clientSecret = clientSecret;
-		this.redirectUrl = redirectUrl;
-		this.tokenUrl = tokenUrl;
-		this.userInfoUrl = userInfoUrl;
 	}
 }
