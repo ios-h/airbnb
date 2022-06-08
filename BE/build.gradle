@@ -41,6 +41,9 @@ dependencies {
 	//configurtiaon-processor
 	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 
+	//webflux : OAuth 서버와 통신을 위해 WebClient 사용
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
