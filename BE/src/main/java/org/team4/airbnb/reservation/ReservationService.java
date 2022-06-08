@@ -28,28 +28,16 @@ public class ReservationService {
 
 	@Transactional
 	public void make(ReservationRequest reservationRequest) {
-		Customer customer = customerRepository.findById(reservationRequest.getCustomerId())
-			.orElseThrow(CustomerNotFoundException::new);
+		Customer customer = retrieveCustomer(reservationRequest.getCustomerId());
 
-		Accommodation accommodation = accommodationRepository
-			.findById((reservationRequest.getAccommodationId()))
-			.orElseThrow(AccommodationNotFoundException::new);
+		Accommodation accommodation = retrieveAccommodation(
+			reservationRequest.getAccommodationId());
 
-		Integer lengthOfStay = Math.toIntExact(
-			ChronoUnit.DAYS.between(reservationRequest.getCheckInDate(),
-				reservationRequest.getCheckOutDate()));
+		Invoice invoice = Invoice.calculate(accommodation.getPrice(),
+			reservationRequest.getLengthOfStay());
 
-		Invoice invoice = Invoice.calculate(accommodation.getPrice(), lengthOfStay);
-
-		Reservation reservation = Reservation.builder()
-			.checkInDate(reservationRequest.getCheckInDate())
-			.checkOutDate(reservationRequest.getCheckOutDate())
-			.numberOfGuest(reservationRequest.getNumberOfGuest())
-			.numberOfInfant(reservationRequest.getNumberOfInfant())
-			.invoice(invoice)
-			.accommodation(accommodation)
-			.customer(customer)
-			.build();
+		Reservation reservation = reservationRequest.toReservation(invoice, accommodation,
+			customer);
 
 		reservationRepository.save(reservation);
 	}
@@ -74,5 +62,16 @@ public class ReservationService {
 			.orElseThrow(ReservationNotFoundException::new);
 
 		reservationRepository.delete(reservation);
+	}
+
+	private Accommodation retrieveAccommodation(Long accommodationId) {
+		return accommodationRepository
+			.findById(accommodationId)
+			.orElseThrow(AccommodationNotFoundException::new);
+	}
+
+	private Customer retrieveCustomer(Long customerId) {
+		return customerRepository.findById(customerId)
+			.orElseThrow(CustomerNotFoundException::new);
 	}
 }
