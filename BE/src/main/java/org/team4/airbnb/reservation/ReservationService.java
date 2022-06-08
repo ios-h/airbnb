@@ -1,6 +1,5 @@
 package org.team4.airbnb.reservation;
 
-import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -15,6 +14,7 @@ import org.team4.airbnb.customer.CustomerRepository;
 import org.team4.airbnb.exception.AccommodationNotFoundException;
 import org.team4.airbnb.exception.CustomerNotFoundException;
 import org.team4.airbnb.exception.ReservationNotFoundException;
+import org.team4.airbnb.reservation.dto.ReservationElement;
 import org.team4.airbnb.reservation.dto.ReservationRequest;
 import org.team4.airbnb.reservation.dto.ReservationResponse;
 
@@ -27,7 +27,7 @@ public class ReservationService {
 	private final CustomerRepository customerRepository;
 
 	@Transactional
-	public void make(ReservationRequest reservationRequest) {
+	public ReservationElement make(ReservationRequest reservationRequest) {
 		Customer customer = retrieveCustomer(reservationRequest.getCustomerId());
 
 		Accommodation accommodation = retrieveAccommodation(
@@ -39,7 +39,9 @@ public class ReservationService {
 		Reservation reservation = reservationRequest.toReservation(invoice, accommodation,
 			customer);
 
-		reservationRepository.save(reservation);
+		reservation = reservationRepository.save(reservation);
+
+		return new ReservationElement(reservation);
 	}
 
 	@Transactional(readOnly = true)
