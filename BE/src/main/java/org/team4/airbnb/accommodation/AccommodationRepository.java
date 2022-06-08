@@ -16,11 +16,17 @@ public interface AccommodationRepository extends JpaRepository<Accommodation, Lo
 	List<Accommodation> findAllWithImagesByIdIn(
 		@Param("accommodationIds") Iterable<Long> accommodationIds);
 
-	@Query(value = "select a.* from accommodation as a "
+	@Query(value = "select distinct a.accommodation_id from accommodation as a "
+		+ "left outer join reservation as r on a.accommodation_id = r.accommodation_id "
 		+ "where st_distance_sphere(a.location, :#{#searchParams.point}) "
-		+ "<= :#{#searchParams.radius}",
+		+ "<= :#{#searchParams.radius} "
+		+ "and ifnull(a.price >= :#{#searchParams.minPrice}, true) "
+		+ "and ifnull(a.price <= :#{#searchParams.maxPrice}, true) "
+		+ "and ifnull(a.max_guest >= :#{#searchParams.numberOfGuest}, true) "
+		+ "and ifnull(r.check_out_date <= :#{#searchParams.checkInDate} "
+		+ "or r.check_in_date > :#{#searchParams.checkOutDate}, true)",
 		nativeQuery = true)
-	List<Long> findIdsBySearchParams(AccommodationSearchParams searchParams);
+	List<Long> findIdsBySearchParams(AccommodationSearchParams searchParams, Pageable pageable);
 
 	List<Accommodation> findByIdIn(List<Long> accommodationIds);
 
