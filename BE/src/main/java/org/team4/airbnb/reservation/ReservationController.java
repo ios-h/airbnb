@@ -1,5 +1,6 @@
 package org.team4.airbnb.reservation;
 
+import java.net.URI;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.team4.airbnb.reservation.dto.ReservationElement;
 import org.team4.airbnb.reservation.dto.ReservationRequest;
 import org.team4.airbnb.reservation.dto.ReservationResponse;
 
@@ -22,9 +24,12 @@ public class ReservationController {
 	private final ReservationService reservationService;
 
 	@PostMapping
-	public ResponseEntity<Object> make(@RequestBody ReservationRequest reservationRequest) {
-		reservationService.make(reservationRequest);
-		return ResponseEntity.ok().build();
+	public ResponseEntity<ReservationElement> make(@RequestBody ReservationRequest reservationRequest) {
+		ReservationElement reservationElement = reservationService.make(reservationRequest);
+
+		return ResponseEntity
+			.created(URI.create("/api/reservations/" + reservationElement.getId()))
+			.body(reservationElement);
 	}
 
 	@GetMapping

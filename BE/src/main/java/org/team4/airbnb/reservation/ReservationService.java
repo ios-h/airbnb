@@ -1,6 +1,5 @@
 package org.team4.airbnb.reservation;
 
-import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -15,11 +14,11 @@ import org.team4.airbnb.customer.CustomerRepository;
 import org.team4.airbnb.exception.AccommodationNotFoundException;
 import org.team4.airbnb.exception.CustomerNotFoundException;
 import org.team4.airbnb.exception.ReservationNotFoundException;
+import org.team4.airbnb.reservation.dto.ReservationElement;
 import org.team4.airbnb.reservation.dto.ReservationRequest;
 import org.team4.airbnb.reservation.dto.ReservationResponse;
 
 @Service
-@Transactional
 @RequiredArgsConstructor
 public class ReservationService {
 
@@ -27,31 +26,22 @@ public class ReservationService {
 	private final AccommodationRepository accommodationRepository;
 	private final CustomerRepository customerRepository;
 
-	public void make(ReservationRequest reservationRequest) {
-		Customer customer = customerRepository.findById(reservationRequest.getCustomerId())
-			.orElseThrow(CustomerNotFoundException::new);
+	@Transactional
+	public ReservationElement make(ReservationRequest reservationRequest) {
+		Customer customer = retrieveCustomer(reservationRequest.getCustomerId());
 
-		Accommodation accommodation = accommodationRepository
-			.findById((reservationRequest.getAccommodationId()))
-			.orElseThrow(AccommodationNotFoundException::new);
+		Accommodation accommodation = retrieveAccommodation(
+			reservationRequest.getAccommodationId());
 
-		Integer lengthOfStay = Math.toIntExact(
-			ChronoUnit.DAYS.between(reservationRequest.getCheckInDate(),
-				reservationRequest.getCheckOutDate()));
+		Invoice invoice = Invoice.calculate(accommodation.getPrice(),
+			reservationRequest.getLengthOfStay());
 
-		Invoice invoice = Invoice.calculate(accommodation.getPrice(), lengthOfStay);
+		Reservation reservation = reservationRequest.toReservation(invoice, accommodation,
+			customer);
 
-		Reservation reservation = Reservation.builder()
-			.checkInDate(reservationRequest.getCheckInDate())
-			.checkOutDate(reservationRequest.getCheckOutDate())
-			.numberOfGuest(reservationRequest.getNumberOfGuest())
-			.numberOfInfant(reservationRequest.getNumberOfInfant())
-			.invoice(invoice)
-			.accommodation(accommodation)
-			.customer(customer)
-			.build();
+		reservation = reservationRepository.save(reservation);
 
-		reservationRepository.save(reservation);
+		return new ReservationElement(reservation);
 	}
 
 	@Transactional(readOnly = true)
@@ -61,7 +51,7 @@ public class ReservationService {
 			.findAllByCustomerId(customerId, pageable);
 
 		Set<Long> accommodationIds = reservations.stream()
-			.map(r -> r.getAccommodation().getId())
+			.map(Reservation::getAccommodationId)
 			.collect(Collectors.toSet());
 
 		accommodationRepository.findAllWithImagesByIdIn(accommodationIds);
@@ -69,10 +59,22 @@ public class ReservationService {
 		return ReservationResponse.from(reservations);
 	}
 
+	@Transactional
 	public void cancel(Long reservationId) {
 		Reservation reservation = reservationRepository.findById(reservationId)
 			.orElseThrow(ReservationNotFoundException::new);
 
 		reservationRepository.delete(reservation);
+	}
+
+	private Accommodation retrieveAccommodation(Long accommodationId) {
+		return accommodationRepository
+			.findById(accommodationId)
+			.orElseThrow(AccommodationNotFoundException::new);
+	}
+
+	private Customer retrieveCustomer(Long customerId) {
+		return customerRepository.findById(customerId)
+			.orElseThrow(CustomerNotFoundException::new);
 	}
 }
