@@ -24,8 +24,8 @@ public class ReservationElement {
 		this.checkOutDate = reservation.getCheckOutDate();
 		this.numberOfGuest = reservation.getNumberOfGuest();
 		this.invoiceTotal = reservation.getInvoiceTotal();
-		this.hostName = reservation.getAccommodation().getHostName();
-		this.accommodationType = reservation.getAccommodation().getType().getDbData();
-		this.accommodationImages = reservation.getAccommodation().getImageUrls();
+		this.hostName = reservation.getHostName();
+		this.accommodationType = reservation.getAccommodationTypeString();
+		this.accommodationImages = reservation.getAccommodationImageUrls();
 	}
 }

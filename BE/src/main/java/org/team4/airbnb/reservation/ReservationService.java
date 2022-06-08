@@ -51,7 +51,7 @@ public class ReservationService {
 			.findAllByCustomerId(customerId, pageable);
 
 		Set<Long> accommodationIds = reservations.stream()
-			.map(r -> r.getAccommodation().getId())
+			.map(Reservation::getAccommodationId)
 			.collect(Collectors.toSet());
 
 		accommodationRepository.findAllWithImagesByIdIn(accommodationIds);
