@@ -148,7 +148,7 @@ extension SearchRecommendationViewController: UISearchResultsUpdating {
 
 extension SearchRecommendationViewController: UISearchBarDelegate {
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        coordinator?.coordinateToSearchResult()
+//        coordinator?.coordinateToSearchResult()
         return true
     }
 }
