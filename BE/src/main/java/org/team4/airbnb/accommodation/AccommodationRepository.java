@@ -22,6 +22,7 @@ public interface AccommodationRepository extends JpaRepository<Accommodation, Lo
 		+ "<= :#{#searchParams.radius} "
 		+ "and ifnull(a.price >= :#{#searchParams.minPrice}, true) "
 		+ "and ifnull(a.price <= :#{#searchParams.maxPrice}, true) "
+		+ "and ifnull(a.max_guest >= :#{#searchParams.numberOfGuest}, true) "
 		+ "and ifnull(r.check_out_date <= :#{#searchParams.checkInDate} "
 		+ "or r.check_in_date > :#{#searchParams.checkOutDate}, true)",
 		nativeQuery = true)

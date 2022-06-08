@@ -28,6 +28,7 @@ public class AccommodationSearchRequest {
 	private LocalDate checkOutDate = LocalDate.now().plusDays(DEFAULT_LENGTH_OF_STAY);
 	private Integer minPrice;
 	private Integer maxPrice;
+	private Integer numberOfGuest;
 
 	public AccommodationSearchParams toSearchParams() {
 		Point<G2D> point = Geometries.mkPoint(new G2D(longitude, latitude),
@@ -40,6 +41,7 @@ public class AccommodationSearchRequest {
 			.checkOutDate(checkOutDate)
 			.minPrice(minPrice)
 			.maxPrice(maxPrice)
+			.numberOfGuest(numberOfGuest)
 			.build();
 	}
 }
