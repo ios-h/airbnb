@@ -8,7 +8,7 @@
 import UIKit
     
 protocol SearchFlow: AnyObject {
-//    func coordinateToSearchResult()
+    func coordinateToCalendarViewController()
 }
 
 final class SearchFlowCoordinator: Coordinator, SearchFlow {
@@ -25,6 +25,12 @@ final class SearchFlowCoordinator: Coordinator, SearchFlow {
         navigationController?.pushViewController(searchRecommendationViewController, animated: false)
     }
     
-//    func coordinateToSearchResult() {
-//    }
+    func coordinateToCalendarViewController() {
+        guard let navigationController = navigationController else {
+            return
+        }
+        
+        let calendarFlowCoordinator = CalendarFlowCoordinator(navigationController: navigationController)
+        coordinate(to: calendarFlowCoordinator)
+    }
 }

@@ -8,13 +8,13 @@
 import UIKit
 
 protocol SearchRecommendationDelegate: AnyObject {
-    func searchBarTextDidChange(string: String)
+    func searchBarTextDidChange(string: String, coordinator: SearchFlow?)
 }
 
 final class SearchRecommendationViewController: UIViewController {
 
     var coordinator: SearchFlow?
-    var delegate: SearchRecommendationDelegate?
+    private var delegate: SearchRecommendationDelegate?
 
     private var searchResultViewController = SearchResultViewController()
     private var searchCollectionView: UICollectionView! = nil
@@ -142,13 +142,9 @@ extension SearchRecommendationViewController: UISearchResultsUpdating {
         guard let text = searchController.searchBar.text else {
             return
         }
-        delegate?.searchBarTextDidChange(string: text)
+        delegate?.searchBarTextDidChange(string: text, coordinator: coordinator)
     }
 }
 
 extension SearchRecommendationViewController: UISearchBarDelegate {
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-//        coordinator?.coordinateToSearchResult()
-        return true
-    }
 }

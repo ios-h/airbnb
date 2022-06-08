@@ -14,7 +14,8 @@ protocol SearchResultDelegate: AnyObject {
 
 final class SearchResultViewController: UIViewController, SearchRecommendationDelegate {
 
-    var delegate: SearchResultDelegate?
+    private var coordinator: SearchFlow?
+    private var delegate: SearchResultDelegate?
     
     private var searchResultTableView: UITableView! = nil
     private lazy var dataSource: SearchResultTableViewDataSource = SearchResultTableViewDataSource(delegate: delegate)
@@ -72,9 +73,10 @@ final class SearchResultViewController: UIViewController, SearchRecommendationDe
         searchResultTableView = tableView
     }
     
-    func searchBarTextDidChange(string: String) {
+    func searchBarTextDidChange(string: String, coordinator: SearchFlow?) {
         searchText = string
         searchCompleter?.queryFragment = searchText
+        self.coordinator = coordinator
     }
 }
 
@@ -99,6 +101,8 @@ extension SearchResultViewController: UITableViewDelegate {
             
             print("latitude \(latitude), longitude \(longitude)") // 서버에게 전달할 데이터
         }
+        
+        coordinator?.coordinateToCalendarViewController()
     }
 }
 
