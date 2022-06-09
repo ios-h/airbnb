@@ -22,11 +22,7 @@ final class CalendarCollectionViewDataSource: NSObject, UICollectionViewDataSour
         }
         
         let item = MockDataModel.mockWishListItems[indexPath.item]
-        cell.configure(with: WishListModel(image: item.image,
-                                          rating: item.rating,
-                                          reviewCount: item.reviewCount,
-                                          accomodationName: item.accomodationName,
-                                          price: item.price))
+        cell.configure(with: item)
         return cell
     }
 }

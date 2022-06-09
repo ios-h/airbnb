@@ -22,10 +22,7 @@ final class ReservationCollectionViewDataSource: NSObject, UICollectionViewDataS
         }
         
         let item = MockDataModel.mockReservationItems[indexPath.item]
-        cell.configure(with: ReservationModel(image: item.image,
-                                              duration: item.duration,
-                                              location: item.location,
-                                              roomType: item.roomType))
+        cell.configure(with: item)
         return cell
     }
 }
