@@ -25,6 +25,7 @@ public class OAuthService {
 
 	private final MemoryProviderRepository memoryProviderRepository;
 	private final CustomerRepository customerRepository;
+	private final JwtTokenProvider jwtTokenProvider;
 
 	public LoginResponse processLogin(String provider, String authCode) {
 		OauthProvider oauthProvider = memoryProviderRepository.findByProviderName(provider);
@@ -52,7 +53,6 @@ public class OAuthService {
 		}
 
 		//4. JWT 토큰 생성 후 응답 DTO 전달
-		JwtTokenProvider jwtTokenProvider = new JwtTokenProvider();
 		String accessToken = jwtTokenProvider.createAccessToken(userIdViaUserProfile);
 		String refreshToken = jwtTokenProvider.createRefreshToken();
 
