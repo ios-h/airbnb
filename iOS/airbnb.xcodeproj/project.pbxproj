@@ -26,6 +26,7 @@
 		D00B74532851E80600B31424 /* WeekdayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B74522851E80600B31424 /* WeekdayModel.swift */; };
 		D00B74552851E80D00B31424 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B74542851E80D00B31424 /* CalendarModel.swift */; };
 		D00B745C28521E8F00B31424 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B745B28521E8F00B31424 /* UIViewController+Extension.swift */; };
+		D00B745F285227B500B31424 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D00B745E285227B500B31424 /* Alamofire */; };
 		D01D65EF283C70710067B5E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D65EE283C70710067B5E1 /* AppDelegate.swift */; };
 		D01D65F1283C70710067B5E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D65F0283C70710067B5E1 /* SceneDelegate.swift */; };
 		D01D65F3283C70710067B5E1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D65F2283C70710067B5E1 /* MainViewController.swift */; };
@@ -181,6 +182,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D00B745F285227B500B31424 /* Alamofire in Frameworks */,
 				D00B741C285043FE00B31424 /* SnapKit in Frameworks */,
 				747B3C4AB2D65AC07C371B01 /* Pods_airbnb.framework in Frameworks */,
 			);
@@ -572,6 +574,7 @@
 			name = airbnb;
 			packageProductDependencies = (
 				D00B741B285043FE00B31424 /* SnapKit */,
+				D00B745E285227B500B31424 /* Alamofire */,
 			);
 			productName = airbnb;
 			productReference = D01D65EB283C70710067B5E1 /* airbnb.app */;
@@ -650,6 +653,7 @@
 			packageReferences = (
 				D00B7411284FECBF00B31424 /* XCRemoteSwiftPackageReference "HorizonCalendar" */,
 				D00B741A285043FE00B31424 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				D00B745D285227B500B31424 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = D01D65EC283C70710067B5E1 /* Products */;
 			projectDirPath = "";
@@ -1196,6 +1200,14 @@
 				kind = branch;
 			};
 		};
+		D00B745D285227B500B31424 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1203,6 +1215,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D00B741A285043FE00B31424 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		D00B745E285227B500B31424 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D00B745D285227B500B31424 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
