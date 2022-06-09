@@ -203,3 +203,4 @@ gradle-app.setting
 api.properties
 src/main/resources/application-localproperty.yml
 .idea/codeStyles/codeStyleConfig.xml
+src/main/resources/jwt.properties
