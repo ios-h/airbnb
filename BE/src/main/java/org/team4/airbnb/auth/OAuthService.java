@@ -1,12 +1,7 @@
 package org.team4.airbnb.auth;
 
-import io.jsonwebtoken.Header;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import java.nio.charset.StandardCharsets;
-import java.time.Duration;
 import java.util.Collections;
-import java.util.Date;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.ParameterizedTypeReference;
@@ -52,34 +47,19 @@ public class OAuthService {
 		Customer findCustomer = customerRepository.findByUserId(userIdViaUserProfile)
 			.orElse(null);
 
-		if(findCustomer == null) {
+		if (findCustomer == null) {
 			customer = customerRepository.save(customer);
 		}
 
-		//4. JWT 토큰 생성 후 전달
-		String jwtToken = makeJwtToken(userIdViaUserProfile);
+		//4. JWT 토큰 생성 후 응답 DTO 전달
+		JwtTokenProvider jwtTokenProvider = new JwtTokenProvider();
+		String accessToken = jwtTokenProvider.createAccessToken(userIdViaUserProfile);
+		String refreshToken = jwtTokenProvider.createRefreshToken();
 
-		return null;
+		LoginResponse loginResponse = LoginResponse.of(accessToken, refreshToken, "Bearer");
+
+		return loginResponse;
 	}
-
-	private String makeJwtToken(String userId){
-		long currentTime = System.currentTimeMillis();
-		Date now = new Date();
-
-		String jwtToken = Jwts.builder()
-			.setHeaderParam(Header.TYPE, Header.JWT_TYPE) //Header 셋팅 : 토큰 타입 정보 typ
-			//payload - registered claim 셋팅
-			.setIssuer("team4")  //iss
-			.setIssuedAt(new Date(currentTime)) //iat
-			.setExpiration(new Date(now.getTime() + Duration.ofMillis(30).toMillis())) //exp
-			//payload - private claim
-			.claim("userId",userId)
-			.signWith(SignatureAlgorithm.HS256, "keySecret") //해싱알고리즘, 시크릿키
-			.compact();
-
-			return jwtToken;
-	}
-
 
 	private OauthTokenResponse getAccessTokenFromOauth(String authCode,
 		OauthProvider oauthProvider) {
