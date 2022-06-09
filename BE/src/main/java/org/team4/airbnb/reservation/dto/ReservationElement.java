@@ -26,6 +26,6 @@ public class ReservationElement {
 		this.invoiceTotal = reservation.getInvoiceTotal();
 		this.hostName = reservation.getHostName();
 		this.accommodationType = reservation.getAccommodationTypeString();
-		this.accommodationImages = reservation.getAccommodationImageUrls();
+		this.accommodationImages = List.copyOf(reservation.getAccommodationImageUrls());
 	}
 }

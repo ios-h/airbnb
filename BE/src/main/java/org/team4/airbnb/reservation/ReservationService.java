@@ -1,8 +1,5 @@
 package org.team4.airbnb.reservation;
 
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -46,17 +43,12 @@ public class ReservationService {
 
 	@Transactional(readOnly = true)
 	public ReservationResponse findAllByCustomerId(Long customerId, Pageable pageable) {
+		Reservations reservations = new Reservations(reservationRepository
+			.findAllByCustomerId(customerId, pageable));
 
-		List<Reservation> reservations = reservationRepository
-			.findAllByCustomerId(customerId, pageable);
+		accommodationRepository.findAllWithImagesByIdIn(reservations.getAccommodationIds());
 
-		Set<Long> accommodationIds = reservations.stream()
-			.map(Reservation::getAccommodationId)
-			.collect(Collectors.toSet());
-
-		accommodationRepository.findAllWithImagesByIdIn(accommodationIds);
-
-		return ReservationResponse.from(reservations);
+		return reservations.toReservationResponse();
 	}
 
 	@Transactional
