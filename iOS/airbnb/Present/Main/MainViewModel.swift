@@ -25,21 +25,21 @@ struct MainSectionType: SectionApplicable {
 final class MainViewModel {
     
     func generateHeroImageSection() -> NSCollectionLayoutSection {
-        let item = LayoutManager().configureItem()
+        let item = LayoutManager.configureItem()
         
         let groupType = MainGroupType(groupSize: GroupSize(width: .fractionalWidth(1.0),
                                                            height: .fractionalWidth(1.2)),
                                       isDirectionVertical: false,
                                       item: item,
                                       itemCount: 1)
-        let group = LayoutManager().configureGroup(groupType: groupType)
+        let group = LayoutManager.configureGroup(groupType: groupType)
         let sectionType = MainSectionType(group: group)
-        let section = LayoutManager().configureSection(sectionType: sectionType)
+        let section = LayoutManager.configureSection(sectionType: sectionType)
         return section
     }
     
     func generateNearestDestinationSection() -> NSCollectionLayoutSection {
-        let item = LayoutManager().configureItem(contentInset: NSDirectionalEdgeInsets(top: 0,
+        let item = LayoutManager.configureItem(contentInset: NSDirectionalEdgeInsets(top: 0,
                                                                        leading: 10,
                                                                        bottom: 0,
                                                                        trailing: 10))
@@ -49,19 +49,19 @@ final class MainViewModel {
                                       isDirectionVertical: true,
                                       item: item,
                                       itemCount: 2)
-        let group = LayoutManager().configureGroup(groupType: groupType)
+        let group = LayoutManager.configureGroup(groupType: groupType)
         
-        let sectionHeader = LayoutManager().configureHeader(GroupSize(width: .fractionalWidth(1.0),
+        let sectionHeader = LayoutManager.configureHeader(GroupSize(width: .fractionalWidth(1.0),
                                                                       height: .fractionalWidth(0.2)),
                                                             elementKind: MainViewController.sectionHeaderElementKind)
         
         let sectionType = MainSectionType(group: group, header: sectionHeader)
-        let section = LayoutManager().configureSection(sectionType: sectionType)
+        let section = LayoutManager.configureSection(sectionType: sectionType)
         return section
     }
     
     func generateAccomodationSection() -> NSCollectionLayoutSection {
-        let item = LayoutManager().configureItem(contentInset: NSDirectionalEdgeInsets(top: 0,
+        let item = LayoutManager.configureItem(contentInset: NSDirectionalEdgeInsets(top: 0,
                                                                        leading: 0,
                                                                        bottom: 0,
                                                                        trailing: -20))
@@ -75,9 +75,9 @@ final class MainViewModel {
                                       isDirectionVertical: false,
                                       item: item,
                                       itemCount: 1)
-        let group = LayoutManager().configureGroup(groupType: groupType)
+        let group = LayoutManager.configureGroup(groupType: groupType)
         
-        let sectionHeader = LayoutManager().configureHeader(GroupSize(width: .fractionalWidth(1.0),
+        let sectionHeader = LayoutManager.configureHeader(GroupSize(width: .fractionalWidth(1.0),
                                                                       height: .fractionalWidth(0.3)),
                                                             elementKind: MainViewController.sectionHeaderElementKind)
         let sectionType = MainSectionType(group: group,
@@ -86,7 +86,7 @@ final class MainViewModel {
                                                                                 bottom: 0,
                                                                                 trailing: 20),
                                           header: sectionHeader)
-        let section = LayoutManager().configureSection(sectionType: sectionType)
+        let section = LayoutManager.configureSection(sectionType: sectionType)
         return section
     }
 }

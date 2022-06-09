@@ -111,7 +111,7 @@ final class SearchRecommendationViewController: UIViewController {
     
     private func generateSearchRecommendationSection() -> NSCollectionLayoutSection {
         
-        let item = LayoutManager().configureItem(ItemSize(width: 1, height: 5),
+        let item = LayoutManager.configureItem(ItemSize(width: 1, height: 5),
                                                  contentInset: NSDirectionalEdgeInsets(top: 0,
                                                                                        leading: 10,
                                                                                        bottom: 0,
@@ -123,16 +123,16 @@ final class SearchRecommendationViewController: UIViewController {
                                       item: item,
                                       itemCount: 10)
         
-        let group = LayoutManager().configureGroup(groupType: groupType)
+        let group = LayoutManager.configureGroup(groupType: groupType)
         
-        let sectionHeader = LayoutManager().configureHeader(GroupSize(width: .fractionalWidth(1.0),
+        let sectionHeader = LayoutManager.configureHeader(GroupSize(width: .fractionalWidth(1.0),
                                                                       height: .fractionalWidth(0.17)),
                                                             elementKind: MainViewController.sectionHeaderElementKind)
         
         let sectionType = MainSectionType(group: group,
                                           header: sectionHeader)
         
-        let section = LayoutManager().configureSection(sectionType: sectionType)
+        let section = LayoutManager.configureSection(sectionType: sectionType)
         return section
     }
 }

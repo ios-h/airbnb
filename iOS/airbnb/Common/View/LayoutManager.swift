@@ -8,7 +8,7 @@
 import UIKit
 
 final class LayoutManager {
-    func configureGroup(groupType: GroupApplicable) -> NSCollectionLayoutGroup {
+    class func configureGroup(groupType: GroupApplicable) -> NSCollectionLayoutGroup {
         let groupSize = NSCollectionLayoutSize(widthDimension: groupType.groupSize.width,
                                                heightDimension: groupType.groupSize.height)
         
@@ -31,7 +31,7 @@ final class LayoutManager {
         return group
     }
     
-    func configureHeader(_ size: GroupSize, elementKind: String) -> NSCollectionLayoutBoundarySupplementaryItem {
+    class func configureHeader(_ size: GroupSize, elementKind: String) -> NSCollectionLayoutBoundarySupplementaryItem {
         let headerSize = NSCollectionLayoutSize(
             widthDimension: size.width,
             heightDimension: size.height)
@@ -44,7 +44,7 @@ final class LayoutManager {
         return sectionHeader
     }
     
-    func configureSection(sectionType: SectionApplicable) -> NSCollectionLayoutSection {
+    class func configureSection(sectionType: SectionApplicable) -> NSCollectionLayoutSection {
         let section = NSCollectionLayoutSection(group: sectionType.group)
         section.contentInsets = sectionType.sectionInset
         section.orthogonalScrollingBehavior = sectionType.scrollingBehavior
@@ -55,7 +55,7 @@ final class LayoutManager {
         return section
     }
     
-    func configureItem(_ itemSize: ItemSize = ItemSize(),
+    class func configureItem(_ itemSize: ItemSize = ItemSize(),
                        contentInset: NSDirectionalEdgeInsets = .zero) -> NSCollectionLayoutItem {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(itemSize.width),
