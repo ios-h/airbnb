@@ -13,10 +13,10 @@ public class OAuthController {
 	private final OAuthService oAuthService;
 
 	@GetMapping("/login/oauth2/github")
-	public ResponseEntity<LoginResponse> processGigHubLogin(@RequestParam String code){
+	public ResponseEntity<LoginResponse> processGitHubLogin(@RequestParam String code){
 		String provider = "github";
 		LoginResponse loginResponse = oAuthService.processLogin(provider, code);
-		System.out.println();
+
 		return ResponseEntity.ok().body(loginResponse);
 	}
 }
