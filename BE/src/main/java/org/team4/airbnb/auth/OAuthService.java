@@ -14,18 +14,17 @@ import org.team4.airbnb.auth.config.MemoryProviderRepository;
 import org.team4.airbnb.auth.config.OauthProvider;
 import org.team4.airbnb.auth.dto.OauthTokenResponse;
 import org.team4.airbnb.auth.dto.UserProfile;
+import org.team4.airbnb.customer.Customer;
+import org.team4.airbnb.customer.CustomerRepository;
+import org.team4.airbnb.exception.GithubInfoNotFoundException;
 
 @RequiredArgsConstructor
 @Service
 public class OAuthService {
 
 	private final MemoryProviderRepository memoryProviderRepository;
+	private final CustomerRepository customerRepository;
 
-	/*Todo
-				1. authcode를 통해 OAuth서버에서 access token 얻어오기
-				2. access token을 통해 유저 정보 얻어오기
-				3. 유저 DB에 저장
-	*/
 	public LoginResponse processLogin(String provider, String authCode) {
 		OauthProvider oauthProvider = memoryProviderRepository.findByProviderName(provider);
 
@@ -36,13 +35,26 @@ public class OAuthService {
 		UserProfile userProfile = getUserInfoFromOauth(provider, oauthProvider,
 			tokenResponse);
 
+		if (userProfile.getUserId() == null) {
+			new GithubInfoNotFoundException();
+		}
+
 		//3. DB에 유저 정보 저장 (최초 로그인 시 1번)
+		Customer customer = Customer.of(userProfile.getUserId());
+		//기존 db에 사용자 있는지 확인 후, 없다면 DB에 유저 정보 저장 후 로그인처리
+		Customer findCustomer = customerRepository.findByUserId()
+			.orElse(null);
+
+		if(findCustomer == null) {
+			customer = customerRepository.save(customer);
+		}
 
 		return null;
 	}
 
 
-	private OauthTokenResponse getAccessTokenFromOauth(String authCode, OauthProvider oauthProvider) {
+	private OauthTokenResponse getAccessTokenFromOauth(String authCode,
+		OauthProvider oauthProvider) {
 		OauthTokenResponse oauthTokenResponse = WebClient.create()
 			.post()
 			.uri(oauthProvider.getTokenUrl())
