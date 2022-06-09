@@ -27,10 +27,11 @@ class WishListCollectionViewCell: CommonCollectionViewCell {
     
     private let superHostButton = CustomButton(title: "슈퍼호스트",
                                                state: .normal,
-                                               titleColor: .black,
-                                               backgroundColor: .white,
-                                               font: .systemFont(ofSize: 12, weight: .regular))
-    
+                                               buttonTheme:
+                                                ButtonTheme(customColor: CustomColor(titleColor: .black,
+                                                                                     backgroundColor: .white),
+                                                            font: .systemFont(ofSize: 15, weight: .regular)))
+                                               
     private let heartButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "icon_heart"), for: .normal)

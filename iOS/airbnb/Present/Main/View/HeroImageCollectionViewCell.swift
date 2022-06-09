@@ -23,9 +23,10 @@ final class HeroImageCollectionViewCell: CommonCollectionViewCell {
     
     private let ideaButton = CustomButton(title: "여행 아이디어 얻기",
                                           state: .normal,
-                                          titleColor: .white,
-                                          backgroundColor: .black,
-                                          font: .systemFont(ofSize: 17, weight: .bold))
+                                          buttonTheme:
+                                           ButtonTheme(customColor: CustomColor(titleColor: .white,
+                                                                                backgroundColor: .black),
+                                                       font: .systemFont(ofSize: 17, weight: .bold)))
     
     override init(frame: CGRect) {
         super.init(frame: frame)

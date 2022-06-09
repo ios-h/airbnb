@@ -19,15 +19,17 @@ final class CustomButton: UIButton {
 
     convenience init(title: String,
                      state: UIControl.State,
-                     titleColor: UIColor?,
-                     backgroundColor: UIColor?,
-                     font: UIFont) {
+                     buttonTheme: ButtonTheme?) {
         self.init()
 
+        let color = buttonTheme?.customColor
+        let font = buttonTheme?.font
+        
         self.translatesAutoresizingMaskIntoConstraints = false
         self.setTitle(title, for: state)
-        self.setTitleColor(titleColor, for: state)
-        self.backgroundColor = backgroundColor
+        self.setTitleColor(color?.titleColor, for: state)
+        self.backgroundColor = color?.backgroundColor
+        self.titleLabel?.font = font
         self.layer.cornerRadius = 10
     }
 }
