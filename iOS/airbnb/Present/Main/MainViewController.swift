@@ -17,6 +17,18 @@ final class MainViewController: UIViewController {
     private var mainCollectionView: UICollectionView! = nil
     private var dataSource: MainSectionDiffableDataSource!
 
+    private lazy var loginButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(title: "로그인",
+                                     style: .plain,
+                                     target: self,
+                                     action: #selector(loginButtonTapped(_:)))
+        return button
+    }()
+    
+    @objc private func loginButtonTapped(_ sender: Any) {
+        alert(title: "알림", message: "로그인 되었습니다.")
+    }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,6 +53,7 @@ final class MainViewController: UIViewController {
         
         self.navigationItem.title = "Airbnb"
         self.navigationItem.searchController = searchController
+        self.navigationItem.rightBarButtonItem = loginButton
     }
     
     private func configureCollectionView() {
