@@ -9,7 +9,7 @@ import UIKit
 
 class CommonHeaderView: UICollectionReusableView {
     
-    let headerLabel = CustomLabel(color: .customBlack!, font: .systemFont(ofSize: 22, weight: .medium))
+    public let headerLabel = CustomLabel(color: .customBlack!, font: .systemFont(ofSize: 22, weight: .medium))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,7 +30,7 @@ class CommonHeaderView: UICollectionReusableView {
         
         headerLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: inset).isActive = true
         headerLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -inset).isActive = true
-        headerLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: inset * 1.5).isActive = true
+        headerLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: inset * 1.2).isActive = true
         headerLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -inset * 0.5).isActive = true
     }
 }

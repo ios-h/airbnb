@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomLabel: UILabel {
+final class CustomLabel: UILabel {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -17,7 +17,7 @@ class CustomLabel: UILabel {
         super.init(frame: frame)
     }
 
-    convenience init(color: UIColor, text: String = "", font: UIFont) {
+    convenience init(color: UIColor?, text: String = "", font: UIFont) {
         self.init()
 
         self.translatesAutoresizingMaskIntoConstraints = false

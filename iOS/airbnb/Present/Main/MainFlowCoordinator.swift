@@ -11,9 +11,9 @@ protocol MainFlow: AnyObject {
     func coordinateToSearchViewController()
 }
 
-class MainFlowCoordinator: Coordinator, MainFlow {
+final class MainFlowCoordinator: Coordinator, MainFlow {
+    
     weak var navigationController: UINavigationController?
-    weak var searchViewController: SearchViewController?
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -21,12 +21,16 @@ class MainFlowCoordinator: Coordinator, MainFlow {
     
     func start() {
         let mainViewController = MainViewController()
-        navigationController?.pushViewController(mainViewController, animated: false)
+        mainViewController.coordinate = self
+        navigationController?.pushViewController(mainViewController, animated: true)
     }
     
     func coordinateToSearchViewController() {
-        let searchViewController = SearchViewController()
-        self.searchViewController = searchViewController
-        navigationController?.pushViewController(searchViewController, animated: false)
+        guard let navigationController = navigationController else {
+            return
+        }
+        
+        let searchFlowCoordinator = SearchFlowCoordinator(navigationController: navigationController)
+        coordinate(to: searchFlowCoordinator)
     }
 }

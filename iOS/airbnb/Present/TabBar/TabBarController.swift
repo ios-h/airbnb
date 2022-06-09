@@ -7,9 +7,9 @@
 
 import UIKit
 
-class TabBarController: UITabBarController {
+final class TabBarController: UITabBarController {
 
-    var coordintor: TabBarCoordinator?
+    var coordinator: TabBarCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()

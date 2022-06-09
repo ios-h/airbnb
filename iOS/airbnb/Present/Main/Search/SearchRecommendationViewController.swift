@@ -1,5 +1,5 @@
 //
-//  SearchViewController.swift
+//  SearchRecommendationViewController.swift
 //  airbnb
 //
 //  Created by 안상희 on 2022/05/31.
@@ -7,8 +7,16 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+protocol SearchRecommendationDelegate: AnyObject {
+    func searchBarTextDidChange(string: String, coordinator: SearchFlow?)
+}
 
+final class SearchRecommendationViewController: UIViewController {
+
+    var coordinator: SearchFlow?
+    private var delegate: SearchRecommendationDelegate?
+
+    private var searchResultViewController = SearchResultViewController()
     private var searchCollectionView: UICollectionView! = nil
     private var dataSource: SearchDiffableDataSource!
     
@@ -17,8 +25,27 @@ class SearchViewController: UIViewController {
 
         view.backgroundColor = .white
         
+        setUpSearchController()
         configureCollectionView()
         configureDataSource()
+        
+        DispatchQueue.main.async {
+            self.navigationItem.searchController?.searchBar.searchTextField.becomeFirstResponder()
+        }
+        
+        delegate = searchResultViewController
+    }
+    
+    private func setUpSearchController() {
+        let searchController = UISearchController(searchResultsController: searchResultViewController)
+        searchController.searchBar.placeholder = "어디로 여행가세요?"
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.definesPresentationContext = true
+        searchController.hidesNavigationBarDuringPresentation = false
+        
+        self.navigationItem.title = "숙소 찾기"
+        self.navigationItem.searchController = searchController
     }
     
     private func configureCollectionView() {
@@ -76,41 +103,48 @@ class SearchViewController: UIViewController {
             let sectionLayoutKind = SearchSection.allCases[sectionIndex]
             switch sectionLayoutKind {
             case .nearestPopularDestination:
-                return self.generateSearchPreviewSection()
+                return self.generateSearchRecommendationSection()
             }
         }
         return layout
     }
     
-    private func generateSearchPreviewSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .fractionalWidth(5))
+    private func generateSearchRecommendationSection() -> NSCollectionLayoutSection {
         
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
+        let item = LayoutManager.configureItem(ItemSize(width: 1, height: 5),
+                                                 contentInset: NSDirectionalEdgeInsets(top: 0,
+                                                                                       leading: 10,
+                                                                                       bottom: 0,
+                                                                                       trailing: 10))
         
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .fractionalHeight(1))
+        let groupType = MainGroupType(groupSize: GroupSize(width: .fractionalWidth(1.0),
+                                                           height: .fractionalHeight(1.0)),
+                                      isDirectionVertical: true,
+                                      item: item,
+                                      itemCount: 10)
         
-        let group = NSCollectionLayoutGroup.vertical(
-            layoutSize: groupSize,
-            subitem: item,
-            count: 8)
+        let group = LayoutManager.configureGroup(groupType: groupType)
         
-        let headerSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .estimated(1))
-
-        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: headerSize,
-            elementKind: MainViewController.sectionHeaderElementKind,
-            alignment: .top)
+        let sectionHeader = LayoutManager.configureHeader(GroupSize(width: .fractionalWidth(1.0),
+                                                                      height: .fractionalWidth(0.17)),
+                                                            elementKind: MainViewController.sectionHeaderElementKind)
         
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .groupPaging
-        section.boundarySupplementaryItems = [sectionHeader]
+        let sectionType = MainSectionType(group: group,
+                                          header: sectionHeader)
+        
+        let section = LayoutManager.configureSection(sectionType: sectionType)
         return section
     }
+}
+
+extension SearchRecommendationViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else {
+            return
+        }
+        delegate?.searchBarTextDidChange(string: text, coordinator: coordinator)
+    }
+}
+
+extension SearchRecommendationViewController: UISearchBarDelegate {
 }

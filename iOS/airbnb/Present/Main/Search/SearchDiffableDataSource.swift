@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchDiffableDataSource: UICollectionViewDiffableDataSource<SearchSection, SearchItem> {
+final class SearchDiffableDataSource: UICollectionViewDiffableDataSource<SearchSection, SearchItem> {
     override func collectionView(_ collectionView: UICollectionView,
                                  viewForSupplementaryElementOfKind kind: String,
                                  at indexPath: IndexPath) -> UICollectionReusableView {
