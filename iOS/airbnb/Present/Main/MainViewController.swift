@@ -27,6 +27,8 @@ final class MainViewController: UIViewController {
     
     @objc private func loginButtonTapped(_ sender: Any) {
         alert(title: "알림", message: "로그인 되었습니다.")
+        
+        loginButton.title = "로그아웃"
     }
         
     override func viewDidLoad() {
