@@ -13,6 +13,6 @@ public class BaseCreated {
 
 	@CreatedDate
 	@Column(updatable = false)
-	private LocalDateTime createdDate;
+	private LocalDateTime createdDate = LocalDateTime.now();
 
 }
