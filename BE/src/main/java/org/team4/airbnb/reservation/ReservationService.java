@@ -30,10 +30,7 @@ public class ReservationService {
 		Accommodation accommodation = retrieveAccommodation(
 			reservationRequest.getAccommodationId());
 
-		Invoice invoice = Invoice.calculate(accommodation.getPrice(),
-			reservationRequest.getLengthOfStay());
-
-		Reservation reservation = reservationRequest.toReservation(invoice, accommodation,
+		Reservation reservation = reservationRequest.toReservation(accommodation,
 			customer);
 
 		reservation = reservationRepository.save(reservation);
