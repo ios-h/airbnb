@@ -20,6 +20,7 @@
 		D00B74432851996100B31424 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B74422851996100B31424 /* Size.swift */; };
 		D00B744528519F1100B31424 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B744428519F1100B31424 /* CustomColor.swift */; };
 		D00B74472851ABEF00B31424 /* ButtonTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B74462851ABEF00B31424 /* ButtonTheme.swift */; };
+		D00B744B2851B95F00B31424 /* MapCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B744A2851B95F00B31424 /* MapCoordinate.swift */; };
 		D01D65EF283C70710067B5E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D65EE283C70710067B5E1 /* AppDelegate.swift */; };
 		D01D65F1283C70710067B5E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D65F0283C70710067B5E1 /* SceneDelegate.swift */; };
 		D01D65F3283C70710067B5E1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D65F2283C70710067B5E1 /* MainViewController.swift */; };
@@ -109,6 +110,7 @@
 		D00B74422851996100B31424 /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		D00B744428519F1100B31424 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 		D00B74462851ABEF00B31424 /* ButtonTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTheme.swift; sourceTree = "<group>"; };
+		D00B744A2851B95F00B31424 /* MapCoordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinate.swift; sourceTree = "<group>"; };
 		D01D65EB283C70710067B5E1 /* airbnb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = airbnb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D01D65EE283C70710067B5E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D01D65F0283C70710067B5E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				D00B74422851996100B31424 /* Size.swift */,
 				D00B744428519F1100B31424 /* CustomColor.swift */,
 				D00B74462851ABEF00B31424 /* ButtonTheme.swift */,
+				D00B744A2851B95F00B31424 /* MapCoordinate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -760,6 +763,7 @@
 				D01D65F3283C70710067B5E1 /* MainViewController.swift in Sources */,
 				D0D299E0284CC156009D1608 /* MainCellFactory.swift in Sources */,
 				D0D299E4284D000E009D1608 /* LayoutManager.swift in Sources */,
+				D00B744B2851B95F00B31424 /* MapCoordinate.swift in Sources */,
 				D00B74472851ABEF00B31424 /* ButtonTheme.swift in Sources */,
 				D00B743C285198C900B31424 /* GroupApplicable.swift in Sources */,
 				D0D29A1F284F4300009D1608 /* WishListCollectionViewDataSource.swift in Sources */,

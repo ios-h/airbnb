@@ -82,26 +82,20 @@ final class SearchResultViewController: UIViewController, SearchRecommendationDe
 
 extension SearchResultViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedResult = completerResults?[indexPath.item] // 검색 결과 배열 (completerResults) 중 선택한 값
-        
-        guard let selectedResult = selectedResult else { return }
-        
+        guard let selectedResult = completerResults?[indexPath.item] else { return }
         let searchRequest = MKLocalSearch.Request(completion: selectedResult) // 지도에서 특정 지점을 검색할 때 사용하는 매개변수
         let search = MKLocalSearch(request: searchRequest) // searchRequest로 구성된 search object를 초기화하고 반환
+        
         search.start { response, error in // 검색을 시작하고, 결과를 completionHandler에 전달
             if let error = error {
                 print(error.localizedDescription)
                 return
             }
-            
             guard let placeMark = response?.mapItems[0].placemark else { return }
             
-            let latitude = placeMark.coordinate.latitude
-            let longitude = placeMark.coordinate.longitude
-            
-            print("latitude \(latitude), longitude \(longitude)") // 서버에게 전달할 데이터
+            let mapCoordinate = MapCoordinate(latitude: placeMark.coordinate.latitude,
+                                              longitude: placeMark.coordinate.longitude)
         }
-        
         coordinator?.coordinateToCalendarViewController()
     }
 }
