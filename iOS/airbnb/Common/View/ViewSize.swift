@@ -8,8 +8,8 @@
 import UIKit
 
 protocol ViewSize {
-    var width: CGFloat { get set }
-    var height: CGFloat { get set }
+    var width: CGFloat { get }
+    var height: CGFloat { get }
 }
 
 struct ItemSize: ViewSize {
@@ -23,16 +23,16 @@ struct GroupSize {
 }
 
 protocol GroupApplicable {
-    var groupSize: GroupSize { get set }
-    var groupInset: NSDirectionalEdgeInsets { get set }
-    var isDirectionVertical: Bool { get set }
-    var item: NSCollectionLayoutItem { get set }
-    var itemCount: Int { get set }
+    var groupSize: GroupSize { get }
+    var groupInset: NSDirectionalEdgeInsets { get }
+    var isDirectionVertical: Bool { get }
+    var item: NSCollectionLayoutItem { get }
+    var itemCount: Int { get }
 }
 
 protocol SectionApplicable {
-    var group: NSCollectionLayoutGroup { get set }
-    var sectionInset: NSDirectionalEdgeInsets { get set }
-    var scrollingBehavior: UICollectionLayoutSectionOrthogonalScrollingBehavior { get set }
-    var header: NSCollectionLayoutBoundarySupplementaryItem? { get set }
+    var group: NSCollectionLayoutGroup { get }
+    var sectionInset: NSDirectionalEdgeInsets { get }
+    var scrollingBehavior: UICollectionLayoutSectionOrthogonalScrollingBehavior { get }
+    var header: NSCollectionLayoutBoundarySupplementaryItem? { get }
 }
