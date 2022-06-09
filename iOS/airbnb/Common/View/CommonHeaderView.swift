@@ -9,7 +9,7 @@ import UIKit
 
 class CommonHeaderView: UICollectionReusableView {
     
-    let headerLabel = CustomLabel(color: .customBlack!, font: .systemFont(ofSize: 22, weight: .medium))
+    public let headerLabel = CustomLabel(color: .customBlack!, font: .systemFont(ofSize: 22, weight: .medium))
     
     override init(frame: CGRect) {
         super.init(frame: frame)

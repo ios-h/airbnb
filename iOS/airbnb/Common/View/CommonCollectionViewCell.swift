@@ -9,13 +9,13 @@ import UIKit
 
 class CommonCollectionViewCell: UICollectionViewCell {
    
-    let containerView: UIView = {
+    public let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    var imageView: UIImageView = {
+    public var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
