@@ -12,20 +12,21 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.team4.airbnb.auth.config.MemoryProviderRepository;
 import org.team4.airbnb.auth.config.OauthProvider;
+import org.team4.airbnb.auth.dto.LoginResponse;
 import org.team4.airbnb.auth.dto.OauthTokenResponse;
 import org.team4.airbnb.auth.dto.UserProfile;
+import org.team4.airbnb.customer.Customer;
+import org.team4.airbnb.customer.CustomerRepository;
+import org.team4.airbnb.exception.GithubInfoNotFoundException;
 
 @RequiredArgsConstructor
 @Service
 public class OAuthService {
 
 	private final MemoryProviderRepository memoryProviderRepository;
+	private final CustomerRepository customerRepository;
+	private final JwtTokenProvider jwtTokenProvider;
 
-	/*Todo
-				1. authcode를 통해 OAuth서버에서 access token 얻어오기
-				2. access token을 통해 유저 정보 얻어오기
-				3. 유저 DB에 저장
-	*/
 	public LoginResponse processLogin(String provider, String authCode) {
 		OauthProvider oauthProvider = memoryProviderRepository.findByProviderName(provider);
 
@@ -35,14 +36,33 @@ public class OAuthService {
 		//2. 유저 정보 얻어오기
 		UserProfile userProfile = getUserInfoFromOauth(provider, oauthProvider,
 			tokenResponse);
+		String userIdViaUserProfile = userProfile.getUserId();
+
+		if (userIdViaUserProfile == null) {
+			new GithubInfoNotFoundException();
+		}
 
 		//3. DB에 유저 정보 저장 (최초 로그인 시 1번)
+		Customer customer = Customer.of(userIdViaUserProfile);
+		//기존 db에 사용자 있는지 확인 후, 없다면 DB에 유저 정보 저장 후 로그인처리
+		Customer findCustomer = customerRepository.findByUserId(userIdViaUserProfile)
+			.orElse(null);
 
-		return null;
+		if (findCustomer == null) {
+			customer = customerRepository.save(customer);
+		}
+
+		//4. JWT 토큰 생성 후 응답 DTO 전달
+		String accessToken = jwtTokenProvider.createAccessToken(userIdViaUserProfile);
+		String refreshToken = jwtTokenProvider.createRefreshToken();
+
+		LoginResponse loginResponse = LoginResponse.of(accessToken, refreshToken, "Bearer");
+
+		return loginResponse;
 	}
 
-
-	private OauthTokenResponse getAccessTokenFromOauth(String authCode, OauthProvider oauthProvider) {
+	private OauthTokenResponse getAccessTokenFromOauth(String authCode,
+		OauthProvider oauthProvider) {
 		OauthTokenResponse oauthTokenResponse = WebClient.create()
 			.post()
 			.uri(oauthProvider.getTokenUrl())

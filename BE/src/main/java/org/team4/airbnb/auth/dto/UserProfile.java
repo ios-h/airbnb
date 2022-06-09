@@ -12,7 +12,7 @@ import lombok.Getter;
 public class UserProfile {
 
 	private final String oauthId;
-	private final String email;
+	private final String userId;
 
 	public static UserProfile from(Map<String, Object> userInfo, String provider) {
 		UserProfile userProfile = null;
@@ -20,7 +20,7 @@ public class UserProfile {
 		if(provider == "github") {
 			userProfile = UserProfile.builder()
 				.oauthId(String.valueOf(userInfo.get("id")))
-				.email(String.valueOf(userInfo.get("email")))
+				.userId(String.valueOf(userInfo.get("login")))
 				.build();
 		}
 

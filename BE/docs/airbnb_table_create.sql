@@ -42,6 +42,7 @@ CREATE TABLE IF NOT EXISTS `customer`
 (
     `customer_id` BIGINT       NOT NULL AUTO_INCREMENT,
     `user_id`     VARCHAR(30)  NOT NULL,
+    `created_date`  DATETIME(6) NULL,
     PRIMARY KEY (`customer_id`)
 )
     ENGINE = InnoDB

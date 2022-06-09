@@ -14,12 +14,14 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import org.team4.airbnb.domain.BaseCreated;
+
 
 @Entity
 @Builder
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Customer {
+public class Customer extends BaseCreated {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +33,12 @@ public class Customer {
 	@Builder.Default
 	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
 	List<Wish> wishes = new ArrayList<>();
+
+	public static Customer of(String userId) {
+		return Customer.builder()
+			.userId(userId)
+			.build();
+	}
 
 	public List<Long> askAccommodationIdsOfWishes() {
 		List<Long> accommodationIds = new ArrayList<>();
@@ -48,12 +56,6 @@ public class Customer {
 
 	public Long getId() {
 		return id;
-	}
-
-	public static Customer of(String userId) {
-		return Customer.builder()
-			.userId(userId)
-			.build();
 	}
 
 	@Override
