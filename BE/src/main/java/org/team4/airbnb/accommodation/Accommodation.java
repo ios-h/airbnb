@@ -55,4 +55,12 @@ public class Accommodation extends BaseCreated {
 	public boolean isNotNullName(Accommodation accommodation) {
 		return !accommodation.name.isEmpty();
 	}
+
+	public Double getLongitude() {
+		return location.getPosition().getLon();
+	}
+
+	public Double getLatitude() {
+		return location.getPosition().getLat();
+	}
 }
