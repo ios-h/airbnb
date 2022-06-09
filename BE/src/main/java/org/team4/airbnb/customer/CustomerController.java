@@ -13,7 +13,7 @@ public class CustomerController {
 
 	private final CustomerService customerService;
 
-	@GetMapping("/wishlist")
+	@GetMapping("/api/wishlist")
 	public ResponseEntity<AccommodationForWishListResponse> getWishlistByCustomerId(@RequestParam Long customerId) {
 		AccommodationForWishListResponse bodyResponse = customerService.getWishListByCustomerId(
 			customerId);
