@@ -1,4 +1,4 @@
-package org.team4.airbnb.wish;
+package org.team4.airbnb.customer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Map;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.team4.airbnb.wish.dto.WishRequest;
-import org.team4.airbnb.wish.dto.WishResponse;
+import org.team4.airbnb.customer.dto.WishRequest;
+import org.team4.airbnb.customer.dto.WishResponse;
 
 @RestController
 @RequiredArgsConstructor

@@ -1,4 +1,4 @@
-package org.team4.airbnb.wish.dto;
+package org.team4.airbnb.customer.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

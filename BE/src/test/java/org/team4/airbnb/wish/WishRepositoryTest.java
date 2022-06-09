@@ -16,6 +16,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.transaction.annotation.Transactional;
 import org.team4.airbnb.accommodation.AccommodationRepository;
 import org.team4.airbnb.customer.CustomerRepository;
+import org.team4.airbnb.customer.Wish;
+import org.team4.airbnb.customer.WishRepository;
 import org.team4.airbnb.util.EntityCreator;
 
 @DataJpaTest

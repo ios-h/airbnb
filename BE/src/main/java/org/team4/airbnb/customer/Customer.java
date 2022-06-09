@@ -15,7 +15,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 import org.team4.airbnb.domain.BaseCreated;
-import org.team4.airbnb.wish.Wish;
+
 
 @Entity
 @Builder
@@ -30,6 +30,7 @@ public class Customer extends BaseCreated {
 
 	private String userId;
 
+	@Builder.Default
 	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
 	List<Wish> wishes = new ArrayList<>();
 

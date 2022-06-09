@@ -1,15 +1,13 @@
-package org.team4.airbnb.wish;
+package org.team4.airbnb.customer;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.team4.airbnb.customer.Customer;
-import org.team4.airbnb.customer.CustomerRepository;
+import org.team4.airbnb.customer.dto.WishRequest;
+import org.team4.airbnb.customer.dto.WishResponse;
 import org.team4.airbnb.exception.CustomerNotFoundException;
 import org.team4.airbnb.exception.WishNotFoundException;
-import org.team4.airbnb.wish.dto.WishRequest;
-import org.team4.airbnb.wish.dto.WishResponse;
 
 @Service
 @RequiredArgsConstructor
