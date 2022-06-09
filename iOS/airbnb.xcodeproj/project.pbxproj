@@ -15,6 +15,9 @@
 		D00B742A2850564B00B31424 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B74292850564B00B31424 /* CalendarCollectionViewCell.swift */; };
 		D00B742E285059C900B31424 /* CalendarCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B742D285059C900B31424 /* CalendarCollectionViewDataSource.swift */; };
 		D00B743228507E5600B31424 /* CalendarFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B743128507E5600B31424 /* CalendarFlowCoordinator.swift */; };
+		D00B743C285198C900B31424 /* GroupApplicable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B743B285198C900B31424 /* GroupApplicable.swift */; };
+		D00B743E285198D900B31424 /* SectionApplicable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B743D285198D900B31424 /* SectionApplicable.swift */; };
+		D00B74432851996100B31424 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B74422851996100B31424 /* Size.swift */; };
 		D01D65EF283C70710067B5E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D65EE283C70710067B5E1 /* AppDelegate.swift */; };
 		D01D65F1283C70710067B5E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D65F0283C70710067B5E1 /* SceneDelegate.swift */; };
 		D01D65F3283C70710067B5E1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D65F2283C70710067B5E1 /* MainViewController.swift */; };
@@ -54,7 +57,7 @@
 		D0D299DC284CB88A009D1608 /* CommonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299DB284CB88A009D1608 /* CommonCollectionViewCell.swift */; };
 		D0D299E0284CC156009D1608 /* MainCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299DF284CC156009D1608 /* MainCellFactory.swift */; };
 		D0D299E4284D000E009D1608 /* LayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299E3284D000E009D1608 /* LayoutManager.swift */; };
-		D0D299E8284D0C0C009D1608 /* ViewSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299E7284D0C0C009D1608 /* ViewSize.swift */; };
+		D0D299E8284D0C0C009D1608 /* ViewSizeApplicable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299E7284D0C0C009D1608 /* ViewSizeApplicable.swift */; };
 		D0D299EB284E45EA009D1608 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299EA284E45EA009D1608 /* SearchResultViewController.swift */; };
 		D0D299ED284E59BA009D1608 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299EC284E59BA009D1608 /* SearchResultTableViewCell.swift */; };
 		D0D299EF284E61C2009D1608 /* SearchResultTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D299EE284E61C2009D1608 /* SearchResultTableViewDataSource.swift */; };
@@ -99,6 +102,9 @@
 		D00B74292850564B00B31424 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		D00B742D285059C900B31424 /* CalendarCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		D00B743128507E5600B31424 /* CalendarFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarFlowCoordinator.swift; sourceTree = "<group>"; };
+		D00B743B285198C900B31424 /* GroupApplicable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupApplicable.swift; sourceTree = "<group>"; };
+		D00B743D285198D900B31424 /* SectionApplicable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionApplicable.swift; sourceTree = "<group>"; };
+		D00B74422851996100B31424 /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		D01D65EB283C70710067B5E1 /* airbnb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = airbnb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D01D65EE283C70710067B5E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D01D65F0283C70710067B5E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -140,7 +146,7 @@
 		D0D299DB284CB88A009D1608 /* CommonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCollectionViewCell.swift; sourceTree = "<group>"; };
 		D0D299DF284CC156009D1608 /* MainCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCellFactory.swift; sourceTree = "<group>"; };
 		D0D299E3284D000E009D1608 /* LayoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutManager.swift; sourceTree = "<group>"; };
-		D0D299E7284D0C0C009D1608 /* ViewSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSize.swift; sourceTree = "<group>"; };
+		D0D299E7284D0C0C009D1608 /* ViewSizeApplicable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSizeApplicable.swift; sourceTree = "<group>"; };
 		D0D299EA284E45EA009D1608 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		D0D299EC284E59BA009D1608 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		D0D299EE284E61C2009D1608 /* SearchResultTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewDataSource.swift; sourceTree = "<group>"; };
@@ -225,6 +231,24 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		D00B743A2851987B00B31424 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				D00B743B285198C900B31424 /* GroupApplicable.swift */,
+				D00B743D285198D900B31424 /* SectionApplicable.swift */,
+				D0D299E7284D0C0C009D1608 /* ViewSizeApplicable.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		D00B74412851995A00B31424 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D00B74422851996100B31424 /* Size.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		D01D65E2283C70710067B5E1 = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +316,8 @@
 		D01D662E283D3A050067B5E1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D00B74412851995A00B31424 /* Model */,
+				D00B743A2851987B00B31424 /* Protocol */,
 				D068BCFA28406E1B00EF783E /* Coordinator.swift */,
 				D01D662F283D3A0D0067B5E1 /* Extension */,
 				D089E7D92844B4790000AE78 /* MockDataModel.swift */,
@@ -387,7 +413,6 @@
 				D0D299DB284CB88A009D1608 /* CommonCollectionViewCell.swift */,
 				D089E7E1284501810000AE78 /* CommonHeaderView.swift */,
 				D0D299E3284D000E009D1608 /* LayoutManager.swift */,
-				D0D299E7284D0C0C009D1608 /* ViewSize.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -728,6 +753,7 @@
 				D01D65F3283C70710067B5E1 /* MainViewController.swift in Sources */,
 				D0D299E0284CC156009D1608 /* MainCellFactory.swift in Sources */,
 				D0D299E4284D000E009D1608 /* LayoutManager.swift in Sources */,
+				D00B743C285198C900B31424 /* GroupApplicable.swift in Sources */,
 				D0D29A1F284F4300009D1608 /* WishListCollectionViewDataSource.swift in Sources */,
 				D00B742E285059C900B31424 /* CalendarCollectionViewDataSource.swift in Sources */,
 				D0D299DC284CB88A009D1608 /* CommonCollectionViewCell.swift in Sources */,
@@ -741,11 +767,12 @@
 				D01D6628283CB5550067B5E1 /* WishListViewController.swift in Sources */,
 				D0D299EF284E61C2009D1608 /* SearchResultTableViewDataSource.swift in Sources */,
 				D04C6C41284925CD00A419A5 /* MainViewModel.swift in Sources */,
+				D00B743E285198D900B31424 /* SectionApplicable.swift in Sources */,
 				D01D65EF283C70710067B5E1 /* AppDelegate.swift in Sources */,
 				D089E7F82845FABB0000AE78 /* Box.swift in Sources */,
 				D00B742A2850564B00B31424 /* CalendarCollectionViewCell.swift in Sources */,
 				D068BD022840701800EF783E /* TabBarCoordinator.swift in Sources */,
-				D0D299E8284D0C0C009D1608 /* ViewSize.swift in Sources */,
+				D0D299E8284D0C0C009D1608 /* ViewSizeApplicable.swift in Sources */,
 				D0D299EB284E45EA009D1608 /* SearchResultViewController.swift in Sources */,
 				D0D299ED284E59BA009D1608 /* SearchResultTableViewCell.swift in Sources */,
 				D0D29A29284FC9E3009D1608 /* ReservationCollectionViewCell.swift in Sources */,
@@ -762,6 +789,7 @@
 				D089E7E2284501810000AE78 /* CommonHeaderView.swift in Sources */,
 				D0D299F1284F1D4D009D1608 /* WishListFlowCoordinator.swift in Sources */,
 				D089E811284622C00000AE78 /* SearchCollectionViewCell.swift in Sources */,
+				D00B74432851996100B31424 /* Size.swift in Sources */,
 				D068BD002840700B00EF783E /* TabBarController.swift in Sources */,
 				D01D662A283CB5DB0067B5E1 /* ReservationViewController.swift in Sources */,
 				D087289B283E7D26009983A5 /* CustomLabel.swift in Sources */,
