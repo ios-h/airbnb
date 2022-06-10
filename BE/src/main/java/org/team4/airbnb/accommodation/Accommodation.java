@@ -1,18 +1,13 @@
 package org.team4.airbnb.accommodation;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -50,21 +45,22 @@ public class Accommodation extends BaseCreated {
 	@Embedded
 	private RoomFeature roomFeature;
 
-	@OneToMany(mappedBy = "accommodation", fetch = FetchType.LAZY)
-	@OrderBy("imageSeq asc")
-	private List<AccommodationImage> accommodationImages = new ArrayList<>();
-
-	public List<String> askImagesUrls() {
-		return accommodationImages.get(0).offerImagesUrls(accommodationImages);
-	}
+	@Embedded
+	private AccommodationImages accommodationImages;
 
 	public List<String> getImageUrls() {
-		return accommodationImages.stream()
-			.map(AccommodationImage::getUrl)
-			.collect(Collectors.toList());
+		return accommodationImages.getUrls();
 	}
 
 	public boolean isNotNullName(Accommodation accommodation) {
 		return !accommodation.name.isEmpty();
+	}
+
+	public Double getLongitude() {
+		return location.getPosition().getLon();
+	}
+
+	public Double getLatitude() {
+		return location.getPosition().getLat();
 	}
 }

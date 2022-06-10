@@ -6,7 +6,7 @@ import org.team4.airbnb.exception.AccommodationTypeNotFoundException;
 public enum AccommodationType {
 	HOTEL("일반호텔");
 
-	private String dbData;
+	private final String dbData;
 
 	AccommodationType(String dbData) {
 		this.dbData = dbData;
@@ -14,12 +14,16 @@ public enum AccommodationType {
 
 	public static AccommodationType ofDbData(String dbData) {
 		return Arrays.stream(AccommodationType.values())
-			.filter(accommodationType -> accommodationType.getDbData().equals(dbData))
+			.filter(type -> type.isEquivalentTo(dbData))
 			.findAny()
 			.orElseThrow(AccommodationTypeNotFoundException::new);
 	}
 
 	public String getDbData() {
 		return dbData;
+	}
+
+	private boolean isEquivalentTo(String dbData) {
+		return this.dbData.equals(dbData);
 	}
 }

@@ -25,14 +25,14 @@ public class ReservationRequest {
 		return Math.toIntExact(ChronoUnit.DAYS.between(checkInDate, checkOutDate));
 	}
 
-	public Reservation toReservation(Invoice invoice, Accommodation accommodation,
+	public Reservation toReservation(Accommodation accommodation,
 		Customer customer) {
 		return Reservation.builder()
 			.checkInDate(checkInDate)
 			.checkOutDate(checkOutDate)
 			.numberOfGuest(numberOfGuest)
 			.numberOfInfant(numberOfInfant)
-			.invoice(invoice)
+			.invoice(Invoice.calculate(accommodation.getPrice(), getLengthOfStay()))
 			.accommodation(accommodation)
 			.customer(customer)
 			.build();

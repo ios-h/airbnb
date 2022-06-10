@@ -26,7 +26,7 @@ public class AccommodationForWishListResponse {
 			this.accommodationId = accommodation.getId();
 			this.name = accommodation.getName();
 			this.price = accommodation.getPrice();
-			this.imagesUrls = accommodation.askImagesUrls();
+			this.imagesUrls = accommodation.getImageUrls();
 			this.wishId = wishId;
 			this.isWish = true;
 		}
