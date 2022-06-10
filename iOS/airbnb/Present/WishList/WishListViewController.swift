@@ -5,6 +5,7 @@
 //  Created by 안상희 on 2022/05/24.
 //
 
+import Alamofire
 import UIKit
 
 final class WishListViewController: UIViewController {
@@ -23,6 +24,8 @@ final class WishListViewController: UIViewController {
         configureDataSource()
         
         configure()
+        
+        getWishList()
     }
     
     private func configure() {
