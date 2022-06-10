@@ -15,7 +15,7 @@ import org.team4.airbnb.auth.JwtTokenProvider;
 
 @Slf4j
 @RequiredArgsConstructor
-@WebFilter(urlPatterns = "/api/*")
+@WebFilter(urlPatterns = {"/api/wishlist/*","/api/reservations/*"})
 public class AuthCheckFilter extends OncePerRequestFilter {
 
 	private final JwtTokenProvider jwtTokenProvider;
