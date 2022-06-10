@@ -26,6 +26,8 @@ public class JwtTokenProvider {
 
 	private final long tokenValidityInMilliseconds = Duration.ofMillis(30).toMillis();
 
+	private final Random random = new Random();
+
 	public String createAccessToken(String userId){
 		//private claims 생성
 		Map<String, Object> claimsAttribute = new HashMap<>();
@@ -37,7 +39,7 @@ public class JwtTokenProvider {
 
 	public String createRefreshToken(){
 		byte[] bytes = new byte[7];
-		new Random().nextBytes(bytes);
+		random.nextBytes(bytes);
 		String claimSubjectForRefreshToken = new String(bytes, StandardCharsets.UTF_8);
 		
 		//registered claim : sub 생성
