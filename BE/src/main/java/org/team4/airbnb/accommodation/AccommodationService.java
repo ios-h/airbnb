@@ -1,12 +1,10 @@
 package org.team4.airbnb.accommodation;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.team4.airbnb.accommodation.dto.AccommodationSearchElement;
 import org.team4.airbnb.accommodation.dto.AccommodationSearchParams;
 import org.team4.airbnb.accommodation.dto.AccommodationSearchRequest;
 import org.team4.airbnb.accommodation.dto.AccommodationSearchResponse;
@@ -24,13 +22,10 @@ public class AccommodationService {
 
 		List<Long> accommodationIds = searchForIds(searchParams, pageable);
 
-		List<AccommodationSearchElement> elements = accommodationRepository
-			.findAllWithImagesByIdIn(accommodationIds)
-			.stream()
-			.map(AccommodationSearchElement::from)
-			.collect(Collectors.toList());
+		Accommodations accommodations = new Accommodations(accommodationRepository
+			.findAllWithImagesByIdIn(accommodationIds));
 
-		return new AccommodationSearchResponse(elements);
+		return accommodations.toSearchResponse();
 	}
 
 	private List<Long> searchForIds(AccommodationSearchParams searchParams, Pageable pageable) {
