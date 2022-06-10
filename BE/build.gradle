@@ -25,6 +25,9 @@ dependencies {
 	//Spring JPA
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
+	//Hibernate Spatial
+	implementation 'org.hibernate:hibernate-spatial'
+
 	//Mysql
 	runtimeOnly 'mysql:mysql-connector-java'
 
@@ -38,6 +41,12 @@ dependencies {
 	//xml parser - Jackson
 	implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.13.3'
 
+	//configurtiaon-processor
+	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
+	//webflux : OAuth 서버와 통신을 위해 WebClient 사용
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

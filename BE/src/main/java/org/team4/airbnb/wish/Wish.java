@@ -10,14 +10,19 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.team4.airbnb.customer.Customer;
 import org.team4.airbnb.domain.BaseCreated;
+import org.team4.airbnb.wish.dto.WishRequest;
 
 @Entity
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
-@Setter
+@Builder
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
 public class Wish extends BaseCreated {
 
 	@Id
@@ -31,12 +36,18 @@ public class Wish extends BaseCreated {
 
 	private Long accommodationId;
 
-	public Long getId() {
-		return id;
+	public static Wish from(Customer customer, WishRequest wishRequest) {
+		return Wish.builder()
+			.customer(customer)
+			.accommodationId(wishRequest.getAccommodationId())
+			.build();
 	}
 
-	public Long getAccommodationId() {
-		return accommodationId;
+	public static Wish from(Customer customer, Long accommodationId) {
+		return Wish.builder()
+			.customer(customer)
+			.accommodationId(accommodationId)
+			.build();
 	}
 
 	@Override

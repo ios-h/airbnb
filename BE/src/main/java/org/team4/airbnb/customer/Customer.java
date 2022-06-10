@@ -10,13 +10,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.team4.airbnb.wish.Wish;
 
 @Entity
-@NoArgsConstructor
-@Setter
+@Builder
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Customer {
 
 	@Id
@@ -29,7 +32,7 @@ public class Customer {
 	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
 	List<Wish> wishes = new ArrayList<>();
 
-	public List<Long> askAccommodationIdsOfWishes(){
+	public List<Long> askAccommodationIdsOfWishes() {
 		List<Long> accommodationIds = new ArrayList<>();
 		for (Wish wish : wishes) {
 			accommodationIds.add(wish.getAccommodationId());
@@ -37,10 +40,20 @@ public class Customer {
 		return accommodationIds;
 	}
 
-	public List<Long> askWishIdsOfWishes(){
+	public List<Long> askWishIdsOfWishes() {
 		return wishes.stream()
 			.map(Wish::getId)
 			.collect(Collectors.toList());
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public static Customer of(String userId) {
+		return Customer.builder()
+			.userId(userId)
+			.build();
 	}
 
 	@Override

@@ -18,14 +18,20 @@ public class CustomerService {
 
 	@Transactional(readOnly = true)
 	public AccommodationForWishListResponse getWishListByCustomerId(Long customerId) {
-		Customer customer = customerRepository.findById(customerId)
-			.orElseThrow(() -> new CustomerNotFoundException());
+		Customer customer = retrieveCustomer(customerId);
 
 		List<Long> accommodationIds = customer.askAccommodationIdsOfWishes();
 		List<Accommodation> accommodations = accommodationRepository.findAllWithImagesByIdIn(accommodationIds);
+
 		List<Long> wishIds = customer.askWishIdsOfWishes();
 
 		return AccommodationForWishListResponse.from(
 			accommodations, wishIds);
+	}
+
+	private Customer retrieveCustomer(Long customerId) {
+		Customer customer = customerRepository.findById(customerId)
+			.orElseThrow(() -> new CustomerNotFoundException());
+		return customer;
 	}
 }

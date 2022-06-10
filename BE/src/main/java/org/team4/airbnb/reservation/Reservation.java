@@ -1,6 +1,7 @@
 package org.team4.airbnb.reservation;
 
 import java.time.LocalDate;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -65,7 +66,23 @@ public class Reservation extends BaseCreated {
 		this.customer = customer;
 	}
 
-	public int getInvoiceTotal() {
+	public Integer getInvoiceTotal() {
 		return invoice.getTotal();
+	}
+
+	public Long getAccommodationId() {
+		return accommodation.getId();
+	}
+
+	public String getHostName() {
+		return accommodation.getHostName();
+	}
+
+	public String getAccommodationTypeString() {
+		return accommodation.getType().getDbData();
+	}
+
+	public List<String> getAccommodationImageUrls() {
+		return accommodation.getImageUrls();
 	}
 }
