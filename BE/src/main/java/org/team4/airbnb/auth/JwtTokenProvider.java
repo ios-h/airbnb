@@ -2,19 +2,15 @@ package org.team4.airbnb.auth;
 
 
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Header;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import java.nio.charset.StandardCharsets;
-import java.time.Duration;
-import java.util.Base64;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import io.jsonwebtoken.io.Encoders;
+import io.jsonwebtoken.security.Keys;
+import javax.crypto.SecretKey;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
+import org.team4.airbnb.auth.domain.JwtPayload;
 import org.team4.airbnb.exception.TokenInValidateException;
 
 @PropertySource(value = "classpath:jwt.properties", ignoreResourceNotFound = true)
@@ -24,61 +20,39 @@ public class JwtTokenProvider {
 	@Value("${jwt.secretKey}")
 	private String secretKey;
 
-	private final long tokenValidityInMilliseconds = Duration.ofMillis(30).toMillis();
 
-	private final Random random = new Random();
+	public String createToken(JwtPayload payload) {
+		SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+		Encoders.BASE64.encode(key.getEncoded());
+		Claims claims = Jwts.claims(payload.getPrivateClaim());
 
-	public String createAccessToken(String userId){
-		//private claims 생성
-		Map<String, Object> claimsAttribute = new HashMap<>();
-		claimsAttribute.put("userId",userId);
-
-		Claims claims = Jwts.claims(claimsAttribute);
-		return createToken(claims);
-	}
-
-	public String createRefreshToken(){
-		byte[] bytes = new byte[7];
-		random.nextBytes(bytes);
-		String claimSubjectForRefreshToken = new String(bytes, StandardCharsets.UTF_8);
-		
-		//registered claim : sub 생성
-		Claims claims = Jwts.claims().setSubject(claimSubjectForRefreshToken);
-		return createToken(claims);
-	}
-
-	private String createToken(Claims claims) {
-		String encodeSecretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
-		long currentTime = System.currentTimeMillis();
-		Date now = new Date();
-
-
-		String jwtToken = Jwts.builder()
-			.setHeaderParam(Header.TYPE, Header.JWT_TYPE) //Header 셋팅 : 토큰 타입 정보 typ
-			//payload - registered claim 셋팅
-			.setIssuer("team4")  //iss
-			.setIssuedAt(new Date(currentTime)) //iat
-			.setExpiration(new Date(now.getTime() + tokenValidityInMilliseconds)) //exp
-			//payload - private claim
+		String token = Jwts.builder()
+			.setSubject(payload.getSubject())
+			.setIssuedAt(payload.getIssuedAt())
+			.setExpiration(payload.getExpiration())
 			.setClaims(claims)
-			.signWith(SignatureAlgorithm.HS256, encodeSecretKey) //해싱알고리즘, 시크릿키
+			.signWith(key)
 			.compact();
 
-		return jwtToken;
+		return token;
 	}
 
-	public Claims parseJwtToken(String header) {
-		String encodeSecretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
+//	public Claims parseJwtToken(String token) {
+//		String encodeSecretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
+//
+//		Claims claims = Jwts.parser()
+//			.setSigningKey(encodeSecretKey)
+//			.parseClaimsJws(token)
+//			.getBody();
+//
+//		return claims;
+//	}
 
+	public String getAccessTokenFromHeader(String header) {
 		validateHeader(header);
 		String token = extractToken(header);
 
-		Claims claims = Jwts.parser()
-			.setSigningKey(encodeSecretKey)
-			.parseClaimsJws(token)
-			.getBody();
-
-		return claims;
+		return token;
 	}
 
 	private void validateHeader(String header) {
@@ -90,4 +64,22 @@ public class JwtTokenProvider {
 	private String extractToken(String authorizationHeader) {
 		return authorizationHeader.substring("Bearer ".length());
 	}
+
+//	public void validateJwtToken(String accessToken) {
+//		String encodeSecretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
+//		Jws<Claims> claimsJws = Jwts.parser()
+//			.setSigningKey(encodeSecretKey)
+//			.parseClaimsJws(accessToken);
+//
+//		Claims body = claimsJws.getBody();
+//		JwsHeader jwsHeader = claimsJws.getHeader();
+//		String jwsSignature = claimsJws.getSignature();
+//
+//		JwsHeader header = claimsJws.getHeader();
+//		String signature = claimsJws.getSignature();
+//
+//		System.out.println(body);
+//		body.getExpiration();
+//		body.getIssuedAt();
+//	}
 }
