@@ -2,16 +2,21 @@ package org.team4.airbnb.auth;
 
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.IncorrectClaimException;
+import io.jsonwebtoken.InvalidClaimException;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.MissingClaimException;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import java.util.Date;
 import javax.crypto.SecretKey;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 import org.team4.airbnb.auth.domain.JwtPayload;
+import org.team4.airbnb.exception.TokenInValidateException;
 
 @Slf4j
 @PropertySource(value = "classpath:jwt.properties", ignoreResourceNotFound = true)
@@ -39,4 +44,44 @@ public class JwtTokenProvider {
 		return token;
 	}
 
+
+	public Claims parseJwtToken(String accessToken) {
+		SecretKey key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secretKey));
+
+		return Jwts.parserBuilder()
+			.setSigningKey(key)
+			.build()
+			.parseClaimsJws(accessToken)
+			.getBody();
+	}
+
+	public Claims validateJwtToken(String accessToken) {
+		SecretKey key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secretKey));
+		Claims body = null;
+
+		try {
+			body = Jwts.parserBuilder()
+				.requireSubject("team4Airbnb")
+				.require("http://org.team4.airbnb", "true")
+				.requireExpiration(new Date(System.currentTimeMillis()))
+				.setSigningKey(key)
+				.build()
+				.parseClaimsJws(accessToken)
+				.getBody();
+		} catch (MissingClaimException missingClaimException) {
+			log.error("**validateJwtToken: MissingClaimException 발생",
+				new TokenInValidateException());
+			throw new TokenInValidateException();
+		} catch (IncorrectClaimException incorrectClaimException) {
+			log.error("**validateJwtToken: IncorrectClaimException 발생",
+				new TokenInValidateException());
+			throw new TokenInValidateException();
+		} catch (InvalidClaimException invalidClaimException) {
+			log.error("**validateJwtToken: MissingClaimException 발생",
+				new TokenInValidateException());
+			throw new TokenInValidateException();
+		}
+
+		return body;
+	}
 }
