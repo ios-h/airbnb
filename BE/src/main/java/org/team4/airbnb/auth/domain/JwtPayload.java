@@ -12,11 +12,13 @@ import lombok.Getter;
 public class JwtPayload {
 
 	//registered claim
+	@Builder.Default
 	private final String subject = "team4Airbnb";
 	private final Date issuedAt;
 	private final Date expiration;
 
 	//public claim
+	@Builder.Default
 	private final String publicClaim = "http://org.team4.airbnb";
 
 	//private claim
