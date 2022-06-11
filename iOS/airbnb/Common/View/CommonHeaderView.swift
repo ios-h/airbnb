@@ -28,9 +28,10 @@ class CommonHeaderView: UICollectionReusableView {
         
         let inset = CGFloat(25)
         
-        headerLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: inset).isActive = true
-        headerLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -inset).isActive = true
-        headerLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: inset * 1.2).isActive = true
-        headerLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -inset * 0.5).isActive = true
+        headerLabel.snp.makeConstraints {
+            $0.leading.equalTo(inset)
+            $0.top.equalTo(self.snp.top).inset(inset * 1.1)
+            $0.bottom.equalTo(self.snp.bottom).inset(inset * 0.4)
+        }
     }
 }
