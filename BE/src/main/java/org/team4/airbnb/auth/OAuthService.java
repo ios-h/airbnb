@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -27,38 +28,63 @@ public class OAuthService {
 	private final CustomerRepository customerRepository;
 	private final JwtTokenProvider jwtTokenProvider;
 
+	private final String TOKEN_TYPE = "Bearer";
+
+	@Transactional
 	public LoginResponse processLogin(String provider, String authCode) {
 		OauthProvider oauthProvider = memoryProviderRepository.findByProviderName(provider);
 
-		//1. access token 얻어오기
-		OauthTokenResponse tokenResponse = getAccessTokenFromOauth(authCode, oauthProvider);
+		String userId = processOauth(provider, authCode, oauthProvider);
+		checkIsAndSignUpMember(userId);
+		LoginResponse response = createJwtTokenAndMakeResponse(userId);
 
-		//2. 유저 정보 얻어오기
-		UserProfile userProfile = getUserInfoFromOauth(provider, oauthProvider,
-			tokenResponse);
-		String userIdViaUserProfile = userProfile.getUserId();
+		return response;
+	}
 
-		if (userIdViaUserProfile == null) {
-			new GithubInfoNotFoundException();
-		}
-
-		//3. DB에 유저 정보 저장 (최초 로그인 시 1번)
-		Customer customer = Customer.of(userIdViaUserProfile);
-		//기존 db에 사용자 있는지 확인 후, 없다면 DB에 유저 정보 저장 후 로그인처리
-		Customer findCustomer = customerRepository.findByUserId(userIdViaUserProfile)
-			.orElse(null);
-
-		if (findCustomer == null) {
-			customer = customerRepository.save(customer);
-		}
-
-		//4. JWT 토큰 생성 후 응답 DTO 전달
-		String accessToken = jwtTokenProvider.createAccessToken(userIdViaUserProfile);
+	/**
+	 * JWT token을 생성하고, 로그인 응답 DTO 객체를 생성한다.
+	 * @param userId
+	 * @return 로그인 응답 DTO
+	 */
+	private LoginResponse createJwtTokenAndMakeResponse(String userId) {
+		String accessToken = jwtTokenProvider.createAccessToken(userId);
 		String refreshToken = jwtTokenProvider.createRefreshToken();
 
-		LoginResponse loginResponse = LoginResponse.of(accessToken, refreshToken, "Bearer");
+		return LoginResponse.of(accessToken, refreshToken, TOKEN_TYPE);
+	}
 
-		return loginResponse;
+	/**
+	 * 회원 DB에 해당 회원정보 없을 경우, 가입 처리 가입 처리는, 최초 로그인 시 1번 수행된다.
+	 *
+	 * @param userId
+	 */
+	private void checkIsAndSignUpMember(String userId) {
+		customerRepository.findByUserId(userId)
+			.ifPresentOrElse(customer -> {},
+				() -> customerRepository.save(Customer.of(userId)));
+	}
+
+	/**
+	 * github 인증서버와 인증 처리를 하고, 사용자 정보를 가져온다. 서드파티에서 제공하는 사용자 정보중, userId 정보만 사용하기 때문에 userId를 반환한다.
+	 *
+	 * @param provider
+	 * @param authCode
+	 * @param oauthProvider
+	 * @return userId
+	 */
+	private String processOauth(String provider, String authCode, OauthProvider oauthProvider) {
+		//1. OAuth access token 얻어오기
+		OauthTokenResponse tokenResponse = getAccessTokenFromOauth(authCode, oauthProvider);
+
+		//2. OAuth 유저 정보 얻어오기
+		UserProfile userProfile = getUserInfoFromOauth(provider, oauthProvider,
+			tokenResponse);
+		String userId = userProfile.getUserId();
+
+		if (userId == null) {
+			new GithubInfoNotFoundException();
+		}
+		return userId;
 	}
 
 	private OauthTokenResponse getAccessTokenFromOauth(String authCode,
@@ -92,7 +118,6 @@ public class OAuthService {
 
 		return formData;
 	}
-
 
 	private UserProfile getUserInfoFromOauth(String provider, OauthProvider oauthProvider,
 		OauthTokenResponse tokenResponse) {
