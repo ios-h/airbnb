@@ -1,7 +1,6 @@
-package org.team4.airbnb.exception.validation;
+package org.team4.airbnb.exception;
 
 import org.springframework.http.HttpStatus;
-import org.team4.airbnb.exception.BusinessException;
 
 public abstract class InValidException extends BusinessException {
 

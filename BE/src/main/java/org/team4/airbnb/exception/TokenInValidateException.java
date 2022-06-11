@@ -1,7 +1,5 @@
 package org.team4.airbnb.exception;
 
-import org.team4.airbnb.exception.validation.InValidException;
-
 public class TokenInValidateException extends InValidException {
 
 	@Override
