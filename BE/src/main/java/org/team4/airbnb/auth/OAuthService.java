@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.MediaType;
@@ -33,7 +34,10 @@ public class OAuthService {
 	private final JwtTokenProvider jwtTokenProvider;
 
 	private final String TOKEN_TYPE = "Bearer";
-	private final long VALID_TIME = Duration.ofMillis(30).toMillis();
+	private final long VALID_TIME_ACCESS_TOKEN = Duration.ofMillis(30).toMillis();
+	private final long VALID_TIME_REFRESH_TOKEN = Duration.ofMillis(60).toMillis();
+
+	private final Random random = new Random();
 
 	@Transactional
 	public LoginResponse processLogin(String provider, String authCode) {
@@ -53,20 +57,28 @@ public class OAuthService {
 	 * @return 로그인 응답 DTO
 	 */
 	private LoginResponse createJwtTokenAndMakeResponse(String userId) {
-		JwtPayload payload = makePayload(userId);
-		String accessToken = jwtTokenProvider.createAccessToken(userId);
-		String refreshToken = jwtTokenProvider.createRefreshToken();
+		Date issuedAt = new Date(System.currentTimeMillis());
+		Map<String, Object> privateClaim = new HashMap<>();
+		privateClaim.put("userid", userId);
+		privateClaim.put("role", "customer");
+
+		String accessToken = jwtTokenProvider.createToken(makePayloadForAccessToken(privateClaim, issuedAt));
+		String refreshToken = jwtTokenProvider.createToken(makePayloadForRefreshToken(privateClaim, issuedAt));
 
 		return LoginResponse.of(accessToken, refreshToken, TOKEN_TYPE);
 	}
 
-	private JwtPayload makePayload(String userId) {
-		Date issuedAt = new Date(System.currentTimeMillis());
-		Date expiration = new Date(System.currentTimeMillis() + VALID_TIME);
-		Map<String, String> privateClaim = new HashMap<>();
+	private JwtPayload makePayloadForAccessToken(Map<String, Object> privateClaim, Date issuedAt) {
+		Date expiration = new Date(System.currentTimeMillis() + VALID_TIME_ACCESS_TOKEN);
+		return JwtPayload.of(issuedAt, expiration, privateClaim);
+	}
 
-		privateClaim.put("userid", userId);
-		privateClaim.put("role","customer");
+	private JwtPayload makePayloadForRefreshToken(Map<String, Object> privateClaim, Date issuedAt) {
+		Date expiration = new Date(System.currentTimeMillis() + VALID_TIME_REFRESH_TOKEN);
+
+		byte[] bytes = new byte[7];
+		random.nextBytes(bytes);
+		privateClaim.put("refresh", new String(bytes, StandardCharsets.UTF_8));
 
 		return JwtPayload.of(issuedAt, expiration, privateClaim);
 	}
