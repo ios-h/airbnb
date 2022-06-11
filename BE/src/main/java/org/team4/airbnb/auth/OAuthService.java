@@ -34,8 +34,8 @@ public class OAuthService {
 	private final JwtTokenProvider jwtTokenProvider;
 
 	private final String TOKEN_TYPE = "Bearer";
-	private final long VALID_TIME_ACCESS_TOKEN = Duration.ofMillis(30).toMillis();
-	private final long VALID_TIME_REFRESH_TOKEN = Duration.ofMillis(60).toMillis();
+	private final long VALID_TIME_ACCESS_TOKEN = Duration.ofMillis(300).toMillis();
+	private final long VALID_TIME_REFRESH_TOKEN = Duration.ofMillis(600).toMillis();
 
 	private final Random random = new Random();
 
