@@ -55,7 +55,7 @@ public class JwtTokenProvider {
 			.getBody();
 	}
 
-	public Claims validateJwtToken(String accessToken) {
+	public Claims validateJwtToken(String accessToken) throws TokenInValidateException{
 		SecretKey key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secretKey));
 		Claims body = null;
 
