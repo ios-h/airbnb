@@ -59,7 +59,7 @@
 		D089E7DE2844D2450000AE78 /* NearestDestinationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E7DD2844D2450000AE78 /* NearestDestinationCollectionViewCell.swift */; };
 		D089E7E2284501810000AE78 /* CommonHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E7E1284501810000AE78 /* CommonHeaderView.swift */; };
 		D089E7E5284505F10000AE78 /* MainAccomodationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E7E4284505F10000AE78 /* MainAccomodationCollectionViewCell.swift */; };
-		D089E7F82845FABB0000AE78 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E7F72845FABB0000AE78 /* Box.swift */; };
+		D089E7F82845FABB0000AE78 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E7F72845FABB0000AE78 /* Observable.swift */; };
 		D089E80328460A4E0000AE78 /* MainSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E80228460A4E0000AE78 /* MainSection.swift */; };
 		D089E80528460B4C0000AE78 /* MainSectionDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E80428460B4C0000AE78 /* MainSectionDiffableDataSource.swift */; };
 		D089E80928461EE50000AE78 /* SearchRecommendationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089E80828461EE50000AE78 /* SearchRecommendationViewController.swift */; };
@@ -160,7 +160,7 @@
 		D089E7DD2844D2450000AE78 /* NearestDestinationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestDestinationCollectionViewCell.swift; sourceTree = "<group>"; };
 		D089E7E1284501810000AE78 /* CommonHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonHeaderView.swift; sourceTree = "<group>"; };
 		D089E7E4284505F10000AE78 /* MainAccomodationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAccomodationCollectionViewCell.swift; sourceTree = "<group>"; };
-		D089E7F72845FABB0000AE78 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		D089E7F72845FABB0000AE78 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		D089E80228460A4E0000AE78 /* MainSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSection.swift; sourceTree = "<group>"; };
 		D089E80428460B4C0000AE78 /* MainSectionDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSectionDiffableDataSource.swift; sourceTree = "<group>"; };
 		D089E80828461EE50000AE78 /* SearchRecommendationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRecommendationViewController.swift; sourceTree = "<group>"; };
@@ -479,7 +479,7 @@
 		D089E7F62845FAAF0000AE78 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				D089E7F72845FABB0000AE78 /* Box.swift */,
+				D089E7F72845FABB0000AE78 /* Observable.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -841,7 +841,7 @@
 				D04C6C41284925CD00A419A5 /* MainViewModel.swift in Sources */,
 				D00B743E285198D900B31424 /* SectionApplicable.swift in Sources */,
 				D01D65EF283C70710067B5E1 /* AppDelegate.swift in Sources */,
-				D089E7F82845FABB0000AE78 /* Box.swift in Sources */,
+				D089E7F82845FABB0000AE78 /* Observable.swift in Sources */,
 				D00B742A2850564B00B31424 /* CalendarCollectionViewCell.swift in Sources */,
 				D068BD022840701800EF783E /* TabBarCoordinator.swift in Sources */,
 				D0D299E8284D0C0C009D1608 /* ViewSizeApplicable.swift in Sources */,
