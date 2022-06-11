@@ -5,7 +5,9 @@
 //  Created by 안상희 on 2022/05/24.
 //
 
+import SnapKit
 import UIKit
+import WebKit
 
 final class MainViewController: UIViewController {
     
@@ -17,6 +19,14 @@ final class MainViewController: UIViewController {
     private var mainCollectionView: UICollectionView! = nil
     private var dataSource: MainSectionDiffableDataSource!
 
+    private lazy var webView: WKWebView = {
+        let webConfiguration = WKWebViewConfiguration()
+        let webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView.uiDelegate = self
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        return webView
+    }()
+    
     private lazy var loginButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "로그인",
                                      style: .plain,
@@ -26,6 +36,15 @@ final class MainViewController: UIViewController {
     }()
     
     @objc private func loginButtonTapped(_ sender: Any) {
+        setupWebView()
+        
+        let githubUrl = "http://52.79.106.69:8080/login"
+        if let url = URL(string: githubUrl) {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+        }
+        
         alert(title: "알림", message: "로그인 되었습니다.")
         
         loginButton.title = "로그아웃"
@@ -135,6 +154,14 @@ final class MainViewController: UIViewController {
             return mainViewModel.generateAccomodationSection()
         }
     }
+    
+    private func setupWebView() {
+        view.addSubview(webView)
+        
+        webView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+    }
 }
 
 extension MainViewController: UISearchResultsUpdating {
@@ -148,4 +175,7 @@ extension MainViewController: UISearchBarDelegate {
         coordinate?.coordinateToSearchViewController()
         return true
     }
+}
+
+extension MainViewController: WKUIDelegate {
 }
