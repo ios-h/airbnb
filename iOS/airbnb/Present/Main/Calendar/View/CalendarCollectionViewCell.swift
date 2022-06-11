@@ -28,6 +28,7 @@ final class CalendarCollectionViewCell: UICollectionViewCell {
         contentView.backgroundColor = .white
         contentView.addSubview(textLabel)
         
+//        addSubview(containerView)
         setConstraints()
     }
     
@@ -35,6 +36,10 @@ final class CalendarCollectionViewCell: UICollectionViewCell {
         contentView.snp.makeConstraints {
             $0.edges.equalTo(self.safeAreaLayoutGuide)
         }
+        
+//        containerView.snp.makeConstraints {
+//            $0.edges.equalTo(contentView.safeAreaLayoutGuide)
+//        }
         
         textLabel.snp.makeConstraints {
             $0.center.equalTo(self.contentView)

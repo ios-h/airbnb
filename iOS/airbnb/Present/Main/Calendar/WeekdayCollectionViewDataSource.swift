@@ -10,7 +10,7 @@ import UIKit
 final class WeekdayCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return CalendarViewModel.weeks.count
     }
     
     func collectionView(_ collectionView: UICollectionView,

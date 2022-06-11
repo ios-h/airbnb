@@ -17,4 +17,6 @@ final class CalendarViewModel {
     let totalDates = [String]() // dates를 담는 배열
     let daysCountInMonth = 0 // 해당 월이 며칠까지 있는지
     let weekdayStarting = 0 // 시작일
+    
+    
 }
