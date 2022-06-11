@@ -30,6 +30,7 @@
 		D00B74652852503800B31424 /* WishListResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B74642852503800B31424 /* WishListResponseData.swift */; };
 		D00B74692852526200B31424 /* SearchLocationResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B74682852526200B31424 /* SearchLocationResponseData.swift */; };
 		D00B746D2852BBBE00B31424 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B746C2852BBBE00B31424 /* Constant.swift */; };
+		D00B7486285332E500B31424 /* WishListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B7485285332E500B31424 /* WishListViewModel.swift */; };
 		D01D65EF283C70710067B5E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D65EE283C70710067B5E1 /* AppDelegate.swift */; };
 		D01D65F1283C70710067B5E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D65F0283C70710067B5E1 /* SceneDelegate.swift */; };
 		D01D65F3283C70710067B5E1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D65F2283C70710067B5E1 /* MainViewController.swift */; };
@@ -128,6 +129,7 @@
 		D00B74642852503800B31424 /* WishListResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListResponseData.swift; sourceTree = "<group>"; };
 		D00B74682852526200B31424 /* SearchLocationResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationResponseData.swift; sourceTree = "<group>"; };
 		D00B746C2852BBBE00B31424 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		D00B7485285332E500B31424 /* WishListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewModel.swift; sourceTree = "<group>"; };
 		D01D65EB283C70710067B5E1 /* airbnb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = airbnb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D01D65EE283C70710067B5E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D01D65F0283C70710067B5E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -297,6 +299,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		D00B747A2852E72F00B31424 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		D01D65E2283C70710067B5E1 = {
 			isa = PBXGroup;
 			children = (
@@ -323,6 +332,7 @@
 		D01D65ED283C70710067B5E1 /* airbnb */ = {
 			isa = PBXGroup;
 			children = (
+				D00B747A2852E72F00B31424 /* Network */,
 				D068BCF528406D7700EF783E /* App */,
 				D01D662E283D3A050067B5E1 /* Common */,
 				D01D6624283CB50E0067B5E1 /* Present */,
@@ -514,6 +524,7 @@
 				D0D29A1E284F4300009D1608 /* WishListCollectionViewDataSource.swift */,
 				D0D299F0284F1D4D009D1608 /* WishListFlowCoordinator.swift */,
 				D01D6627283CB5550067B5E1 /* WishListViewController.swift */,
+				D00B7485285332E500B31424 /* WishListViewModel.swift */,
 			);
 			path = WishList;
 			sourceTree = "<group>";
@@ -815,6 +826,7 @@
 				D00B742E285059C900B31424 /* CalendarCollectionViewDataSource.swift in Sources */,
 				D0D299DC284CB88A009D1608 /* CommonCollectionViewCell.swift in Sources */,
 				D089E80528460B4C0000AE78 /* MainSectionDiffableDataSource.swift in Sources */,
+				D00B7486285332E500B31424 /* WishListViewModel.swift in Sources */,
 				D0D299FD284F2498009D1608 /* WishListCollectionViewCell.swift in Sources */,
 				D089E80B284621770000AE78 /* SearchDiffableDataSource.swift in Sources */,
 				D087289D283F0DB9009983A5 /* CustomButton.swift in Sources */,

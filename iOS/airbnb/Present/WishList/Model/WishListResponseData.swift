@@ -15,7 +15,7 @@ struct WishListData: Codable {
     let accommodationId: Int
     let name: String
     let price: Int
-    let imageUrls: [String]
+    let imagesUrls: [String]
     let wishId: Int
     let isWish: Bool
 }
