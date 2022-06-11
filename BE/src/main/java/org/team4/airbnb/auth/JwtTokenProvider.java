@@ -2,6 +2,7 @@ package org.team4.airbnb.auth;
 
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.IncorrectClaimException;
 import io.jsonwebtoken.InvalidClaimException;
 import io.jsonwebtoken.Jwts;
@@ -9,13 +10,13 @@ import io.jsonwebtoken.MissingClaimException;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import java.util.Date;
 import javax.crypto.SecretKey;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 import org.team4.airbnb.auth.domain.JwtPayload;
+import org.team4.airbnb.exception.TokenExpiredException;
 import org.team4.airbnb.exception.TokenInValidateException;
 
 @Slf4j
@@ -34,10 +35,10 @@ public class JwtTokenProvider {
 
 		String token = Jwts.builder()
 			.setHeaderParam("typ", "JWT")
+			.setClaims(claims)
 			.setSubject(payload.getSubject())
 			.setIssuedAt(payload.getIssuedAt())
 			.setExpiration(payload.getExpiration())
-			.setClaims(claims)
 			.signWith(key, SignatureAlgorithm.HS256)
 			.compact();
 
@@ -55,15 +56,17 @@ public class JwtTokenProvider {
 			.getBody();
 	}
 
-	public Claims validateJwtToken(String accessToken) throws TokenInValidateException{
+	public Claims validateJwtToken(String accessToken) throws TokenInValidateException, TokenExpiredException {
 		SecretKey key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secretKey));
 		Claims body = null;
 
+		long seconds = 3 * 60; //3 minutes
+
 		try {
 			body = Jwts.parserBuilder()
+				.setAllowedClockSkewSeconds(seconds)
 				.requireSubject("team4Airbnb")
 				.require("http://org.team4.airbnb", "true")
-				.requireExpiration(new Date(System.currentTimeMillis()))
 				.setSigningKey(key)
 				.build()
 				.parseClaimsJws(accessToken)
@@ -80,6 +83,8 @@ public class JwtTokenProvider {
 			log.error("**validateJwtToken: MissingClaimException 발생",
 				new TokenInValidateException());
 			throw new TokenInValidateException();
+		} catch (ExpiredJwtException expiredJwtException) {
+			throw new TokenExpiredException();
 		}
 
 		return body;
