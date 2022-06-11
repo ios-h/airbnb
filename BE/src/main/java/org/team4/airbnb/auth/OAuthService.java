@@ -1,7 +1,10 @@
 package org.team4.airbnb.auth;
 
 import java.nio.charset.StandardCharsets;
+import java.time.Duration;
 import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.ParameterizedTypeReference;
@@ -13,6 +16,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.team4.airbnb.auth.config.MemoryProviderRepository;
 import org.team4.airbnb.auth.config.OauthProvider;
+import org.team4.airbnb.auth.domain.JwtPayload;
 import org.team4.airbnb.auth.dto.LoginResponse;
 import org.team4.airbnb.auth.dto.OauthTokenResponse;
 import org.team4.airbnb.auth.dto.UserProfile;
@@ -29,6 +33,7 @@ public class OAuthService {
 	private final JwtTokenProvider jwtTokenProvider;
 
 	private final String TOKEN_TYPE = "Bearer";
+	private final long VALID_TIME = Duration.ofMillis(30).toMillis();
 
 	@Transactional
 	public LoginResponse processLogin(String provider, String authCode) {
@@ -43,14 +48,27 @@ public class OAuthService {
 
 	/**
 	 * JWT token을 생성하고, 로그인 응답 DTO 객체를 생성한다.
+	 *
 	 * @param userId
 	 * @return 로그인 응답 DTO
 	 */
 	private LoginResponse createJwtTokenAndMakeResponse(String userId) {
+		JwtPayload payload = makePayload(userId);
 		String accessToken = jwtTokenProvider.createAccessToken(userId);
 		String refreshToken = jwtTokenProvider.createRefreshToken();
 
 		return LoginResponse.of(accessToken, refreshToken, TOKEN_TYPE);
+	}
+
+	private JwtPayload makePayload(String userId) {
+		Date issuedAt = new Date(System.currentTimeMillis());
+		Date expiration = new Date(System.currentTimeMillis() + VALID_TIME);
+		Map<String, String> privateClaim = new HashMap<>();
+
+		privateClaim.put("userid", userId);
+		privateClaim.put("role","customer");
+
+		return JwtPayload.of(issuedAt, expiration, privateClaim);
 	}
 
 	/**
@@ -60,7 +78,8 @@ public class OAuthService {
 	 */
 	private void checkIsAndSignUpMember(String userId) {
 		customerRepository.findByUserId(userId)
-			.ifPresentOrElse(customer -> {},
+			.ifPresentOrElse(customer -> {
+				},
 				() -> customerRepository.save(Customer.of(userId)));
 	}
 
