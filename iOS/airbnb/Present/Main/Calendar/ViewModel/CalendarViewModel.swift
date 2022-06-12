@@ -10,14 +10,14 @@ import Foundation
 final class CalendarViewModel {
     static let weeks = ["일", "월", "화", "수", "목", "금", "토"]
     
-    let today = Date() // 오늘의 날짜
-    var dateOfToday = Date() // 날짜를 계산하는 기준 날짜
-    let dateComponents = DateComponents()
-    let dateStringOfToday: String? = nil
-    var totalDates = [String]() // dates를 담는 배열
-    var daysCountInMonth = 0 // 해당 월이 며칠까지 있는지
-    var weekdayStarting = 0 // 시작일
-    let calendarManager = CalendarManager()
+    private let today = Date() // 오늘의 날짜
+    private var dateOfToday = Date() // 날짜를 계산하는 기준 날짜
+    private let dateComponents = DateComponents()
+    private let dateStringOfToday: String? = nil
+    private var totalDates = [String]() // dates를 담는 배열
+    private var daysCountInMonth = 0 // 해당 월이 며칠까지 있는지
+    private var weekdayStarting = 0 // 시작일
+    private let calendarManager = CalendarManager()
     
     func previousMonth() {
         dateOfToday = calendarManager.minusMonth(date: dateOfToday)
