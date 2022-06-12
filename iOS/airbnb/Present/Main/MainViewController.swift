@@ -45,7 +45,7 @@ final class MainViewController: UIViewController {
             }
         }
         
-        alert(title: "알림", message: "로그인 되었습니다.")
+        alert(title: "알림", message: "로그인 되었습니다.", okTitle: "확인")
         
         loginButton.title = "로그아웃"
     }
