@@ -26,50 +26,29 @@ final class ReservationInfoInputView: UIView {
         return stackView
     }()
     
-    private let locationView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
+    private let locationView: CommonTwoLabelView = {
+        let view = CommonTwoLabelView()
+        view.configure(title: "위치", text: "양재")
         return view
     }()
     
-    private let locationLabel = CustomLabel(color: .customBlack,
-                                            text: "위치", font: .systemFont(ofSize: 17, weight: .medium))
-    private let locatinInputLabel = CustomLabel(color: .gray3,
-                                                text: "양재", font: .systemFont(ofSize: 17, weight: .medium))
-    
-    private let dateView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
+    private let dateView: CommonTwoLabelView = {
+        let view = CommonTwoLabelView()
+        view.configure(title: "체크인/체크아웃", text: "5월 17일 - 6월 4일")
         return view
     }()
     
-    private let dateLabel = CustomLabel(color: .customBlack,
-                                            text: "체크인/체크아웃", font: .systemFont(ofSize: 17, weight: .medium))
-    private let dateInputLabel = CustomLabel(color: .gray3,
-                                                text: "5월 17일 - 6월 4일", font: .systemFont(ofSize: 17, weight: .medium))
-    
-    private let chargeView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
+    private let chargeView: CommonTwoLabelView = {
+        let view = CommonTwoLabelView()
+        view.configure(title: "요금", text: "₩100,000 - ₩1,000,000+")
         return view
     }()
-    
-    private let chargeLabel = CustomLabel(color: .customBlack,
-                                            text: "요금", font: .systemFont(ofSize: 17, weight: .medium))
-    private let chargeInputLabel = CustomLabel(color: .gray3,
-                                                text: "₩100,000 - ₩1,000,000+",
-                                               font: .systemFont(ofSize: 17, weight: .medium))
-    
-    private let personCountView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
+
+    private let personCountView: CommonTwoLabelView = {
+        let view = CommonTwoLabelView()
+        view.configure(title: "인원", text: "게스트 3명")
         return view
     }()
-    
-    private let personCountLabel = CustomLabel(color: .customBlack,
-                                            text: "인원", font: .systemFont(ofSize: 17, weight: .medium))
-    private let personCountInputLabel = CustomLabel(color: .gray3,
-                                                text: "게스트 3명", font: .systemFont(ofSize: 17, weight: .medium))
     
     required override init(frame: CGRect) {
         super.init(frame: frame)
@@ -86,18 +65,6 @@ final class ReservationInfoInputView: UIView {
     }
     
     private func addViews() {
-        locationView.addSubview(locationLabel)
-        locationView.addSubview(locatinInputLabel)
-        
-        dateView.addSubview(dateLabel)
-        dateView.addSubview(dateInputLabel)
-        
-        chargeView.addSubview(chargeLabel)
-        chargeView.addSubview(chargeInputLabel)
-        
-        personCountView.addSubview(personCountLabel)
-        personCountView.addSubview(personCountInputLabel)
-        
         verticalStackView.addArrangedSubview(locationView)
         verticalStackView.addArrangedSubview(dateView)
         verticalStackView.addArrangedSubview(chargeView)
@@ -113,42 +80,6 @@ final class ReservationInfoInputView: UIView {
             $0.height.equalTo(160)
         }
         
-        locationLabel.snp.makeConstraints {
-            $0.leading.equalTo(20)
-            $0.centerY.equalToSuperview()
-        }
-        locatinInputLabel.snp.makeConstraints {
-            $0.trailing.equalTo(-20)
-            $0.centerY.equalToSuperview()
-        }
-        
-        dateLabel.snp.makeConstraints {
-            $0.leading.equalTo(20)
-            $0.centerY.equalToSuperview()
-        }
-        dateInputLabel.snp.makeConstraints {
-            $0.trailing.equalTo(-20)
-            $0.centerY.equalToSuperview()
-        }
-        
-        chargeLabel.snp.makeConstraints {
-            $0.leading.equalTo(20)
-            $0.centerY.equalToSuperview()
-        }
-        chargeInputLabel.snp.makeConstraints {
-            $0.trailing.equalTo(-20)
-            $0.centerY.equalToSuperview()
-        }
-        
-        personCountLabel.snp.makeConstraints {
-            $0.leading.equalTo(20)
-            $0.centerY.equalToSuperview()
-        }
-        personCountInputLabel.snp.makeConstraints {
-            $0.trailing.equalTo(-20)
-            $0.centerY.equalToSuperview()
-        }
-
         verticalStackView.snp.makeConstraints {
             $0.leading.trailing.bottom.height.equalToSuperview()
         }

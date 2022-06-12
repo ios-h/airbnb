@@ -49,6 +49,7 @@
 		D01D6628283CB5550067B5E1 /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D6627283CB5550067B5E1 /* WishListViewController.swift */; };
 		D01D662A283CB5DB0067B5E1 /* ReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D6629283CB5DB0067B5E1 /* ReservationViewController.swift */; };
 		D01D6631283D3A200067B5E1 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D6630283D3A200067B5E1 /* UIColor+Extension.swift */; };
+		D04099B0285651E20008B517 /* CommonTwoLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04099AF285651E20008B517 /* CommonTwoLabelView.swift */; };
 		D04C6C41284925CD00A419A5 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04C6C40284925CD00A419A5 /* MainViewModel.swift */; };
 		D04C6C4928494B2600A419A5 /* SearchFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04C6C4828494B2600A419A5 /* SearchFlowCoordinator.swift */; };
 		D068BCFB28406E1B00EF783E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D068BCFA28406E1B00EF783E /* Coordinator.swift */; };
@@ -154,6 +155,7 @@
 		D01D6627283CB5550067B5E1 /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
 		D01D6629283CB5DB0067B5E1 /* ReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationViewController.swift; sourceTree = "<group>"; };
 		D01D6630283D3A200067B5E1 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		D04099AF285651E20008B517 /* CommonTwoLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTwoLabelView.swift; sourceTree = "<group>"; };
 		D04C6C40284925CD00A419A5 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		D04C6C4828494B2600A419A5 /* SearchFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFlowCoordinator.swift; sourceTree = "<group>"; };
 		D068BCFA28406E1B00EF783E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -483,6 +485,7 @@
 			children = (
 				D0D299DB284CB88A009D1608 /* CommonCollectionViewCell.swift */,
 				D089E7E1284501810000AE78 /* CommonHeaderView.swift */,
+				D04099AF285651E20008B517 /* CommonTwoLabelView.swift */,
 				D0D299E3284D000E009D1608 /* LayoutManager.swift */,
 			);
 			path = View;
@@ -836,6 +839,7 @@
 				D00B74472851ABEF00B31424 /* ButtonTheme.swift in Sources */,
 				D00B743C285198C900B31424 /* GroupApplicable.swift in Sources */,
 				D0D29A1F284F4300009D1608 /* WishListCollectionViewDataSource.swift in Sources */,
+				D04099B0285651E20008B517 /* CommonTwoLabelView.swift in Sources */,
 				D00B748A28550AE300B31424 /* CalendarHeaderView.swift in Sources */,
 				D0D299DC284CB88A009D1608 /* CommonCollectionViewCell.swift in Sources */,
 				D089E80528460B4C0000AE78 /* MainSectionDiffableDataSource.swift in Sources */,
