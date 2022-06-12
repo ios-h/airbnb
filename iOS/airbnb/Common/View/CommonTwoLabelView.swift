@@ -21,6 +21,12 @@ final class CommonTwoLabelView: UIView {
         return view
     }()
     
+    private let lineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.gray
+        return view
+    }()
+    
     private let titleLabel = CustomLabel(color: .customBlack,
                                             text: "위치", font: .systemFont(ofSize: 17, weight: .medium))
     private let inputLabel = CustomLabel(color: .gray3,
@@ -37,6 +43,7 @@ final class CommonTwoLabelView: UIView {
     }
     
     private func configure() {
+        addSubview(lineView)
         addSubview(containerView)
         containerView.addSubview(titleLabel)
         containerView.addSubview(inputLabel)
@@ -45,10 +52,16 @@ final class CommonTwoLabelView: UIView {
     }
     
     private func setConstraints() {
-        containerView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+        lineView.snp.makeConstraints {
+            $0.leading.trailing.top.equalToSuperview()
+            $0.height.equalTo(0.4)
         }
         
+        containerView.snp.makeConstraints {
+            $0.leading.trailing.bottom.equalToSuperview()
+            $0.top.equalTo(lineView.snp.bottom)
+        }
+    
         titleLabel.snp.makeConstraints {
             $0.leading.equalTo(20)
             $0.centerY.equalToSuperview()

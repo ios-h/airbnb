@@ -12,8 +12,6 @@ final class ReservationInfoInputView: UIView {
     private let containerView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
-        view.layer.borderWidth = 0.5
-        view.layer.borderColor = UIColor.gray.cgColor
         return view
     }()
     
