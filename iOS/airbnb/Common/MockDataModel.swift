@@ -28,22 +28,22 @@ struct MockDataModel {
                                  SearchItem(imageName: "img_hero", title: "부천시", description: "차로 30분 거리")]
     
     static let mockWishListItems = [
-        WishListModel(image: UIImage(named: "img_thumbnail1"),
+        WishListModel(id: 1, image: UIImage(named: "img_thumbnail1"),
                      rating: 4.98,
                      reviewCount: 50,
                      accomodationName: "비담집, 비우고 담은집(집전체, 최대4인)",
                      price: 308_571),
-        WishListModel(image: UIImage(named: "img_thumbnail2"),
+        WishListModel(id: 2, image: UIImage(named: "img_thumbnail2"),
                      rating: 4.96,
                      reviewCount: 157,
                      accomodationName: "HOTEL강릉세인트존스호텔 풀오션뷰 ...",
                      price: 131_429),
-        WishListModel(image: UIImage(named: "img_thumbnail1"),
+        WishListModel(id: 3, image: UIImage(named: "img_thumbnail1"),
                      rating: 4.98,
                      reviewCount: 50,
                      accomodationName: "비담집, 비우고 담은집(집전체, 최대4인)",
                      price: 308_571),
-        WishListModel(image: UIImage(named: "img_thumbnail2"),
+        WishListModel(id: 4, image: UIImage(named: "img_thumbnail2"),
                      rating: 4.96,
                      reviewCount: 157,
                      accomodationName: "HOTEL강릉세인트존스호텔 풀오션뷰 ...",
@@ -62,4 +62,15 @@ struct MockDataModel {
                          duration: "2021년 5월 1일 - 2021년 5월 6일",
                          location: "서초구, 서울, 한국",
                          roomType: "Spacious and Comfortable cozy house #2")]
+    
+    static let calendarItems = [CalendarItem(day: 1), CalendarItem(day: 2), CalendarItem(day: 3),
+                                CalendarItem(day: 4), CalendarItem(day: 5), CalendarItem(day: 4),
+                                CalendarItem(day: 7), CalendarItem(day: 8), CalendarItem(day: 9),
+                                CalendarItem(day: 10), CalendarItem(day: 11), CalendarItem(day: 12),
+                                CalendarItem(day: 13), CalendarItem(day: 14), CalendarItem(day: 15),
+                                CalendarItem(day: 16), CalendarItem(day: 17), CalendarItem(day: 18),
+                                CalendarItem(day: 19), CalendarItem(day: 20), CalendarItem(day: 21),
+                                CalendarItem(day: 22), CalendarItem(day: 23), CalendarItem(day: 24),
+                                CalendarItem(day: 25), CalendarItem(day: 26), CalendarItem(day: 27),
+                                CalendarItem(day: 28), CalendarItem(day: 29), CalendarItem(day: 30)]
 }

@@ -1,15 +1,19 @@
 //
-//  CommonHeaderView.swift
+//  CalendarHeaderView.swift
 //  airbnb
 //
-//  Created by 안상희 on 2022/05/30.
+//  Created by 안상희 on 2022/06/12.
 //
 
 import UIKit
 
-class CommonHeaderView: UICollectionReusableView {
+class CalendarHeaderView: UICollectionReusableView {
     
-    public let headerLabel = CustomLabel(color: .customBlack!, font: .systemFont(ofSize: 22, weight: .medium))
+    func configureHeaderView(year: Int, month: Int) {
+        self.headerLabel.text = "\(year)년 \(month)월"
+    }
+    
+    private let headerLabel = CustomLabel(color: .customBlack!, font: .systemFont(ofSize: 16, weight: .bold))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,7 +34,7 @@ class CommonHeaderView: UICollectionReusableView {
         
         headerLabel.snp.makeConstraints {
             $0.leading.equalTo(inset)
-            $0.top.equalTo(self.snp.top).inset(inset * 1.1)
+            $0.top.equalTo(self.snp.top)
             $0.bottom.equalTo(self.snp.bottom).inset(inset * 0.4)
         }
     }

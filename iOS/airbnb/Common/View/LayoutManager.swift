@@ -56,7 +56,7 @@ final class LayoutManager {
     }
     
     class func configureItem(_ itemSize: ItemSize = ItemSize(),
-                       contentInset: NSDirectionalEdgeInsets = .zero) -> NSCollectionLayoutItem {
+                             contentInset: NSDirectionalEdgeInsets = .zero) -> NSCollectionLayoutItem {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(itemSize.width),
             heightDimension: .fractionalHeight(itemSize.height))

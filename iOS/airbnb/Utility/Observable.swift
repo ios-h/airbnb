@@ -1,5 +1,5 @@
 //
-//  Box.swift
+//  Observable.swift
 //  airbnb
 //
 //  Created by 안상희 on 2022/05/31.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class Box<T> {
+final class Observable<T> {
     typealias Listener = (T) -> Void
     var listener: Listener?
     

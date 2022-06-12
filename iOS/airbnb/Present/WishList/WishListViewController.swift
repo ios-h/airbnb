@@ -5,6 +5,7 @@
 //  Created by 안상희 on 2022/05/24.
 //
 
+import Alamofire
 import UIKit
 
 final class WishListViewController: UIViewController {
@@ -12,17 +13,29 @@ final class WishListViewController: UIViewController {
     var coordinate: WishListFlow?
     
     private var wishListCollectionView: UICollectionView! = nil
-    private var dataSource = WishListCollectionViewDataSource()
+    private lazy var dataSource: WishListCollectionViewDataSource = {
+        let dataSource =
+        WishListCollectionViewDataSource(wishListItems:
+                                            wishListItems ?? MockDataModel.mockWishListItems)
+        return dataSource
+    }()
+    
+    private let viewModel = WishListViewModel()
+    private var wishListItems: [WishListModel]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
         
-        configureCollectionView()
-        configureDataSource()
-        
-        configure()
+        viewModel.getWishList {
+            self.wishListItems = self.viewModel.wishListItems
+            
+            self.configureCollectionView()
+            self.configureDataSource()
+            
+            self.configure()
+        }
     }
     
     private func configure() {

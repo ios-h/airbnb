@@ -10,7 +10,19 @@ import UIKit
 class WishListCollectionViewCell: CommonCollectionViewCell {
     
     func configure(with cell: WishListModel) {
-        self.accomodationImageView.image = cell.image
+        let imgUrl = cell.imageUrls?.randomElement() ?? ""
+        
+        if imgUrl.count > 0 {
+            DispatchQueue.global().async {
+                if let data = try? Data(contentsOf: URL(string: imgUrl)!) {
+                    let img = UIImage(data: data)
+                    
+                    DispatchQueue.main.async {
+                        self.accomodationImageView.image = img
+                    }
+                }
+            }
+        }
         self.ratingLabel.text = "\(cell.rating ?? 0)"
         self.reviewCountingLabel.text = "(후기 \(cell.reviewCount ?? 0)개)"
         self.accomodationNameLabel.text = cell.accomodationName
