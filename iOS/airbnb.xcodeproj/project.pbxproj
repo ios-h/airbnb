@@ -34,6 +34,7 @@
 		D00B748E285591D100B31424 /* CalendarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B748D285591D100B31424 /* CalendarItem.swift */; };
 		D00B74902855924800B31424 /* CalendarDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B748F2855924800B31424 /* CalendarDiffableDataSource.swift */; };
 		D00B749228559DD900B31424 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B749128559DD900B31424 /* CalendarManager.swift */; };
+		D00B74942855A38100B31424 /* ReservationInfoInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B74932855A38100B31424 /* ReservationInfoInputView.swift */; };
 		D01D65EF283C70710067B5E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D65EE283C70710067B5E1 /* AppDelegate.swift */; };
 		D01D65F1283C70710067B5E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D65F0283C70710067B5E1 /* SceneDelegate.swift */; };
 		D01D65F3283C70710067B5E1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D65F2283C70710067B5E1 /* MainViewController.swift */; };
@@ -136,6 +137,7 @@
 		D00B748D285591D100B31424 /* CalendarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarItem.swift; sourceTree = "<group>"; };
 		D00B748F2855924800B31424 /* CalendarDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDiffableDataSource.swift; sourceTree = "<group>"; };
 		D00B749128559DD900B31424 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
+		D00B74932855A38100B31424 /* ReservationInfoInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationInfoInputView.swift; sourceTree = "<group>"; };
 		D01D65EB283C70710067B5E1 /* airbnb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = airbnb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D01D65EE283C70710067B5E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D01D65F0283C70710067B5E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 			children = (
 				D00B74292850564B00B31424 /* CalendarCollectionViewCell.swift */,
 				D00B748928550AE300B31424 /* CalendarHeaderView.swift */,
+				D00B74932855A38100B31424 /* ReservationInfoInputView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -880,6 +883,7 @@
 				D068BD002840700B00EF783E /* TabBarController.swift in Sources */,
 				D01D662A283CB5DB0067B5E1 /* ReservationViewController.swift in Sources */,
 				D087289B283E7D26009983A5 /* CustomLabel.swift in Sources */,
+				D00B74942855A38100B31424 /* ReservationInfoInputView.swift in Sources */,
 				D00B749228559DD900B31424 /* CalendarManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

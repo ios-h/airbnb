@@ -20,6 +20,7 @@ final class CalendarViewController: UIViewController {
     
     private var weekdayCollectionViewDataSource = WeekdayCollectionViewDataSource()
     private var calendarCollectionViewDataSource: CalendarDiffableDataSource!
+    private let reservationInfoInputView = ReservationInfoInputView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,7 @@ final class CalendarViewController: UIViewController {
         
         view.addSubview(weekdayListCollectionView)
         view.addSubview(calendarCollectionView)
+        view.addSubview(reservationInfoInputView)
         
         weekdayListCollectionView.snp.makeConstraints {
             $0.leading.trailing.top.equalTo(view.safeAreaLayoutGuide)
@@ -54,6 +56,12 @@ final class CalendarViewController: UIViewController {
         calendarCollectionView.snp.makeConstraints {
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.top.equalTo(weekdayListCollectionView.snp.bottom)
+            $0.height.equalTo(view.bounds.width * 1.2)
+        }
+        
+        reservationInfoInputView.snp.makeConstraints {
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalTo(calendarCollectionView.snp.bottom)
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
