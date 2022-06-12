@@ -13,7 +13,6 @@
 		D00B741C285043FE00B31424 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D00B741B285043FE00B31424 /* SnapKit */; };
 		D00B74272850562B00B31424 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B74262850562B00B31424 /* CalendarViewController.swift */; };
 		D00B742A2850564B00B31424 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B74292850564B00B31424 /* CalendarCollectionViewCell.swift */; };
-		D00B742E285059C900B31424 /* CalendarCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B742D285059C900B31424 /* CalendarCollectionViewDataSource.swift */; };
 		D00B743228507E5600B31424 /* CalendarFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B743128507E5600B31424 /* CalendarFlowCoordinator.swift */; };
 		D00B743C285198C900B31424 /* GroupApplicable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B743B285198C900B31424 /* GroupApplicable.swift */; };
 		D00B743E285198D900B31424 /* SectionApplicable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B743D285198D900B31424 /* SectionApplicable.swift */; };
@@ -32,6 +31,8 @@
 		D00B746D2852BBBE00B31424 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B746C2852BBBE00B31424 /* Constant.swift */; };
 		D00B7486285332E500B31424 /* WishListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B7485285332E500B31424 /* WishListViewModel.swift */; };
 		D00B748A28550AE300B31424 /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B748928550AE300B31424 /* CalendarHeaderView.swift */; };
+		D00B748E285591D100B31424 /* CalendarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B748D285591D100B31424 /* CalendarItem.swift */; };
+		D00B74902855924800B31424 /* CalendarDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B748F2855924800B31424 /* CalendarDiffableDataSource.swift */; };
 		D01D65EF283C70710067B5E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D65EE283C70710067B5E1 /* AppDelegate.swift */; };
 		D01D65F1283C70710067B5E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D65F0283C70710067B5E1 /* SceneDelegate.swift */; };
 		D01D65F3283C70710067B5E1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D65F2283C70710067B5E1 /* MainViewController.swift */; };
@@ -114,7 +115,6 @@
 		CA0D643D777FDE7236ACD556 /* Pods-airbnbTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-airbnbTests.release.xcconfig"; path = "Target Support Files/Pods-airbnbTests/Pods-airbnbTests.release.xcconfig"; sourceTree = "<group>"; };
 		D00B74262850562B00B31424 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		D00B74292850564B00B31424 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
-		D00B742D285059C900B31424 /* CalendarCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		D00B743128507E5600B31424 /* CalendarFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarFlowCoordinator.swift; sourceTree = "<group>"; };
 		D00B743B285198C900B31424 /* GroupApplicable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupApplicable.swift; sourceTree = "<group>"; };
 		D00B743D285198D900B31424 /* SectionApplicable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionApplicable.swift; sourceTree = "<group>"; };
@@ -132,6 +132,8 @@
 		D00B746C2852BBBE00B31424 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		D00B7485285332E500B31424 /* WishListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewModel.swift; sourceTree = "<group>"; };
 		D00B748928550AE300B31424 /* CalendarHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
+		D00B748D285591D100B31424 /* CalendarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarItem.swift; sourceTree = "<group>"; };
+		D00B748F2855924800B31424 /* CalendarDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDiffableDataSource.swift; sourceTree = "<group>"; };
 		D01D65EB283C70710067B5E1 /* airbnb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = airbnb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D01D65EE283C70710067B5E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D01D65F0283C70710067B5E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -244,12 +246,12 @@
 			isa = PBXGroup;
 			children = (
 				D00B74512851D4A700B31424 /* Model */,
-				D00B742D285059C900B31424 /* CalendarCollectionViewDataSource.swift */,
 				D00B743128507E5600B31424 /* CalendarFlowCoordinator.swift */,
 				D00B74262850562B00B31424 /* CalendarViewController.swift */,
 				D00B74282850563900B31424 /* View */,
 				D00B744C2851CCA200B31424 /* ViewModel */,
 				D00B744F2851D1D700B31424 /* WeekdayCollectionViewDataSource.swift */,
+				D00B748F2855924800B31424 /* CalendarDiffableDataSource.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -298,6 +300,7 @@
 			children = (
 				D00B74522851E80600B31424 /* WeekdayModel.swift */,
 				D00B74542851E80D00B31424 /* CalendarModel.swift */,
+				D00B748D285591D100B31424 /* CalendarItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -819,6 +822,7 @@
 				D0D29A2D284FCF00009D1608 /* ReservationCollectionViewDataSource.swift in Sources */,
 				D089E7DE2844D2450000AE78 /* NearestDestinationCollectionViewCell.swift in Sources */,
 				D089E7E5284505F10000AE78 /* MainAccomodationCollectionViewCell.swift in Sources */,
+				D00B748E285591D100B31424 /* CalendarItem.swift in Sources */,
 				D01D65F3283C70710067B5E1 /* MainViewController.swift in Sources */,
 				D0D299E0284CC156009D1608 /* MainCellFactory.swift in Sources */,
 				D0D299E4284D000E009D1608 /* LayoutManager.swift in Sources */,
@@ -827,7 +831,6 @@
 				D00B743C285198C900B31424 /* GroupApplicable.swift in Sources */,
 				D0D29A1F284F4300009D1608 /* WishListCollectionViewDataSource.swift in Sources */,
 				D00B748A28550AE300B31424 /* CalendarHeaderView.swift in Sources */,
-				D00B742E285059C900B31424 /* CalendarCollectionViewDataSource.swift in Sources */,
 				D0D299DC284CB88A009D1608 /* CommonCollectionViewCell.swift in Sources */,
 				D089E80528460B4C0000AE78 /* MainSectionDiffableDataSource.swift in Sources */,
 				D00B7486285332E500B31424 /* WishListViewModel.swift in Sources */,
@@ -843,6 +846,7 @@
 				D0D299EF284E61C2009D1608 /* SearchResultTableViewDataSource.swift in Sources */,
 				D00B74652852503800B31424 /* WishListResponseData.swift in Sources */,
 				D04C6C41284925CD00A419A5 /* MainViewModel.swift in Sources */,
+				D00B74902855924800B31424 /* CalendarDiffableDataSource.swift in Sources */,
 				D00B743E285198D900B31424 /* SectionApplicable.swift in Sources */,
 				D01D65EF283C70710067B5E1 /* AppDelegate.swift in Sources */,
 				D089E7F82845FABB0000AE78 /* Observable.swift in Sources */,

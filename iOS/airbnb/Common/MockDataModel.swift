@@ -62,4 +62,15 @@ struct MockDataModel {
                          duration: "2021년 5월 1일 - 2021년 5월 6일",
                          location: "서초구, 서울, 한국",
                          roomType: "Spacious and Comfortable cozy house #2")]
+    
+    static let calendarItems = [CalendarItem(day: 1), CalendarItem(day: 2), CalendarItem(day: 3),
+                                CalendarItem(day: 4), CalendarItem(day: 5), CalendarItem(day: 4),
+                                CalendarItem(day: 7), CalendarItem(day: 8), CalendarItem(day: 9),
+                                CalendarItem(day: 10), CalendarItem(day: 11), CalendarItem(day: 12),
+                                CalendarItem(day: 13), CalendarItem(day: 14), CalendarItem(day: 15),
+                                CalendarItem(day: 16), CalendarItem(day: 17), CalendarItem(day: 18),
+                                CalendarItem(day: 19), CalendarItem(day: 20), CalendarItem(day: 21),
+                                CalendarItem(day: 22), CalendarItem(day: 23), CalendarItem(day: 24),
+                                CalendarItem(day: 25), CalendarItem(day: 26), CalendarItem(day: 27),
+                                CalendarItem(day: 28), CalendarItem(day: 29), CalendarItem(day: 30)]
 }

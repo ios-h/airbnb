@@ -10,13 +10,10 @@ import UIKit
 class CalendarHeaderView: UICollectionReusableView {
     
     func configureHeaderView(year: Int, month: Int) {
-        self.yearLabel.text = "\(year)년"
-        self.monthLabel.text = "\(month)월"
+        self.headerLabel.text = "\(year)년 \(month)월"
     }
     
-    private let yearLabel = CustomLabel(color: .customBlack!, font: .systemFont(ofSize: 16, weight: .medium))
-    
-    private let monthLabel = CustomLabel(color: .customBlack!, font: .systemFont(ofSize: 16, weight: .medium))
+    private let headerLabel = CustomLabel(color: .customBlack!, font: .systemFont(ofSize: 16, weight: .bold))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,19 +28,14 @@ class CalendarHeaderView: UICollectionReusableView {
     private func configure() {
         backgroundColor = .white
         
-        addSubview(yearLabel)
-        addSubview(monthLabel)
+        addSubview(headerLabel)
         
         let inset = CGFloat(25)
         
-        yearLabel.snp.makeConstraints {
+        headerLabel.snp.makeConstraints {
             $0.leading.equalTo(inset)
-            $0.top.equalTo(self.snp.top).inset(inset * 1.1)
+            $0.top.equalTo(self.snp.top)
             $0.bottom.equalTo(self.snp.bottom).inset(inset * 0.4)
-        }
-        
-        monthLabel.snp.makeConstraints {
-            $0.leading.equalTo(yearLabel.snp.trailing).inset(inset * 0.4)
         }
     }
 }
